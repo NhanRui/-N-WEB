@@ -10,6 +10,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--<base href="https://www.w3schools.com/" target="_blank">-->
     <style>
+        body{
+            background-image:url("images/bg.jpg");
+            background-size:100%;
+        }
+        .im {
+            max-width:210px;
+            max-height:95px;
+            width: auto;
+            height: auto;
+        }
+        .allde{
+            max-width:600px;
+            max-height:360px;
+            width: auto;
+            height: auto;
+            margin-top:120px;
+        }
         .f {
             width:400px;
             height:40px;
@@ -40,16 +57,21 @@
     </style>
 </head>
 <body>
+    <!-- phần này liên quan fb
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xf
+        bml=1&version=v8.0" nonce="rKqWtgGD"></script>
+    -->
 <form action="process.html">
     <table style="width:90%;margin-left:50px;" cellspacing="5px">
         <colgroup><col width="500px"></colgroup>
-        <tr>
-            <td><img src="logo.png" alt="logo"></td>
+        <tr" >
+            <td><img src="images/logo1.png" class="im" alt="logo"></td>
             <td align="right"><a href="dangnhap.html" style="color:red; ">Đăng nhập</a></td>
         </tr>
         <tr>
             <td><div style="text-align:center;"><h1>Nền tảng giáo dục trực tuyến<br>lớn nhất Đông Nam Á</h1></div></td>
-            <td rowspan="10"><img src="OYK_laptop.png" alt="Devices using OYK"></td>
+            <td rowspan="10"><img src="images/all_device.png" alt="Devices using OYK" class="allde"></td>
         </tr>
         <tr>
             <td style="color:grey">Nơi mọi người chia sẻ , khám phá và học hỏi bất cứ điều gì</td>
@@ -59,8 +81,12 @@
         </tr>
         <tr>
             <td>
-                <button >Facebook</button>
-                <button >Gmail</button>
+                <!--
+                <div class="fb-login-button" data-size="large" data-button-type="continue_with" 
+                data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div>
+                -->
+                <button>Faccebook</button>
+                <button>Gmail</button>
             </td>
         </tr>
         <tr>
@@ -89,7 +115,7 @@
                 <td><input class="but" type="submit" name="send" value="Đăng ký"></td>
                 <td>
                     <div>
-                        <p>Đã có tài khoản?<a href="dangnhap.html">Đăng nhập</a></p>
+                        <p>Đã có tài khoản? <a href="dangnhap.html">Đăng nhập</a></p>
                     </div>
                 </td>
             </tr>
