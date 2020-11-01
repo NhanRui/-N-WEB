@@ -1,0 +1,296 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+body{
+    font-family: montserrat;
+}
+.box1
+{
+    border: 1px solid black;
+    background-color: black;
+    height: 50px;
+}
+nav{
+    background: linear-gradient(90deg,red,purple,darkblue);
+    height: 45px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+nav ul{
+    float: right;
+    margin-right: 100px;
+}
+
+nav ul li{
+    display: inline-block;
+    line-height: 50px;
+    margin: -3px 3px;
+}
+
+nav ul li a{
+    color: whitesmoke;
+    font-size: 17px;
+    font-weight: 700;
+    padding: 7px 13px;
+    border-radius: 3px;
+}
+
+a.active, a:hover{
+    background: dodgerblue;
+    transition: .5s;
+}
+
+.checkbtn{
+    font-size: 30px;
+    color: whitesmoke;
+    float:right;
+    line-height: 45px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+#check{
+    display: none;
+}
+
+@media(max-width: 952px){
+    nav ul li a{
+        font-size: 17px;
+    }
+}
+
+@media(max-width: 858px){
+    .checkbtn{
+        display: block;
+    }
+    ul{
+        position: fixed;
+        width: 100%;
+        height: 150vh;
+        background: #2c3e50;
+        top: 45px;
+        left: 100%;
+        text-align: center;
+        transition: all .5s;
+    }
+    nav ul li{
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+    nav ul li a{
+        font-size: 20px;
+    }
+    a:hover,a.active{
+        background: none;
+        color: dodgerblue;
+    }
+    #check:checked ~ ul{
+        left:0;
+    }
+}
+section{
+    background: whitesmoke;
+    background-size: cover;
+    height: calc(100vh);
+}
+.search-box{
+    width: 100%;
+    height: 60px;
+    display: block;
+    background:rgba(255, 255, 255, 0.8) ;
+    padding: 0px;
+    margin-top: 45px;
+    position: fixed;
+    top:0;
+}
+
+.search__txt
+{
+    border: 1px solid #ff0000;
+    background: whitesmoke;
+    outline: none;
+    float: left;
+    padding: 10px;
+    color: black;
+    font-size: 15px;
+    border-radius: 3px;
+}
+
+.box{
+    height: 30px;
+    display: block;
+    border-radius: 100px;
+    padding: 0px;
+    margin-top: -54px;
+    margin-left: 295px;
+}
+
+.header__logo
+{
+    width: 0%;
+    margin-left: 120px;
+}
+.header__search
+{
+    background-color: whitesmoke;
+    width: 40px;
+}
+.header__search__input
+{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.4rem;
+}
+
+.header__cart-icon
+{
+    width: 150px;
+}
+
+.search-btn-pos
+{
+    margin-left: 630px;
+    margin-top: -31px;
+}
+.search-btn
+{
+    background: rgb(221, 31, 31);
+    padding: 12px;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid #ff0000;
+}
+
+button.search-btn:hover
+{
+    border: 1px solid #e7e3e3;
+}
+
+.cart-btn-pos
+{
+    margin-left: 840px;
+    margin-top: -35px;
+}
+
+.cart-btn
+{
+    background: none;
+    border-radius: 50%;
+    padding: 9px;
+    cursor: pointer;
+}
+
+i.cart-btn:active
+{
+    background: rgb(243, 241, 241);
+}
+
+.heart-btn-pos
+{
+    margin-left: 895px;
+    margin-top: -35px;
+}
+
+.heart-btn
+{
+    background: none;
+    border-radius: 50%;
+    padding: 9px;
+    cursor: pointer;
+}
+
+i.heart-btn:active
+{
+    background: rgb(243, 241, 241);
+}
+
+.bell-btn-pos
+{
+    margin-left: 945px;
+    margin-top: -34px;
+}
+
+.bell-btn
+{
+    background: none;
+    border-radius: 50%;
+    padding: 9px;
+    cursor: pointer;
+}
+
+i.bell-btn:active
+{
+    background:rgb(243, 241, 241);
+}
+
+.sign-in__btn
+{
+    margin-left: 1025px;
+    margin-top: -35px;
+}
+
+.sign-in-bg
+{
+    font-family: montserrat;
+    background:none;
+    outline: none;
+    border: none;
+    padding: 7px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 17px;
+    color: rgb(124, 121, 121);
+}
+
+button.sign-in-bg:hover
+{
+    background: rgb(243, 241, 241);
+    border-radius: 5px;
+}
+
+.sign-up__btn
+{
+    margin-left: 1145px;
+    margin-top: -35px;
+}
+
+.sign-up-bg
+{
+    font-family: montserrat;
+    background:none;
+    outline: none;
+    border: 1px solid red;
+    padding: 7px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 17px;
+    color: red;
+}
+/*ul{
+    float: left;
+    color: white;
+}
+ul li{
+    margin-top: -10px;
+    float: left;
+    position: relative;
+    left: 300%;
+    width: 100px;
+    font-size: 14px;
+    font-family: barlow condensed, sans-serif;
+    list-style-type: none;
+}
+ ul li a{
+     text-decoration: none;
+     color: white;
+ }*/
