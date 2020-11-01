@@ -12,11 +12,8 @@
     <style>
         body{
             background-image:url("images/bg.png");
-            background-size:cover;
+            background-size:100%;
             background-position: center center;
-        }
-        tr {
-            height:fit-content;
         }
         .im {
             max-width:210px;
@@ -28,7 +25,7 @@
             max-width:600px;
             max-height:360px;
             width: auto;
-            height: 300px;
+            height: auto;
             margin-top:120px;
         }
         .f {
@@ -68,23 +65,20 @@
     -->
 <form action="process.html">
     <table style="width:90%;margin-left:50px;" cellspacing="5px">
-        <colgroup>
-            <col width="500px">
-            <col width="auto">
-        </colgroup>
-        <tr>
+        <colgroup><col width="500px"></colgroup>
+        <tr" >
             <td><img src="images/logo1.png" class="im" alt="logo"></td>
-            <td align="right"><a href="SignUp.html" style="color:red;margin-right:110px;">Đăng ký tài khoản mới</a></td>
+            <td align="right"><a href="SignIn.html" style="color:red;margin-right:110px;">Đăng nhập</a></td>
         </tr>
         <tr>
-            <td ><div style="text-align:center;"><h1>Nền tảng giáo dục trực tuyến<br>lớn nhất Đông Nam Á</h1></div></td>
-            <td rowspan="7"><img src="images/all_device.png" alt="Devices using OYK" class="allde"></td>
+            <td><div style="text-align:center;"><h1>Nền tảng giáo dục trực tuyến<br>lớn nhất Đông Nam Á</h1></div></td>
+            <td rowspan="10"><img src="images/all_device.png" alt="Devices using OYK" class="allde"></td>
         </tr>
         <tr>
-            <td style="color:rgb(78, 78, 78)">Nơi mọi người chia sẻ , khám phá và học hỏi bất cứ điều gì</td>
+            <td style="color:grey">Nơi mọi người chia sẻ , khám phá và học hỏi bất cứ điều gì</td>
         </tr>
         <tr>
-            <td>Đăng kí nhanh với</td>
+            <td><br>Đăng kí nhanh với</td>
         </tr>
         <tr>
             <td>
@@ -97,7 +91,13 @@
             </td>
         </tr>
         <tr>
-            <td>Hoặc đăng nhập bằng</td>
+            <td><br>Hoặc đăng kí ngay</td>
+        </tr>
+        <tr>
+            <td><input class="f" type="text" name="Ho" placeholder="Họ" maxlength="20"></td>
+        </tr>
+        <tr>
+            <td><input class="f" type="text" name="Ten" placeholder="Tên" maxlength="30" required></td>
         </tr>
         <tr>
             <td><input class="f" type="text" name="mail/phone" placeholder="Email hoặc số điện thoại" maxlength="50" required></td>
@@ -105,14 +105,19 @@
         <tr>
             <td><input class="f" type="password" name="pass" placeholder="Mật khẩu" maxlength="20" required></td>
         </tr>
+        <tr>
+            <td>Bằng cách nhấp vào Đăng ký, bạn đồng ý với <a href="dieukhoan.html">Điều khoản</a>,<br>
+                <a href="quyche.html">Quy chế hoạt động</a> và <a href="chinhsach.html">Chính sách bảo mật</a> của EduOYK.</td>
+        </tr>
     </table>
     <div>
         <table style="margin-left:50px;" cellspacing="15">
             <tr>
-                <td><input class="but" type="submit" name="send" value="Đăng nhập"></td>
+                <td><input class="but" type="submit" name="send" value="Đăng ký"></td>
                 <td>
-                    <!-- phan nay lien ket voi co so du lieu, chua thuc hien duoc-->
-                    <p><a href="SignIn.html">Quên mật khẩu?</a></p>
+                    <div>
+                        <p>Đã có tài khoản? <a href="dangnhap.html">Đăng nhập</a></p>
+                    </div>
                 </td>
             </tr>
     </table>
