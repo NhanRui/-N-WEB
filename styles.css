@@ -101,6 +101,7 @@ section{
     background: whitesmoke;
     background-size: cover;
     height: calc(150vh);
+    display: flex;
 }
 .search-box{
     width: 100%;
