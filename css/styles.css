@@ -127,15 +127,14 @@ section{
     color: black;
     font-size: 15px;
     border-radius: 3px;
-    margin-left: 50px;
 }
 
 .box{
-    height: 30px;
+    height: 40px;
     display: block;
-    border-radius: 100px;
-    margin-left: 180px;
+    margin-left: 230px;
     margin-top: 10px;
+    position: relative;
 }
 
 .header__logo
@@ -285,21 +284,52 @@ button.sign-in-bg:hover
     color: red;
     cursor: pointer;
 }
-/*ul{
-    float: left;
-    color: white;
+
+.search_history{
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: calc(100%);
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0 0 3px #d1d1d1;
+    display: none;
 }
-ul li{
-    margin-top: -10px;
-    float: left;
-    position: relative;
-    left: 300%;
-    width: 100px;
-    font-size: 14px;
-    font-family: barlow condensed, sans-serif;
-    list-style-type: none;
+
+.search_history hr{
+    margin-top: 5px;
+    width: 95%;
+    margin-left: 8px;
+    border-color: #fffafa;
 }
- ul li a{
-     text-decoration: none;
-     color: white;
- }*/
+
+.search_history_heading{
+    padding-left: 7px;
+    margin-top: 10px;
+}
+
+.history_list{
+    padding-left: 0;
+}
+
+.history_item{
+    padding-top: 7.5px;
+    padding-bottom: 7.5px;
+    padding-left: 7px;
+}
+
+.history_item:hover{
+    background: rgb(243, 241, 241);
+}
+
+.history_item a i{
+    color: #9b9797bb;
+}
+
+.history_item a{
+    color: #292828bb;
+}
+
+.search__txt:focus ~ .search_history{
+    display: block;
+}
