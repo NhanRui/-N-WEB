@@ -108,7 +108,8 @@ section{
     height: 60px;
     display: block;
     display: flex;
-    background:rgba(255, 255, 255, 0.8) ;
+    background:white ;
+    box-shadow: 0 0 15px #d1d1d1;
     padding: 0px;
     margin-top: 45px;
     position: fixed;
