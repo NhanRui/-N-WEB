@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="css/footer_homesite.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="javascript/test.js"></script>
 </head>
 <body>
     <div>
@@ -58,7 +60,13 @@
                 <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
             </div>
             <div class="cart-btn-pos">
-                <i class="cart-btn fas fa-shopping-cart"></i>
+                <div class="cart-btn-focus" id="cart-btn-click">
+                    <i class="cart-btn fas fa-shopping-cart" id="cart-item"></i>
+                    <div class="cart_list" id="cart_list_focus">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>Bạn chưa có khóa học nào trong giỏ hàng</p>
+                    </div>
+                </div>
             </div>
             <div class="heart-btn-pos">
                 <i class="heart-btn far fa-heart"></i>

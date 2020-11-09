@@ -195,7 +195,7 @@ button.search-btn:hover
     cursor: pointer;
 }
 
-i.cart-btn:active
+i.cart-btn.active
 {
     background: rgb(243, 241, 241);
 }
@@ -333,3 +333,56 @@ button.sign-in-bg:hover
 .search__txt:focus ~ .search_history{
     display: block;
 }
+
+.cart_list{
+    background: white;
+    height: 205px;
+    width: 310px;
+    border-radius: 8px;
+    box-shadow: 0 0 3px #d1d1d1;
+    position: absolute;
+    margin-left: -130px;
+    margin-top: 15px;
+    display: none;
+}
+
+.cart_list i{
+    font-size: 50px;
+    background: rgb(243, 241, 241);
+    color: rgb(138, 135, 135);
+    padding: 40px;
+    margin-left: 85px;
+    margin-top: 15px;
+}
+.cart_list p{
+    text-align: center;
+    margin-top: 15px;
+    margin-left: 50px;
+    width: 65%;
+    font-size: 16px;
+    color: rgb(124, 121, 121)
+}
+
+.fas{
+    border-radius: 50%;
+}
+
+.cart_list::after{
+    content: "";
+    position: absolute;
+    right: 150px;
+    top: -30px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+    outline: #ff0000;
+    margin-top: 10px;
+}
+
+.cart-btn-focus{
+    position: relative;
+}
+
+/*.cart-btn-focus:hover .cart_list{
+    display: block;
+}*/
