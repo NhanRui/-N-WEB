@@ -21,7 +21,7 @@ document.addEventListener("click", function(event){
 */
 
 document.addEventListener("click", (evt) => {
-    const deactive_cart = document.getElementById("cart-btn-click");
+    //const deactive_cart = document.getElementById("cart-btn-click");
     const deactive_cart_menu = document.getElementById("cart_list_focus");
     const deactive_cart_item = document.getElementById("cart-item");
         if (event.target.closest(".cart-btn-focus")) {
@@ -31,4 +31,17 @@ document.addEventListener("click", (evt) => {
         }
         deactive_cart_menu.style.display="none";
         deactive_cart_item.style.background="none";
+});
+
+document.addEventListener("click", (evt) => {
+    //const deactive_heart = document.getElementById("heart-btn-click");
+    const deactive_heart_menu = document.getElementById("heart_list_focus");
+    const deactive_heart_item = document.getElementById("heart-item");
+    if (event.target.closest(".heart-btn-focus")) {
+        deactive_heart_menu.style.display="block";
+        deactive_heart_item.style.backgroundColor="rgb(243, 241, 241)";
+        return;
+    }
+    deactive_heart_menu.style.display="none";
+    deactive_heart_item.style.background="none";
 });
