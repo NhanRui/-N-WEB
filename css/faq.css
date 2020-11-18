@@ -38,6 +38,17 @@
     border: none;
 }
 
+.cards-category {
+    padding: 30px 90px 0 90px;
+    background-image: linear-gradient(to left, #df322f,#7e51c7 40%,#68dcf0);
+}
+
+.fa {
+    font-size: 30px !important;
+    margin-right: 6px;
+    margin-top: -4px;
+}
+
 h1 {
     text-align: center;
     color: whitesmoke;
