@@ -1,0 +1,44 @@
+.upper-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    background-image: linear-gradient(to left, #df322f,#7e51c7 40%,#68dcf0);
+}
+
+    .nav-link {
+        color: blue;
+    }
+
+    .nav-item {
+        font-weight: 500;
+    }
+
+    .nav-link.active:hover {
+        font-weight: 100;
+    }
+
+#main-logo img {
+    width: auto;
+    height: 50px;
+}
+
+.lower-header {
+    background: url(https://i.imgur.com/kUcktsy.jpg) no-repeat 50%/cover;
+    position: relative;
+    padding: 50px 0;
+}
+
+.form-control {
+    width: 400px!important;
+}
+
+.form-inline button {
+    background-color: #68bfc5;
+    border: none;
+}
+
+h1 {
+    text-align: center;
+    color: whitesmoke;
+}
