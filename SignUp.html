@@ -59,9 +59,6 @@
 </head>
 <body>
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xf
-        bml=1&version=v8.0" nonce="rKqWtgGD"></script>
-    -->
 <form action="process.html">
     <table style="width:90%;margin-left:50px;" cellspacing="5px">
         <colgroup><col width="500px"></colgroup>
@@ -93,16 +90,16 @@
             <td><br>Hoặc đăng kí ngay</td>
         </tr>
         <tr>
-            <td><input class="f" type="text" name="Ho" placeholder="Họ" maxlength="20" autocomplete="off"></td>
+            <td><input id="ho" class="f" type="text" name="Ho" placeholder="Họ" maxlength="20" autocomplete="off"></td>
         </tr>
         <tr>
-            <td><input class="f" type="text" name="Ten" placeholder="Tên" maxlength="30" required autocomplete="off"></td>
+            <td><input id="ten" class="f" type="text" name="Ten" placeholder="Tên" maxlength="30" required autocomplete="off"></td>
         </tr>
         <tr>
-            <td><input class="f" type="text" name="mail/phone" placeholder="Email hoặc số điện thoại" maxlength="50" required autocomplete="off"></td>
+            <td><input id="tk" class="f" type="text" name="mail/phone" placeholder="Email hoặc số điện thoại" maxlength="50" required autocomplete="off"></td>
         </tr>
         <tr>
-            <td><input class="f" type="password" name="pass" placeholder="Mật khẩu" maxlength="20" required autocomplete="off"></td>
+            <td><input id="pass" class="f" type="password" name="pass" placeholder="Mật khẩu" maxlength="20" required autocomplete="off"></td>
         </tr>
         <tr>
             <td>Bằng cách nhấp vào Đăng ký, bạn đồng ý với <a href="dieukhoan.html">Điều khoản</a>,<br>
@@ -112,7 +109,7 @@
     <div>
         <table style="margin-left:50px;" cellspacing="15">
             <tr>
-                <td><input class="but" type="submit" name="send" value="Đăng ký"></td>
+                <td><input id="submit" class="but" type="submit" name="send" value="Đăng ký"></td>
                 <td>
                     <div>
                         <p>Đã có tài khoản? <a href="dangnhap.html">Đăng nhập</a></p>
@@ -122,5 +119,6 @@
     </table>
     </div>
 </form>
+<script src="javascript/SignUp.js"></script>
 </body>
 </html>

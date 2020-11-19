@@ -12,8 +12,11 @@
     <style>
         body{
             background-image:url("images/bg.png");
-            background-size:cover;
-            background-position: center center;
+            background-size: cover;
+            background-position: center;
+            position: sticky;
+            top:0;
+            right:0;
         }
         tr {
             height:fit-content;
@@ -66,7 +69,7 @@
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xf
         bml=1&version=v8.0" nonce="rKqWtgGD"></script>
     -->
-<form action="process.html">
+<form method="get">
     <table style="width:90%;margin-left:50px;" cellspacing="5px">
         <colgroup>
             <col width="500px">
@@ -100,16 +103,16 @@
             <td>Hoặc đăng nhập bằng</td>
         </tr>
         <tr>
-            <td><input class="f" type="text" name="mail/phone" placeholder="Email hoặc số điện thoại" maxlength="50" required></td>
+            <td><input class="f" id="tk" type="text" name="mail/phone" placeholder="Email hoặc số điện thoại" maxlength="50" required></td>
         </tr>
         <tr>
-            <td><input class="f" type="password" name="pass" placeholder="Mật khẩu" maxlength="20" required></td>
+            <td><input class="f" id="pass" type="password" name="pass" placeholder="Mật khẩu" maxlength="20" required></td>
         </tr>
     </table>
     <div>
         <table style="margin-left:50px;" cellspacing="15">
             <tr>
-                <td><input class="but" type="submit" name="send" value="Đăng nhập"></td>
+                <td><input id="submit" class="but" type="submit" name="send" value="Đăng nhập"></td>
                 <td>
                     <!-- phan nay lien ket voi co so du lieu, chua thuc hien duoc-->
                     <p><a href="SignIn.html">Quên mật khẩu?</a></p>
@@ -118,5 +121,6 @@
     </table>
     </div>
 </form>
+<script src="javascript/SignIn.js"></script>
 </body>
 </html>
