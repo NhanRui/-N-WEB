@@ -26,7 +26,7 @@
 .lower-header {
     background: url(https://i.imgur.com/kUcktsy.jpg) no-repeat 50%/cover;
     position: relative;
-    padding: 50px 0;
+    padding: 80px 0;
 }
 
 .form-control {
@@ -39,7 +39,7 @@
 }
 
 .cards-category {
-    padding: 30px 90px 30px 90px;
+    padding: 90px;
     background-image: linear-gradient(to left, #df322f,#7e51c7 40%,#68dcf0);
 }
 
@@ -49,7 +49,15 @@
     margin-top: -4px;
 }
 
-h1 {
-    text-align: center;
-    color: whitesmoke;
+.common-questions {
+    padding: 30px 70px;
+    background-color: rgb(225, 245, 244);
 }
+
+    .display-3 {
+        text-align: center;
+    }
+
+    #back-to-top {
+        margin-left: 90%;
+    }
