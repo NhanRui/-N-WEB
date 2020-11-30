@@ -1,0 +1,25 @@
+
+.img-with-deal{
+    position: absolute;
+}
+
+.card-img{
+    width: 258px;
+    height: 110px;
+    position: absolute;
+}
+
+.card-product{
+    width: 258px;
+    background: white;
+}
+
+.deal-img{
+    color: white;
+    background: black;
+    position: relative;
+}
+
+.card-body{
+    margin-top: 100px;
+}

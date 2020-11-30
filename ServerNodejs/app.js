@@ -1,71 +1,59 @@
 const express = require('express');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
+var path = require('path');
 
 const app = express();
 
 app.use(express.static('public'));
 app.use(morgan('dev'));
+
+var handlebars = require('express-handlebars').create({
+  layoutsDir: path.join(__dirname, "views/layouts"),
+  partialsDir: path.join(__dirname, "views/partials"),
+  defaultLayout: 'index',
+  extname: 'hbs'
+});
+
+app.engine('hbs', handlebars.engine);
 app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, "views"));
+
 app.use(express.urlencoded({
   extended: true
 }));
 
 app.get('/', function (req, res) {
-  app.engine('hbs', exphbs({
-    defaultLayout: 'index.hbs',
-  }));
   res.render('home');
 });
 
 app.get('/index', function (req, res) {
-  app.engine('hbs', exphbs({
-    defaultLayout: 'index.hbs',
-  }));
   res.render('home');
 });
 
 app.get('/SignIn', function (req, res) {
-  app.engine('hbs', exphbs({
-    defaultLayout: 'SignIn.hbs',
-  }));
-  res.render('home');
+  res.render('home',{layout: 'SignIn.hbs'});
 });
 
 app.get('/SignUp', function (req, res) {
-  app.engine('hbs', exphbs({
-    defaultLayout: 'SignUp.hbs',
-  }));
-  res.render('home');
+  res.render('home',{layout: 'SignUp.hbs'});
 });
 
 app.get('/faq', function (req, res) {
-  app.engine('hbs', exphbs({
-    defaultLayout: 'faq.hbs',
-  }));
-  res.render('home');
+  res.render('home',{layout: 'faq.hbs'});
 });
 
 app.get('/CourseActivate', function (req, res) {
-  app.engine('hbs', exphbs({
-    defaultLayout: 'CourseActivate.hbs',
-  }));
-  res.render('home');
+  res.render('home',{layout: 'CourseActivate.hbs'});
 });
 
 app.get('/BecomeInstructor', function (req, res) {
-  app.engine('hbs', exphbs({
-    defaultLayout: 'BecomeInstructor.hbs',
-  }));
-  res.render('home');
+  res.render('home',{layout: 'BecomeInstructor.hbs'});
 });
 
 app.get('/AccountInformation', function (req, res) {
-  app.engine('hbs', exphbs({
-    defaultLayout: 'AccountInformation.hbs',
-  }));
   //Can render for this layout
-  res.render('home');
+  res.render('home',{layout: 'AccountInformation.hbs'});
 });
 
 const PORT = 3000;

@@ -1,0 +1,154 @@
+<div class="container-item-adver">
+    <div class="background-item">
+        <ul>
+            <label class="category-label-item">
+            <p class="category-label">Danh mục</p>
+            </label>
+            <li class="category-menu-item">
+                <a class="main-category-level" href="#">
+                    <span class="item-level1">Ngoại ngữ</span>
+                </a>
+            </li>
+            <li class="category-menu-item">
+                <a class="main-category-level" href="#">
+                    <span class="item-level1">Âm nhạc</span>
+                </a>
+            </li>
+            <li class="category-menu-item">
+                <a class="main-category-level" href="#">
+                    <span class="item-level1">Công nghệ thông tin</span>
+                </a>
+            </li>
+            <li class="category-menu-item">
+                <a class="main-category-level" href="#">
+                    <span class="item-level1">Thể thao - sức khỏe</span>
+                </a>
+            </li>
+            <li class="category-menu-item">
+                <a class="main-category-level" href="#">
+                    <span class="item-level1">Phát triển cá nhân</span>
+                </a>
+            </li>
+            <li class="category-menu-item">
+                <a class="main-category-level" href="#">
+                    <span class="item-level1">Thiết kế</span>
+                </a>
+            </li>
+            <li class="category-menu-item">
+                <a class="main-category-level" href="#">
+                    <span class="item-level1">Kinh doanh - khởi nghiệp</span>
+                </a>
+            </li>
+            <li class="category-menu-item">
+                <a class="main-category-level" href="#">
+                    <span class="item-level1">Tin học văn phòng</span>
+                </a>
+            </li>
+            <li class="category-menu-item">
+                <a class="main-category-level" href="#">
+                    <span class="item-level1">Marketing</span>
+                </a>
+            </li>
+            <li class="category-menu-item">
+                <a class="main-category-level" href="#">
+                    <span class="item-level1">Multimedia</span>
+                </a>
+            </li>
+            <li class="category-menu-item">
+                <a class="main-category-level" href="#">
+                    <span class="item-level1">Kiến thức chuyên ngành</span>
+                </a>
+            </li>
+            <li class="category-menu-item">
+                <a class="main-category-level" href="#">
+                    <span class="item-level1">Nghệ thuật - đời sống</span>
+                </a>
+            </li>
+            <li class="category-menu-item">
+                <a class="main-category-level" href="#">
+                    <span class="item-level1">Hôn nhân - gia đình</span>
+                </a>
+            </li>
+            <li class="category-menu-item">
+                <a class="main-category-level" href="#">
+                    <span class="item-level1">Nuôi dạy con</span>
+                </a>
+            </li>
+            <li class="category-menu-item">
+                <a class="main-category-level" href="#">
+                    <span class="item-level1">Phong thủy/Nhân tướng học</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="background-image">
+        <div class ="slider">
+            <div class="slides">
+                <!--radio button start-->
+                <input type="radio" name="radio-btn" id="radio1">
+                <input type="radio" name="radio-btn" id="radio2">
+                <input type="radio" name="radio-btn" id="radio3">
+                <input type="radio" name="radio-btn" id="radio4">
+                <!--radio button end-->
+                <!--slide images start-->
+                <div class="slide first">
+                    <a href="#"><img src="images/adver1.jpg" alt=""></a>
+                </div>
+                <div class="slide second">
+                    <a href="#"><img src="images/adver2.jpg" alt=""></a>
+                </div>
+                <div class="slide third">
+                    <a href="#"><img src="images/adver3.jpg" alt=""></a>
+                </div>
+                <div class="slide four">
+                    <a href="#"><img src="images/adver4.jpg" alt=""></a>
+                </div>
+                <!--slide images end-->
+                <!--automatic navigation start-->
+                <div class="navigation-auto">
+                    <div class="auto-btn1"></div>
+                    <div class="auto-btn2"></div>
+                    <div class="auto-btn3"></div>
+                    <div class="auto-btn4"></div>
+                </div>
+                <!--automatic navigation end-->
+            </div>
+            <!--manual navigation start-->
+            <div class="navigation-manual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+                <label for="radio4" class="manual-btn"></label>
+            </div>
+            <!--manual navigation end-->
+            <script type="text/javascript">
+            var counter = 1;
+            setInterval(function(){
+                document.getElementById('radio' + counter).checked=true;
+                counter++;
+                if(counter>4)
+                {
+                    counter=1;
+                }
+            },3000);
+            </script>
+        </div>
+    </div>
+    <div class="box-advertise">
+        <div class="background-deal1">
+            <div class="deal1">
+                <a href="#"><img src="images/ad1.jpg" alt=""></a>
+            </div>
+        </div>
+        <div class="background-deal2">
+            <div class="deal2">
+                <a href="#"><img src="images/ad2.jpg" alt=""></a>
+            </div>
+        </div>
+        <div class="background-deal3">
+            <div class="deal3">
+                <a href="#"><img src="images/ad3.jpg" alt=""></a>
+                </div>
+        </div>
+    </div>
+</div>
