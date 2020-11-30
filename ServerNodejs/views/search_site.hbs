@@ -1,0 +1,166 @@
+{{>search-header}}
+<section>
+    <div class="selection-search-container">
+        <div class="result-search"></div><!--Xử lý kết quả-->
+        <div class="choice-container">
+            <div class="filter-box">
+                <div class="title-search">TRÌNH ĐỘ</div>
+                <div class="form-check">
+                    <ul class="level-choice">
+                        <li class="item">
+                            <input type="hidden" name="filter_url" value="">
+                            <input id="filter_level_filter-1" type="radio" class="layer-input-filter" name="filter_level_filter">
+                            <label for="filter_level_filter-1"> Sơ cấp </label>
+                        </li>
+                        <li class="item">
+                            <input type="hidden" name="filter_url" value="">
+                            <input id="filter_level_filter-2" type="radio" class="layer-input-filter" name="filter_level_filter">
+                            <label for="filter_level_filter-2"> Trung cấp </label>
+                        </li>
+                        <li class="item">
+                            <input type="hidden" name="filter_url" value="">
+                            <input id="filter_level_filter-3" type="radio" class="layer-input-filter" name="filter_level_filter">
+                            <label for="filter_level_filter-3"> Chuyên sâu </label>
+                        </li class="item">
+                        <li class="item">
+                            <input type="hidden" name="filter_url" value="">
+                            <input id="filter_level_filter-10" type="radio" class="layer-input-filter" name="filter_level_filter">
+                            <label for="filter_level_filter-10"> Trọn bộ </label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="title-search">CHÍNH SÁCH</div>
+                <div class="form-check">
+                    <ul class="level-choice">
+                        <li class="item">
+                            <input type="hidden" name="filter_url" value="">
+                            <input id="filter_level_filter-4" type="radio" class="layer-input-filter" name="filter_level_filter">
+                            <label for="filter_level_filter-4"> Khuyễn mại </label>
+                        </li>
+                        <li class="item">
+                            <input type="hidden" name="filter_url" value="">
+                            <input id="filter_level_filter-5" type="radio" class="layer-input-filter" name="filter_level_filter">
+                            <label for="filter_level_filter-5"> Miễn phí </label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="title-search">THỜI LƯỢNG</div>
+                <div class="form-check">
+                    <ul class="level-choice">
+                        <li class="item">
+                            <input type="hidden" name="filter_url" value="">
+                            <input id="filter_level_filter-6" type="radio" class="layer-input-filter" name="filter_level_filter">
+                            <label for="filter_level_filter-6"> Dưới 2 giờ </label>
+                        </li>
+                        <li class="item">
+                            <input type="hidden" name="filter_url" value="">
+                            <input id="filter_level_filter-7" type="radio" class="layer-input-filter" name="filter_level_filter">
+                            <label for="filter_level_filter-7"> Dưới 3 giờ </label>
+                        </li>
+                        <li class="item">
+                            <input type="hidden" name="filter_url" value="">
+                            <input id="filter_level_filter-8" type="radio" class="layer-input-filter" name="filter_level_filter">
+                            <label for="filter_level_filter-8"> Dưới 5 giờ </label>
+                        </li>
+                        <li class="item">
+                            <input type="hidden" name="filter_url" value="">
+                            <input id="filter_level_filter-9" type="radio" class="layer-input-filter" name="filter_level_filter">
+                            <label for="filter_level_filter-9"> 5 giờ trở lên </label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="title-search">ĐÁNH GIÁ</div>
+                <div class="form-check">
+                    <ul class="level-choice">
+                        <li class="item">
+                            <input type="hidden" name="filter_url" value="">
+                            <input id="filter_level_filter-11" type="radio" class="layer-input-filter" name="filter_level_filter">
+                            <label for="filter_level_filter-11"> <span class="rating-choice"><i class="fas fa-star"></i></span> 5.0 </label>
+                        </li>
+                        <li class="item">
+                            <input type="hidden" name="filter_url" value="">
+                            <input id="filter_level_filter-12" type="radio" class="layer-input-filter" name="filter_level_filter">
+                            <label for="filter_level_filter-12"> <span class="rating-choice"><i class="fas fa-star"></i></span> 4.0 trở lên </label>
+                        </li>
+                        <li class="item">
+                            <input type="hidden" name="filter_url" value="">
+                            <input id="filter_level_filter-13" type="radio" class="layer-input-filter" name="filter_level_filter">
+                            <label for="filter_level_filter-13"><span class="rating-choice"><i class="fas fa-star"></i></span> 3.0 trở lên </label>
+                        </li>
+                        <li class="item">
+                            <input type="hidden" name="filter_url" value="">
+                            <input id="filter_level_filter-14" type="radio" class="layer-input-filter" name="filter_level_filter">
+                            <label for="filter_level_filter-14"><span class="rating-choice"><i class="fas fa-star"></i></span> Dưới 3.0 </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="menu-sort">
+            <div class="menusub-choices">
+                <span class="style-submenu menu0">
+                    <i class="fas fa-sort-amount-up"></i> Sắp xếp
+                </span>
+                <span class="blur-style diff-char"> | </span>
+                <a href="#">
+                    <span class="style-submenu menu1 blur-style">Học nhiều nhất</span>
+                </a>
+                <a href="#">
+                    <span class="style-submenu menu2 blur-style">Đánh giá cao nhất</span>
+                </a>
+                <a href="#">
+                    <span class="style-submenu menu3 blur-style">Mới nhất</span>
+                </a>
+                <a href="#">
+                    <span class="style-submenu menu4 blur-style">Giá thấp đến cao</span>
+                </a>
+                <a href="#">
+                    <span class="style-submenu menu5 blur-style">Giá cao đến thấp</span>
+                </a>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        {{>product}}
+                    </div>
+                    <div class="col">
+                        {{>product}}
+                    </div>
+                    <div class="col">
+                        {{>product}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {{>product}}
+                    </div>
+                    <div class="col">
+                        {{>product}}
+                    </div>
+                    <div class="col">
+                        {{>product}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {{>product}}
+                    </div>
+                    <div class="col">
+                        {{>product}}
+                    </div>
+                    <div class="col">
+                        {{>product}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="button-next">
+                        <input class="button-next-page active-button" type="button" name="" id="" value="1">
+                        <input class="button-next-page" type="button" name="" id="" value="2">
+                        <input class="button-next-page" type="button" name="" id="" value="3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{>footer-index}}

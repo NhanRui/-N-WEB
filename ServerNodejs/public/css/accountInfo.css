@@ -16,6 +16,7 @@
     width: 100%;
     box-shadow: 0 0 15px #d1d1d1;
     background-color: white;
+    z-index: 2;
 }
 
 .header-upper {

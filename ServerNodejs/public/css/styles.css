@@ -100,7 +100,7 @@ a.active:hover{
 section{
     background: whitesmoke;
     background-size: cover;
-    height: calc(200vh);
+    height: calc(180vh);
 }
 .search-box{
     width: 100%;

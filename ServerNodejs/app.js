@@ -52,8 +52,12 @@ app.get('/BecomeInstructor', function (req, res) {
 });
 
 app.get('/AccountInformation', function (req, res) {
-  //Can render for this layout
   res.render('home',{layout: 'AccountInformation.hbs'});
+});
+
+app.get('/search_course', function (req, res) {
+  //Can render for this layout
+  res.render('search_site.hbs',{layout: 'search-item.hbs'});
 });
 
 const PORT = 3000;
