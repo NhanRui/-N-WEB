@@ -1,0 +1,179 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #f9fafc !important;
+}
+
+.container {
+    width: 100%;
+    padding: 3vw 18vw;
+    display: flex;
+}
+
+    .left-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .quick-user-info {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            border-bottom: 1px solid gray;
+        }
+
+            .quick-name {
+                font-size: 20px;
+                font-weight: 500;
+            }
+
+            .quick-role {
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+
+            .logo {
+                margin: 15px auto;
+            }
+
+            .logo img{
+                width: 160px;
+                height: auto;
+            }
+
+            .avatar {
+                margin: auto;
+            }
+
+            .avatar img{
+                border-radius: 50%;
+                border: none;
+            }
+
+            .activate-btn {
+                width: 80%;
+                margin: auto;
+                text-align: center;
+                height: 2.5rem;
+                font-weight: 500;
+                font-size: 16px;
+                margin-bottom: 15px;
+                border-radius: 5px;
+                background-color: rgb(0, 174, 255);
+                color: white;
+                border: none;
+                outline: none;  
+            }
+
+            .activate-btn:hover {
+                cursor: pointer;
+            }
+
+            .activate-btn > i {
+                margin-right: 5px;
+            }
+
+            .categories {
+                margin-top: 10px;
+            }
+
+                .category {
+                    margin: 10px 0;
+                    height: 2.5rem;
+                    display: flex;
+                    align-items: center;
+                    padding-left: 5px;
+                }
+
+                .category > a {
+                    text-align: left;
+                    text-decoration: none;
+                    color: gray;
+                    font-weight: 400;
+                    font-size: 15px;
+                    display: flex;
+                    align-items: center;
+                }
+
+                .category > .choosen {
+                    color: red;
+                }
+
+                .category > a > i {
+                    margin-right: 8px;
+                    font-weight: 500;
+                    font-size: 25px;
+                }
+
+                .category:hover {
+                    background-color: gainsboro;
+                    cursor: pointer;
+                    border-radius: 3px;
+                }
+
+    .right-container {
+        flex: 4;
+        width: 100%;
+        padding: 0 15px;
+    }
+
+        .search form {
+            padding-left: 15px;
+            margin-top: 10px;
+        }
+
+        .search #search {
+            height: 2.5rem;
+            width: 15vw;
+            background-color: #ecedf1;
+            border: none;
+            border-radius: 3px;
+            outline: none;
+            padding-left: 10px;
+        }
+
+        .search #btn {
+            height: 2.5rem;
+            width: 5rem;
+            margin-left: 10px;
+            border: none;
+            border-radius: 3px;
+            outline: none;
+            background-color: white;
+            font-weight: 500;
+        }
+
+        .courses {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+            .course .picture {
+                width: 84%;
+                margin: auto;
+            }
+
+            .course img{
+                border-radius: 5px;
+            }
+
+            .course-name {
+                font-weight: 600;
+                width: 83%;
+                margin: auto;
+            }
+
+            .author {
+                font-size: 13px;
+                width: 83%;
+                margin: auto;
+            }
