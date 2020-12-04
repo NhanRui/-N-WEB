@@ -1,0 +1,25 @@
+*{
+    box-sizing: border-box;
+}
+
+#left{
+    width: 10%;
+}
+
+#center{
+    width:20%;
+}
+
+#logo{
+    height :200px;
+}
+
+#logo img{
+    height:200px;
+    width:150px;
+}
+
+#avatar img{
+    width: 100px;
+    height: 100px;
+}
