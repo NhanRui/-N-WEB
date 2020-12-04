@@ -24,6 +24,7 @@ app.use(express.urlencoded({
 }));
 
 app.use('/', require('./controllers/product_controller'));
+app.use('/index', require('./controllers/product_controller'));
 app.use('/lecturer', require('./controllers/lecturer_controller'));
 
 app.get('/', function (req, res) {
@@ -43,7 +44,7 @@ app.get('/SignUp', function (req, res) {
 });
 
 app.get('/lecturer', function (req, res) {  //Nhan them de test
-  res.render('home',{layout: 'lecturer.hbs'});
+  res.render('information.hbs',{layout: 'lecturer.hbs'});
 });
 
 app.get('/faq', function (req, res) {
