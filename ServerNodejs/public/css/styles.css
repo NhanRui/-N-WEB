@@ -100,7 +100,7 @@ a.active:hover{
 section{
     background: whitesmoke;
     background-size: cover;
-    height: calc(180vh);
+    height: calc(200vh);
 }
 .search-box{
     width: 100%;
@@ -362,14 +362,6 @@ button.sign-in-bg:hover
     color: rgb(124, 121, 121)
 }
 
-.fas{
-    border-radius: 50%;
-}
-
-.far{
-    border-radius: 50%;
-}
-
 .cart_list::after{
     content: "";
     position: absolute;
@@ -434,6 +426,13 @@ button.sign-in-bg:hover
     margin-top: 10px;
 }
 
+.list_fa{
+    border-radius: 50%;
+}
+
+.list_ca{
+    border-radius: 50%;
+}
 /*.cart-btn-focus:hover .cart_list{
     display: block;
 }*/
