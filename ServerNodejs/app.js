@@ -39,7 +39,7 @@ app.get('/SignUp', function (req, res) {
   res.render('home',{layout: 'SignUp.hbs'});
 });
 
-app.get('/lecturer/information', function (req, res) {  //Nhan them de test
+app.get('/lecturer', function (req, res) {  //Nhan them de test
   res.render('home',{layout: 'lecturer.hbs'});
 });
 

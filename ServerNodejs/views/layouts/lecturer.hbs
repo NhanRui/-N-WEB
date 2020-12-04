@@ -3,24 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/icon.png" sizes="32x32"/>
     <title>EduOYK</title>
     <link rel="stylesheet" href="./css/lecturer.css">
+    <link rel="stylesheet" href="./css/footer_homesite.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
+    <script src="https://kit.fontawesome.com/2a96a4f787.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="flex-nowrap ">
+    <div class="d-flex top">
         <div id="left"></div>
-        <div id="center">
+        <div id="center" class="justify-content-center">
+            <br/>
             <div id="logo">
                 <a href="./../index"><img src="images/logo1.png" alt="Edu OYK"></a>
             </div>
             <div id="avatar">
                 <img class="rounded-circle" src="images/BecomeInstructor/nad.jpg" alt="avatar">
             </div>
+            <div><span id="accountName">Anh Duy</span></div>
+            <div><span id="role">Giảng viên</span></div>
+            <div><a href="#" class="myButton"><i class="fas fa-plus-circle"></i>       Tạo khóa học</a></div>
+            <hr/>
+            <div id="linkage">
+                <dl>
+                    <dt>
+                        <div><a class="link" href="#"><i class="fas fa-user-circle    "></i>     Thông tin cá nhân</a></div>
+                    </dt>
+                    <dt>
+                        <div><a class="link" href="#"><i class="fas fa-play-circle    "></i>     Khóa học</a></div>
+                    </dt>
+                    <dd>
+                        <div><a class="link" href="#"><i class="fas fa-tasks    "></i>     Quản trị khóa học</a></div>
+                    </dd>
+                    <dd>
+                        <div><a class="link" href="#"><i class="fas fa-film    "></i>     Kho học liệu</a></div>
+                    </dd>
+                    <dt>
+                        <div><a class="link text-danger" href="#"><i class="fas fa-power-off    "></i>     Đăng xuất</a></div>
+                    </dt>
+                </dl>
+            </div>
         </div>
+        {{{body}}}
     </div>
+    {{>footer-index}}
 </body>
 </html>
