@@ -287,9 +287,9 @@ li.category-menu-item:hover
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
     margin-left: 120px;
     margin-right: 100px;
-    margin-top: 30px;
 }
 
 .title-top-course{

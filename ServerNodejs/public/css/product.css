@@ -1,10 +1,11 @@
 
 .img-with-deal{
+    width: 100%;
     position: absolute;
 }
 
 .card-img{
-    width: 258px;
+    width: 100%;
     height: 110px;
     position: absolute;
     border-top-left-radius: 10px;
@@ -12,14 +13,27 @@
 }
 
 .card-product{
+    margin-top: 30px;
     width: 258px;
     height: 275px;
     background: white;
     border-radius: 10px;
     position: relative;
+    box-shadow: 0 0 5px #d1d1d1;
+}
+
+.card-product-topbs{
+    margin-top: 30px;
+    width: 208px;
+    height: 275px;
+    background: white;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 0 5px #d1d1d1;
 }
 
 .deal-img{
+    width: 45px;
     color: white;
     padding: 5px;
     font-size: 13px;
@@ -27,8 +41,8 @@
     background: rgb(241, 47, 47);
     border-radius: 5px;
     position: relative;
-    margin-left: 5px;
-    margin-top: 5px;
+    margin-left: 8px;
+    margin-top: 8px;
 }
 
 .card-title{
@@ -44,8 +58,8 @@
 }
 
 .author-img{
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     margin-left: 10px;
     margin-top: 15px;
@@ -115,9 +129,17 @@ p.number-students{
     display: block;
 }
 
+.card-product-topbs:hover .item__overlay{
+    height: 100%;
+}
+
+.card-product-topbs:hover .favourite_course_container a i{
+  display: block;
+}
+
 .container_slide_up{
     margin-top: 86px;
-    width: 258px;
+    width: 100%;
     height: 25px;
     position: absolute;
     z-index: 1;
@@ -126,8 +148,9 @@ p.number-students{
 .favourite_course_container a i{
     position: absolute;
     padding: 10px;
-    margin-left: 210px;
+    right: 0;
     margin-top: 10px;
+    margin-right: 10px;
     background: white;
     z-index: 1;
     border-radius: 8px;
@@ -139,8 +162,14 @@ p.number-students{
     color: black;
 }
 
-.view_course{
-    width: 258px;
-    height: 110px;
+.img-top-business-container{
+    width: 435px;
+    height: 275px;
+    margin-top: 30px;
 }
 
+.img-top-business{
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
