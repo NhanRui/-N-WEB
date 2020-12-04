@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+.top{
+    background-color:whitesmoke;
+}
+
 #left{
     width: 10%;
 }
@@ -10,16 +14,106 @@
     width:20%;
 }
 
+#center div{
+    text-align: center;
+}
+
 #logo{
-    height :200px;
+    height:fit-content;
+    margin-bottom: 30px;
 }
 
 #logo img{
-    height:200px;
-    width:150px;
+    height: 53px;
+    width: 190px;
 }
 
 #avatar img{
     width: 100px;
     height: 100px;
+}
+
+#accountName{
+    width: 104px;
+    height: 24px;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    size: 16px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: 0.15px;
+    color: rgb(35, 39, 49);
+    text-align: center;
+}
+
+#role{
+    width: 72px;
+    height: 24px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.71;
+    letter-spacing: 0.3px;
+}
+
+.myButton {
+	background:linear-gradient(to bottom, #e32619 5%, #eb675e 100%);
+	background-color:#e32619;
+	border-radius:8px;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:13px 40px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #b23e35;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #eb675e 5%, #e32619 100%);
+    background-color:#eb675e;
+    text-decoration: none;
+    color:#ffffff;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+#linkage *{
+    text-align: left !important;
+    line-height: 40px;
+}
+
+dt div{
+    padding-left:30px;
+}
+
+dd div{
+    padding-left:60px;
+}
+
+dt,dd {
+    text-align:left;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+dt div a,dl div a{
+    font-size: 20px;
+    white-space: nowrap;
+    font-variant: tabular-nums;
+}
+
+.link:hover{
+    display: block;
+    background-color:rgb(221, 221, 221);
+    cursor: pointer;
+    text-decoration: none;
+    color: #df322f!important;
 }
