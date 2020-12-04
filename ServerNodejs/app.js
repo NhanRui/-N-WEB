@@ -24,6 +24,7 @@ app.use(express.urlencoded({
 }));
 
 app.use('/', require('./controllers/product_controller'));
+app.use('/lecturer', require('./controllers/lecturer_controller'));
 
 app.get('/', function (req, res) {
   res.render('home');
