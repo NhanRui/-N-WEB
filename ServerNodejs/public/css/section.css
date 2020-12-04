@@ -23,6 +23,7 @@
     height: 542px;
     margin-left: 120px;
     margin-top: 135px;
+    padding-right: -200px;
     border-radius: 5px;
     z-index: 1;
 }
@@ -300,4 +301,40 @@ li.category-menu-item:hover
 .title-top-course .title-name{
     color: rgb(44, 43, 43);
     font-size: 20px;
+}
+
+.all-subcategory-container{
+    display: flex;
+    flex-direction: row;
+    z-index: 1;
+}
+
+.submenu-container-1{
+    position: absolute;
+    background: white;
+    width: 252px;
+    height: 542px;
+    margin-top: 135px;
+    margin-left: 378px;
+    border-radius: 5px;
+    border-left: rgb(173, 172, 172) solid 1px;
+    display: none;
+}
+
+.childmenu-container-1{
+    position: absolute;
+    background: white;
+    width: 252px;
+    height: 542px;
+    margin-top: 135px;
+    margin-left: 630px;
+    border-radius: 5px;
+    border-left: rgb(173, 172, 172) solid 1px;
+    display: none;
+}
+
+.deal-slide-container{
+    display: flex;
+    flex-direction: row;
+    z-index: 0;
 }
