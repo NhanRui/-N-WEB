@@ -25,15 +25,6 @@ app.use(express.urlencoded({
 
 app.use('/', require('./controllers/product_controller'));
 app.use('/index', require('./controllers/product_controller'));
-app.use('/lecturer', require('./controllers/lecturer_controller'));
-
-app.get('/', function (req, res) {
-  res.render('home');
-});
-
-app.get('/index', function (req, res) {
-  res.render('home');
-});
 
 app.get('/SignIn', function (req, res) {
   res.render('home',{layout: 'SignIn.hbs'});
@@ -67,6 +58,14 @@ app.get('/search_course', function (req, res) {
   //Can render for this layout
   res.render('search_site.hbs',{layout: 'search-item.hbs'});
 });
+
+app.get('/MyCourse', function (req, res) {
+  //Can render for this layout
+  res.render('home',{layout: 'MyCourses.hbs'});
+});
+
+//app.use('/lecturer', require('./controllers/lecturer_controller'));
+app.use('/MyCourse', require('./controllers/courses_controller'));
 
 const PORT = 3000;
 app.listen(PORT, function () {
