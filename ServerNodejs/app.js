@@ -59,10 +59,10 @@ app.get('/search_course', function (req, res) {
   res.render('search_site.hbs',{layout: 'search-item.hbs'});
 });
 
-app.get('/MyCourse', function (req, res) {
-  //Can render for this layout
-  res.render('home',{layout: 'MyCourses.hbs'});
-});
+// app.get('/MyCourse', function (req, res) {
+//   //Can render for this layout
+//   res.render('home',{layout: 'MyCourses.hbs'});
+// });
 
 //app.use('/lecturer', require('./controllers/lecturer_controller'));
 app.use('/MyCourse', require('./controllers/courses_controller'));
