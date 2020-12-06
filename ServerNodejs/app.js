@@ -39,6 +39,10 @@ app.get('/lecturer', function (req, res) {  //Nhan them de test
   res.render('lecturer_in4',{layout: 'lecturer.hbs'});
 });
 
+app.get('/lecturer-course', function (req, res) {  //Nhan them de test
+  res.render('lecturer_course',{layout: 'lecturer.hbs'});
+});
+
 app.get('/faq', function (req, res) {
   res.render('home',{layout: 'faq.hbs'});
 });
