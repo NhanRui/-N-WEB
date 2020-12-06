@@ -1,3 +1,261 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  top: 0;
+  right: 0;
+  width: 100%;
+  background-color: #eef1f2;
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
 .header-top {
-    background-color: aqua;
+    margin-top: 19vh;
+}
+
+.header-top .direction {
+  display: flex;
+  justify-content: space-around;
+  font-size: 14px;
+  max-width: 300px;
+  margin-left: 5vh;
+}
+
+li {
+  display: inline-block;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.header-bot {
+  margin-top: 10px;
+  margin-left: 5vh;
+  background-color: white;
+  border-radius: 10px;
+  width: 60vw;
+  text-align: left;
+  height: 28vh;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.header-bot .header-bot-stuff {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-quick {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+}
+
+.item-quick img {
+    object-fit: cover;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+}
+
+.item-quick .lec-name {
+  padding-left: 15px;
+}
+
+.container {
+  width: 100%;
+  margin: 0 5vh;
+  display: flex;
+}
+
+.left-container {
+  margin-top: 10px;
+  width: 60vw;
+}
+
+.categories {
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.categories-ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.category {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 4px;
+    width: 15%;
+}
+
+.category:hover {
+    border-bottom: 3px solid rgb(221, 31, 31);
+}
+
+.course-intro-container {
+    width: 100%;
+    margin-top: 10px;
+    padding: 30px;
+    line-height: 1.5rem;
+    font-size: 15px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.video {
+    width: 87%;
+    margin: auto;
+    text-align: center;
+}
+
+.course-intro {
+    margin-top: 1rem;
+}
+
+.right-container {
+    background-color: white;
+    border-radius: 10px;
+    width: 25vw;
+    position: fixed;
+    margin-left: 63%;
+    margin-top: -28vh;
+}
+
+.intro-img img {
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.under-intro-img {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2vw;
+    height: 3rem;
+    font-weight: 700;
+    margin: 15px 0;
+}
+
+.price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.old-price {
+    text-decoration: line-through;
+    font-size: small;
+}
+
+.current-price {
+    color: red;
+    font-size: 30px;
+    text-align: left;
+}
+
+.favorite{
+    width: 25px;
+    height: 25px;
+    font-size: 24px !important;
+    color: #848282;
+    border-radius: 50%;
+}
+
+.favorite:hover {
+    background-color: #eef1f2;
+}
+
+.payment-buttons {
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.buy-now-btn {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(221, 31, 31);
+    outline: none;
+    color: white;
+    height: 48px;
+    margin-bottom: 10px;
+}
+
+.add-cart-btn {
+    height: 48px;
+    border-radius: 3px;
+    border: 1px solid #d0d0d0;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: -.2px;
+    text-align: center;
+    color: #464646;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: #fff;
+    text-transform: uppercase;
+}
+
+.instruction-btn {
+    height: 48px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    border: 1px solid #d0d0d0;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: -.2px;
+    text-align: center;
+    color: #464646;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: #fff;
+}
+
+.add-cart-btn + .instruction-btn {
+    margin-left: 1rem;
+}
+
+.ship-area {
+    padding: 0 25px;
+    font-size: 14px;
+    color: #464646;
+    margin-bottom: 15px;
+    line-height: 1.5rem;
+}
+
+.fa {
+  padding-right: 15px;
+  font-weight: 600;
 }

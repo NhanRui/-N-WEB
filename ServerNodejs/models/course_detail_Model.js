@@ -2,10 +2,16 @@ const courses_detail = {
   course_name: "Bí quyết giao tiếp để thành công",
   description: "Tiến sĩ Lê Thẩm Dương tiết lộ bí quyết giao tiếp để thành công",
   lecturer: "Lê Thẩm Dương",
+  lecturer_image: "images/Course_Detail/le-tham-duong.png",
   num_of_student: "56.026",
   intro_video: "link",
+  intro_image: 'images/Course_Detail/duonglt01.png',
+  old_price: '699.000',
+  current_price: '249.000',
   course_intro:
     "Khóa học phù hợp với những người đã, đang gặp các vấn đề về giao tiếp, không tự tin, không thể diễn đạt ý tưởng trước đám đông, nhà lãnh đạo; hoặc dành cho những người đang làm trong lĩnh vực tư vấn, chăm sóc khách hàng cần cải thiện kỹ năng giao tiếp. Khóa học gồm 3 học phần với 12 bài giảng về bí quyết giao tiếp: - Giao tiếp có tầm quan trọng như thế nào? - Các chức năng và cơ chế trong giao tiếp? - Những phương tiện trong giao tiếp. - Các cơ sở hoạt động của giao tiếp và nguyên tắc để xác lập một mối quan hệ. - Các kỹ năng quan trọng trong giao tiếp.",
+  course_video:
+    "https://www.youtube.com/embed/tgbNymZ7vqY",
   course_benefit: [
     'Hiểu được tầm quan trọng của việc xây dựng mối quan hệ: "Giao tiếp hoặc là chết"',
     "Biết được phương tiện, cơ sở của giao tiếp trong việc tạo dựng mối quan hệ",
