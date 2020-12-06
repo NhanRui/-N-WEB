@@ -1,20 +1,20 @@
 <form>
-    <div style="width:70%;">
+    <div style="width:90%;margin-left:50px;">
         <div class="title">Thông tin cá nhân</div>
         <div class="avatar-block">
-            <div id="avatar-upload"><img src="images/nad.png" alt="Avatar" class="rounded-circle avatar-size"></div>
+            <div id="avatar-upload"><img src="images/BecomeInstructor/nad.jpg" alt="Avatar" class="rounded-circle avatar-size"></div>
             <div class="text">
                 <div class="username">Nguyễn Anh Duy</div>
-                <div class="teacher-info">
-                    <div class="teacher_id">
+                <div class="teacher-info clearfix">
+                    <div class="teacher-id">
                         <div class="tc-title">Mã giảng viên:</div>
                         <div class="tc-value"></div>
                     </div>
-                    <div class="teacher_id">
+                    <div class="teacher-id">
                         <div class="tc-title">Ngày tham gia:</div>
                         <div class="tc-value"><time datetime="1607052597177">04/12/2020</time></div>
                     </div>
-                    <div class="teacher_id">
+                    <div class="teacher-id">
                         <div class="tc-title">Pháp nhân kí hợp đồng:</div>
                         <div class="tc-value">EDM</div>
                     </div>
@@ -23,8 +23,8 @@
         </div>
         <div class="basic-info-1">
             <div class="input-box">
-                <div class="label">Họ và tên</div>
-                <input value="Nguyen Anh Duy" type="text" name="username" class="input-type">
+                <div class="label"><label for="username">Họ và tên</label></div>
+                <input value="Nguyễn Anh Duy" type="text" name="username" id="username" class="input-type">
             </div>
             <div class="input-box">
                 <div class="label">Giới tính</div>
@@ -39,34 +39,38 @@
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="gender" id="khac" value="khac">
-                        <label class="form-check-label" for="nu">Khác</label>
+                        <label class="form-check-label" for="khac">Khác</label>
                     </div>
                 </div>
             </div>
             <div class="input-box">
-                <div class="label">Số điện thoại</div>
+                <div class="label"><label for="sdt">Số điện thoại</label></div>
                 <input type="text" name="sdt" class="input-type">
             </div>
             <div class="input-box">
-                <div class="label">Ngày sinh</div>
-                <input type='text' class='datepicker-here' data-language='en' data-position='right top' name="dob">
+                <div class="label"><label for="datepicker">Ngày sinh</label></div>
+                <input id="datepicker" name="dob" width="276" />
+                <script>
+                    $('#datepicker').datepicker({
+                        uiLibrary: 'bootstrap4'
+                    });
+                </script>
             </div>
             <div class="input-box">
-                <div class="label">Địa chỉ</div>
-                <input type="text" name="diachi" class="input-type">
+                <div class="label"><label for="diachi">Địa chỉ</label></div>
+                <input type="text" name="diachi" id="diachi" class="input-type">
             </div>
             <div class="input-box">
-                <div class="label">Email đăng ký tài khoản</div>
-                <input type="email" name="email" class="input-type">
+                <div class="label"><label for="email">Email đăng ký tài khoản</label></div>
+                <input value="phucyugi@gmail.com" type="email" name="email" id="email" class="input-type">
             </div>
         </div>
-        <hr/>
         <div class="basic-info-2">
             <div class="tieusu-box">
                 <div class="label">Tiểu sử giảng viên</div>
                 <div class="input-container">
                     <input placeholder="VD: Được biết đến không chỉ là một giảng viên xuất sắc của Khoa Quản trị Kinh doanh" class="input-element" value="">
-                    <i class="fas fa-cross    "></i>
+                    <button class="remove"><i class="fas fa-times-circle    "></i></button>
                 </div>
             </div>
         </div>

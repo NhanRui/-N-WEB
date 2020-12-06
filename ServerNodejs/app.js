@@ -35,7 +35,7 @@ app.get('/SignUp', function (req, res) {
 });
 
 app.get('/lecturer', function (req, res) {  //Nhan them de test
-  res.render('information.hbs',{layout: 'lecturer.hbs'});
+  res.render('lecturer_in4',{layout: 'lecturer.hbs'});
 });
 
 app.get('/faq', function (req, res) {
@@ -64,7 +64,7 @@ app.get('/search_course', function (req, res) {
 //   res.render('home',{layout: 'MyCourses.hbs'});
 // });
 
-//app.use('/lecturer', require('./controllers/lecturer_controller'));
+app.use('/lecturer', require('./controllers/lecturer_controller'));
 app.use('/MyCourse', require('./controllers/courses_controller'));
 
 const PORT = 3000;
