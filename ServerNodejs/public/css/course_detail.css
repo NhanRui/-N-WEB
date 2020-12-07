@@ -14,7 +14,7 @@ body {
 }
 
 .header-top {
-    margin-top: 17vh;
+    margin-top: 18vh;
 }
 
 .header-top .direction {
@@ -255,6 +255,83 @@ a {
     line-height: 1.5rem;
 }
 
+.lecture {
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 10px;
+  line-height: 1.5rem;
+  padding: 25px;
+  color: #464646;
+}
+
+.quick_lecture {
+  display: flex;
+  margin: 25px 0;
+  align-items: center;
+}
+
+.quick_lecture > span {
+  flex: 1;
+  font-size: 15px;
+  display: flex;
+  justify-self: start;
+  align-items: center;
+}
+
+.quick-lecture-item > i {
+  font-size: 24px;
+}
+
+.quick-lecture-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.chapter {
+  width: 100%;
+  border: 1px solid #dedfe0;
+  border-radius: 7px;
+  height: 48px;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30px;
+  font-weight: 600;
+  font-size: 17px;
+  outline: none;
+  color: #464646;
+}
+
+.lessons {
+  padding: 18px;
+  background-color: whitesmoke;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.lecture-chap {
+  margin-bottom: 15px;
+}
+
+.lesson{
+  display: flex;
+  justify-content: space-between;
+}
+
+.lesson_name > span{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lesson_name > span > i {
+  font-weight: 500;
+  font-size: 24px;
+
+}
+
 .m-fadeOut {
   visibility: hidden;
   opacity: 0;
@@ -264,6 +341,16 @@ a {
   visibility: visible;
   opacity: 1;
   transition: visibility 0s linear 0s, opacity 300ms;
+}
+
+.appear {
+  transform: translateY(0);
+  transition-duration: 1s;
+}
+
+.disappear {
+  transform: translateY(-230px);
+  transition-duration: 0.5s;
 }
 
 .fa {
