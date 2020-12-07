@@ -44,16 +44,16 @@
                 </iframe>
                 <p><i>Video giới thiệu khóa học</i></p>
             </div>
-            <div class="course-intro">
+            <div id="course-intro" class="course-quick-intro">
                 <p style="color: #464646;">{{object.course_intro}}</p>
             </div>
-            <div class="course-intro">
+            <div id="course-intro" class="course-benefit">
                 <p style="color: #464646;"><b>Lợi ích từ khóa học</b></p>
                 {{#each object.course_benefit}}
                 <p>{{this}}</p>
                 {{/each}}
             </div>
-            <div class="course-intro">
+            <div id="course-intro" class="course-suitability">
                 <p style="color: #464646;"><b>Phù hợp với</b></p>
                 {{#each object.course_suitability}}
                 <p>{{this}}</p>

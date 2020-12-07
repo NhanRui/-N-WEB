@@ -14,7 +14,7 @@ body {
 }
 
 .header-top {
-    margin-top: 19vh;
+    margin-top: 17vh;
 }
 
 .header-top .direction {
@@ -253,6 +253,17 @@ a {
     color: #464646;
     margin-bottom: 15px;
     line-height: 1.5rem;
+}
+
+.m-fadeOut {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 300ms;
+}
+.m-fadeIn {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 300ms;
 }
 
 .fa {
