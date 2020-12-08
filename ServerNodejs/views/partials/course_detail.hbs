@@ -32,13 +32,14 @@
     <div class="left-container">
         <div class="categories">
             <ul class="categories-ul">
-                <li class="category"><a href="#">Thông tin chung</a></li>
-                <li class="category"><a href="#">Giáo trình</a></li>
-                <li class="category"><a href="#">Giảng viên</a></li>
-                <li class="category"><a href="#">Đánh giá</a></li>
+                <li class="category"><a href="#ttc">Thông tin chung</a></li>
+                <li class="category"><a href="#lt">Giáo trình</a></li>
+                <li class="category"><a href="#ltr">Giảng viên</a></li>
+                <li class="category"><a href="#cm">Đánh giá</a></li>
+                <li class="jump"></li>
             </ul>
         </div>
-        <div class="course-intro-container">
+        <section class="course-intro-container" id="ttc">
             <div class="video">
                 <iframe width="620" height="420" src={{object.course_video}}>
                 </iframe>
@@ -59,12 +60,12 @@
                 <p>{{this}}</p>
                 {{/each}}
             </div>
-        </div>
-        <div class="lecture">
+        </section>
+        <section class="lecture" id="lt">
             <h3>Giáo trình</h3>
             <div class="quick_lecture">
-                <span class="quick-lecture-item" style="flex: 2;">Thể loại: <b
-                        style="color: deepskyblue;"> {{object.root_dir}}</b></span>
+                <span class="quick-lecture-item" style="flex: 2;">Thể loại: <b style="color: deepskyblue;">
+                        {{object.root_dir}}</b></span>
                 <span class="quick-lecture-item"><i class="fa fa-play-circle" aria-hidden="true"></i>Số bài:
                     <b style="color: deepskyblue;"> {{object.num_Of_Lectures}}</b></span>
                 <span class="quick-lecture-item"><i class="fa fa-clock-o" aria-hidden="true"></i>Thời lượng:
@@ -88,8 +89,8 @@
                 </div>
                 {{/each}}
             </div>
-        </div>
-        <div class="lecturer_container">
+        </section>
+        <section class="lecturer_container" id="ltr">
             <h3>Thông tin giảng viên</h3>
             <div class="lecturer_info">
                 <div class="left_l_info">
@@ -121,7 +122,44 @@
                 </div>
                 {{/each}}
             </div>
-        </div>
+        </section>
+        <section class="comments" id="cm">
+            <div class="static">
+                <p class="overall" style="text-align: center;">{{object.overall}}</p>
+                <div class="stars">
+                    {{!-- added later --}}
+                </div>
+                <p class="num_of_comments" style="text-align: center;">{{object.num_of_comments}}</p>
+                {{#each object.stars}}
+                <div class="rating_star">
+                    <span>{{this.star}} <i class="fa fa-star-o text-warning" aria-hidden="true"></i></span>
+                    <div class="progress" style="flex: 9;">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: {{this.rate}}%;"
+                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{this.rate}}%</div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            <div class="separate_line"></div>
+            <div class="comment_detail">
+                {{#each object.comments}}
+                <div class="detail">
+                    <div class="cmt_detail">
+                    <div class="user">
+                        <div class="user_avatar">
+                            <img src="{{this.user_avatar}}" alt="user-avatar">
+                        </div>
+                        <span class="user-name">{{this.comment_name}}</span>
+                    </div>
+                    <p class="content">{{this.comment_content}}</p>
+                </div>
+                <div class="comment_time">
+                    <span>{{this.comment_time}}</span>
+                </div>
+                </div>
+                {{/each}}
+            </div>
+        </section>
     </div>
     <div class="right-container">
         <div class="intro-img" id="intro-img">

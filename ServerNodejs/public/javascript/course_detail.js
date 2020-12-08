@@ -1,4 +1,5 @@
-const categories = document.querySelector(".categories");
+const categories = document.querySelector(".direction");
+var sec = document.querySelectorAll('section');
 
 const observer = new IntersectionObserver(
   (entries) => {
@@ -6,11 +7,13 @@ const observer = new IntersectionObserver(
       let intro_Image = document.querySelector(".intro-img");
       let right_Container = document.querySelector(".right-container");
       if (entry.isIntersecting === false) {
+        $('.categories').addClass('stick');
         intro_Image.classList.add("m-fadeOut");
         intro_Image.classList.remove("m-fadeIn");
         right_Container.classList.remove("appear");
         right_Container.classList.add("disappear");
-      } else if (intro_Image.classList.contains("m-fadeOut")) {
+      } else {
+        $('.categories').removeClass('stick');
         intro_Image.classList.add("m-fadeIn");
         intro_Image.classList.remove("m-fadeOut");
         right_Container.classList.remove("disappear");
@@ -18,7 +21,7 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: [0] }
+  { threshold: [1] }
 );
 
 observer.observe(categories);
@@ -36,10 +39,11 @@ const observer_next = new IntersectionObserver(
       }
     });
   },
-  { threshold: [0.3] }
+  { threshold: [0] }
 );
 
 observer_next.observe(course_Intro_Container);
+
 
 $(".lessons").slideUp();
 

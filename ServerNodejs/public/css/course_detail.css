@@ -36,7 +36,7 @@ a {
 
 .header-bot {
   margin-top: 10px;
-  margin-left: 5vh;
+  margin-left: 5vw;
   background-color: white;
   border-radius: 10px;
   width: 60vw;
@@ -72,8 +72,9 @@ a {
 
 .container {
   width: 100%;
-  margin: 0 5vh;
+  margin: 0 5vw;
   display: flex;
+  padding: 0 !important;
 }
 
 .left-container {
@@ -96,6 +97,7 @@ a {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 0 !important;
 }
 
 .category {
@@ -382,14 +384,81 @@ a {
   overflow-y: auto;
 }
 
+.comments {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  padding: 25px;
+}
 
+.static {
+  flex: 2;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
 
+.rating_star {
+  display: flex;
+  align-items: center;
+}
 
+.overall {
+  font-size: 50px;
+  font-weight: 700;
+  padding-bottom: 5vh;
+}
 
+.num_of_comments {
+  padding-bottom: 3vh;
+  font-size: 13px;
+}
 
+.separate_line {
+  width: 2px;
+  background-color: #848282;
+  margin: 0 5px;
+}
 
+.comment_detail {
+  flex: 3;
+}
 
+.user_avatar > img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 
+.detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 3rem;
+  margin: 20px 0;
+}
+
+.user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-name {
+  font-size: 18px;
+  font-weight: bolder;
+  margin-left: 10px;
+}
+
+.content {
+  font-family: monospace;
+  color: #848282;
+}
 
 .m-fadeOut {
   visibility: hidden;
@@ -412,7 +481,30 @@ a {
   transition-duration: 0.5s;
 }
 
+.stick {
+  position: fixed;
+  top: 115px;
+  width: 60vw;
+  border-radius: 5px;
+  background-color: #eef1f2;
+}
+
+.jump {
+  position: absolute;
+  z-index: -2;
+  border-bottom: 3px solid rgb(221, 31, 31);
+}
+
 .fa {
   padding-right: 15px;
   font-weight: 600;
+}
+
+.fa-angle-right {
+  padding: 3px 5px 0 5px !important;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 0 !important;
 }

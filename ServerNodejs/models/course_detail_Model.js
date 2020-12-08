@@ -1,7 +1,7 @@
 const courses_detail = {
-  root_dir: 'Phát triển cá nhân',
+  root_dir: "Phát triển cá nhân",
   num_Of_Lectures: 6,
-  lecture_time: '1:57:11',
+  lecture_time: "1:57:11",
   course_name: "Bí quyết giao tiếp để thành công",
   description: "Tiến sĩ Lê Thẩm Dương tiết lộ bí quyết giao tiếp để thành công",
   lecturer: "Lê Thẩm Dương",
@@ -10,13 +10,12 @@ const courses_detail = {
   total_courses: 18,
   total_students: 184975,
   intro_video: "link",
-  intro_image: 'images/Course_Detail/duonglt01.png',
-  old_price: '699.000',
-  current_price: '249.000',
+  intro_image: "images/Course_Detail/duonglt01.png",
+  old_price: "699.000",
+  current_price: "249.000",
   course_intro:
     "Khóa học phù hợp với những người đã, đang gặp các vấn đề về giao tiếp, không tự tin, không thể diễn đạt ý tưởng trước đám đông, nhà lãnh đạo; hoặc dành cho những người đang làm trong lĩnh vực tư vấn, chăm sóc khách hàng cần cải thiện kỹ năng giao tiếp. Khóa học gồm 3 học phần với 12 bài giảng về bí quyết giao tiếp: - Giao tiếp có tầm quan trọng như thế nào? - Các chức năng và cơ chế trong giao tiếp? - Những phương tiện trong giao tiếp. - Các cơ sở hoạt động của giao tiếp và nguyên tắc để xác lập một mối quan hệ. - Các kỹ năng quan trọng trong giao tiếp.",
-  course_video:
-    "https://www.youtube.com/embed/tgbNymZ7vqY",
+  course_video: "https://www.youtube.com/embed/tgbNymZ7vqY",
   course_benefit: [
     'Hiểu được tầm quan trọng của việc xây dựng mối quan hệ: "Giao tiếp hoặc là chết"',
     "Biết được phương tiện, cơ sở của giao tiếp trong việc tạo dựng mối quan hệ",
@@ -77,6 +76,50 @@ const courses_detail = {
   ],
   lecturer_courses: "18",
   lecturer_students: "184975",
+  overall: '4.3',
+  num_of_comments: '514 người đã bình lựn',
+  stars: [
+    {
+      star: 5,
+      rate: 62,
+    },
+    {
+      star: 4,
+      rate: 23,
+    },
+    {
+      star: 3,
+      rate: 8,
+    },
+    {
+      star: 2,
+      rate: 2,
+    },
+    {
+      star: 1,
+      rate: 0,
+    },
+  ],
+  comments: [
+    {
+      user_avatar: 'images/product_ID1.jpg',
+      comment_name: 'đào lan',
+      comment_content: 'không có bình lựn',
+      comment_time: '1 tháng trước',
+    },
+    {
+      user_avatar: 'images/nhaml.jpg',
+      comment_name: 'Triến xĩ Lưu Thiện Nhân',
+      comment_content: 'không có bình lựn',
+      comment_time: '1 tháng trước',
+    },
+    {
+      user_avatar: 'images/product_ID1.jpg',
+      comment_name: 'Triến xĩ Lê Hoàng Phúc mập',
+      comment_content: 'không có bình lựn',
+      comment_time: '1 tháng trước',
+    },
+  ],
 };
 
 module.exports = {
