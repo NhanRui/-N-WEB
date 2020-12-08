@@ -1,6 +1,8 @@
 const courses_detail = {
+  product_ID: "CD001",//P them
   root_dir: "Phát triển cá nhân",
   num_Of_Lectures: 6,
+  rating_stars: 4.8,//P them
   lecture_time: "1:57:11",
   course_name: "Bí quyết giao tiếp để thành công",
   description: "Tiến sĩ Lê Thẩm Dương tiết lộ bí quyết giao tiếp để thành công",
