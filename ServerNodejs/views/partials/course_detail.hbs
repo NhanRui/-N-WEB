@@ -4,7 +4,7 @@
         <ul class="direction">
             <li><a href="#">Trang chủ</a></li>
             <i class="fa fa-angle-right" aria-hidden="true"></i>
-            <li><a href="#">root-dir</a></li>
+            <li><a href="#">{{object.root_dir}}</a></li>
             <i class="fa fa-angle-right" aria-hidden="true"></i>
             <li><a href="#">main-dir</a></li>
         </ul>
@@ -63,11 +63,12 @@
         <div class="lecture">
             <h3>Giáo trình</h3>
             <div class="quick_lecture">
-                <span class="quick-lecture-item" style="flex: 2;">Thể loại: {{object.root_dir}}</span>
+                <span class="quick-lecture-item" style="flex: 2;">Thể loại: <b
+                        style="color: deepskyblue;"> {{object.root_dir}}</b></span>
                 <span class="quick-lecture-item"><i class="fa fa-play-circle" aria-hidden="true"></i>Số bài:
-                    {{object.num_Of_Lectures}}</span>
+                    <b style="color: deepskyblue;"> {{object.num_Of_Lectures}}</b></span>
                 <span class="quick-lecture-item"><i class="fa fa-clock-o" aria-hidden="true"></i>Thời lượng:
-                    {{object.lecture_time}}</span>
+                    <b style="color: deepskyblue;"> {{object.lecture_time}}</b></span>
             </div>
             <div class="lecture_content">
                 {{#each object.lecture}}
@@ -84,6 +85,39 @@
                         </div>
                         {{/each}}
                     </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="lecturer_container">
+            <h3>Thông tin giảng viên</h3>
+            <div class="lecturer_info">
+                <div class="left_l_info">
+                    <div class="left_l_info_img"><a href="#">
+                            <img src="{{object.lecturer_image}}" alt="lecturer-image"></a>
+                    </div>
+                    <div class="left_l_info_text">
+                        <p>Giảng viên</p>
+                        <h2>{{object.lecturer}}</h2>
+                        <div class="starts">
+                        </div>
+                    </div>
+                </div>
+                <div class="right_l_info">
+                    <div>
+                        <p style="font-size: 25px; font-weight: 700">{{object.total_courses}}</p>
+                        <p style="font-size: 10px;">KHÓA HỌC</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 25px; font-weight: 700">{{object.total_students}}</p>
+                        <p style="font-size: 10px;">HỌC VIÊN</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lecturer_description">
+                {{#each object.lecturer_exp}}
+                <div>
+                    <p>{{this}}</p>
                 </div>
                 {{/each}}
             </div>
