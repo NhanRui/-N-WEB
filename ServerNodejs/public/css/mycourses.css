@@ -154,7 +154,7 @@ body {
         .courses {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
+            justify-content: flex-start;
             margin-top: 20px;
         }
 
@@ -182,3 +182,8 @@ body {
                 width: 83%;
                 margin: auto;
             }
+@media screen and (max-width: 1839px) {
+    .container {
+        padding: 3vh 5vw;
+    }
+}

@@ -1,6 +1,7 @@
 .ctn_footer{
     display: flex;
     background: white;
+    position: relative;
 }
 
 .col_footer_1{
