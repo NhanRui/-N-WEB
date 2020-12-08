@@ -1,8 +1,6 @@
 .stars-outer{
     position: relative;
     display: inline-block;
-    margin-top: 125px;
-    margin-left: 20px;
 }
 
 .stars-inner{
@@ -31,4 +29,6 @@
 .wrap-stars{
     position: flex;
     flex-flow: row wrap;
+    margin-top: 125px;
+    margin-left: 20px;
 }

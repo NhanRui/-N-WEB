@@ -267,6 +267,171 @@ const list = [
     },
   ];
 
+  const list_english_4=[
+    {
+        product_ID_rts: 'C21',
+        deal_value: '-50%', 
+        deal_image: 'images/english-1.png' ,
+        number_student: 3179,
+        rating_stars: 4.3, 
+        number_rating:'3179', 
+        title_product:'Nền tảng tiếng anh cho người mới bắt đầu',
+        author_image:'images/BecomeInstructor/ltn.jpg',
+        author_name:'Lê Hoàng Sang',
+        real_price:'599,000',
+        reduce_price: '179,000'
+    },
+    {
+        product_ID_rts: 'C22',
+        deal_value: '-50%', 
+        deal_image: 'images/english-2.png' ,
+        number_student: 123634,
+        rating_stars: 3.5, 
+        number_rating:'100', 
+        title_product:'Nền tảng tiếng anh cho người mới bắt đầu',
+        author_image:'images/BecomeInstructor/ltn.jpg',
+        author_name:'Lê Hoàng Sang',
+        real_price:'599,000',
+        reduce_price: '179,000'
+    },
+    {
+        product_ID_rts: 'C23',
+        deal_value: '-50%', 
+        deal_image: 'images/english-3.png' ,
+        number_student: 123634,
+        rating_stars: "4.0", 
+        number_rating:'100', 
+        title_product:'Nền tảng tiếng anh cho người mới bắt đầu',
+        author_image:'images/BecomeInstructor/ltn.jpg',
+        author_name:'Lê Hoàng Sang',
+        real_price:'599,000',
+        reduce_price: '179,000'
+    },
+    {
+        product_ID_rts: 'C24',
+        deal_value: '-50%', 
+        deal_image: 'images/english-4.jpg' ,
+        number_student: 123634,
+        rating_stars: "5.0", 
+        number_rating:'100', 
+        title_product:'Nền tảng tiếng anh cho người mới bắt đầu',
+        author_image:'images/BecomeInstructor/ltn.jpg',
+        author_name:'Lê Hoàng Sang',
+        real_price:'599,000',
+        reduce_price: '179,000'
+    },
+  ]
+
+  const list_music_4=[
+    {
+        product_ID_rts: 'C25',
+        deal_value: '-50%', 
+        deal_image: 'images/product_ID5.png' ,
+        number_student: 3179,
+        rating_stars: 4.3, 
+        number_rating:'3179', 
+        title_product:'Học guitar đệm hát cấp tốc trong 30 ngày',
+        author_image:'images/BecomeInstructor/ltn.jpg',
+        author_name:'Lê Hoàng Sang',
+        real_price:'599,000',
+        reduce_price: '179,000'
+    },
+    {
+        product_ID_rts: 'C26',
+        deal_value: '-50%', 
+        deal_image: 'images/music/music-2.jpg' ,
+        number_student: 3179,
+        rating_stars: 4.3, 
+        number_rating:'3179', 
+        title_product:'Học hát chuyên nghiệp trong 7 ngày',
+        author_image:'images/BecomeInstructor/ltn.jpg',
+        author_name:'Lê Hoàng Sang',
+        real_price:'599,000',
+        reduce_price: '179,000'
+    },
+    {
+        product_ID_rts: 'C27',
+        deal_value: '-50%', 
+        deal_image: 'images/music/music-3.jpg' ,
+        number_student: 3179,
+        rating_stars: 4.3, 
+        number_rating:'3179', 
+        title_product:'Học guitar đệm hát cấp tốc cùng Haketu',
+        author_image:'images/BecomeInstructor/ltn.jpg',
+        author_name:'Lê Hoàng Sang',
+        real_price:'599,000',
+        reduce_price: '179,000'
+    },
+    {
+        product_ID_rts: 'C28',
+        deal_value: '-50%', 
+        deal_image: 'images/music/music-4.jpg' ,
+        number_student: 3179,
+        rating_stars: 4.3, 
+        number_rating:'3179', 
+        title_product:'[EduVIP] Nâng cao trình độ guitar cùng Haketu (đệm hát và fingerstyle)',
+        author_image:'images/BecomeInstructor/ltn.jpg',
+        author_name:'Lê Hoàng Sang',
+        real_price:'599,000',
+        reduce_price: '179,000'
+    },
+  ]
+
+  const list_IT_4=[
+    {
+        product_ID_rts: 'C29',
+        deal_value: '-50%', 
+        deal_image: 'images/IT/IT-1.webp' ,
+        number_student: 3179,
+        rating_stars: 4.3, 
+        number_rating:'3179', 
+        title_product:'Hacker mũ trắng và bảo mật thông tin',
+        author_image:'images/BecomeInstructor/ltn.jpg',
+        author_name:'Lê Hoàng Sang',
+        real_price:'599,000',
+        reduce_price: '179,000'
+    },
+    {
+        product_ID_rts: 'C30',
+        deal_value: '-50%', 
+        deal_image: 'images/IT/IT-2.png' ,
+        number_student: 3179,
+        rating_stars: 4.3, 
+        number_rating:'3179', 
+        title_product:'Thành thạo ngôn ngữ lập trình C++',
+        author_image:'images/BecomeInstructor/ltn.jpg',
+        author_name:'Lê Hoàng Sang',
+        real_price:'599,000',
+        reduce_price: '179,000'
+    },
+    {
+        product_ID_rts: 'C31',
+        deal_value: '-50%', 
+        deal_image: 'images/IT/IT-3.png' ,
+        number_student: 3179,
+        rating_stars: 4.3, 
+        number_rating:'3179', 
+        title_product:'Lập trình Java trong 4 tuần',
+        author_image:'images/BecomeInstructor/ltn.jpg',
+        author_name:'Lê Hoàng Sang',
+        real_price:'599,000',
+        reduce_price: '179,000'
+    },
+    {
+        product_ID_rts: 'C32',
+        deal_value: '-50%', 
+        deal_image: 'images/IT/IT-4.jpg' ,
+        number_student: 3179,
+        rating_stars: 4.3, 
+        number_rating:'3179', 
+        title_product:'Lập trình backend cho website bằng PHP/Mysql theo mô hình MVC',
+        author_image:'images/BecomeInstructor/ltn.jpg',
+        author_name:'Lê Hoàng Sang',
+        real_price:'599,000',
+        reduce_price: '179,000'
+    },
+  ]
+
   module.exports={
       all(){
           return list;
@@ -276,5 +441,14 @@ const list = [
       },
       all_top8bs(){
         return list_top8bs;
+    },
+    all_english_menu(){
+        return list_english_4;
+    },
+    all_music_menu(){
+        return list_music_4;
+    },
+    all_IT_menu(){
+        return list_IT_4;
     }
   }

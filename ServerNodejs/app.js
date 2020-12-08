@@ -1,10 +1,12 @@
 const express = require('express');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
+var mongoose=require('mongoose');
 var path = require('path');
 
 const app = express();
 
+mongoose.connect('localhost:27017/shopping');
 app.use(express.static('public'));
 app.use(morgan('dev'));
 

@@ -5,19 +5,19 @@
                 <label class="category-label-item">
                 <p class="category-label">Danh mục</p>
                 </label>
-                <li class="category-menu-item">
-                    <a class="main-category-level" id="category-1" href="#">
-                        <span class="item-level1" id="test1">Ngoại ngữ</span>
+                <li class="category-menu-item" id="category-1">
+                    <a class="main-category-level" href="#">
+                        <span class="item-level1" id="ngoai-ngu">Ngoại ngữ</span>
                     </a>
                 </li>
-                <li class="category-menu-item">
+                <li class="category-menu-item" id="category-2">
                     <a class="main-category-level" href="#">
-                        <span class="item-level1">Âm nhạc</span>
+                        <span class="item-level1" id="am-nhac">Âm nhạc</span>
                     </a>
                 </li>
-                <li class="category-menu-item">
+                <li class="category-menu-item" id="category-3">
                     <a class="main-category-level" href="#">
-                        <span class="item-level1">Công nghệ thông tin</span>
+                        <span class="item-level1" id="IT">Công nghệ thông tin</span>
                     </a>
                 </li>
                 <li class="category-menu-item">
@@ -82,20 +82,99 @@
                 </li>
             </ul>
         </div>
-        <div class="submenu-container-1">
-            <ul>
+        <!--English-->
+        <div class="submenu-wrap" id="english-menu">
+            <div class="submenu-container-1">
+                <ul>
+                    <label class="category-label-item">
+                    <p class="category-label">Ngoại ngữ</p>
+                    </label>
+                    <li class="category-menu-item" id="mini-menu-english">
+                        <a class="main-category-level" href="#">
+                            <span class="item-level1">Tiếng Pháp, Đức, Việt</span>
+                        </a>
+                    </li>
+                    <li class="category-menu-item" id="mini-menu-english">
+                        <a class="main-category-level" href="#">
+                            <span class="item-level1">Topica Native</span>
+                        </a>
+                    </li>
+                    <li class="category-menu-item" id="mini-menu-english">
+                        <a class="main-category-level" href="#">
+                            <span class="item-level1">Tiếng Anh</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="childmenu-container-1">
                 <label class="category-label-item">
-                <p class="category-label">Ngoại ngữ</p>
+                    <p class="category-label">Ngoại ngữ - Featured Course</p>
                 </label>
-                <li class="category-menu-item">
-                    <a class="main-category-level" href="#">
-                        <span class="item-level1">Ngoại ngữ</span>
-                    </a>
-                </li>
-            </ul>
+                <div class="product-menu-col">
+                    {{>product_menu_english}}
+                </div>
+            </div>
         </div>
-        <div class="childmenu-container-1">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae ea volupta!
+        <!--Music-->
+        <div class="submenu-wrap" id="music-menu">
+            <div class="submenu-container-1">
+                <ul>
+                    <label class="category-label-item">
+                    <p class="category-label">Âm nhạc</p>
+                    </label>
+                    <li class="category-menu-item" id="mini-menu-music">
+                        <a class="main-category-level" href="#">
+                            <span class="item-level1">Luyện thanh</span>
+                        </a>
+                    </li>
+                    <li class="category-menu-item" id="mini-menu-music">
+                        <a class="main-category-level" href="#">
+                            <span class="item-level1">Nhạc cụ</span>
+                        </a>
+                    </li>
+                    <li class="category-menu-item" id="mini-menu-music">
+                        <a class="main-category-level" href="#">
+                            <span class="item-level1">Sản xuất và sáng tác</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="childmenu-container-1">
+                <label class="category-label-item">
+                    <p class="category-label">Âm nhạc - Featured Course</p>
+                </label>
+                <div class="product-menu-col">
+                    {{>product_menu_music}}
+                </div>
+            </div>
+        </div>
+        <!--IT-->
+        <div class="submenu-wrap" id="IT-menu">
+            <div class="submenu-container-1">
+                <ul>
+                    <label class="category-label-item">
+                    <p class="category-label">Công nghệ thông tin</p>
+                    </label>
+                    <li class="category-menu-item" id="mini-menu-IT">
+                        <a class="main-category-level" href="#">
+                            <span class="item-level1">Lập trình Web</span>
+                        </a>
+                    </li>
+                    <li class="category-menu-item" id="mini-menu-IT">
+                        <a class="main-category-level" href="#">
+                            <span class="item-level1">Lập trình thiết bị di động</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="childmenu-container-1">
+                <label class="category-label-item">
+                    <p class="category-label">Công nghệ thông tin - Featured Course</p>
+                </label>
+                <div class="product-menu-col">
+                    {{>product_menu_IT}}
+                </div>
+            </div>
         </div>
     </div>
     <div class="deal-slide-container">

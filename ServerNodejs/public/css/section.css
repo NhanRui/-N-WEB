@@ -114,14 +114,26 @@
     position: absolute;
 }
 
-span.item-level1:hover
-{
-    color:rgba(255, 0, 0, 0.76);
-}
-li.category-menu-item:hover
+.category-menu-item:hover
 {
     background: rgb(243, 241, 241);
     border-left: 2px solid rgba(255, 0, 0, 0.76);
+}
+
+.category-menu-item:hover .item-level1{
+    color:rgba(255, 0, 0, 0.76);
+}
+
+#mini-menu-english:hover{
+    border-left: none;
+}
+
+#mini-menu-music:hover{
+    border-left: none;
+}
+
+#mini-menu-IT:hover{
+    border-left: none;
 }
 
 .slider
@@ -315,26 +327,32 @@ li.category-menu-item:hover
     width: 252px;
     height: 542px;
     margin-top: 135px;
-    margin-left: 378px;
     border-radius: 5px;
     border-left: rgb(173, 172, 172) solid 1px;
-    display: none;
 }
 
 .childmenu-container-1{
     position: absolute;
     background: white;
-    width: 252px;
+    width: 370px;
     height: 542px;
     margin-top: 135px;
-    margin-left: 630px;
+    margin-left: 252px;
     border-radius: 5px;
     border-left: rgb(173, 172, 172) solid 1px;
-    display: none;
+    display: flex;
+    flex-direction: column
+}
+.product-menu-col{
+    margin-top: 45px;
 }
 
 .deal-slide-container{
     display: flex;
     flex-direction: row;
     z-index: 0;
+}
+
+.submenu-wrap{
+    display: none;
 }
