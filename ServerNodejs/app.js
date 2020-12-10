@@ -29,11 +29,11 @@ app.use('/', require('./controllers/product_controller'));
 app.use('/index', require('./controllers/product_controller'));
 app.use('/', require('./controllers/course_detail_controller'));
 
-app.get('/SignIn', function (req, res) {
+app.get('/signin', function (req, res) {
   res.render('home',{layout: 'SignIn.hbs'});
 });
 
-app.get('/SignUp', function (req, res) {
+app.get('/signup', function (req, res) {
   res.render('home',{layout: 'SignUp.hbs'});
 });
 

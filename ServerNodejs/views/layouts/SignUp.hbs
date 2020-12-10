@@ -9,8 +9,13 @@
     <meta name="author" content="nmcntt_18CLC2_Group 11">
     <meta http-equiv="refresh" content="30">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<base href="https://www.w3schools.com/" target="_blank">-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <style>
+        *{
+            font-family: 'Open Sans', sans-serif;
+            box-sizing: border-box;
+        }
         body{
             background-image:url("images/bg.png");
             background-size:100%;
@@ -63,9 +68,9 @@
 <form action="process.html">
     <table style="width:90%;margin-left:50px;" cellspacing="5px">
         <colgroup><col width="500px"></colgroup>
-        <tr" >
+        <tr>
             <td><img src="images/logo1.png" class="im" alt="logo"></td>
-            <td align="right"><a href="SignIn.html" style="color:red;margin-right:110px;">Đăng nhập</a></td>
+            <td align="right"><a href="signin" style="color:red;margin-right:110px;">Đăng nhập</a></td>
         </tr>
         <tr>
             <td><div style="text-align:center;"><h1>Nền tảng giáo dục trực tuyến<br>lớn nhất Đông Nam Á</h1></div></td>
@@ -74,21 +79,23 @@
         <tr>
             <td style="color:grey">Nơi mọi người chia sẻ , khám phá và học hỏi bất cứ điều gì</td>
         </tr>
+        <!--
         <tr>
             <td><br>Đăng kí nhanh với</td>
         </tr>
         <tr>
             <td>
-                <!--
+                
                 <div class="fb-login-button" data-size="large" data-button-type="continue_with" 
                 data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div>
-                -->
+                
                 <div class="fb-login-button" data-size="medium" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div>
                 <button>Gmail</button>
             </td>
         </tr>
+        -->
         <tr>
-            <td><br>Hoặc đăng kí ngay</td>
+            <td><br><span style="font-weight: bolder;">Đăng kí ngay:</span></td>
         </tr>
         <tr>
             <td><input id="ho" class="f" type="text" name="Ho" placeholder="Họ" maxlength="20" autocomplete="off"></td>

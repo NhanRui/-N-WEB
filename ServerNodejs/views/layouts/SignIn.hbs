@@ -9,8 +9,12 @@
     <meta name="author" content="nmcntt_18CLC2_Group 11">
     <meta http-equiv="refresh" content="30">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<base href="https://www.w3schools.com/" target="_blank">-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <style>
+        *{
+            font-family: 'Open Sans', sans-serif;
+        }
         body{
             background-image:url("images/bg.png");
             background-size: cover;
@@ -28,6 +32,9 @@
             width: auto;
             height: auto;
         }
+        .title{
+            font-weight: bolder;
+        }
         .allde{
             max-width:600px;
             max-height:360px;
@@ -44,7 +51,7 @@
         .f:hover {
             background-color: rgb(205, 241, 229);
             outline: 0;
-            border: 2px solid rgb(140, 140, 173);
+            border: 2px solid rgb(212, 11, 11);
             border-radius: 7px;
         }
         .f:focus{
@@ -78,7 +85,7 @@
         </colgroup>
         <tr>
             <td><img src="images/logo1.png" class="im" alt="logo"></td>
-            <td align="right"><a href="SignUp.html" style="color:red;margin-right:110px;">Đăng ký tài khoản mới</a></td>
+            <td align="right"><a href="signup" style="color:red;margin-right:110px;">Đăng ký tài khoản mới</a></td>
         </tr>
         <tr>
             <td ><div style="text-align:center;"><h1>Nền tảng giáo dục trực tuyến<br>lớn nhất Đông Nam Á</h1></div></td>
@@ -87,6 +94,7 @@
         <tr>
             <td style="color:rgb(78, 78, 78)">Nơi mọi người chia sẻ , khám phá và học hỏi bất cứ điều gì</td>
         </tr>
+        <!--
         <tr>
             <td>Đăng kí nhanh với</td>
         </tr>
@@ -95,13 +103,14 @@
                 <!--
                 <div class="fb-login-button" data-size="large" data-button-type="continue_with" 
                 data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div>
-                -->
+                
                 <button>Faccebook</button>
                 <button>Gmail</button>
             </td>
         </tr>
-        <tr>
-            <td>Hoặc đăng nhập bằng</td>
+        -->
+        <tr class="title">
+            <td>Đăng nhập bằng</td>
         </tr>
         <tr>
             <td><input class="f" id="tk" type="text" name="mail/phone" placeholder="Email hoặc số điện thoại" maxlength="50" required></td>
