@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `db`;
 -- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
 -- Host: localhost    Database: db
@@ -28,7 +30,10 @@ CREATE TABLE `bill` (
   `activation_code` varchar(45) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`user_id`,`course_id`)
+  PRIMARY KEY (`user_id`,`course_id`),
+  KEY `FK_bill_course_idx` (`course_id`),
+  CONSTRAINT `FK_bill_course` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`),
+  CONSTRAINT `FK_bill_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -51,7 +56,10 @@ DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
   `cart_id` varchar(10) NOT NULL,
   `course_id` varchar(10) NOT NULL,
-  PRIMARY KEY (`cart_id`,`course_id`)
+  PRIMARY KEY (`cart_id`,`course_id`),
+  KEY `FK_cart_course_idx` (`course_id`),
+  CONSTRAINT `FK_cart_course` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`),
+  CONSTRAINT `FK_cart_shoppingcart` FOREIGN KEY (`cart_id`) REFERENCES `shopping_cart` (`cart_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -83,7 +91,9 @@ CREATE TABLE `course` (
   `course_benefit_description` varchar(1000) DEFAULT NULL,
   `course_suitability` varchar(1000) DEFAULT NULL,
   `lecturer_id` varchar(10) NOT NULL,
-  PRIMARY KEY (`course_id`)
+  PRIMARY KEY (`course_id`),
+  KEY `FK_course_lecturer_idx` (`lecturer_id`),
+  CONSTRAINT `FK_course_lecturer` FOREIGN KEY (`lecturer_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -130,8 +140,10 @@ DROP TABLE IF EXISTS `favourite`;
 CREATE TABLE `favourite` (
   `user_id` varchar(10) NOT NULL,
   `course_id` varchar(10) DEFAULT NULL,
-  `favouritecol` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`user_id`)
+  PRIMARY KEY (`user_id`),
+  KEY `FK_favourite_course_idx` (`course_id`),
+  CONSTRAINT `FK_favourite_course` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`),
+  CONSTRAINT `FK_favourite_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -145,37 +157,6 @@ LOCK TABLES `favourite` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `lecturer`
---
-
-DROP TABLE IF EXISTS `lecturer`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `lecturer` (
-  `lecturer_id` varchar(10) NOT NULL,
-  `name` varchar(45) DEFAULT NULL,
-  `gender` varchar(45) DEFAULT NULL,
-  `dob` date DEFAULT NULL,
-  `phone_number` varchar(11) DEFAULT NULL,
-  `email` varchar(45) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `password_lvl2` varchar(100) DEFAULT NULL,
-  `avatar` varchar(100) DEFAULT NULL,
-  `description` varchar(1000) DEFAULT NULL,
-  PRIMARY KEY (`lecturer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `lecturer`
---
-
-LOCK TABLES `lecturer` WRITE;
-/*!40000 ALTER TABLE `lecturer` DISABLE KEYS */;
-/*!40000 ALTER TABLE `lecturer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `lesson_list`
 --
 
@@ -183,10 +164,13 @@ DROP TABLE IF EXISTS `lesson_list`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lesson_list` (
-  `list_id` int NOT NULL,
+  `list_id` varchar(10) NOT NULL,
   `chapter_number` int DEFAULT NULL,
   `chapter_name` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`list_id`)
+  `course_id` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`list_id`),
+  KEY `FK_lessonlist_course_idx` (`course_id`),
+  CONSTRAINT `FK_lessonlist_course` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -210,7 +194,11 @@ CREATE TABLE `shopping_cart` (
   `cart_id` varchar(10) NOT NULL,
   `user_id` varchar(10) DEFAULT NULL,
   `code_id` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`cart_id`)
+  PRIMARY KEY (`cart_id`),
+  KEY `FK_cart_user_idx` (`user_id`),
+  KEY `FK_cart_deal_idx` (`code_id`),
+  CONSTRAINT `FK_shoppingcart_deal` FOREIGN KEY (`code_id`) REFERENCES `deal` (`code_id`),
+  CONSTRAINT `FK_shoppingcart_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -235,8 +223,11 @@ CREATE TABLE `star_rating` (
   `course_id` varchar(10) NOT NULL,
   `num_star` int DEFAULT NULL,
   `comment` varchar(1000) DEFAULT NULL,
-  PRIMARY KEY (`user_id`,`course_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`user_id`,`course_id`),
+  KEY `FK_starrating_course_idx` (`course_id`),
+  CONSTRAINT `FK_starrating_course` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`),
+  CONSTRAINT `FK_starrating_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -265,6 +256,7 @@ CREATE TABLE `user` (
   `password` varchar(100) NOT NULL,
   `password_lvl2` varchar(100) DEFAULT NULL,
   `avatar` varchar(100) DEFAULT NULL,
+  `description` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -291,7 +283,9 @@ CREATE TABLE `video` (
   `video_duration` varchar(45) DEFAULT NULL,
   `url` varchar(100) DEFAULT NULL,
   `list_id` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`video_id`)
+  PRIMARY KEY (`video_id`),
+  KEY `FK_video_lessonlist_idx` (`list_id`),
+  CONSTRAINT `FK_video_lessonlist` FOREIGN KEY (`list_id`) REFERENCES `lesson_list` (`list_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -313,4 +307,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-12 10:45:00
+-- Dump completed on 2020-12-17 21:51:23
