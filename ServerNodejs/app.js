@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
+const hbs_sections = require('express-handlebars-sections');
 var mongoose=require('mongoose');
 var path = require('path');
 
@@ -29,12 +30,13 @@ app.use('/', require('./controllers/product_controller'));
 app.use('/index', require('./controllers/product_controller'));
 app.use('/', require('./controllers/course_detail_controller'));
 
+app.use('/account',require('./controllers/account.route'));
 app.get('/signin', function (req, res) {
-  res.render('home',{layout: 'SignIn.hbs'});
+  res.render('home', { layout: 'SignIn.hbs' });
 });
 
 app.get('/signup', function (req, res) {
-  res.render('home',{layout: 'SignUp.hbs'});
+  res.render('home', { layout: 'SignUp.hbs' });
 });
 
 app.get('/lecturer', function (req, res) {  //Nhan them de test

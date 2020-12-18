@@ -39,7 +39,23 @@ function isNull(){
     return true;
 }
 
-document.getElementById('submit').addEventListener('click',function(event){
-    if(checkName()===false) event.preventDefault();
-    if(isNull()===false)    event.preventDefault();
+$("#frmSignUp").on('submit',function(event){
+    event.preventDefault();
+    if(checkName()===false) return;
+    if(isNull()===false)    return;
+
+    const email = $("#tk").val();
+    if(email.length === 0)  {
+        alert('Invalid data');
+        return;
+    }
+
+    $.getJSON(`/account/is-available?email=${email}`, function(data){
+        if(data === true){
+            $("#submit").off('submit').submit();
+        }else{
+            alert('This email has been registered !!');
+        }
+    })
 })
+

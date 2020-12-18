@@ -25,8 +25,8 @@ DROP TABLE IF EXISTS `bill`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `bill` (
-  `user_id` varchar(10) NOT NULL,
-  `course_id` varchar(10) NOT NULL,
+  `user_id` varchar(45) NOT NULL,
+  `course_id` varchar(45) NOT NULL,
   `activation_code` varchar(45) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
@@ -54,8 +54,8 @@ DROP TABLE IF EXISTS `cart`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cart` (
-  `cart_id` varchar(10) NOT NULL,
-  `course_id` varchar(10) NOT NULL,
+  `cart_id` varchar(45) NOT NULL,
+  `course_id` varchar(45) NOT NULL,
   PRIMARY KEY (`cart_id`,`course_id`),
   KEY `FK_cart_course_idx` (`course_id`),
   CONSTRAINT `FK_cart_course` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`),
@@ -80,7 +80,7 @@ DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `category` (
-  `category_id` varchar(10) NOT NULL,
+  `category_id` varchar(45) NOT NULL,
   `category_name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -103,7 +103,7 @@ DROP TABLE IF EXISTS `course`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `course` (
-  `course_id` varchar(10) NOT NULL,
+  `course_id` varchar(45) NOT NULL,
   `course_name` varchar(45) NOT NULL,
   `description` varchar(1000) DEFAULT NULL,
   `intro_image` varchar(100) NOT NULL,
@@ -113,8 +113,8 @@ CREATE TABLE `course` (
   `course_intro_video` varchar(100) DEFAULT NULL,
   `course_benefit_description` varchar(1000) DEFAULT NULL,
   `course_suitability` varchar(1000) DEFAULT NULL,
-  `lecturer_id` varchar(10) NOT NULL,
-  `categoty_id` varchar(10) DEFAULT NULL,
+  `lecturer_id` varchar(45) NOT NULL,
+  `categoty_id` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`course_id`),
   KEY `FK_course_lecturer_idx` (`lecturer_id`),
   KEY `FK_course_category_idx` (`categoty_id`),
@@ -140,7 +140,7 @@ DROP TABLE IF EXISTS `deal`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `deal` (
-  `code_id` varchar(10) NOT NULL,
+  `code_id` varchar(45) NOT NULL,
   `value` double DEFAULT NULL,
   `date` date DEFAULT NULL,
   PRIMARY KEY (`code_id`)
@@ -164,8 +164,8 @@ DROP TABLE IF EXISTS `favourite`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `favourite` (
-  `user_id` varchar(10) NOT NULL,
-  `course_id` varchar(10) DEFAULT NULL,
+  `user_id` varchar(45) NOT NULL,
+  `course_id` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   KEY `FK_favourite_course_idx` (`course_id`),
   CONSTRAINT `FK_favourite_course` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`),
@@ -190,10 +190,10 @@ DROP TABLE IF EXISTS `lesson_list`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lesson_list` (
-  `list_id` varchar(10) NOT NULL,
+  `list_id` varchar(45) NOT NULL,
   `chapter_number` int DEFAULT NULL,
   `chapter_name` varchar(100) DEFAULT NULL,
-  `course_id` varchar(10) DEFAULT NULL,
+  `course_id` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`list_id`),
   KEY `FK_lessonlist_course_idx` (`course_id`),
   CONSTRAINT `FK_lessonlist_course` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`)
@@ -217,9 +217,9 @@ DROP TABLE IF EXISTS `shopping_cart`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `shopping_cart` (
-  `cart_id` varchar(10) NOT NULL,
-  `user_id` varchar(10) DEFAULT NULL,
-  `code_id` varchar(10) DEFAULT NULL,
+  `cart_id` varchar(45) NOT NULL,
+  `user_id` varchar(45) DEFAULT NULL,
+  `code_id` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`cart_id`),
   KEY `FK_cart_user_idx` (`user_id`),
   KEY `FK_cart_deal_idx` (`code_id`),
@@ -245,8 +245,8 @@ DROP TABLE IF EXISTS `star_rating`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `star_rating` (
-  `user_id` varchar(10) NOT NULL,
-  `course_id` varchar(10) NOT NULL,
+  `user_id` varchar(45) NOT NULL,
+  `course_id` varchar(45) NOT NULL,
   `num_star` int DEFAULT NULL,
   `comment` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`user_id`,`course_id`),
@@ -273,16 +273,17 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `user_id` varchar(10) NOT NULL,
+  `user_id` varchar(45) NOT NULL,
   `name` varchar(45) DEFAULT NULL,
   `gender` varchar(45) DEFAULT NULL,
   `dob` date DEFAULT NULL,
   `phone_number` varchar(11) DEFAULT NULL,
   `email` varchar(45) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `password_lvl2` varchar(100) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `password_lvl2` varchar(255) DEFAULT NULL,
   `avatar` varchar(100) DEFAULT NULL,
   `description` varchar(1000) DEFAULT NULL,
+  `role` int DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -293,6 +294,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES ('Uswyrp2a4kitph7ft','Luu Thien Nhan',NULL,NULL,NULL,'nhanluu838@gmail.com','$2a$10$kYroKyRFPmJn1zYPkWsl2OVFhzlap4ZpnQOlN.IxABE/RNYO5Qwj6',NULL,NULL,NULL,0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -304,11 +306,11 @@ DROP TABLE IF EXISTS `video`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `video` (
-  `video_id` varchar(10) NOT NULL,
+  `video_id` varchar(45) NOT NULL,
   `video_name` varchar(100) DEFAULT NULL,
   `video_duration` varchar(45) DEFAULT NULL,
   `url` varchar(100) DEFAULT NULL,
-  `list_id` varchar(10) DEFAULT NULL,
+  `list_id` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`video_id`),
   KEY `FK_video_lessonlist_idx` (`list_id`),
   CONSTRAINT `FK_video_lessonlist` FOREIGN KEY (`list_id`) REFERENCES `lesson_list` (`list_id`)
@@ -333,4 +335,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-17 22:08:29
+-- Dump completed on 2020-12-18 11:16:46

@@ -7,10 +7,11 @@
     <meta name="keywords" content="Course, Education">
     <meta name="description" content="Web Video Courses">
     <meta name="author" content="nmcntt_18CLC2_Group 11">
-    <meta http-equiv="refresh" content="30">
+    <meta http-equiv="refresh" content="180">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         *{
             font-family: 'Open Sans', sans-serif;
@@ -65,7 +66,7 @@
 </head>
 <body>
     <div id="fb-root"></div>
-<form action="process.html">
+<form method="POST" id="frmSignUp">
     <table style="width:90%;margin-left:50px;" cellspacing="5px">
         <colgroup><col width="500px"></colgroup>
         <tr>
@@ -98,16 +99,16 @@
             <td><br><span style="font-weight: bolder;">Đăng kí ngay:</span></td>
         </tr>
         <tr>
-            <td><input id="ho" class="f" type="text" name="Ho" placeholder="Họ" maxlength="20" autocomplete="off"></td>
+            <td><input id="ho" class="f" type="text" name="ho" placeholder="Họ" maxlength="20" autocomplete="off"></td>
         </tr>
         <tr>
-            <td><input id="ten" class="f" type="text" name="Ten" placeholder="Tên" maxlength="30" required autocomplete="off"></td>
+            <td><input id="ten" class="f" type="text" name="ten" placeholder="Tên" maxlength="30" autocomplete="off"></td>
         </tr>
         <tr>
-            <td><input id="tk" class="f" type="text" name="mail/phone" placeholder="Email hoặc số điện thoại" maxlength="50" required autocomplete="off"></td>
+            <td><input id="tk" class="f" type="text" name="email" placeholder="Email" maxlength="50" autocomplete="off"></td>
         </tr>
         <tr>
-            <td><input id="pass" class="f" type="password" name="pass" placeholder="Mật khẩu" maxlength="20" required autocomplete="off"></td>
+            <td><input id="pass" class="f" type="password" name="pass" placeholder="Mật khẩu" maxlength="20" autocomplete="off"></td>
         </tr>
         <tr>
             <td>Bằng cách nhấp vào Đăng ký, bạn đồng ý với <a href="dieukhoan.html">Điều khoản</a>,<br>
@@ -127,6 +128,67 @@
     </table>
     </div>
 </form>
-<script src="javascript/SignUp.js"></script>
+<script>
+    function checkName(){
+        var ho = document.getElementById('ho');
+        var ten = document.getElementById('ten');
+        if(ho.value.length === 0 || ten.value.length === 0 ){
+            alert("Không được để trống họ và tên");
+            tk.focus();
+            return false;
+        }
+        for(var i=0; i<ho.value.length;i++){
+            if(!isNaN(ho.value.charAt(i)) && !ho.value.charAt(i)===" "){
+                alert("Tên không thể có số");
+                ho.focus();
+                return false;
+            }
+        }
+        for(var i=0; i<ten.value.length;i++){
+            if(!isNaN(ten.value.charAt(i))){
+                alert("Tên không thể có số");
+                ten.focus();
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function isNull(){
+        var tk = document.getElementById('tk');
+        var pass = document.getElementById('pass');
+        if(tk.value.length === 0 ){
+            alert("Không được để trống tài khoản đăng nhập");
+            tk.focus();
+            return false;
+        }
+        if(pass.value.length === 0 ){
+            alert("Xin hãy nhập mật khẩu")
+            pass.focus();
+            return false;
+        }
+        return true;
+    }
+
+    $("#frmSignUp").on('submit',function(event){
+        event.preventDefault();
+        if(checkName()===false) return;
+        if(isNull()===false)    return;
+
+        const email = $("#tk").val();
+        if(email.length === 0)  {
+            alert('Invalid data');
+            return;
+        }
+
+        $.getJSON(`/account/is-available?email=${email}`, function(data){
+            if(data === true){
+                $("#submit").off('submit').submit();
+            }else{
+                alert('This email has been registered !!');
+            }
+        })
+    })
+</script>
 </body>
 </html>
