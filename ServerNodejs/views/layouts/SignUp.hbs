@@ -7,7 +7,6 @@
     <meta name="keywords" content="Course, Education">
     <meta name="description" content="Web Video Courses">
     <meta name="author" content="nmcntt_18CLC2_Group 11">
-    <meta http-equiv="refresh" content="180">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -170,16 +169,12 @@
         return true;
     }
 
-    $("#frmSignUp").on('submit',function(event){
+    $("#submit").on('submit',function(event){
         event.preventDefault();
         if(checkName()===false) return;
         if(isNull()===false)    return;
 
         const email = $("#tk").val();
-        if(email.length === 0)  {
-            alert('Invalid data');
-            return;
-        }
 
         $.getJSON(`/account/is-available?email=${email}`, function(data){
             if(data === true){

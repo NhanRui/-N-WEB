@@ -5,8 +5,8 @@ router.use(express.static('public'));
 const uniqid = require('uniqid');
 const userModel = require('../models/user.model');
 
-router.get('/register',async function(req, res, next){
-    res.render('home',{layout:"SignUp"});
+router.get('/register',function(req, res, next){
+    res.render('layouts/SignUp',{layout:false});
 })
 
 router.post('/register',async function(req, res, next){
@@ -27,7 +27,7 @@ router.post('/register',async function(req, res, next){
     }
 
     await userModel.add(user);
-    res.render('home',{layout:'SignUp'});
+    res.render('layouts/SignUp',{layout:false});
 })
 
 router.get('/is-available', async function(req,res,next){
@@ -39,12 +39,44 @@ router.get('/is-available', async function(req,res,next){
     res.json(false);
 })
 
-router.get('/login',async function(req, res, next){
-    res.render('home',{layout:"SignIn"});
-})
+router.get('/is-available', async function (req, res) {
+    const username = req.query.user;
+    const user = await userModel.singleByUserName(username);
+    if (user === null) {
+      return res.json(true);
+    }
+  
+    res.json(false);
+  })
+  
+  router.get('/login', function (req, res) {
+    res.render('layouts/SignIn', {
+      layout: false
+    });
+  })
+  
+  router.post('/login', async function (req, res) {
+    const user = await userModel.singleByEmail(req.body.email);
+    if (user === null) {
+      return res.render('layouts/SignIn', {
+        layout: false,
+        err_message: 'Invalid username.'
+      });
+    }
+  
+    const ret = bcrypt.compareSync(req.body.pass, user.password);
+    if (ret === false) {
+      return res.render('layouts/SignIn', {
+        layout: false,
+        err_message: 'Invalid password.'
+      });
+    }
 
-router.post('/login',async function(req, res, next){
-    
-})
+    req.session.auth = true;
+    req.session.authUser = user;
+  
+    const url = '/';
+    res.redirect(url);
+  })
 
 module.exports = router;

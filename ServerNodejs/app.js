@@ -4,12 +4,23 @@ const exphbs = require('express-handlebars');
 const hbs_sections = require('express-handlebars-sections');
 var mongoose=require('mongoose');
 var path = require('path');
+const session = require('express-session');
 
 const app = express();
 
 //mongoose.connect('localhost:27017/shopping');
 app.use(express.static('public'));
 app.use(morgan('dev'));
+
+app.set('trust proxy', 1)
+app.use(session({
+  secret: 'SECRET_KEY',
+  resave: false,
+  saveUnitialized: true,
+  cookie: {
+    //secure: true
+  }
+}));
 
 var handlebars = require('express-handlebars').create({
   layoutsDir: path.join(__dirname, "views/layouts"),
