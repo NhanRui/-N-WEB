@@ -6,7 +6,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/fileinput.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/themes/fas/theme.min.js"></script>
 
-<form>
+<form method="POST" enctype="multipart/form-data">
     <div style="width:170%;margin-left:50px;">
         <div class="title">Lựa khóa học</div>
         <div>
@@ -20,18 +20,20 @@
         
         <div id="finp">
             <div class="file-loading">
-            <input id="input-41" name="input41[]" type="file" multiple>
+            <input id="input-41" name="video" type="file" multiple>
         </div>
         <script>
             $(document).ready(function() {
                 $("#input-41").fileinput({
                     maxFileCount: 10,
-                    allowedFileTypes: ["video"]
+                    allowedFileTypes: ["video"],
+                    theme: 'fa'
                     //allowedFileExtensions: ["mp4", "ogg", "wmv"]
                     //allowedFileExtensions: ["jpg", "gif", "png", "txt"]
                 });
             });
         </script>
+        <button type="submit" class="btn btn-primary">Upload</button>
         </div>
     </div>
 </form>
