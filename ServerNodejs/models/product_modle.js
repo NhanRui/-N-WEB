@@ -1,3 +1,5 @@
+const db = require('../utils/db');
+
 const list = [
     {
         product_ID_rts: 'C1',
@@ -405,17 +407,17 @@ const list = [
         reduce_price: '179,000'
     },
     {
-        product_ID_rts: 'C31',
-        deal_value: '-50%', 
-        deal_image: 'images/IT/IT-3.png' ,
-        number_student: 3179,
-        rating_stars: 4.3, 
-        number_rating:'3179', 
-        title_product:'Lập trình Java trong 4 tuần',
-        author_image:'images/BecomeInstructor/ltn.jpg',
-        author_name:'Lê Hoàng Sang',
-        real_price:'599,000',
-        reduce_price: '179,000'
+        product_ID_rts: 'C31',//course_id
+        deal_value: '-50%', //deal_value
+        deal_image: 'images/IT/IT-3.png' ,//intro_image
+        number_student: 3179,//number_student
+        rating_stars: 4.3,//overall_star
+        number_rating:'3179', //number_rating
+        title_product:'Lập trình Java trong 4 tuần',//descrition
+        author_image:'images/BecomeInstructor/ltn.jpg',//
+        author_name:'Lê Hoàng Sang',//
+        real_price:'599,000',//price
+        reduce_price: '179,000'//reduce_price
     },
     {
         product_ID_rts: 'C32',
@@ -433,8 +435,21 @@ const list = [
   ]
 
   module.exports={
-      all(){
-          return list;
+      async all(){
+        const sql = `SELECT U.name as author_name,U.avatar as author_image,TEMP3.course_id,TEMP3.deal_value,temp3.intro_image, temp3.number_student,temp3.number_rating,temp3.description,temp3.price,temp3.reduce_price,temp3.overall_star
+        FROM (
+            SELECT temp1.course_id,deal_value,intro_image,temp1.number_student,temp2.overall_star,temp2.number_rating,description,price,(price-price*deal_value/100) as reduce_price,lecturer_id
+            FROM (SELECT c.*,count( b.course_id ) AS number_student
+                        FROM bill b RIGHT JOIN course c ON b.course_id = c.course_id 
+                        GROUP BY c.course_id) AS temp1 JOIN 
+                        (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
+                        FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
+                        GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+        ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id
+        WHERE U.role=1`;
+        const [rows, fields] = await db.load(sql);
+        return rows;
+          //return list;
       },
       all_top8(){
           return list_top8;

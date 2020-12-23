@@ -2,8 +2,8 @@ const express = require('express');
 const categoryModel = require('../models/product_modle');
 const router = express.Router();
 
-router.get('/', function (req, res) {
-    const list = categoryModel.all();
+router.get('/', async function (req, res) {
+    const list = await categoryModel.all();
     const list_top8=categoryModel.all_top8();
     const list_top8bs=categoryModel.all_top8bs();
     const list_english_menu=categoryModel.all_english_menu();
@@ -25,4 +25,4 @@ router.get('/', function (req, res) {
     });
   })
 
-module.exports = router;
+module.exports = router;  
