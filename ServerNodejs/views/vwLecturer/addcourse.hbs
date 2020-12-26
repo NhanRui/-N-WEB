@@ -1,0 +1,141 @@
+<link href="./css/addcourse.css" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/plugins/piexif.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/plugins/sortable.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/fileinput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/themes/fas/theme.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"> 
+<div style="width:90%;margin-left:50px;">
+<form method="POST" enctype="multipart/form-data">
+    <div>
+        <h1>Thông tin khóa học</h1>
+        <div class="basic-info">
+            <div class="basic-1">
+                <div class="basic1">
+                    <div class="bs-1">Tên khóa học</div>
+                    <input class="ant-input M-info-detail-name-txt " placeholder="VD: Thành thạo Tiếng Anh trong 30 ngày" type="text" value="" name="name">
+                </div>
+                <div class="basic1">
+                    <div class="bs-1">Mô tả thêm</div>
+                    <input class="ant-input M-info-detail-name-txt " placeholder="VD: Trọn bộ kỹ năng tiếng anh cơ bản. Giao tiếp tiếng Anh từ con số 0." type="text" value="" name="des">
+                </div>
+            </div>
+            <div class="basic-2">
+                <div class="basic2">
+                    <!--
+                    <div style="width:144px;height:80px;cursor:pointer;">
+                            <input id="input-41" name="video" type="file">
+                    </div>
+                    <script>
+                        $(document).ready(function() {
+                            $("#course-image").fileinput({
+                                allowedFileTypes: ["image"],
+                                theme: 'fa'
+                                //allowedFileExtensions: ["mp4", "ogg", "wmv"]
+                                //allowedFileExtensions: ["jpg", "gif", "png", "txt"]
+                            });
+                        });
+                    </script>
+                    -->
+                    <div class="image-choose">
+                        <div class="add-avatar">
+                            <div class="add-avatar-img"></div>
+                            <span class="add-avatar-txt">Ảnh khóa học</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="M-category">
+            <div class="catalog_1">
+                <div class="bs-1">Danh mục</div>
+                <div>
+                    <div class="field">
+                        <div class="control">
+                            <div class="select is-success">
+                            <select id="cate" name="category" style="width:252px;">
+                                {{#each this.category}}
+                                    <option value="{{category_id}}">{{category_name}}</option>
+                                {{/each}}
+                            </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="catalog_2">
+                <div class="bs-1">Danh mục con</div>
+                <div>
+                    <div class="field">
+                        <div class="control">
+                            <div class="select is-primary">
+                            <select id="sub_cat" name="sub-category" style="width:252px;">
+                                <option value="2">Lập trình thiết bị di động</option>
+                            </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="course_des">
+            <div class="des-txt">
+                <span>Lợi ích khóa học  </span>
+                <i class="fa fa-question-circle des-icon" aria-hidden="true"></i>
+            </div>
+            <div class="des-detail">
+                <input name="benefit" class="des-inp" placeholder="VD: Tự biết cách luyện phát âm tiếng Anh sao cho hiệu quả" type="text">
+            </div>
+        </div>
+        <div class="course_des">
+            <div class="des-txt">
+                <span>Phù hợp với  </span>
+                <i class="fa fa-question-circle des-icon" aria-hidden="true"></i>
+            </div>
+            <div class="des-detail">
+                <input name="suitable" class="des-inp" placeholder="VD: Những ai đã chán với việc đến trung tâm, đến lớp, tốn tiền học các khóa phát âm" type="text">
+            </div>
+        </div>
+        <div class="course_des">
+            <div class="des-txt">
+                <span>Mô tả tổng quát  </span>
+                <i class="fa fa-question-circle des-icon" aria-hidden="true"></i>
+            </div>
+            <div class="des-detail">
+                <textarea name="course-description" height="10" class="des-inp txtarea" placeholder="VD: Điểm đặc biệt của khóa học là người hướng dẫn cũng là người trực tiếp trải nghiệm phương pháp, đặt mình vào vị trí của người học để người học hình dung rõ được các bước đi và lộ trình"></textarea>
+            </div>
+        </div>
+        <div class="btnarea">
+            <button type="button" class="btn-blue">
+                <span>Lưu Lại</span>
+            </button>
+            <button type="button" class="btn-red">
+                <span> Tiếp tục</span>
+            </button>
+        </div>
+    </div>
+</form>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $("#cate").change();
+        $("#cate").change(function(){
+            var id="";
+            id=$("#cate").val();
+            $("#sub_cat").empty();
+            $.getJSON({
+                url: `/lecturer/get_subcat?id=${id}`,
+                success: function(data){
+                    if(data!==null){
+                        for(var i=0;i<data.length;i++){
+                            $("#sub_cat").append(`<option value="${data[i].category_id}">${data[i].category_name}</option>`);
+                        }
+                    }
+                }
+            })
+        })
+    })
+</script>

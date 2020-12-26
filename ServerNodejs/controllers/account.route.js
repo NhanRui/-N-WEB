@@ -27,8 +27,9 @@ router.post('/register',async function(req, res, next){
     }
 
     await userModel.add(user);
-    res.render('layouts/SignUp',{layout:false});
+    res.redirect('/');
 })
+
 
 router.get('/is-available', async function(req,res,next){
     const email = req.query.email;
@@ -39,16 +40,17 @@ router.get('/is-available', async function(req,res,next){
     res.json(false);
 })
 
-router.get('/is-available', async function (req, res) {
+/*
+router.get('/is-available-usname', async function (req, res) {
     const username = req.query.user;
     const user = await userModel.singleByUserName(username);
     if (user === null) {
       return res.json(true);
     }
-  
     res.json(false);
   })
-  
+*/  
+
   router.get('/login', function (req, res) {
     res.render('layouts/SignIn', {
       layout: false

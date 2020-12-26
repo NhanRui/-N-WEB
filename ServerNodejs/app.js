@@ -1,8 +1,11 @@
 const express = require('express');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
+<<<<<<< HEAD
 const hbs_sections = require('express-handlebars-sections');
 const numeral=require('numeral');
+=======
+>>>>>>> 50e140cf2e173bfffe8cd5a385c0f55973606541
 var mongoose=require('mongoose');
 var path = require('path');
 const session = require('express-session');
