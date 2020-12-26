@@ -14,11 +14,10 @@ module.exports ={
         if(rows.length === 0)
             return null;
         return rows;
-    }
-    /*
-    async add(user){
-        const [result, fields] = await db.add(user,'user');
+    },
+
+    async add(course){
+        const [result, fields] = await db.add(course,'course');
         return result;
     }
-    */
 }

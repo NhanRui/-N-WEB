@@ -8,18 +8,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/themes/fas/theme.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"> 
 <div style="width:90%;margin-left:50px;">
-<form method="POST" enctype="multipart/form-data">
+<form method="POST" id="create_course">
     <div>
         <h1>Thông tin khóa học</h1>
         <div class="basic-info">
             <div class="basic-1">
                 <div class="basic1">
                     <div class="bs-1">Tên khóa học</div>
-                    <input class="ant-input M-info-detail-name-txt " placeholder="VD: Thành thạo Tiếng Anh trong 30 ngày" type="text" value="" name="name">
+                    <input class="ant-input M-info-detail-name-txt " placeholder="VD: Thành thạo Tiếng Anh trong 30 ngày" type="text" name="name" id="name">
                 </div>
                 <div class="basic1">
                     <div class="bs-1">Mô tả thêm</div>
-                    <input class="ant-input M-info-detail-name-txt " placeholder="VD: Trọn bộ kỹ năng tiếng anh cơ bản. Giao tiếp tiếng Anh từ con số 0." type="text" value="" name="des">
+                    <input class="ant-input M-info-detail-name-txt " placeholder="VD: Trọn bộ kỹ năng tiếng anh cơ bản. Giao tiếp tiếng Anh từ con số 0." type="text" name="des" id="des">
                 </div>
             </div>
             <div class="basic-2">
@@ -71,7 +71,7 @@
                     <div class="field">
                         <div class="control">
                             <div class="select is-primary">
-                            <select id="sub_cat" name="sub-category" style="width:252px;">
+                            <select id="sub_cat" name="sub_category" style="width:252px;">
                                 <option value="2">Lập trình thiết bị di động</option>
                             </select>
                             </div>
@@ -104,11 +104,11 @@
                 <i class="fa fa-question-circle des-icon" aria-hidden="true"></i>
             </div>
             <div class="des-detail">
-                <textarea name="course-description" height="10" class="des-inp txtarea" placeholder="VD: Điểm đặc biệt của khóa học là người hướng dẫn cũng là người trực tiếp trải nghiệm phương pháp, đặt mình vào vị trí của người học để người học hình dung rõ được các bước đi và lộ trình"></textarea>
+                <textarea name="course_description" height="10" class="des-inp txtarea" placeholder="VD: Điểm đặc biệt của khóa học là người hướng dẫn cũng là người trực tiếp trải nghiệm phương pháp, đặt mình vào vị trí của người học để người học hình dung rõ được các bước đi và lộ trình"></textarea>
             </div>
         </div>
         <div class="btnarea">
-            <button type="button" class="btn-blue">
+            <button type="button" class="btn-blue" onclick="send();">
                 <span>Lưu Lại</span>
             </button>
             <button type="button" class="btn-red">
@@ -120,6 +120,33 @@
 </div>
 
 <script>
+    function checknameNull(){
+        var name = $('#name');
+        if(name.val().length === 0 ){
+            alert("Không được để trống tên khóa học");
+            name.on('focus');
+            return false;
+        }
+        return true;
+    }
+
+    function checkdesNull(){
+        var des = $('#des');
+        if(des.val().length === 0 ){
+            alert("Xin hãy nhập mô tả khóa học");
+            des.on('focus');
+            return false;
+        }
+        return true;
+    }
+
+    function send(){
+        if(checknameNull()===false || checkdesNull()===false)  {
+            return;
+        }
+        $('#create_course').submit();
+    }
+    
     $(document).ready(function(){
         $("#cate").change();
         $("#cate").change(function(){
