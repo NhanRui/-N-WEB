@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
+const lecturerModel = require('../models/lecturer_model');
 router.use(express.static('public'));
 
 router.get('/information', function (req, res) {
@@ -29,6 +30,24 @@ router.post('/upload',function(req,res){
       res.render('lecturer_course',{layout:'lecturer'});
     }
   })
+})
+
+router.get('/addcourse',async function(req,res){
+  const cat = await lecturerModel.category();
+  res.render('vwLecturer/addcourse',{
+    layout:'lecturer',
+    category: cat
+  });
+})
+
+router.get('/get_subcat',async function(req,res,next){
+  const subcatid = req.query.id;
+  const subcat = await lecturerModel.sub_category(subcatid);
+  console.log(subcat);
+  if(subcat=== null){
+    return res.json(null);
+  }
+  return res.json(subcat);
 })
 
 module.exports = router;

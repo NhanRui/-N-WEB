@@ -1,4 +1,3 @@
-const { add } = require('../utils/db');
 const db = require('../utils/db');
 
 module.exports ={

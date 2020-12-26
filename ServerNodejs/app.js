@@ -1,7 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
-const hbs_sections = require('express-handlebars-sections');
 var mongoose=require('mongoose');
 var path = require('path');
 const session = require('express-session');
