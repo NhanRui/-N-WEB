@@ -72,26 +72,28 @@
                 <div class="title-search">ĐÁNH GIÁ</div>
                 <div class="form-check">
                     <ul class="level-choice">
+                        {{#with this.cateId}}
                         <li class="item">
-                            <input type="hidden" name="filter_url" value="">
-                            <input id="filter_level_filter-11" type="radio" class="layer-input-filter" name="filter_level_filter">
-                            <label for="filter_level_filter-11"> <span class="rating-choice"><i class="fas fa-star"></i></span> 5.0 </label>
+                            <a href="/search/{{Id}}/rating-5">
+                                <label class="text_star"> <span class="rating-choice"><i class="fas fa-star"></i></span> 5.0 </label>
+                            </a>
                         </li>
                         <li class="item">
-                            <input type="hidden" name="filter_url" value="">
-                            <input id="filter_level_filter-12" type="radio" class="layer-input-filter" name="filter_level_filter">
-                            <label for="filter_level_filter-12"> <span class="rating-choice"><i class="fas fa-star"></i></span> 4.0 trở lên </label>
+                            <a href="/search/{{Id}}/rating-up-4">
+                                <label class="text_star"> <span class="rating-choice"><i class="fas fa-star"></i></span> 4.0 trở lên </label>
+                            </a>
                         </li>
                         <li class="item">
-                            <input type="hidden" name="filter_url" value="">
-                            <input id="filter_level_filter-13" type="radio" class="layer-input-filter" name="filter_level_filter">
-                            <label for="filter_level_filter-13"><span class="rating-choice"><i class="fas fa-star"></i></span> 3.0 trở lên </label>
+                            <a href="/search/{{Id}}/rating-up-3">
+                                <label class="text_star"> <span class="rating-choice"><i class="fas fa-star"></i></span> 3.0 trở lên </label>
+                            </a>
                         </li>
                         <li class="item">
-                            <input type="hidden" name="filter_url" value="">
-                            <input id="filter_level_filter-14" type="radio" class="layer-input-filter" name="filter_level_filter">
-                            <label for="filter_level_filter-14"><span class="rating-choice"><i class="fas fa-star"></i></span> Dưới 3.0 </label>
+                            <a href="/search/{{Id}}/rating-up-4">
+                                <label class="text_star"> <span class="rating-choice"><i class="fas fa-star"></i></span> Dưới 3.0 </label>
+                            </a>
                         </li>
+                        {{/with}}
                     </ul>
                 </div>
             </div>
@@ -118,40 +120,8 @@
                     <span class="style-submenu menu5 blur-style">Giá cao đến thấp</span>
                 </a>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        {{>product}}
-                    </div>
-                    <div class="col">
-                        {{>product}}
-                    </div>
-                    <div class="col">
-                        {{>product}}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        {{>product}}
-                    </div>
-                    <div class="col">
-                        {{>product}}
-                    </div>
-                    <div class="col">
-                        {{>product}}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        {{>product}}
-                    </div>
-                    <div class="col">
-                        {{>product}}
-                    </div>
-                    <div class="col">
-                        {{>product}}
-                    </div>
-                </div>
+            <div class="container123">
+                {{>product_in_search}}
                 <div class="row">
                     <div class="button-next">
                         <input class="button-next-page active-button" type="button" name="" id="" value="1">

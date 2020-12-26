@@ -1,6 +1,11 @@
 const express = require('express');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
+<<<<<<< HEAD
+const hbs_sections = require('express-handlebars-sections');
+const numeral=require('numeral');
+=======
+>>>>>>> 50e140cf2e173bfffe8cd5a385c0f55973606541
 var mongoose=require('mongoose');
 var path = require('path');
 const session = require('express-session');
@@ -14,6 +19,7 @@ const app = express();
 //-----------------------------------middle ware------------------------------
 //mongoose.connect('localhost:27017/shopping');
 app.use(express.static('public'));
+app.use('/public',express.static('public'));
 app.use(morgan('dev'));
 
 //store session
@@ -34,7 +40,12 @@ var handlebars = require('express-handlebars').create({
   layoutsDir: path.join(__dirname, "views/layouts"),
   partialsDir: path.join(__dirname, "views/partials"),
   defaultLayout: 'index',
-  extname: 'hbs'
+  extname: 'hbs',
+  helpers:{
+    format_number(val){
+      return numeral(val).format('0,0') + " đ";
+    }
+  }
 });
 
 app.engine('hbs', handlebars.engine);
@@ -62,6 +73,7 @@ app.use('/index', require('./controllers/product_controller'));
 app.use('/', require('./controllers/course_detail_controller'));
 
 app.use('/account',require('./controllers/account.route'));
+app.use('/search',require('./controllers/product_search_controller'));
 app.get('/signin', function (req, res) {
   res.render('home', { layout: 'SignIn.hbs' });
 });
@@ -86,10 +98,10 @@ app.get('/AccountInformation', function (req, res) {
   res.render('home',{layout: 'AccountInformation.hbs'});
 });
 
-app.get('/search_course', function (req, res) {
+/*app.get('/search_course', function (req, res) {
   //Can render for this layout
   res.render('search_site.hbs',{layout: 'search-item.hbs'});
-});
+});*/
 
 // app.get('/MyCourse', function (req, res) {
 //   //Can render for this layout
