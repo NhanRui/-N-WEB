@@ -4,6 +4,10 @@ const multer = require('multer');
 const lecturerModel = require('../models/lecturer_model');
 router.use(express.static('public'));
 
+app.get('/', function (req, res) {  //Nhan them de test
+  res.render('lecturer_in4',{layout: 'lecturer.hbs'});
+});
+
 router.get('/information', function (req, res) {
     res.render("lecturer_in4",{layout:"lecturer"});
 })

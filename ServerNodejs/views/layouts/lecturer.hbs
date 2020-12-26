@@ -60,7 +60,8 @@
                         })
                     </script>
                     <dt>
-                        <div><a class="text-danger link " href="#"><i class="fas fa-power-off    "></i>     Đăng xuất</a></div>
+                        <form id="frmLogOut" method="POST" action="/account/logout"></form>
+                        <div><a class="text-danger link " href="javascript: $('#frmLogOut').submit();"><i class="fas fa-power-off    "></i>     Đăng xuất</a></div>
                     </dt>
                 </dl>
             </div>
