@@ -4,6 +4,11 @@ const bcrypt = require('bcryptjs');
 router.use(express.static('public'));
 const uniqid = require('uniqid');
 const userModel = require('../models/user.model');
+const auth = require('../middleware/auth.mdw');
+
+router.get('/profile',auth.authUser, function(req, res, next){
+  res.render('layouts/index',{layout:false});
+})
 
 router.get('/register',function(req, res, next){
     res.render('layouts/SignUp',{layout:false});
@@ -27,6 +32,8 @@ router.post('/register',async function(req, res, next){
     }
 
     await userModel.add(user);
+    req.session.auth = true;
+    req.session.authUser = user;
     res.redirect('/');
 })
 
@@ -77,7 +84,17 @@ router.get('/is-available-usname', async function (req, res) {
     req.session.auth = true;
     req.session.authUser = user;
   
-    const url = '/';
+    const url = req.session.retUrl || '/';
+    res.redirect(url);
+  })
+
+  router.post('/logout', async function (req, res) {
+    req.session.auth = false;
+    req.session.authUser = null;
+    req.session.retUrl = null;
+    console.log("Logging out");
+  
+    const url = req.headers.referer || '/';
     res.redirect(url);
   })
 
