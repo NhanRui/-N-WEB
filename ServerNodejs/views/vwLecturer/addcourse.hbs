@@ -25,26 +25,32 @@
             <div class="basic-2">
                 <div class="basic2">
                     <!--
-                    <div style="width:144px;height:80px;cursor:pointer;">
-                            <input id="input-41" name="video" type="file">
+                    <div style="display:none;" id="avatar">
+                        <input id="input-41" name="avatar" type="file">
                     </div>
-                    <script>
-                        $(document).ready(function() {
-                            $("#course-image").fileinput({
-                                allowedFileTypes: ["image"],
-                                theme: 'fa'
-                                //allowedFileExtensions: ["mp4", "ogg", "wmv"]
-                                //allowedFileExtensions: ["jpg", "gif", "png", "txt"]
+                        <script>
+                            $(document).ready(function() {
+                                $('.add-avatar').on('click',function(){
+                                    alert('You click');
+                                    $('avatar').css('display','block');
+                                    $('#input-41').click();
+                                    
+                                })
+                                $("#input-41").fileinput({
+                                    allowedFileTypes: ["image"],
+                                    theme: 'fa'
+                                });
                             });
-                        });
-                    </script>
+                        </script>
                     -->
-                    <div class="image-choose">
+                    <div id="image_choose">
                         <div class="add-avatar">
                             <div class="add-avatar-img"></div>
                             <span class="add-avatar-txt">Ảnh khóa học</span>
                         </div>
                     </div>
+                    <input type="hidden" name="avtURL" id="avtURL" value="">
+                    <input type="hidden" name="introURL" id="introURL" value="">
                 </div>
             </div>
         </div>
@@ -107,17 +113,99 @@
                 <textarea name="course_description" height="10" class="des-inp txtarea" placeholder="VD: Điểm đặc biệt của khóa học là người hướng dẫn cũng là người trực tiếp trải nghiệm phương pháp, đặt mình vào vị trí của người học để người học hình dung rõ được các bước đi và lộ trình"></textarea>
             </div>
         </div>
+        </form>
+        <!--
+        <form id="intro-add" enctype="multipart/form-data" method="POST" action="/lecturer/courseintro">
+            <div class="course_des" id="intro-form">
+                <div class="des-txt">
+                    <span>Intro khóa học</span>
+                    <i class="fa fa-question-circle des-icon" aria-hidden="true"></i>
+                </div>
+                <div class="des-detail">
+                    <div class="file-loading">
+                        <input id="input-42" name="video" type="file">
+                    </div>
+                    <script>
+                        $(document).ready(function() {
+                            $("#input-42").fileinput({
+                                maxFileCount: 1,
+                                allowedFileTypes: ["video"],
+                                theme: 'fa'
+                                //allowedFileExtensions: ["mp4", "ogg", "wmv"]
+                                //allowedFileExtensions: ["jpg", "gif", "png", "txt"]
+                            });
+                            $('#intro-form').on('click',function(){
+                                $('#intro-form').off('click');
+                                $('#input-42').click();
+                            })
+                            $('#input-42').change(function(){
+                                $('#intro-add').submit();
+                                
+                                $.getJSON({
+                                    url: `/lecturer/get_introURL`,
+                                    success: function(data){
+                                        if(data!==null){
+                                            $('#introURL').attr('value',data);
+                                            alert(data);
+                                        }
+                                        else    alert("Không load được video !!!");
+                                    }
+                                });
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </form>
+        -->
         <div class="btnarea">
             <button type="button" class="btn-blue" onclick="send();">
                 <span>Lưu Lại</span>
             </button>
-            <button type="button" class="btn-red">
-                <span> Tiếp tục</span>
+            <button type="button" class="btn-red" onclick="quayra();">
+                <span>Quay lại</span>
             </button>
         </div>
     </div>
-</form>
+
+    <div id="test"></div>
 </div>
+
+
+<form id="avatar-add" enctype="multipart/form-data" method="POST" action="/lecturer/courseavatar">
+<div style="display:none;" id="avatar">
+    <input id="input-41" name="avatar" type="file">
+</div>
+    <script>
+        $(document).ready(function() {
+            var str="";
+            $('.add-avatar').on('click',function(){
+                //$('avatar').css('display','block');
+                $('#input-41').click();
+            });
+            
+            $('#input-41').change(function(){
+                $('#avatar-add').submit();
+                $('#avtURL').attr('value',"ok");
+                $.getJSON({
+                    url: `/lecturer/get_avtURL`,
+                    success: function(data){
+                        if(data!==null){
+                            const str = "url('"+data+"')";
+                            alert(str);
+                            $('#image_choose').attr('style',`background-image: ${str};background-size: cover;`);   //mai ko chay duoc
+                        }
+                        else    alert("Không load được hình !!!");
+                    }
+                });
+            });
+            $("#input-41").fileinput({
+                allowedFileTypes: ["image"],
+                theme: 'fa'
+            });
+        });
+    </script>
+</form>
 
 <script>
     function checknameNull(){
@@ -145,6 +233,10 @@
             return;
         }
         $('#create_course').submit();
+    }
+
+    function quayra(){
+        location.replace('/lecturer/information');
     }
     
     $(document).ready(function(){

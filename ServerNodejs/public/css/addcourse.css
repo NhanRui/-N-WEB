@@ -94,10 +94,14 @@ button, input{
     width:100%;
 }
 
-.image-choose{
+#image_choose{
     padding-top:20px;
-
     background-color: gray;
+    width:216px;
+    height:120px;
+}
+
+#test{
     width:216px;
     height:120px;
 }

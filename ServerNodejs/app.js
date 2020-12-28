@@ -1,23 +1,14 @@
 const express = require('express');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
-//<<<<<<< HEAD
-//<<<<<<< HEAD
 const hbs_sections = require('express-handlebars-sections');
 const numeral=require('numeral');
-//=======
-//>>>>>>> 50e140cf2e173bfffe8cd5a385c0f55973606541
-//=======
-const hbs_sections = require('express-handlebars-sections');
-const numeral=require('numeral');
-//>>>>>>> 65755f8b74689fa503787a989208ba0ef87c8858
 var mongoose=require('mongoose');
 var path = require('path');
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 const config = require('./config/default.json');
 const auth=require('./middleware/auth.mdw');
-const { authLecturer } = require('./middleware/auth.mdw');
 
 const app = express();
 
@@ -25,6 +16,7 @@ const app = express();
 //mongoose.connect('localhost:27017/shopping');
 app.use(express.static('public'));
 app.use('/public',express.static('public'));
+app.use('/upload',express.static('upload'));
 app.use(morgan('dev'));
 
 //store session
@@ -66,7 +58,7 @@ app.use(function (req,res,next){
   if(typeof(req.session.auth) === 'undefined'){
     req.session.auth = false;
   }
-
+  res.locals.cid = null;
   res.locals.auth = req.session.auth;
   res.locals.authUser = req.session.authUser;
   next();
