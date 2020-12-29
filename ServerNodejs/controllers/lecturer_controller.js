@@ -78,10 +78,11 @@ router.post('/addcourse',async function(req,res){
     categoty_id: req.body.sub_category
   }
   await lecturerModel.add(course);
+  //store.destroy(req.session.cid);
   res.redirect('/lecturer');
 })
 
-router.post('/courseavatar',async function(req,res){
+router.post('/courseavatar',function(req,res){
   console.log('upload avt');
   /*
   var filepath= `./upload/${req.session.authUser.user_id}`;
@@ -101,17 +102,20 @@ router.post('/courseavatar',async function(req,res){
       cb(null, req.session.cid+".jpg")
     }
   })
+
+  const upload = multer({storage: storage});
+  upload.single('avatar')(req, res, function(err){
+    if(err){
+      console.log(err);
+    }
+  })
 })
 
+/*
 router.post('/courseintro',async function(req,res){
   console.log('upload intro');
-  /*
-  var filepath= `./upload/${req.session.authUser.user_id}`;
-  var dir = filepath;
-  if (!path.existsSync(dir)) {
-      path.mkdirSync(dir,0744);
-  }
-  */
+
+  
  var filepath = './upload/intro';
  
   const storage = multer.diskStorage({
@@ -120,7 +124,7 @@ router.post('/courseintro',async function(req,res){
     },
     filename: function(req,file,cb){
       //cb(null, file.originalname)
-      req.session.vid=file.filename;
+      //req.session.vid=file.filename;
       cb(null, file.filename)
     }
   })
@@ -132,6 +136,7 @@ router.post('/courseintro',async function(req,res){
     }
   })
 })
+*/
 
 router.get('/get_subcat',async function(req,res,next){
   const subcatid = req.query.id;

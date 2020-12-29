@@ -125,7 +125,9 @@ button, input{
     width: 24px;
     background-color: #ecedf1;
     -webkit-mask: url('./../images/add_photo.png') no-repeat 50% 50%;
+    mask: url('./../images/add_photo.png') no-repeat 50% 50%;
     -webkit-mask-size: 100%!important;
+    mask-size: 100%;
     margin-right: 8px;
 }
 
@@ -224,8 +226,8 @@ option{
     min-height: 32px;
     line-height: 1.5;
     vertical-align: bottom;
-    -webkit-transition: all .3s,height 0s;
-    transition: all .3s,height 0s;
+    -webkit-transition: all .3s,height .2s;
+    transition: all .3s,height .2s;
     font-family: Open Sans,sans-serif;
     font-size: 15px;
     line-height: 1.6;
@@ -234,9 +236,8 @@ option{
     display: flex;
     align-items: center;
     border-radius: 4px;
-    height: 40px;
     padding: 8px 16px;
-    height: 100px!important;
+    height: 120px !important;
 }
 
 .btnarea{

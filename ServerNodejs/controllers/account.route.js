@@ -6,6 +6,8 @@ const uniqid = require('uniqid');
 const userModel = require('../models/user.model');
 const auth = require('../middleware/auth.mdw');
 
+//Note nho them req.session.retURL cho nhung trang truoc khi truy cap vao trang 
+
 router.get('/profile',auth.authUser, function(req, res, next){
   res.render('layouts/index',{layout:false});
 })

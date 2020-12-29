@@ -7,6 +7,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/fileinput.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/themes/fas/theme.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"> 
+<script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>    
 <div style="width:90%;margin-left:50px;">
 <form method="POST" id="create_course">
     <div>
@@ -24,25 +25,6 @@
             </div>
             <div class="basic-2">
                 <div class="basic2">
-                    <!--
-                    <div style="display:none;" id="avatar">
-                        <input id="input-41" name="avatar" type="file">
-                    </div>
-                        <script>
-                            $(document).ready(function() {
-                                $('.add-avatar').on('click',function(){
-                                    alert('You click');
-                                    $('avatar').css('display','block');
-                                    $('#input-41').click();
-                                    
-                                })
-                                $("#input-41").fileinput({
-                                    allowedFileTypes: ["image"],
-                                    theme: 'fa'
-                                });
-                            });
-                        </script>
-                    -->
                     <div id="image_choose">
                         <div class="add-avatar">
                             <div class="add-avatar-img"></div>
@@ -92,7 +74,7 @@
                 <i class="fa fa-question-circle des-icon" aria-hidden="true"></i>
             </div>
             <div class="des-detail">
-                <input name="benefit" class="des-inp" placeholder="VD: Tự biết cách luyện phát âm tiếng Anh sao cho hiệu quả" type="text">
+                <textarea name="benefit" class="des-inp txtarea" width="500" height="100" placeholder="VD: Tự biết cách luyện phát âm tiếng Anh sao cho hiệu quả"></textarea>
             </div>
         </div>
         <div class="course_des">
@@ -101,7 +83,7 @@
                 <i class="fa fa-question-circle des-icon" aria-hidden="true"></i>
             </div>
             <div class="des-detail">
-                <input name="suitable" class="des-inp" placeholder="VD: Những ai đã chán với việc đến trung tâm, đến lớp, tốn tiền học các khóa phát âm" type="text">
+                <textarea name="suitable" class="des-inp txtarea" rows="5" placeholder="VD: Những ai đã chán với việc đến trung tâm, đến lớp, tốn tiền học các khóa phát âm"></textarea>
             </div>
         </div>
         <div class="course_des">
@@ -110,7 +92,17 @@
                 <i class="fa fa-question-circle des-icon" aria-hidden="true"></i>
             </div>
             <div class="des-detail">
-                <textarea name="course_description" height="10" class="des-inp txtarea" placeholder="VD: Điểm đặc biệt của khóa học là người hướng dẫn cũng là người trực tiếp trải nghiệm phương pháp, đặt mình vào vị trí của người học để người học hình dung rõ được các bước đi và lộ trình"></textarea>
+                <textarea id="txtArea" name="course_description" cols="50" rows="10" class="des-inp txtarea" 
+                placeholder="VD: Điểm đặc biệt của khóa học là người hướng dẫn cũng là người trực tiếp trải nghiệm 
+                phương pháp, đặt mình vào vị trí của người học để người học hình dung rõ được các bước đi và lộ trình"></textarea>
+                <script>
+                        CKEDITOR.replace( 'course_description' ,{
+                            language: 'vi',
+                            uiColor: '#dc3545',
+                            width: '100%',
+                            height: 300
+                        });
+                </script>
             </div>
         </div>
         </form>
