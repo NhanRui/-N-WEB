@@ -25,16 +25,20 @@
                 <a href="./../index"><img src="images/logo1.png" alt="Edu OYK"></a>
             </div>
             <div id="avatar">
-                <img class="rounded-circle" src="images/BecomeInstructor/nad.jpg" alt="avatar">
+                {{#if authUser.avatar}}
+                    <img id="inner-avatar" src="{{authUser.avatar}}" alt="Avatar" class="rounded-circle">
+                {{else}}
+                    <img id="inner-avatar" src="/public/images/logo2.jpg" alt="Avatar" class="rounded-circle">
+                {{/if}}
             </div>
-            <div><span id="accountName">Anh Duy</span></div>
+            <div><span id="accountName">{{authUser.name}}</span></div>
             <div><span id="role">Giảng viên</span></div>
             <div><a href="/lecturer/addcourse" class="myButton"><i class="fas fa-plus-circle"></i>       Tạo khóa học</a></div>
             <hr/>
             <div id="linkage">
                 <dl>
                     <dt>
-                        <div><a class="link" href="/lecturer"><i class="fas fa-user-circle    "></i>     Thông tin cá nhân</a></div>
+                        <div><a class="link" href="/lecturer/information"><i class="fas fa-user-circle    "></i>     Thông tin cá nhân</a></div>
                     </dt>
                     <dt>
                         <div id="ex"><a class="link" href="#"><i class="fas fa-play-circle    "></i>     Khóa học</a></div>

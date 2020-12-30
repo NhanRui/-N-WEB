@@ -188,8 +188,8 @@ dt div a,dl div a{
 }
 
 .teacher-id{
-    float:left;
-    margin-right: 50px;
+    /*float:left;*/
+    margin-right: 30px;
     text-align: center;
     display:flex;
 }

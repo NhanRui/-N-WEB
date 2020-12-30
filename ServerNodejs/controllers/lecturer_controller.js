@@ -2,17 +2,50 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const lecturerModel = require('../models/lecturer_model');
+const userModel = require('../models/user.model');
 const uniqid = require('uniqid');
 router.use(express.static('public'));
 router.use(express.static('upload'));
 var path = require('fs');
 
 router.get('/', function (req, res) {  //Nhan them de test
-  res.render('lecturer_in4',{layout: 'lecturer.hbs'});
+  res.redirect('information');
 });
 
 router.get('/information', function (req, res) {
-    res.render("lecturer_in4",{layout:"lecturer"});
+  res.render('vwLecturer/lecturer_in4',{
+    layout: 'lecturer.hbs',
+    acc: req.session.authUser,
+    nam: req.session.authUser.gender==='Nam' ,
+    nu: req.session.authUser.gender==="Nữ",
+    else: req.session.authUser.gender==="Nam" || req.session.authUser.gender==="Nữ",
+  });
+})
+
+router.post('/information', async function (req, res) {
+  const lect={
+    user_id: req.session.authUser.user_id,
+    name: req.body.username || req.session.authUser.name,
+    gender: req.body.gender,
+    dob: req.body.dob || req.session.authUser.dob,
+    phone_number: req.body.sdt || req.session.authUser.phone_number,
+    email: req.session.authUser.email,
+    password: req.session.authUser.password,
+    password_lvl2: req.session.authUser.password_lvl2,
+    avatar: req.body.ava || req.session.avatar,
+    description: req.body.des,
+    role: req.session.authUser.role
+  }
+  req.session.authUser = lect;
+  await userModel.patch(lect);
+  
+  res.render('vwLecturer/lecturer_in4',{
+    layout: 'lecturer.hbs',
+    acc: req.session.authUser,
+    nam: req.session.authUser.gender==='Nam' ,
+    nu: req.session.authUser.gender==="Nữ",
+    else: req.session.authUser.gender==="Nam" || req.session.authUser.gender==="Nữ",
+  });
 })
 
 router.get('/upload', function (req, res) {  //Nhan them de test
@@ -92,6 +125,7 @@ router.post('/courseavatar',function(req,res){
   }
   */
  var filepath = './upload/course';
+ var filename = req.session.cid+".jpg";
  
   const storage = multer.diskStorage({
     destination: function(req, file, cb){
@@ -99,7 +133,7 @@ router.post('/courseavatar',function(req,res){
     },
     filename: function(req,file,cb){
       //cb(null, file.originalname)
-      cb(null, req.session.cid+".jpg")
+      cb(null, filename)
     }
   })
 
@@ -137,6 +171,42 @@ router.post('/courseintro',async function(req,res){
   })
 })
 */
+
+router.post('/useravt',async function(req,res){
+ var filepath = './upload/user_avatar';
+ var filename = req.session.authUser.user_id+".jpg";
+ 
+  const storage = multer.diskStorage({
+    destination: function(req, file, cb){
+      cb(null, filepath)
+    },
+    filename: function(req,file,cb){
+      //cb(null, file.originalname)
+      cb(null, filename)
+    }
+  })
+  
+  const upload = multer({storage: storage});
+  await upload.single('avatar')(req, res, async function(err){
+    if(err){
+      console.log(err);
+    }else{
+      var onlyava ={
+        user_id: req.session.authUser.user_id,
+        avatar: '/upload/user_avatar/'+filename
+      } 
+      await userModel.patch(onlyava);
+      req.session.authUser.avatar = onlyava.avatar;
+      res.locals.authUser = req.session.authUser;
+
+      res.redirect('information');
+    }
+  })
+})
+
+router.get('/get_user_avtURL',function(req,res,next){
+  return res.json("/upload/user_avatar/"+req.session.authUser.user_id+".jpg");
+})
 
 router.get('/get_subcat',async function(req,res,next){
   const subcatid = req.query.id;

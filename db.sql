@@ -109,12 +109,12 @@ DROP TABLE IF EXISTS `course`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `course` (
   `course_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `course_name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `course_name` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `description` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `intro_image` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `price` double NOT NULL,
   `deal_value` int DEFAULT NULL,
-  `course_intro_description` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `course_intro_description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `course_intro_video` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `course_benefit_description` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `course_suitability` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -134,7 +134,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES ('C01','Bí quyết giao tiếp để thành công','Tiến sĩ Lê Thẩm Dương tiết lộ bí quyết giao tiếp để thành công','images/productTesting.png',699000,50,NULL,NULL,NULL,NULL,'U8d0rgoojskj03tm75','1'),('C02','Học troll game','Tiến sĩ Lê Hoàng Phúc tiết lộ bí quyết giao tiếp để thành công','images/product_ID2.jpg',123123,50,NULL,NULL,NULL,NULL,'U8d0rgoojskj03tm75','2'),('C03','Thành thạo ngôn ngữ lập trình C++','Thành thạo ngôn ngữ lập trình C++','images/product_ID1.jpg',699000,74,NULL,NULL,NULL,NULL,'U8d0rgoojskj03tm75','1'),('C04','VBA - Giải pháp tối ưu công việc trên Excel','VBA - Giải pháp tối ưu công việc trên Excel','images/product_ID3.jpg',599000,70,NULL,NULL,NULL,NULL,'U8d0rgoojskj03tm75','1');
+INSERT INTO `course` VALUES ('C01','Bí quyết giao tiếp để thành công','Tiến sĩ Lê Thẩm Dương tiết lộ bí quyết giao tiếp để thành công','images/productTesting.png',699000,50,NULL,NULL,NULL,NULL,'U8d0rgoojskj03tm75','1'),('C02','Học troll game','Tiến sĩ Lê Hoàng Phúc tiết lộ bí quyết giao tiếp để thành công','images/product_ID2.jpg',123123,50,NULL,NULL,NULL,NULL,'U8d0rgoojskj03tm75','2'),('C03','Thành thạo ngôn ngữ lập trình C++','Thành thạo ngôn ngữ lập trình C++','images/product_ID1.jpg',699000,74,NULL,NULL,NULL,NULL,'U8d0rgoojskj03tm75','1'),('C04','VBA - Giải pháp tối ưu công việc trên Excel','VBA - Giải pháp tối ưu công việc trên Excel','images/product_ID3.jpg',599000,70,NULL,NULL,NULL,NULL,'U8d0rgoojskj03tm75','1'),('Cswyrp61kkj9sbfva','Lập trình backend cho website bằng PHP/Mysql theo mô hình MVC','Backend PHP MySQL','upload/course/Cswyrp61kkj9sbfva.jpg',699000,0,'<p>Điểm kh&aacute;c biệt của kh&oacute;a học n&agrave;y so với c&aacute;c kh&oacute;a học online kh&aacute;c c&ugrave;ng chủ đề lập tr&igrave;nh PHP l&agrave; g&igrave; vậy ?<br />\r\nKh&aacute;c người tr&igrave;nh b&agrave;y bạn ạ. M&igrave;nh nghĩ cũng ảnh hưởng một phần đ&oacute;, mỗi người một c&aacute;ch tr&igrave;nh b&agrave;y v&agrave; tiếp cận kh&aacute;c nhau, sẽ hợp với từng người kh&aacute;c nhau, hi vọng bạn v&agrave; m&igrave;nh &quot;&quot;tương th&iacute;ch&quot;&quot;. Hơn nữa m&igrave;nh tự tin ở phần l&agrave; rất chi tiết, m&igrave;nh nghĩ l&agrave; kh&ocirc;ng ai n&oacute;i chi tiết như thế bạn ạ, để đảm bảo l&agrave; bạn hiểu tận ng&oacute;c ng&aacute;ch v&agrave; bản chất của vấn đề. Einestern đ&atilde; n&oacute;i l&agrave; nếu bạn kh&ocirc;ng thể giải th&iacute;ch cho một đứa trẻ hiểu th&igrave; bạn cũng chẳng hiểu r&otilde; vấn đề. Bạn thử học nh&eacute;. &quot;</p>\r\n',NULL,'Tự lập trình phần mềm phù hợp với nhu cầu và công việc cá nhân\r\nKiến thức ở khóa này là nền tảng cho khóa nâng cao sau này và các khóa về fullstact angular sẽ xuất bản tới','Sinh viên học về công nghệ thông tin\r\nNhững bạn chưa biết rõ bản chất của lập trình MVC\r\nNhững bạn muốn học về lập trình web\r\nNhững bạn muốn tự lập trình backend cho website của mình','Uswyrp45kkj5e5nrw','2');
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -236,7 +236,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('D2DPfuv3QsepE7q422Q5L8e1HbYF8JBD',1609065024,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":false,\"authUser\":null,\"retUrl\":\"/lecturer/addcourse\"}');
+INSERT INTO `sessions` VALUES ('-HPShpwdKD3wJFvigbuR1NKLKZ4VOYJe',1609375974,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":false,\"retUrl\":\"/lecturer/\"}'),('1NyYt4a3mwKTznPIrCJ_Ugrvf9ZJxt4f',1609345209,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"authUser\":{\"user_id\":\"Uswyrp45kkj5e5nrw\",\"name\":\"qwdqwd qwdqwd\",\"gender\":null,\"dob\":\"2000-12-06T17:00:00.000Z\",\"phone_number\":null,\"email\":\"nguoiamphu\",\"password\":\"$2a$10$UtYSET9vR1AAWNbHyEsuMeS5ljiVslyl/iGzXWkin4hpXPhFmiK7W\",\"password_lvl2\":null,\"avatar\":null,\"description\":null,\"role\":1},\"cid\":\"Cswyrp6wskja42yca\",\"retUrl\":\"/lecturer/addcourse\"}'),('A3nKOfwPMPPgj1uxT0SD87NX0uWalxcZ',1609388230,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"authUser\":{\"user_id\":\"Uswyrp45kkj5e5nrw\",\"name\":\"Lưu Thiện Nhân\",\"gender\":\"Nam\",\"dob\":\"2020-12-09\",\"phone_number\":\"0703002347\",\"email\":\"nguoiamphu\",\"password\":\"$2a$10$UtYSET9vR1AAWNbHyEsuMeS5ljiVslyl/iGzXWkin4hpXPhFmiK7W\",\"password_lvl2\":null,\"avatar\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"description\":\"\",\"role\":1},\"retUrl\":\"/lecturer/information\"}'),('n_XnubwmEpizp1TdqI2rx9R5gHrIQAqe',1609315794,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":false,\"retUrl\":\"/lecturer/addcourse\"}');
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -314,7 +314,7 @@ CREATE TABLE `user` (
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `password_lvl2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `avatar` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `description` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `role` int DEFAULT NULL,
   PRIMARY KEY (`user_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
@@ -326,7 +326,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('1','Luu a',NULL,NULL,NULL,'phuc@gmail.com','123123',NULL,'images/BecomeInstructor/ltn.jpg',NULL,0),('U8d0rgoojskj03tm75','Lê Hoàng Phúc',NULL,NULL,NULL,'phucyugi@gmail.com','$2a$10$eaeN/x0vA8RF.0egO0mX5OUu1FmCEue6vCRCfGE2YkYbdTM/1xkee',NULL,'images/BecomeInstructor/ltn.jpg',NULL,1),('Uswyrp2a4kitph7ft','Luu Thien Nhan',NULL,NULL,NULL,'nhanluu838@gmail.com','$2a$10$kYroKyRFPmJn1zYPkWsl2OVFhzlap4ZpnQOlN.IxABE/RNYO5Qwj6',NULL,'images/BecomeInstructor/ltn.jpg',NULL,0),('Uswyrp45kkj5e5nrw','qwdqwd qwdqwd',NULL,NULL,NULL,'nguoiamphu','$2a$10$UtYSET9vR1AAWNbHyEsuMeS5ljiVslyl/iGzXWkin4hpXPhFmiK7W',NULL,NULL,NULL,0);
+INSERT INTO `user` VALUES ('1','Luu a',NULL,NULL,NULL,'phuc@gmail.com','123123',NULL,'images/BecomeInstructor/ltn.jpg',NULL,0),('U8d0rgoojskj03tm75','Lê Hoàng Phúc',NULL,NULL,NULL,'phucyugi@gmail.com','$2a$10$eaeN/x0vA8RF.0egO0mX5OUu1FmCEue6vCRCfGE2YkYbdTM/1xkee',NULL,'images/BecomeInstructor/ltn.jpg',NULL,1),('Uswyrp2a4kitph7ft','Luu Thien Nhan',NULL,NULL,NULL,'nhanluu838@gmail.com','$2a$10$kYroKyRFPmJn1zYPkWsl2OVFhzlap4ZpnQOlN.IxABE/RNYO5Qwj6',NULL,'images/BecomeInstructor/ltn.jpg',NULL,0),('Uswyrp45kkj5e5nrw','Lưu Thiện Nhân','Nam','2020-12-09','0703002347','nguoiamphu','$2a$10$UtYSET9vR1AAWNbHyEsuMeS5ljiVslyl/iGzXWkin4hpXPhFmiK7W',NULL,'/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg','',1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -367,4 +367,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-26 19:57:48
+-- Dump completed on 2020-12-30 11:24:31
