@@ -1,3 +1,5 @@
+const db = require('../utils/db')
+
 const courses_detail = {
   product_ID: "CD001",//P them
   root_dir: "Phát triển cá nhân",
@@ -128,4 +130,28 @@ module.exports = {
   all() {
     return courses_detail;
   },
+
+  async singleFromSql(courseID) {
+    let sql = `select * from course where course_id = '${courseID}'`;
+    const [rows, fields] = await db.load(sql);
+    return rows;
+  },
+
+  async course_lecturer(courseID) {
+    let sql = `select u.* from user as u left join course as c on u.user_id = c.lecturer_id where c.course_id = '${courseID}' `;
+    const [rows, fields] = await db.load(sql);
+    return rows;
+  },
+
+  async course_cate(courseID) {
+    let sql = `select c.* from category as c left join course as co on c.category_id = co.categoty_id where co.course_id = '${courseID}'`;
+    const [cate, fields] = await db.load(sql);
+    let getNameSql = `select category_name from category where category_id = '${cate[0].category_id}'`;
+    let getParentSql = `select category_name from category where category_id = '${cate[0].parent_id}'`;
+    const [main, fields1] = await db.load(getNameSql);
+    const [parent, fields2] = await db.load(getParentSql);
+    console.log(main[0]);
+    console.log(parent[0]);
+    return [main[0].category_name, parent[0].category_name];
+  }
 };
