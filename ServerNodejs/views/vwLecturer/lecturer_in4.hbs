@@ -12,8 +12,8 @@
                         <img id="inner-avatar" src="/public/images/male_lecturer.jpg" alt="Avatar" class="rounded-circle avatar-size">
                     {{/if}}
                 {{/if}}
-                <input type="hidden" name="ava" id="ava">
             </div>
+            <input type="hidden" name="ava" id="ava" value=""/>
             <div class="text">
                 <div class="username">{{acc.name}}</div>
                 <div class="teacher-info clearfix">
@@ -72,7 +72,7 @@
             </div>
             <div class="input-box">
                 <div class="label"><label id="dob" for="datepicker">{{acc.dob}}</label></div>
-                <input id="datepicker" name="dob" width="276" value=""/>
+                <input id="datepicker" name="dob" width="276" value="" placeholder="yyyy-mm-dd"/>
                 <script>
                     var str = $('#dob').html().substring(0,10);
                     $('#dob').html("Ngày sinh:   "+str);
@@ -96,19 +96,20 @@
             </div>
             <div class="input-box">
                 <div class="label"><label for="diachi">Địa chỉ</label></div>
-                <input type="text" name="diachi" id="diachi" class="input-type" value="{{val.address}}">
+                <input type="text" name="address" id="diachi" class="input-type" value="{{acc.address}}">
             </div>
             <div class="input-box">
                 <div class="label"><label for="email">Email đăng ký tài khoản</label></div>
-                <input value="phucyugi@gmail.com" type="email" name="email" id="email" class="input-type" disabled>
+                <input value="{{acc.email}}" type="email" name="email" id="email" class="input-type" disabled>
             </div>
         </div>
         <div class="basic-info-2">
             <div class="tieusu-box">
                 <div class="label">Tiểu sử giảng viên</div>
                 <div class="input-container">
-                    <input name="des" placeholder="VD: Được biết đến không chỉ là một giảng viên xuất sắc của Khoa Quản trị Kinh doanh" class="input-element" value="">
-                    <button class="remove"><i class="fas fa-times-circle    "></i></button>
+                    <textarea id="des" name="des" placeholder="VD: Được biết đến không chỉ là một giảng viên xuất sắc của Khoa Quản trị Kinh doanh" class="input-element" value="">
+                    </textarea>
+                    <!--<button class="remove"><i class="fas fa-times-circle    "></i></button>-->
                 </div>
             </div>
         </div>
@@ -126,19 +127,25 @@
     });
     
     $('#input-41').change(function(){
-        alert('submitting');
+        
         $('#avt').submit();
         $.getJSON({
             url: '/lecturer/get_user_avtURL',
             success: function(data){
                 if(data!==null){
-                    $('#inner-avatar').attr('src',data);   //mai ko chay duoc
-                    $('#ava').attr('value',str);
+                    
+                    $('#inner-avatar').attr('src',data);
+                    $('#ava').attr('value',data);
+                    alert($('#ava').val());
                 }
                 else    alert("Không load được hình !!!");
             },
         });
     });
+
+    $('.remove').on('click',function(){
+        $('#des').val("");
+    })
 
     $("#input-41").fileinput({
         allowedFileTypes: ["image"],

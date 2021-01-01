@@ -185,7 +185,6 @@
                     success: function(data){
                         if(data!==null){
                             const str = "url('"+data+"')";
-                            alert(str);
                             $('#image_choose').attr('style',`background-image: ${str};background-size: cover;`);   //mai ko chay duoc
                         }
                         else    alert("Không load được hình !!!");
