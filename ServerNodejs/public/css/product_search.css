@@ -183,3 +183,12 @@ p.number-students{
     height: 100%;
     border-radius: 8px;
 }
+
+.activate_choice{
+    background-color: blue;
+    color: white;
+}
+
+.noHover{
+    pointer-events: none;
+}

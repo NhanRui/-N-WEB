@@ -469,6 +469,26 @@ const list = [
         const [rows, fields] = await db.getUp3starCourse(id);
         return rows;
       },
+      async getDown3starCourse(id){
+        const [rows, fields] = await db.getDown3starCourse(id);
+        return rows;
+      },
+      async mostStudyByCatID(id){
+        const [rows, fields] = await db.mostStudyByCatID(id);
+        return rows;
+      },
+      async mostOverallByCatID(id){
+        const [rows, fields] = await db.mostOverallByCatID(id);
+        return rows;
+      },
+      async ascPriceByCatID(id){
+        const [rows, fields] = await db.ascPriceByCatID(id);
+        return rows;
+      },
+      async descPriceByCatID(id){
+        const [rows, fields] = await db.descPriceByCatId(id);
+        return rows;
+      },
       all_top8(){
           return list_top8;
       },

@@ -9,11 +9,11 @@ const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 const config = require('./config/default.json');
 const auth=require('./middleware/auth.mdw');
+const { category } = require('./models/lecturer_model');
 
 const app = express();
 
 //-----------------------------------middle ware------------------------------
-//mongoose.connect('localhost:27017/shopping');
 app.use(express.static('public'));
 app.use('/public',express.static('public'));
 app.use('/upload',express.static('upload'));
@@ -54,6 +54,7 @@ app.use(express.urlencoded({
 }));
 
 //---local---
+require('./middleware/locals.mdw')(app);
 app.use(function (req,res,next){
   if(typeof(req.session.auth) === 'undefined'){
     req.session.auth = false;

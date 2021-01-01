@@ -73,24 +73,24 @@
                 <div class="form-check">
                     <ul class="level-choice">
                         {{#with this.cateId}}
-                        <li class="item">
+                        <li class="item {{#if active_5}}activate_choice noHover{{/if}}">
                             <a href="/search/{{Id}}/rating-5">
-                                <label class="text_star"> <span class="rating-choice"><i class="fas fa-star"></i></span> 5.0 </label>
+                                <label class="text_star {{#if active_5}}active_text{{/if}}"> <span class="rating-choice"><i class="fas fa-star"></i></span> 5.0 </label>
                             </a>
                         </li>
-                        <li class="item">
+                        <li class="item {{#if active_up_4}}activate_choice noHover{{/if}}">
                             <a href="/search/{{Id}}/rating-up-4">
-                                <label class="text_star"> <span class="rating-choice"><i class="fas fa-star"></i></span> 4.0 trở lên </label>
+                                <label class="text_star {{#if active_up_4}}active_text{{/if}}"> <span class="rating-choice"><i class="fas fa-star"></i></span> 4.0 trở lên </label>
                             </a>
                         </li>
-                        <li class="item">
+                        <li class="item {{#if active_up_3}}activate_choice noHover{{/if}}" >
                             <a href="/search/{{Id}}/rating-up-3">
-                                <label class="text_star"> <span class="rating-choice"><i class="fas fa-star"></i></span> 3.0 trở lên </label>
+                                <label class="text_star {{#if active_up_3}}active_text{{/if}}"> <span class="rating-choice"><i class="fas fa-star"></i></span> 3.0 trở lên </label>
                             </a>
                         </li>
-                        <li class="item">
-                            <a href="/search/{{Id}}/rating-up-4">
-                                <label class="text_star"> <span class="rating-choice"><i class="fas fa-star"></i></span> Dưới 3.0 </label>
+                        <li class="item {{#if active_down_3}}activate_choice noHover{{/if}}">
+                            <a href="/search/{{Id}}/rating-down-3">
+                                <label class="text_star {{#if active_down_3}}active_text{{/if}}"> <span class="rating-choice"><i class="fas fa-star"></i></span> Dưới 3.0 </label>
                             </a>
                         </li>
                         {{/with}}
@@ -99,27 +99,29 @@
             </div>
         </div>
         <div class="menu-sort">
+            {{#with this.cateId}}
             <div class="menusub-choices">
                 <span class="style-submenu menu0">
                     <i class="fas fa-sort-amount-up"></i> Sắp xếp
                 </span>
                 <span class="blur-style diff-char"> | </span>
-                <a href="#">
+                <a href="/search/{{Id}}/most-study">
                     <span class="style-submenu menu1 blur-style">Học nhiều nhất</span>
                 </a>
-                <a href="#">
+                <a href="/search/{{Id}}/most-overall">
                     <span class="style-submenu menu2 blur-style">Đánh giá cao nhất</span>
                 </a>
-                <a href="#">
+                <a href="/search/{{Id}}/newest">
                     <span class="style-submenu menu3 blur-style">Mới nhất</span>
                 </a>
-                <a href="#">
+                <a href="/search/{{Id}}/price-ascend">
                     <span class="style-submenu menu4 blur-style">Giá thấp đến cao</span>
                 </a>
-                <a href="#">
+                <a href="/search/{{Id}}/price-descend">
                     <span class="style-submenu menu5 blur-style">Giá cao đến thấp</span>
                 </a>
             </div>
+            {{/with}}
             <div class="container123">
                 {{>product_in_search}}
                 <div class="row">
