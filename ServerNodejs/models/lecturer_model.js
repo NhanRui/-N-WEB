@@ -19,5 +19,13 @@ module.exports ={
     async add(course){
         const [result, fields] = await db.add(course,'course');
         return result;
+    },
+
+    async courses(user_id){
+        const sql = `select * from course where lecturer_id = '${user_id}'`;
+        const [rows, fields] = await db.load(sql);
+        if(rows.length === 0)
+            return null;
+        return rows;
     }
 }

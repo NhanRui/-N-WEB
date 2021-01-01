@@ -41,22 +41,18 @@
                         <div><a class="link" href="/lecturer/information"><i class="fas fa-user-circle    "></i>     Thông tin cá nhân</a></div>
                     </dt>
                     <dt>
-                        <div id="ex"><a class="link" href="#"><i class="fas fa-play-circle    "></i>     Khóa học</a></div>
+                        <div id="ex"><a class="link" href="javascript:;"><i class="fas fa-play-circle    "></i>     Khóa học</a></div>
                     </dt>
                     <dd>
-                        <div id="ex1"><a class="link" href="#"><i class="fas fa-tasks    "></i>     Quản trị khóa học</a></div>
+                        <div id="ex1"><a class="link" href="/lecturer/mycourses"><i class="fas fa-tasks    "></i>     Quản trị khóa học</a></div>
                     </dd>
                     <dd>
-                        <div id="ex2"><a class="link" href="#"><i class="fas fa-film    "></i>     Kho học liệu</a></div>
+                        <div id="ex2"><a class="link" href="javascript:;"><i class="fas fa-film    "></i>     Kho học liệu</a></div>
                     </dd>
                     <script>
                         $("#ex").on('click',function(){
                             $("#ex1").toggle('slow');
                             $("#ex2").toggle('slow');
-                        })
-                        $("#ex1").on('click',function(event){
-                            alert('Tính năng này hiện đang được bảo trì');
-                            event.preventDefault();
                         })
                         $("#ex2").on('click',function(event){
                             alert('Tính năng này hiện đang tạm khóa');

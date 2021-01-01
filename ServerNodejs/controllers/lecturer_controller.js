@@ -4,6 +4,7 @@ const multer = require('multer');
 const lecturerModel = require('../models/lecturer_model');
 const userModel = require('../models/user.model');
 const uniqid = require('uniqid');
+const moment = require('moment');
 router.use(express.static('public'));
 router.use(express.static('upload'));
 var path = require('fs');
@@ -32,9 +33,10 @@ router.post('/information', async function (req, res) {
     email: req.session.authUser.email,
     password: req.session.authUser.password,
     password_lvl2: req.session.authUser.password_lvl2,
-    avatar: req.body.ava || req.session.avatar,
-    description: req.body.des,
-    role: req.session.authUser.role
+    avatar: req.body.ava || req.session.authUser.avatar,
+    description: req.body.des || req.session.authUser.des,
+    role: req.session.authUser.role,
+    address: req.body.address || req.session.authUser.address
   }
   req.session.authUser = lect;
   await userModel.patch(lect);
@@ -72,6 +74,18 @@ router.post('/upload',function(req,res){
   })
 })
 
+router.get('/mycourses',async function(req,res){
+  const courses = await lecturerModel.courses(req.session.authUser.user_id);
+  for(var i=0;i<courses.length;i++){
+    courses[i].create_date = moment(courses[i].create_date).format('DD/MM/YYYY');
+  }
+  res.render('vwLecturer/mycourses',{
+    layout:'lecturer',
+    courses: courses,
+    count: courses.length
+  });
+})
+
 router.get('/addcourse',async function(req,res){
   req.session.cid = uniqid('C');
   const cat = await lecturerModel.category();
@@ -85,10 +99,13 @@ router.post('/addcourse',async function(req,res){
   var img="";
   var vid="";
   if(req.body.avtURL === 'ok'){
-    img="upload/course/"+req.session.cid+".jpg";
+    img="/upload/course/"+req.session.cid+".jpg";
   }else{
     img="images/ini_course.jpg";
   }
+
+  var date = Date.now();
+  var now = moment(date).format("YYYY-MM-DD");
 
   if(req.body.introURL !== ''){
     vid=req.body.introURL;
@@ -108,7 +125,8 @@ router.post('/addcourse',async function(req,res){
     course_benefit_description: req.body.benefit,
     course_suitability: req.body.suitable,
     lecturer_id: req.session.authUser.user_id,
-    categoty_id: req.body.sub_category
+    categoty_id: req.body.sub_category,
+    create_date: now
   }
   await lecturerModel.add(course);
   //store.destroy(req.session.cid);
@@ -205,6 +223,7 @@ router.post('/useravt',async function(req,res){
 })
 
 router.get('/get_user_avtURL',function(req,res,next){
+  req.session.authUser.avatar = "/upload/user_avatar/"+req.session.authUser.user_id+".jpg";
   return res.json("/upload/user_avatar/"+req.session.authUser.user_id+".jpg");
 })
 
