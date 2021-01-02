@@ -125,7 +125,7 @@
     }
 
 
-.row {
+.row_1 {
     display: flex;
     justify-content: space-between;
 }
@@ -356,25 +356,29 @@
             width: 360px;
             display: flex;
         }
-        
+
         .male {
-            width: 100px;
+            width: 100px !important;
         }
 
         .male .label{
-            margin-top: -7px;
+            margin-top: -7px !important;
+            width: 60% !important;
         }
-        
+
 .password-change {
     width: 100%;
 }
 
     .pcb-box {
         padding: 30px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
     }
 
     .password-change-btn {
-        width: 200px;
+        width: 150px;
         height: 46px;
         border: 0;
         border-radius: 7px;
@@ -382,7 +386,7 @@
         background-color: #9b9b9b;
         font-size: 14px;
         font-weight: 400;
-        cursor: not-allowed;
+        cursor: pointer;
         outline: none;
     }
 
@@ -416,7 +420,7 @@ a {
 }
 body {
     padding: 0;
-    background-color: whitesmoke;
+    background-color: whitesmoke !important;
     margin: 0;
 }
 
