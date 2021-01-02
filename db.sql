@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `db`;
 -- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
 -- Host: localhost    Database: db
@@ -212,6 +214,7 @@ CREATE TABLE `lesson_list` (
 
 LOCK TABLES `lesson_list` WRITE;
 /*!40000 ALTER TABLE `lesson_list` DISABLE KEYS */;
+INSERT INTO `lesson_list` VALUES ('Lswyrp538kjfxfrlu',1,'Thẻ HTML','Cswyrp498kjdsuj8s'),('Lswyrp538kjfxfrv4',2,'Thẻ HTML','Cswyrp498kjdsuj8s');
 /*!40000 ALTER TABLE `lesson_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -236,7 +239,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('N0OUZ8efwuNawlX9H4JTarHz79BmqXc7',1609644319,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"authUser\":{\"user_id\":\"Uswyrp45kkj5e5nrw\",\"name\":\"Lưu Thiện Nhân\",\"gender\":\"Khác\",\"dob\":\"2020-11-30T17:00:00.000Z\",\"phone_number\":\"0703002347\",\"email\":\"nguoiamphu\",\"password\":\"$2a$10$UtYSET9vR1AAWNbHyEsuMeS5ljiVslyl/iGzXWkin4hpXPhFmiK7W\",\"password_lvl2\":null,\"avatar\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"description\":\"ádqwqd\\r\\nqưd\\r\\nqư\\r\\ndqw\\r\\nd\\r\\nqưdfqwfqfqfw\",\"role\":1,\"address\":\"123 Nguyễn Văn Cừ Q.5\"}}'),('VB1rfPCDJQPBSx9ARNK15sdjT4ke13XK',1609599167,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"authUser\":{\"user_id\":\"Uswyrp45kkj5e5nrw\",\"name\":\"Lưu Thiện Nhân\",\"gender\":\"Khác\",\"dob\":\"2020-11-30T17:00:00.000Z\",\"phone_number\":\"0703002347\",\"email\":\"nguoiamphu\",\"password\":\"$2a$10$UtYSET9vR1AAWNbHyEsuMeS5ljiVslyl/iGzXWkin4hpXPhFmiK7W\",\"password_lvl2\":null,\"avatar\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"description\":\"ádqwqd\\r\\nqưd\\r\\nqư\\r\\ndqw\\r\\nd\\r\\nqưdfqwfqfqfw\",\"role\":1,\"address\":\"123 Nguyễn Văn Cừ Q.5\"},\"cid\":\"Cswyrp60wkje2nwa6\",\"retUrl\":\"/lecturer/mycourses\"}'),('oGGvdR9qF6ZyjX8UjYcOxnSR_ivPX-QG',1609635027,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":false,\"retUrl\":\"/lecturer/mycourses\"}');
+INSERT INTO `sessions` VALUES ('N0OUZ8efwuNawlX9H4JTarHz79BmqXc7',1609691706,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"authUser\":{\"user_id\":\"Uswyrp45kkj5e5nrw\",\"name\":\"Lưu Thiện Nhân\",\"gender\":\"Khác\",\"dob\":\"2020-11-30T17:00:00.000Z\",\"phone_number\":\"0703002347\",\"email\":\"nguoiamphu\",\"password\":\"$2a$10$UtYSET9vR1AAWNbHyEsuMeS5ljiVslyl/iGzXWkin4hpXPhFmiK7W\",\"password_lvl2\":null,\"avatar\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"description\":\"ádqwqd\\r\\nqưd\\r\\nqư\\r\\ndqw\\r\\nd\\r\\nqưdfqwfqfqfw\",\"role\":1,\"address\":\"123 Nguyễn Văn Cừ Q.5\"},\"ll\":[{\"list_id\":\"Lswyrp538kjfxfrlu\",\"chapter_number\":1,\"chapter_name\":\"Thẻ HTML\",\"course_id\":\"Cswyrp498kjdsuj8s\",\"videos\":[{\"video_id\":\"Vswyrp538kjfxfrsm\",\"video_name\":\"Giới thiệu\",\"video_duration\":null,\"url\":\"https://www.youtube.com/watch?v=bUEykHfMMnc\",\"list_id\":\"Lswyrp538kjfxfrlu\",\"video_number\":1}]},{\"list_id\":\"Lswyrp538kjfxfrv4\",\"chapter_number\":2,\"chapter_name\":\"Thẻ HTML\",\"course_id\":\"Cswyrp498kjdsuj8s\",\"videos\":[{\"video_id\":\"Vswyrp538kjfxfrxv\",\"video_name\":\"Tag HTML nâng cao\",\"video_duration\":null,\"url\":\"https://www.youtube.com/watch?v=ZIgDYEZl1VE\",\"list_id\":\"Lswyrp538kjfxfrv4\",\"video_number\":1},{\"video_id\":\"Vswyrp538kjfxfs0n\",\"video_name\":\"Tag HTML nâng quá dữ\",\"video_duration\":null,\"url\":\"https://www.youtube.com/watch?v=P0JJR5vYGOU\",\"list_id\":\"Lswyrp538kjfxfrv4\",\"video_number\":2}]}]}'),('VB1rfPCDJQPBSx9ARNK15sdjT4ke13XK',1609599167,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"authUser\":{\"user_id\":\"Uswyrp45kkj5e5nrw\",\"name\":\"Lưu Thiện Nhân\",\"gender\":\"Khác\",\"dob\":\"2020-11-30T17:00:00.000Z\",\"phone_number\":\"0703002347\",\"email\":\"nguoiamphu\",\"password\":\"$2a$10$UtYSET9vR1AAWNbHyEsuMeS5ljiVslyl/iGzXWkin4hpXPhFmiK7W\",\"password_lvl2\":null,\"avatar\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"description\":\"ádqwqd\\r\\nqưd\\r\\nqư\\r\\ndqw\\r\\nd\\r\\nqưdfqwfqfqfw\",\"role\":1,\"address\":\"123 Nguyễn Văn Cừ Q.5\"},\"cid\":\"Cswyrp60wkje2nwa6\",\"retUrl\":\"/lecturer/mycourses\"}'),('oGGvdR9qF6ZyjX8UjYcOxnSR_ivPX-QG',1609635027,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":false,\"retUrl\":\"/lecturer/mycourses\"}');
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -344,6 +347,7 @@ CREATE TABLE `video` (
   `video_duration` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `url` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `list_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `video_number` int DEFAULT NULL,
   PRIMARY KEY (`video_id`) USING BTREE,
   KEY `FK_video_lessonlist_idx` (`list_id`) USING BTREE,
   CONSTRAINT `FK_video_lessonlist` FOREIGN KEY (`list_id`) REFERENCES `lesson_list` (`list_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
@@ -356,6 +360,7 @@ CREATE TABLE `video` (
 
 LOCK TABLES `video` WRITE;
 /*!40000 ALTER TABLE `video` DISABLE KEYS */;
+INSERT INTO `video` VALUES ('Vswyrp538kjfxfrsm','Giới thiệu',NULL,'https://www.youtube.com/watch?v=bUEykHfMMnc','Lswyrp538kjfxfrlu',1),('Vswyrp538kjfxfrxv','Tag HTML nâng cao',NULL,'https://www.youtube.com/watch?v=ZIgDYEZl1VE','Lswyrp538kjfxfrv4',1),('Vswyrp538kjfxfs0n','Tag HTML nâng quá dữ',NULL,'https://www.youtube.com/watch?v=P0JJR5vYGOU','Lswyrp538kjfxfrv4',2);
 /*!40000 ALTER TABLE `video` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -368,4 +373,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-02 12:22:52
+-- Dump completed on 2021-01-02 23:38:52
