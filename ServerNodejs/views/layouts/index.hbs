@@ -19,6 +19,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </head>
 <body>
+    <form id="frmLogout" action="/account/logout" method="POST"></form>>
     <div>
         <nav>
             <input type="checkbox" id="check">
@@ -67,6 +68,9 @@
             </div>
             <div class="cart-btn-pos">
                 <div class="cart-btn-focus" id="cart-btn-click">
+                    {{#if auth}}
+                        <a href="/cart" class="amount-cart">{{cartSummary}}</a>
+                    {{/if}}
                     <i class="cart-btn fas fa-shopping-cart" id="cart-item"></i>
                     <div class="cart_list" id="cart_list_focus">
                         <!--                        <i class="list_ca fas fa-shopping-cart"></i>
@@ -151,7 +155,7 @@
                     </div>
                     <hr>
                     <div class="option-item-auth">
-                        <a href="#" class="option-select-auth">Đăng xuất</a>
+                        <a href="javascript: $('#frmLogout').submit();" class="option-select-auth">Đăng xuất</a>
                     </div>
                 </div>
             </div>

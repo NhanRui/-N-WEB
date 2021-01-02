@@ -10,6 +10,7 @@ const MySQLStore = require('express-mysql-session')(session);
 const config = require('./config/default.json');
 const auth=require('./middleware/auth.mdw');
 const { category } = require('./models/lecturer_model');
+const cartModel=require('./models/cart.model');
 
 const app = express();
 
@@ -27,7 +28,7 @@ app.use(session({
   secret: 'SECRET_KEY',
   resave: false,
   saveUnitialized: true,
-  store: sessionStore,
+  //store: sessionStore,
   cookie: {
     //secure: true
   }
@@ -59,9 +60,13 @@ app.use(function (req,res,next){
   if(typeof(req.session.auth) === 'undefined'){
     req.session.auth = false;
   }
+  if (req.session.auth===false){
+    req.session.cart=[];
+  }
   res.locals.cid = null;
   res.locals.auth = req.session.auth;
   res.locals.authUser = req.session.authUser;
+  res.locals.cartSummary=cartModel.getNumberOfItems(req.session.cart);
   next();
 })
 
@@ -69,6 +74,7 @@ app.use(function (req,res,next){
 app.use('/', require('./controllers/product_controller'));
 app.use('/index', require('./controllers/product_controller'));
 app.use('/', require('./controllers/course_detail_controller'));
+app.use('/cart/',require('./controllers/cart_fa_controller'));
 
 app.use('/account',require('./controllers/account.route'));
 app.use('/search',require('./controllers/product_search_controller'));

@@ -4,9 +4,12 @@
 {{else}}
 {{#each this.product_popular}}
 <div class="card-product">
-        <div class="favourite_course_container">
-            <a href="#"><i class="fa_ca far fa-heart" id=""></i></a>
-        </div>
+        <form action="/cart/add" method="POST" class="favourite_course_container">
+            <input type="hidden" value="{{course_id}}" name="id">
+            <button type="submit">
+                <i class="fa_ca far fa-heart"></i>
+            </button>
+        </form>
         <a href="#">
         <div class="container_slide_up">
             <div class="item__overlay">
