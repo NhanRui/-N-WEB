@@ -35,6 +35,12 @@ button, input{
     margin:0;
 }
 
+.unique{
+    position:relative;
+    top:-10px;
+    padding:0;
+}
+
 .basic1{
     padding-top:30px;
     padding-bottom:30px;
@@ -98,7 +104,7 @@ button, input{
     padding-top:20px;
     background-color: gray;
     width:216px;
-    height:120px;
+    height:130px;
 }
 
 #test{

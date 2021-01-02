@@ -1,0 +1,87 @@
+<link href="./css/upload_course.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<div style="width:90%;margin-left:50px;">
+    <div class="top_margin">
+        <h3 class="title-curriculum">Nội dung khóa học: {{course.course_name}}</h3>
+    </div>
+    <div>
+        <div class="section">
+            <div class="chapter">
+                <div class="content">
+                    <div class="content-top">
+                        <div class="content-top-left">
+                            <div class="chapter-text">
+                                Chương <span>1</span>:
+                            </div>
+                            <input class="chapter-name" maxlength="70" placeholder="Tên chương" value="">
+                        </div>
+                        <div class="content-top-right">
+                            <div class="chapter-collapse icon-close">
+                                <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                            </div>
+                            <div class="chapter-collapse icon-close">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-all">
+                        <div class="video-info">
+                            <div class="play-icon">
+                                <i class="far fa-play-circle" aria-hidden="true"></i>
+                            </div>
+                            <div class="video-text">
+                                Bài <span>1</span>:
+                            </div>
+                            <input class="video-name" placeholder="Tên bài" value="">
+                            <div class="chapter-collapse icon-close video-delete">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-add" onclick="append_video()"> 
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                        <span class="add-text more">Thêm bài</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="chapter-add"> 
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        <span class="add-text">Thêm chương</span>
+    </div>
+    <div class="button-area">
+        <button type="button" class="cancel-btn" onclick="javascript: app()"><span>Quay lại</span></button>
+        <button type="button" class="submit-btn"><span>Lưu lại</span></button>
+    </div>
+</div>
+<script>
+    $('.video-info').mouseenter(function(){
+        $('.video-delete').css("display","block");
+    });
+    $('.video-info').mouseleave(function(){
+        $('.video-delete').css("display","none");
+    });
+    $('.video-add').on('click',function(){
+        var x = $(this).parent();
+        x = x.children('.video-all');
+        x.append(`<div class="video-info">
+                            <div class="play-icon">
+                                <i class="far fa-play-circle" aria-hidden="true"></i>
+                            </div>
+                            <div class="video-text">
+                                Bài <span>1</span>:
+                            </div>
+                            <input class="video-name" placeholder="Tên bài" value="">
+                            <div class="chapter-collapse icon-close video-delete">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </div>
+                        </div>`);
+    function app(){
+        
+    }
+</script>
