@@ -4,50 +4,66 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-<div style="width:90%;margin-left:50px;">
+<div style="width:90%;margin-left:50px;" id="main">
+    <form method="POST">
     <div class="top_margin">
         <h3 class="title-curriculum">Nội dung khóa học: {{course.course_name}}</h3>
     </div>
     <div>
-        <div class="section">
-            <div class="chapter">
-                <div class="content">
-                    <div class="content-top">
-                        <div class="content-top-left">
-                            <div class="chapter-text">
-                                Chương <span>1</span>:
+        <div class="section" data-count-chapter="0">
+            {{#if lessons}}
+                {{#each lessons}}
+                    <div class="chapter">
+                        <div class="content">
+                            <div class="content-top">
+                                <div class="content-top-left">
+                                    <div class="chapter-text">
+                                        Chương <span class="chapter-index">{{this.chapter_number}}</span>:
+                                    </div>
+                                    <input class="chapter-name" maxlength="70" name="chapter[]" placeholder="Tên chương" value="{{this.chapter_name}}">
+                                </div>
+                                <div class="content-top-right">
+                                    <div class="chapter-collapse icon-close" id="collapse">
+                                        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="chapter-collapse icon-close" id="close">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                    </div>
+                                </div>
                             </div>
-                            <input class="chapter-name" maxlength="70" placeholder="Tên chương" value="">
-                        </div>
-                        <div class="content-top-right">
-                            <div class="chapter-collapse icon-close">
-                                <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                            <div class="video-all" data-count-video="{{this.videos.length}}">
+                                {{#each this.videos}}
+                                    <div class="video-info">
+                                        <div class="main-video">
+                                            <div class="play-icon">
+                                                <i class="far fa-play-circle" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="video-text">
+                                                Bài <span class="video-index">{{this.video_number}}</span>:
+                                            </div>
+                                            <input class="video-name" placeholder="Tên bài" value="{{this.video_name}}" name="video[]">
+                                            <div class="chapter-collapse icon-close video-delete">
+                                                <i class="fa fa-times" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="extension">
+                                            <div class="chapter-text">
+                                                Video URL: 
+                                            </div>
+                                            <input class="video-name customize" name="link[]" maxlength="100" value="{{this.url}}" placeholder="https://www.youtube.com/watch?v=B3-IZ20X3AY" name="video[]" value="">
+                                        </div>
+                                    </div>
+                                {{/each}}
                             </div>
-                            <div class="chapter-collapse icon-close">
-                                <i class="fa fa-times" aria-hidden="true"></i>
+                            <input type="hidden" name=count[] id="count-video" value="{{this.videos.length}}">
+                            <div class="video-add"> 
+                                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                <span class="add-text more">Thêm bài</span>
                             </div>
                         </div>
                     </div>
-                    <div class="video-all">
-                        <div class="video-info">
-                            <div class="play-icon">
-                                <i class="far fa-play-circle" aria-hidden="true"></i>
-                            </div>
-                            <div class="video-text">
-                                Bài <span>1</span>:
-                            </div>
-                            <input class="video-name" placeholder="Tên bài" value="">
-                            <div class="chapter-collapse icon-close video-delete">
-                                <i class="fa fa-times" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="video-add" onclick="append_video()"> 
-                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                        <span class="add-text more">Thêm bài</span>
-                    </div>
-                </div>
-            </div>
+                {{/each}}
+            {{/if}}
         </div>
     </div>
     <div class="chapter-add"> 
@@ -55,33 +71,132 @@
         <span class="add-text">Thêm chương</span>
     </div>
     <div class="button-area">
-        <button type="button" class="cancel-btn" onclick="javascript: app()"><span>Quay lại</span></button>
-        <button type="button" class="submit-btn"><span>Lưu lại</span></button>
+        <button type="button" class="cancel-btn" onclick="back()"><span>Quay lại</span></button>
+        <button type="button" class="submit-btn" onclick="sub()"><span>Lưu lại</span></button>
     </div>
+    </form>
 </div>
-<script>
-    $('.video-info').mouseenter(function(){
-        $('.video-delete').css("display","block");
-    });
-    $('.video-info').mouseleave(function(){
-        $('.video-delete').css("display","none");
-    });
-    $('.video-add').on('click',function(){
-        var x = $(this).parent();
-        x = x.children('.video-all');
+
+<script>             
+     function back(){
+        location.replace('/lecturer/mycourses');
+     }
+     function sub(){
+         $('form').submit();
+     }
+    $('body').on('click','.video-add',function(){
+        var x = $(this).parent('div').children('div.video-all');
+        var count = +x.attr('data-count-video');
+        count++;
+        x.attr('data-count-video',count.toString());
+        x.parent('div').children('#count-video').val(count.toString());
         x.append(`<div class="video-info">
-                            <div class="play-icon">
-                                <i class="far fa-play-circle" aria-hidden="true"></i>
+                    <div class="main-video">
+                        <div class="play-icon">
+                            <i class="far fa-play-circle" aria-hidden="true"></i>
+                        </div>
+                        <div class="video-text">
+                            Bài <span class="video-index">`+count+`</span>:
+                        </div>
+                        <input class="video-name" placeholder="Tên bài" value="" name="video[]">
+                        <div class="chapter-collapse icon-close video-delete">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="extension">
+                        <div class="chapter-text">
+                            Video URL: 
+                        </div>
+                        <input class="video-name customize" name="link[]" maxlength="100" placeholder="https://www.youtube.com/watch?v=B3-IZ20X3AY" name="video[]" value="">
+                    </div>
+                </div>`);
+    });   
+    $('body').on('click','.chapter-add',function(){
+        var x = $('.section');
+        var count = +x.attr('data-count-chapter');
+        count++;
+        x.attr('data-count-chapter',count.toString());
+        x.append(`<div class="chapter">
+                    <div class="content">
+                        <div class="content-top">
+                            <div class="content-top-left">
+                                <div class="chapter-text">
+                                    Chương <span class="chapter-index">`+count+`</span>:
+                                </div>
+                                <input name="chapter[]" class="chapter-name" maxlength="70" placeholder="Tên chương" value="">
                             </div>
-                            <div class="video-text">
-                                Bài <span>1</span>:
+                            <div class="content-top-right">
+                                <div class="chapter-collapse icon-close" id="collapse">
+                                    <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                                </div>
+                                <div class="chapter-collapse icon-close" id="close">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </div>
                             </div>
-                            <input class="video-name" placeholder="Tên bài" value="">
-                            <div class="chapter-collapse icon-close video-delete">
-                                <i class="fa fa-times" aria-hidden="true"></i>
-                            </div>
-                        </div>`);
-    function app(){
+                        </div>
+                        <div class="video-all" data-count-video="0">
+                        </div>
+                        <input type="hidden" name=count[] id="count-video">
+                        <div class="video-add"> 
+                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            <span class="add-text more">Thêm bài</span>
+                        </div>
+                    </div>
+                </div>`);
+    });
+</script>
+<script>
+    $(document).ready(function(){
+        $('body').on('click','.main-video',function(e){
+            e.preventDefault();
+            if($(this).parent('div').css('height')==='40px'){
+                //$(this).parent('div').children('div').children('div.video-delete').css("display","block");
+                $(this).parent('div').children('div.extension').css('display','block');
+                $(this).parent('div').children('div.extension').css('display','block');
+                $(this).parent('div').css('height','80px');
+            }
+            else{
+                //$(this).parent('div').children('div').children('div.video-delete').css("display","none");
+                $(this).parent('div').children('div.extension').css('display','none');
+                $(this).parent('div').children('div.extension').css('display','none');
+                $(this).parent('div').css('height','40px');
+            }
+        });
+        $('body').on('mouseenter','.video-info',function(e){
+            $(this).children('div').children('div.video-delete').css("display","block");
+        });
+        $('body').on('mouseleave','.video-info',function(e){
+            $(this).children('div').children('div.video-delete').css("display","none");
+        });
         
-    }
+        $('body').on('click','.video-delete',function(e){
+            e.preventDefault();
+            var index= +($(this).parent('div').children('.video-text').children('.video-index').text());
+            //giam so video trong chuong
+            var x= $(this).parent('div').parent('div');
+            var count = +x.parent('.video-all').attr('data-count-video');
+            count--;
+            x.parent('.video-all').attr('data-count-video',count.toString());
+            //giam bai cua nhung chuong ke tiep
+            for(var i=index+1; i<count+2;i++){
+                var idx = +x.parent('.video-all').children('.video-info:nth-of-type('+i+')').children('.main-video').children('.video-text').children('.video-index').text();
+                idx--;
+                x.parent('.video-all').children(`.video-info:nth-child(${i})`).children('.main-video').children('.video-text').children('span').text(idx.toString());
+            }
+            x.parent('div').parent('div').children('#count-video').val(count.toString());
+            x.remove();
+        });
+        $('body').on('click','#collapse',function(e){
+            e.preventDefault();
+            if($(this).hasClass('rotated')){
+                $(this).removeClass('rotated');
+                $(this).addClass('norotate');
+            }
+            else{
+                $(this).addClass('rotated');
+                $(this).removeClass('norotate');
+            }
+            $(this).parent('div').parent('div').next().toggle();
+        })
+    })
 </script>

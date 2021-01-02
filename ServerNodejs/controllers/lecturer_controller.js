@@ -247,21 +247,67 @@ router.get('/get_introURL',function(req,res,next){
 router.get('/:courseid',async function(req,res){
   const id = req.params.courseid;
   var lesson_list = await lecturerModel.getLessonList(id);
+  //console.log(lesson_list);
+  req.session.ll = lesson_list;
+  //console.log(req.session.ll);
   var course = await lecturerModel.getCourse(id);
-  var videos = {};
+  
   if(lesson_list !== null){
     for(var i=0;i<lesson_list.length;i++){
-      var videolist = await lecturerModel.getVideoList(lesson_list[i].lesson_id);
-      videos.push(videoslist);
+      var videolist = await lecturerModel.getVideoList(lesson_list[i].list_id);
+      lesson_list[i]["videos"]=videolist;
     }
   }
   
   res.render('vwLecturer/upload_course',{
     layout: 'lecturer',
     course: course[0],
-    lessons : lesson_list,
-    videos : videos
+    lessons : lesson_list
   })
+})
+
+router.post('/:courseid',async function(req,res){
+
+    console.log(req.session.ll);
+ // console.log(req.body.chapter);  console.log(req.body.count);  console.log(req.body.video);  console.log(req.body.link);
+  const id = req.params.courseid;
+  if(req.session.ll!==null){
+    console.log('dang xoa');
+    for(var i=0;i<req.session.ll.length;i++){
+      var ll = await lecturerModel.delVideoList(req.session.ll[i].list_id);
+    }
+    await lecturerModel.delLessonList(id);
+  }
+  var flag=0;
+  var newses = [];
+  //Tao lai
+  if(req.body.chapter!==null){
+    for(var i=0;i<req.body.chapter.length;i++){
+      const lid=uniqid('L');
+      const lesson = {
+        list_id: lid,
+        chapter_number: i+1,
+        chapter_name: req.body.chapter[i],
+        course_id: id
+      }
+      newses.push(lesson);
+      await lecturerModel.addLessonList(lesson);
+      for(var j=0;j<+req.body.count[i];j++){
+        const video = {
+          video_id: uniqid('V'),
+          video_name: req.body.video[(flag+j)],
+          video_duration: req.body.duration || null,
+          url: req.body.link[(flag+j)],
+          list_id: lid,
+          video_number: j+1
+        }
+        await lecturerModel.addVideoList(video);
+      }
+      flag+=(+req.body.count[i]);
+    }
+  }
+  req.session.ll = newses;
+  res.redirect(`/lecturer/${id}`);
 })
 
 module.exports = router;
