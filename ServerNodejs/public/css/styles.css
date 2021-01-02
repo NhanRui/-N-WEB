@@ -606,3 +606,19 @@ button.sign-in-bg:hover
 .container-name-user:hover{
     background-color: rgb(241, 241, 241);
 }
+
+#frmLogout{
+    display: none;
+}
+
+.amount-cart{
+    position: absolute;
+    margin-top: -3px;
+    margin-left: 22px;
+    padding: 2px 8px 2px 8px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #d10d0d;
+    border-radius: 5px;
+}

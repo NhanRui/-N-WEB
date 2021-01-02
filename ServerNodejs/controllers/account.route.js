@@ -97,6 +97,7 @@ router.get('/is-available-usname', async function (req, res) {
     console.log("Logging out");
   
     const url = req.headers.referer || '/';
+    console.log(url);
     res.redirect(url);
   })
 

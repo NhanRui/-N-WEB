@@ -125,7 +125,8 @@ p.number-students{
       height: 100%;
 }
 
-.card-product:hover .favourite_course_container a i{
+.card-product:hover .favourite_course_container button i{
+    cursor: pointer;
     display: block;
 }
 
@@ -133,7 +134,7 @@ p.number-students{
     height: 100%;
 }
 
-.card-product-topbs:hover .favourite_course_container a i{
+.card-product-topbs:hover .favourite_course_container button i{
   display: block;
 }
 
@@ -145,17 +146,21 @@ p.number-students{
     z-index: 1;
 }
 
-.favourite_course_container a i{
+.favourite_course_container button i{
     position: absolute;
     padding: 10px;
     right: 0;
-    margin-top: 10px;
-    margin-right: 10px;
+    margin-right: 15px;
     background: white;
     z-index: 1;
     border-radius: 8px;
     color: rgb(196, 193, 193);
     display: none;
+}
+
+.favourite_course_container{
+    width: 100%;
+    position: absolute;
 }
 
 .favourite_course_container:hover .fa_ca{
@@ -172,4 +177,9 @@ p.number-students{
     width: 100%;
     height: 100%;
     border-radius: 8px;
+}
+
+#faActive{
+    background-color: rgba(216, 1, 1, 0.986);
+    color: white;
 }

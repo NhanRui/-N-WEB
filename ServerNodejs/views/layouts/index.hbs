@@ -19,6 +19,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </head>
 <body>
+    <form id="frmLogout" action="/account/logout" method="POST"></form>>
     <div>
         <nav>
             <input type="checkbox" id="check">
@@ -67,48 +68,26 @@
             </div>
             <div class="cart-btn-pos">
                 <div class="cart-btn-focus" id="cart-btn-click">
+                    {{#if auth}}
+                        <div class="amount-cart">{{cartSummary}}</div>
+                    {{/if}}
                     <i class="cart-btn fas fa-shopping-cart" id="cart-item"></i>
                     <div class="cart_list" id="cart_list_focus">
                         <!--                        <i class="list_ca fas fa-shopping-cart"></i>
                         <p>Bạn chưa có khóa học nào trong giỏ hàng</p> -->
                         <p class="check-num-card">Giỏ hàng - 0 khóa</p>
                         <div class="scroll-container-item">
-                            <a href="#">
+                            {{#each this.items}}
+                            <a href="/course-detail/{{course_id}}">
                                 <div class="shop-cart-course">
                                     <img class="card-img-shop" src={{intro_image}} alt="">
                                     <div class="container-cart-item">
-                                        <p class="title-in-card">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione iusto, earum eius impedit dolorem esse maiores error nihil rerum voluptatem dolorum nam accusantium consequuntur atque, magnam laboriosam asperiores autem itaque.</p>
-                                        <p class="price-in-cart">189.909 đ</p>
+                                        <p class="title-in-card">{{course_name}}</p>
+                                        <p class="price-in-cart">{{format_number reduce_price}}</p>
                                     </div>
                                 </div>
                             </a>
-                            <a href="#">
-                                <div class="shop-cart-course">
-                                    <img class="card-img-shop" src={{intro_image}} alt="">
-                                    <div class="container-cart-item">
-                                        <p class="title-in-card">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione iusto, earum eius impedit dolorem esse maiores error nihil rerum voluptatem dolorum nam accusantium consequuntur atque, magnam laboriosam asperiores autem itaque.</p>
-                                        <p class="price-in-cart">price</p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#">
-                                <div class="shop-cart-course">
-                                    <img class="card-img-shop" src={{intro_image}} alt="">
-                                    <div class="container-cart-item">
-                                        <p class="title-in-card">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione iusto, earum eius impedit dolorem esse maiores error nihil rerum voluptatem dolorum nam accusantium consequuntur atque, magnam laboriosam asperiores autem itaque.</p>
-                                        <p class="price-in-cart">price</p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#">
-                                <div class="shop-cart-course">
-                                    <img class="card-img-shop" src={{intro_image}} alt="">
-                                    <div class="container-cart-item">
-                                        <p class="title-in-card">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione iusto, earum eius impedit dolorem esse maiores error nihil rerum voluptatem dolorum nam accusantium consequuntur atque, magnam laboriosam asperiores autem itaque.</p>
-                                        <p class="price-in-cart">price</p>
-                                    </div>
-                                </div>
-                            </a>
+                            {{/each}}
                         </div>
                         <div class="footer-total-bill">
                             <div class="total-in-cart">
@@ -151,7 +130,7 @@
                     </div>
                     <hr>
                     <div class="option-item-auth">
-                        <a href="#" class="option-select-auth">Đăng xuất</a>
+                        <a href="javascript: $('#frmLogout').submit();" class="option-select-auth">Đăng xuất</a>
                     </div>
                 </div>
             </div>

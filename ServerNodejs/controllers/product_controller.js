@@ -3,7 +3,18 @@ const categoryModel = require('../models/product_modle');
 const router = express.Router();
 
 router.get('/', async function (req, res) {
+    const items=req.session.cart;
     const list = await categoryModel.all();
+    for (const i of items){
+      for (const j of list)
+      {
+        if (j.course_id===i.course_id)
+        {
+          j.isHaving=1;
+          continue;
+        }
+      }
+    }
     const list_top8=categoryModel.all_top8();
     const list_top8bs=categoryModel.all_top8bs();
     const list_english_menu=categoryModel.all_english_menu();
@@ -22,6 +33,7 @@ router.get('/', async function (req, res) {
       empty_menu_music: list_music_menu.length===0,
       product_menu_IT: list_IT_menu,
       empty_menu_IT: list_IT_menu.length===0,
+      items
     });
   })
 
