@@ -7,7 +7,7 @@
         <form action="/cart/add" method="POST" class="favourite_course_container">
             <input type="hidden" value="{{course_id}}" name="id">
             <button type="submit">
-                <i class="fa_ca far fa-heart"></i>
+                <i class="fa_ca far fa-heart" id="{{#if isHaving}}faActive{{/if}}"></i>
             </button>
         </form>
         <a href="#">

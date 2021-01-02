@@ -178,3 +178,8 @@ p.number-students{
     height: 100%;
     border-radius: 8px;
 }
+
+#faActive{
+    background-color: rgba(216, 1, 1, 0.986);
+    color: white;
+}

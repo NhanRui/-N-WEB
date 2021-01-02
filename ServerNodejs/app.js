@@ -56,12 +56,15 @@ app.use(express.urlencoded({
 
 //---local---
 require('./middleware/locals.mdw')(app);
-app.use(function (req,res,next){
+app.use(async function (req,res,next){
   if(typeof(req.session.auth) === 'undefined'){
     req.session.auth = false;
   }
   if (req.session.auth===false){
     req.session.cart=[];
+  }
+  else{
+    req.session.cart=await cartModel.getFaCartById(req.session.authUser.user_id);
   }
   res.locals.cid = null;
   res.locals.auth = req.session.auth;
@@ -74,7 +77,7 @@ app.use(function (req,res,next){
 app.use('/', require('./controllers/product_controller'));
 app.use('/index', require('./controllers/product_controller'));
 app.use('/', require('./controllers/course_detail_controller'));
-app.use('/cart/',require('./controllers/cart_fa_controller'));
+app.use('/cart/',auth.auth,require('./controllers/cart_fa_controller'));
 
 app.use('/account',require('./controllers/account.route'));
 app.use('/search',require('./controllers/product_search_controller'));
