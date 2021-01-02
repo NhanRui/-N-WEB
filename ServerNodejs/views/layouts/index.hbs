@@ -135,12 +135,34 @@
             <div class="bell-btn-pos">
                 <i class="bell-btn far fa-bell"></i>
             </div>
+            {{#if auth}}
+            <div class="container-authen">
+                <div class="container-name-user">
+                    <p><img src="images/BecomeInstructor/ltn.jpg" alt="" class="image-auth"></p>
+                    <p class="name-user-auth">{{authUser.name}}</p>
+                    <p class="down-icon-auth"><i class="fas fa-sort-down"></i></p>
+                </div>
+                <div class="option-authen-menu" id="option-show-auth">
+                    <div class="option-item-auth">
+                        <a href="#" class="option-select-auth">Thông tin tài khoản</a>
+                    </div>
+                    <div class="option-item-auth">
+                        <a href="#" class="option-select-auth">Danh sách yêu thích</a>
+                    </div>
+                    <hr>
+                    <div class="option-item-auth">
+                        <a href="#" class="option-select-auth">Đăng xuất</a>
+                    </div>
+                </div>
+            </div>
+            {{else}}
             <div class="sign-in__btn">
                 <a href="/account/login"><button class="sign-in-bg">Đăng nhập</button></a>
             </div>
             <div class="sign-up__btn">
                 <a href="/account/register"><button class="sign-up-bg">Đăng ký</button></a>
             </div>
+            {{/if}}
         </div>
     </div>
     <div>
@@ -173,8 +195,5 @@
     </div>
     {{>footer-index}}
     <script src="javascript/menu-hover.js"></script>
-    <script>
-        console.log(this.product_popular);
-    </script>
 </body>
 </html>

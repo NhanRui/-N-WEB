@@ -45,3 +45,12 @@ document.addEventListener("click", (evt) => {
     deactive_heart_menu.style.display="none";
     deactive_heart_item.style.background="none";
 });
+
+document.addEventListener("click", (evt) => {
+    const deactive_authe_menu = document.getElementById("option-show-auth");
+    if (event.target.closest(".container-name-user")) {
+        deactive_authe_menu.style.display="block";
+        return;
+    }
+    deactive_authe_menu.style.display="none";
+});

@@ -96,6 +96,8 @@ section{
     margin-top: 322px;
     margin-left: 30px;
     border-radius: 8px;
+    display: flex;
+    flex-direction: column;
 }
 
 .menusub-choices{
@@ -152,6 +154,7 @@ section{
 .active-button{
     color: white;
     background: red;
+    pointer-events: none;
 }
 
 .button-next{
@@ -170,4 +173,9 @@ section{
 .active_text{
     color: white;
     font-size: 15px;
+}
+
+.container-pagination{
+    position: absolute;
+    margin-top: 1000px;
 }

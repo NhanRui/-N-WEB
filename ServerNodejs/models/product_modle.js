@@ -452,9 +452,16 @@ const list = [
         return rows;
           //return list;
       },
-
+      async countByCat(id){
+        const [rows, fields] = await db.countByCat(id);
+        return rows[0].total;
+      },
       async getCateList(id){
         const [rows, fields] = await db.getCateList(id);
+        return rows;
+      },
+      async getCateListByPage(id,offset){
+        const [rows, fields] = await db.getCateListByPage(id,offset);
         return rows;
       },
       async get5starCourse(id){

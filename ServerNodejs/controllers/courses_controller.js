@@ -3,6 +3,8 @@ const coursesModel = require("../models/coursesModel");
 const router = express.Router();
 
 router.get("/", function (req, res) {
+  console.log(req.session.auth);
+  console.log(req.session.authUser)
   const list = coursesModel.all();
   res.render("partials/courses", {
     allCourses: list,

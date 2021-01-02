@@ -1,16 +1,45 @@
 const express = require('express');
 const categoryModel = require('../models/product_modle');
 const router = express.Router();
+const {paginate}=require('../config/default.json')
 
 router.get('/:id', async function (req, res) {
   const catId=req.params.id;
-  const list = await categoryModel.getCateList(catId);
+  const page=req.query.page || 1;
+  const previousPage=+page-1;
+  const nextPage=+page+1;
+  if (page<1){
+    page=1;
+  }
+  const total=await categoryModel.countByCat(catId);
+  let nPages=Math.floor(total/paginate.limit);
+  if (total %paginate.limit>0)
+  {
+    nPages++;
+  }
+  const page_numbers=[];
+
+  for (i=1;i<=nPages;i++)
+  {
+    page_numbers.push({
+      value: i,
+      isCurrentPage: i=== +page,
+    });
+  }
+
+  const offset=(page-1)*paginate.limit;
+  const list = await categoryModel.getCateListByPage(catId,offset);
   res.render('search_site', {
     product_popular: list,
     empty: list.length === 0,
     cateId: {
       Id:catId,
     },
+    page_numbers,
+    previousPage,
+    nextPage,
+    checkNextPage: nextPage<=nPages,
+    checkPreviousPage: previousPage>0,
     layout: "search-item.hbs",
   });
 })
