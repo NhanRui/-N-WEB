@@ -244,4 +244,24 @@ router.get('/get_introURL',function(req,res,next){
   return res.json("/upload/intro/"+req.session.vid);
 })
 
+router.get('/:courseid',async function(req,res){
+  const id = req.params.courseid;
+  var lesson_list = await lecturerModel.getLessonList(id);
+  var course = await lecturerModel.getCourse(id);
+  var videos = {};
+  if(lesson_list !== null){
+    for(var i=0;i<lesson_list.length;i++){
+      var videolist = await lecturerModel.getVideoList(lesson_list[i].lesson_id);
+      videos.push(videoslist);
+    }
+  }
+  
+  res.render('vwLecturer/upload_course',{
+    layout: 'lecturer',
+    course: course[0],
+    lessons : lesson_list,
+    videos : videos
+  })
+})
+
 module.exports = router;

@@ -14,16 +14,18 @@
         </div>
         
         {{#each courses}}
+        <a href="/lecturer/{{course_id}}">
             <div class="course_element">
                 <div class="course_image">
                     <img alt="{{course_name}}" src="{{intro_image}}">
                 </div>
                 <div class="body_txt">
-                    <p class="title">{{course_name}}</p>
-                    <p class="status">{{status}}</p>
+                    <p class="title"><span id="hov">{{course_name}}</span></p>
+                    <p class="status"><span>{{status}}</span></p>
                     <p class="date">Created date: <span id="date">{{create_date}}</span></p>
                 </div>
             </div>
+        </a>
         {{/each}}
     </div>
 </div>
