@@ -1,5 +1,6 @@
 const { patch } = require('../utils/db');
 const db = require('../utils/db');
+const moment = require('moment')
 
 module.exports ={
     async singleByEmail(email){
@@ -20,5 +21,17 @@ module.exports ={
         //delete (user.user_id);
         const [result, fields] = await db.patch(user,condition,'user');
         return result;
+    },
+
+    async changeInfo(user) {
+        let condition = {email: user.email};
+        const [rows, fields] = await db.patch(user, condition, 'user');
+        return true;
+    },
+
+    async changePassword(userID, newPassword) {
+        const sql = `update user set password = '${newPassword}' where user_id = '${userID}'`;
+        const [rows, fields] = await db.load(sql);
+        return true;
     }
 }
