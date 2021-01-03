@@ -1,8 +1,48 @@
-const english=document.getElementById("category-1");
+/*const english=document.getElementById("category-1");
 const english_menu=document.getElementById("english-menu");
-const ngoai_ngu_text=document.getElementById("ngoai-ngu");
+const ngoai_ngu_text=document.getElementById("ngoai-ngu");*/
 
-english.addEventListener("mouseover", function(event){
+
+function read(){
+  console.log("read");
+};
+
+function hover_menu(cat_name, cat_name_menu, cat_name_text)
+{
+  console.log("name");
+  const name=document.getElementById(cat_name);
+  const name_menu=document.getElementById(cat_name_menu);
+  const name_text=document.getElementById(cat_name_text);
+  name.addEventListener("mouseover", function(event){
+    name.style.background="rgb(243, 241, 241)";
+    name.style.borderLeft="2px solid rgba(255, 0, 0, 0.76)";
+    name_text.style.color="rgba(255, 0, 0, 0.76)";
+    name_menu.style.display="block";
+  })
+  
+  name.addEventListener("mouseout",function(event){
+    name_menu.style.display="none";
+    name.style.background="none";
+    name.style.borderLeft="none";
+    name_text.style.color="rgb(124, 121, 121)";
+    name_menu.style.display="none";
+  })
+  
+  name_menu.addEventListener("mouseover", function(event){
+    name_menu.style.display="block";
+    name.style.background="rgb(243, 241, 241)";
+    name.style.borderLeft="2px solid rgba(255, 0, 0, 0.76)";
+    name_text.style.color="rgba(255, 0, 0, 0.76)";
+  })
+  
+  name_menu.addEventListener("mouseout", function(event){
+    name_menu.style.display="none";
+    name.style.background="none";
+    name.style.borderLeft="none";
+    name_text.style.color="rgb(124, 121, 121)";
+  })
+}
+/*english.addEventListener("mouseover", function(event){
   english.style.background="rgb(243, 241, 241)";
   english.style.borderLeft="2px solid rgba(255, 0, 0, 0.76)";
   ngoai_ngu_text.style.color="rgba(255, 0, 0, 0.76)";
@@ -29,9 +69,9 @@ english_menu.addEventListener("mouseout", function(event){
   english.style.background="none";
   english.style.borderLeft="none";
   ngoai_ngu_text.style.color="rgb(124, 121, 121)";
-})
+})*/
 
-const music=document.getElementById("category-2");
+/*const music=document.getElementById("category-2");
 const music_menu=document.getElementById("music-menu");
 const am_nhac_text=document.getElementById("am-nhac");
 
@@ -95,4 +135,4 @@ IT_menu.addEventListener("mouseout", function(event){
   IT.style.background="none";
   IT.style.borderLeft="none";
   IT_text.style.color="rgb(124, 121, 121)";
-})
+})*/

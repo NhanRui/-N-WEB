@@ -5,7 +5,14 @@
                 <label class="category-label-item">
                 <p class="category-label">Danh mục</p>
                 </label>
-                <li class="category-menu-item" id="category-1">
+                {{#each this.menuList}}
+                <li class="category-menu-item" id="{{category_id}}">
+                    <a class="main-category-level" href="#">
+                        <span class="item-level1" id="{{category_id}}_name">{{category_name}}</span>
+                    </a>
+                </li>
+                {{/each}}
+                <!--<li class="category-menu-item" id="category-1">
                     <a class="main-category-level" href="#">
                         <span class="item-level1" id="ngoai-ngu">Ngoại ngữ</span>
                     </a>
@@ -79,42 +86,43 @@
                     <a class="main-category-level" href="#">
                         <span class="item-level1">Phong thủy/Nhân tướng học</span>
                     </a>
-                </li>
+                </li>-->
             </ul>
         </div>
         <!--English-->
-        <div class="submenu-wrap" id="english-menu">
+        {{#each this.allListMenu}}
+        <div class="submenu-wrap" id="{{menu}}-menu"><!--khac id-->
             <div class="submenu-container-1">
                 <ul>
                     <label class="category-label-item">
-                    <p class="category-label">Ngoại ngữ</p>
+                    <p class="category-label">{{name}}</p>
                     </label>
-                    <li class="category-menu-item" id="mini-menu-english">
+                    {{#each this.submenu}}
+                    <li class="category-menu-item" id="mini-menu-english"><!--khac id-->
                         <a class="main-category-level" href="#">
-                            <span class="item-level1">Tiếng Pháp, Đức, Việt</span>
+                            <span class="item-level1">{{category_name}}</span>
                         </a>
                     </li>
-                    <li class="category-menu-item" id="mini-menu-english">
-                        <a class="main-category-level" href="#">
-                            <span class="item-level1">Topica Native</span>
-                        </a>
-                    </li>
-                    <li class="category-menu-item" id="mini-menu-english">
-                        <a class="main-category-level" href="#">
-                            <span class="item-level1">Tiếng Anh</span>
-                        </a>
-                    </li>
+                    {{/each}}
                 </ul>
             </div>
             <div class="childmenu-container-1">
                 <label class="category-label-item">
-                    <p class="category-label">Ngoại ngữ - Featured Course</p>
+                    <p class="category-label">{{name}} - Featured Course</p>
                 </label>
                 <div class="product-menu-col">
-                    {{>product_menu_english}}
+                    {{#each this.top4_course_menu}}
+                        {{>product_menu_music}}
+                    {{/each}}
                 </div>
             </div>
         </div>
+        {{/each}}
+        {{#each this.menuList}}
+            <script>
+                hover_menu("{{{category_id}}}","{{{category_id}}}-menu","{{{category_id}}}_name");
+            </script>
+        {{/each}}
         <!--Music-->
         <div class="submenu-wrap" id="music-menu">
             <div class="submenu-container-1">
@@ -176,6 +184,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     <div class="deal-slide-container">
         <div class="background-image">
