@@ -436,6 +436,28 @@ const list = [
   ]
 
   module.exports={
+      rank_view(list, rank){
+          for (const i of list){
+              rank++;
+              i.top=rank;
+          }
+      },
+      checkIsHaving(list1, list2)
+      {
+          let numberOfitems=0
+        for (const i of list1){
+            numberOfitems++;
+            for (const j of list2)
+            {
+              if (j.course_id===i.course_id)
+              {
+                j.isHaving=1;
+                continue;
+              }
+            }
+        }
+        return numberOfitems;
+      },
       async all(){
         const sql = `SELECT U.name as author_name,U.avatar as author_image,TEMP3.course_id,TEMP3.deal_value,temp3.intro_image, temp3.number_student,temp3.number_rating,temp3.description,temp3.price,temp3.reduce_price,temp3.overall_star,temp3.categoty_id, 0 as isHaving
         FROM (
@@ -447,7 +469,117 @@ const list = [
                         FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                         GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
         ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id
-        WHERE U.role=1`;
+        WHERE U.role=1
+        ORDER BY temp3.number_student DESC
+        LIMIT 4`;
+        const [rows, fields] = await db.load(sql);
+        return rows;
+          //return list;
+      },
+      async top10_new_1(){
+        const sql = `SELECT U.name as author_name,U.avatar as author_image,TEMP3.course_id,TEMP3.deal_value,temp3.intro_image, temp3.number_student,temp3.number_rating,temp3.description,temp3.price,temp3.reduce_price,temp3.overall_star,temp3.categoty_id, 0 as isHaving,temp3.create_date,temp3.num_view,0 as top
+        FROM (
+            SELECT temp1.course_id,deal_value,intro_image,temp1.number_student,temp2.overall_star,temp2.number_rating,description,price,ROUND((price-price*deal_value/100)) as reduce_price,lecturer_id,categoty_id,num_view,create_date
+            FROM (SELECT c.*,count( b.course_id ) AS number_student
+                        FROM bill b RIGHT JOIN course c ON b.course_id = c.course_id 
+                        GROUP BY c.course_id) AS temp1 JOIN 
+                        (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
+                        FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
+                        GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+        ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id
+        WHERE U.role=1
+        ORDER BY temp3.create_date DESC
+        LIMIT 4 OFFSET 0`;
+        const [rows, fields] = await db.load(sql);
+        return rows;
+          //return list;
+      },
+      async top10_new_2(){
+        const sql = `SELECT U.name as author_name,U.avatar as author_image,TEMP3.course_id,TEMP3.deal_value,temp3.intro_image, temp3.number_student,temp3.number_rating,temp3.description,temp3.price,temp3.reduce_price,temp3.overall_star,temp3.categoty_id, 0 as isHaving,temp3.create_date,temp3.num_view,0 as top
+        FROM (
+            SELECT temp1.course_id,deal_value,intro_image,temp1.number_student,temp2.overall_star,temp2.number_rating,description,price,ROUND((price-price*deal_value/100)) as reduce_price,lecturer_id,categoty_id,num_view,create_date
+            FROM (SELECT c.*,count( b.course_id ) AS number_student
+                        FROM bill b RIGHT JOIN course c ON b.course_id = c.course_id 
+                        GROUP BY c.course_id) AS temp1 JOIN 
+                        (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
+                        FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
+                        GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+        ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id
+        WHERE U.role=1
+        ORDER BY temp3.create_date DESC
+        LIMIT 4 OFFSET 4`;
+        const [rows, fields] = await db.load(sql);
+        return rows;
+          //return list;
+      },
+      async top10_new_3(){
+        const sql = `SELECT U.name as author_name,U.avatar as author_image,TEMP3.course_id,TEMP3.deal_value,temp3.intro_image, temp3.number_student,temp3.number_rating,temp3.description,temp3.price,temp3.reduce_price,temp3.overall_star,temp3.categoty_id, 0 as isHaving,temp3.create_date,temp3.num_view,0 as top
+        FROM (
+            SELECT temp1.course_id,deal_value,intro_image,temp1.number_student,temp2.overall_star,temp2.number_rating,description,price,ROUND((price-price*deal_value/100)) as reduce_price,lecturer_id,categoty_id,num_view,create_date
+            FROM (SELECT c.*,count( b.course_id ) AS number_student
+                        FROM bill b RIGHT JOIN course c ON b.course_id = c.course_id 
+                        GROUP BY c.course_id) AS temp1 JOIN 
+                        (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
+                        FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
+                        GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+        ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id
+        WHERE U.role=1
+        ORDER BY temp3.create_date DESC
+        LIMIT 2 OFFSET 8`;
+        const [rows, fields] = await db.load(sql);
+        return rows;
+          //return list;
+      },
+      async top10_view_1(){
+        const sql = `SELECT U.name as author_name,U.avatar as author_image,TEMP3.course_id,TEMP3.deal_value,temp3.intro_image, temp3.number_student,temp3.number_rating,temp3.description,temp3.price,temp3.reduce_price,temp3.overall_star,temp3.categoty_id, 0 as isHaving,temp3.create_date,temp3.num_view,0 as top
+        FROM (
+            SELECT temp1.course_id,deal_value,intro_image,temp1.number_student,temp2.overall_star,temp2.number_rating,description,price,ROUND((price-price*deal_value/100)) as reduce_price,lecturer_id,categoty_id,num_view,create_date
+            FROM (SELECT c.*,count( b.course_id ) AS number_student
+                        FROM bill b RIGHT JOIN course c ON b.course_id = c.course_id 
+                        GROUP BY c.course_id) AS temp1 JOIN 
+                        (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
+                        FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
+                        GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+        ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id
+        WHERE U.role=1
+        ORDER BY temp3.num_view DESC
+        LIMIT 4 OFFSET 0`;
+        const [rows, fields] = await db.load(sql);
+        return rows;
+          //return list;
+      },
+      async top10_view_2(){
+        const sql = `SELECT U.name as author_name,U.avatar as author_image,TEMP3.course_id,TEMP3.deal_value,temp3.intro_image, temp3.number_student,temp3.number_rating,temp3.description,temp3.price,temp3.reduce_price,temp3.overall_star,temp3.categoty_id, 0 as isHaving,temp3.create_date,temp3.num_view, 0 as top
+        FROM (
+            SELECT temp1.course_id,deal_value,intro_image,temp1.number_student,temp2.overall_star,temp2.number_rating,description,price,ROUND((price-price*deal_value/100)) as reduce_price,lecturer_id,categoty_id,num_view,create_date
+            FROM (SELECT c.*,count( b.course_id ) AS number_student
+                        FROM bill b RIGHT JOIN course c ON b.course_id = c.course_id 
+                        GROUP BY c.course_id) AS temp1 JOIN 
+                        (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
+                        FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
+                        GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+        ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id
+        WHERE U.role=1
+        ORDER BY temp3.num_view DESC
+        LIMIT 4 OFFSET 4`;
+        const [rows, fields] = await db.load(sql);
+        return rows;
+          //return list;
+      },
+      async top10_view_3(){
+        const sql = `SELECT U.name as author_name,U.avatar as author_image,TEMP3.course_id,TEMP3.deal_value,temp3.intro_image, temp3.number_student,temp3.number_rating,temp3.description,temp3.price,temp3.reduce_price,temp3.overall_star,temp3.categoty_id, 0 as isHaving,temp3.create_date,temp3.num_view, 0 as top
+        FROM (
+            SELECT temp1.course_id,deal_value,intro_image,temp1.number_student,temp2.overall_star,temp2.number_rating,description,price,ROUND((price-price*deal_value/100)) as reduce_price,lecturer_id,categoty_id,num_view,create_date
+            FROM (SELECT c.*,count( b.course_id ) AS number_student
+                        FROM bill b RIGHT JOIN course c ON b.course_id = c.course_id 
+                        GROUP BY c.course_id) AS temp1 JOIN 
+                        (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
+                        FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
+                        GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+        ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id
+        WHERE U.role=1
+        ORDER BY temp3.num_view DESC
+        LIMIT 2 OFFSET 8`;
         const [rows, fields] = await db.load(sql);
         return rows;
           //return list;

@@ -70,6 +70,7 @@ app.use(async function (req,res,next){
   res.locals.auth = req.session.auth;
   res.locals.authUser = req.session.authUser;
   res.locals.cartSummary=cartModel.getNumberOfItems(req.session.cart);
+  res.locals.cartTotal=cartModel.getPriceOfItems(req.session.cart);
   next();
 })
 

@@ -387,7 +387,8 @@ button.sign-in-bg:hover
 
 .heart_list{
     background: white;
-    height: 205px;
+    height: auto;
+    max-height:400px;
     width: 310px;
     border-radius: 8px;
     box-shadow: 0 0 3px #d1d1d1;
@@ -406,7 +407,7 @@ button.sign-in-bg:hover
     margin-top: 15px;
 }
 
-.heart_list p{
+.heart_list .hear-is-empty{
     text-align: center;
     margin-top: 15px;
     margin-left: 50px;
@@ -441,6 +442,7 @@ button.sign-in-bg:hover
 .shop-cart-course{
     display: flex;
     flex-direction: row;
+    height: 87px;
 }
 .card-img-shop{
     width: 75px;
@@ -452,16 +454,18 @@ button.sign-in-bg:hover
 .container-cart-item{
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
     margin-left: 15px;
+    margin-top: 13px;
 }
 
 .title-in-card{
+    padding-bottom: 30px;
+    font-size: 15px;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 18px;
+    line-height: 15px;
     -webkit-line-clamp: 2;
-    height: 36px;
+    height: 30px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     color: rgb(48, 46, 46);
@@ -481,8 +485,12 @@ button.sign-in-bg:hover
 .scroll-container-item{
     width: 285px;
     height: auto;
-    max-height:270px;
+    max-height:290px;
     overflow-y: auto;
+}
+
+.scroll-container-item:hover a{
+    text-decoration: none;
 }
 
 .footer-total-bill{
@@ -496,14 +504,14 @@ button.sign-in-bg:hover
 }
 
 .price-in-cart{
-    margin-top: 10px;
     color: rgba(77, 80, 233, 0.801);
     font-weight: bold;
 }
 
 .total-price-item-text{
     margin-left: 15px;
-    margin-top: 20px;
+    margin-top: 12px;
+    margin-bottom: -5px;
 }
 
 .total-price-item{
@@ -525,8 +533,9 @@ button.sign-in-bg:hover
     padding-top: 8px;
     padding-bottom: 8px;
     margin-right: 10px;
-    margin-top: 25px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    margin-top: 20px;
 }
 
 .btn-view-cart:hover {

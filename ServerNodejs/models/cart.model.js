@@ -1,5 +1,13 @@
 const db = require('../utils/db');
 module.exports={
+    getPriceOfItems(cart){
+        let n=0;
+        for (const item of cart)
+        {
+            n+=+item.reduce_price;
+        }
+        return n;
+    },
     getNumberOfItems(cart){
         let n=0;
         for (const item of cart)
