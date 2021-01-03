@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/section.css"/>
     <link rel="stylesheet" href="css/footer_homesite.css">
     <link rel="stylesheet" href="css/product.css">
+    <link rel="stylesheet" href="css/slide_show.css">
     <link rel="stylesheet" href="css/star.css">
     <link rel="stylesheet" href="css/product-menu.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -16,7 +17,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="javascript/test.js"></script>
     <script src="javascript/Star.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
     <form id="frmLogout" action="/account/logout" method="POST"></form>>
@@ -164,11 +166,180 @@
             <div class="title-top-course">
                 <a href="#" class="title-name">Kinh doanh khởi nghiệp</a>
             </div>
-            <div class="container-product-home">
+            <div class="container-product-home-special">
                 <div class="img-top-business-container">
                     <img src="images/top_kinh_doanh.jpg" alt="" class="img-top-business">
                 </div>
                 {{>product_topbs}}
+            </div>
+            <div class="in-row-top">
+                <div class="slideshow-top10">
+                    <div class="container-top-10-slide">
+                        <h6 class="title-slide-show-top10"> Xem nhiều nhất</h6>
+                        <div class="body-slider-top">
+                            <div class="slider-top">
+                                <div class="slides-top">
+                                    <input type="radio" name="radio-btn-top" id="radio1-top">
+                                    <input type="radio" name="radio-btn-top" id="radio2-top">
+                                    <input type="radio" name="radio-btn-top" id="radio3-top">
+
+                                    <div class="slide-top first-top">
+                                        <div class="container-slide-object">
+                                            {{>product-test}}
+                                            {{>product-test}}
+                                            {{>product-test}}
+                                            {{>product-test}}
+                                        </div>
+                                    </div>
+                                    <div class="slide-top">
+                                        <div class="container-slide-object">
+                                            {{>product-test}}
+                                            {{>product-test}}
+                                            {{>product-test}}
+                                            {{>product-test}}
+                                        </div>
+                                    </div>
+                                    <div class="slide-top">
+                                        <div class="container-slide-object">
+                                            {{>product-test}}
+                                            {{>product-test}}
+                                        </div>
+                                    </div>
+
+                                    <div class="navigation-auto-top">
+                                        <div class="auto-btn1-top"></div>
+                                        <div class="auto-btn2-top"></div>
+                                        <div class="auto-btn3-top"></div>
+                                    </div>
+                                </div>
+                                <div class="navigation-manual-top">
+                                    <label for="radio1-top" class="manual-btn-top"></label>
+                                    <label for="radio2-top" class="manual-btn-top"></label>
+                                    <label for="radio3-top" class="manual-btn-top"></label>
+                                </div>
+                            </div>
+                            <script>
+                                let counter1=1;
+                                setInterval(function(){
+                                    console.log(counter1);
+                                    document.getElementById('radio'+counter1+'-top').checked=true;
+                                    counter1++;
+                                    if (counter1>3){
+                                        counter1=1;
+                                    }
+                                },5000);
+                            </script>
+                        </div>
+                        <hr class="line-in-top">
+                    </div>
+                </div>
+
+                <div class="slideshow-top10">
+                    <div class="container-top-10-slide">
+                        <h6 class="title-slide-show-top10"> Mới nhất</h6>
+                        <div class="body-slider-top-2">
+                            <div class="slider-top-2">
+                                <div class="slides-top-2">
+                                    <input type="radio" name="radio-btn-top-2" id="radio1-top-2">
+                                    <input type="radio" name="radio-btn-top-2" id="radio2-top-2">
+                                    <input type="radio" name="radio-btn-top-2" id="radio3-top-2">
+
+                                    <div class="slide-top-2 first-top-2">
+                                        <div class="container-slide-object">
+                                            {{>product-test}}
+                                            {{>product-test}}
+                                            {{>product-test}}
+                                            {{>product-test}}
+                                        </div>
+                                    </div>
+                                    <div class="slide-top-2">
+                                        <div class="container-slide-object">
+                                            {{>product-test}}
+                                            {{>product-test}}
+                                            {{>product-test}}
+                                            {{>product-test}}
+                                        </div>
+                                    </div>
+                                    <div class="slide-top-2">
+                                        <div class="container-slide-object">
+                                            {{>product-test}}
+                                            {{>product-test}}
+                                        </div>
+                                    </div>
+
+                                    <div class="navigation-auto-top-2">
+                                        <div class="auto-btn1-top-2"></div>
+                                        <div class="auto-btn2-top-2"></div>
+                                        <div class="auto-btn3-top-2"></div>
+                                    </div>
+                                </div>
+                                <div class="navigation-manual-top-2">
+                                    <label for="radio1-top-2" class="manual-btn-top-2"></label>
+                                    <label for="radio2-top-2" class="manual-btn-top-2"></label>
+                                    <label for="radio3-top-2" class="manual-btn-top-2"></label>
+                                </div>
+                            </div>
+                            <script>
+                                let counter2=1;
+                                setInterval(function(){
+                                    document.getElementById('radio'+counter2+'-top-2').checked=true;
+                                    counter2++;
+                                    if (counter2>3){
+                                        counter2=1;
+                                    }
+                                },5000);
+                            </script>
+                        </div>
+                        <hr class="line-in-top">
+                    </div>
+                </div>
+
+                <div class="slideshow-top10">
+                    <div class="container-top-10-slide-3">
+                        <div class="body-slider-top-3">
+                            <div class="slider-top-3">
+                                <div class="slides-top-3">
+                                    <input type="radio" name="radio-btn-top-3" id="radio1-top-3">
+                                    <input type="radio" name="radio-btn-top-3" id="radio2-top-3">
+                                    <input type="radio" name="radio-btn-top-3" id="radio3-top-3">
+
+                                    <div class="slide-top-3 first-top-3">
+                                        <img src="images/slider/slider-top-1.jpg" alt="">
+                                    </div>
+                                    <div class="slide-top-3">
+                                        <img src="images/slider/slider-top-2.jpg" alt="">
+                                    </div>
+                                    <div class="slide-top-3">
+                                        <img src="images/slider/slider-top-3.jpg" alt="">
+                                    </div>
+
+                                    <div class="navigation-auto-top-3">
+                                        <div class="auto-btn1-top-3"></div>
+                                        <div class="auto-btn2-top-3"></div>
+                                        <div class="auto-btn3-top-3"></div>
+                                    </div>
+                                </div>
+                                <div class="navigation-manual-top-3">
+                                    <label for="radio1-top-3" class="manual-btn-top-3"></label>
+                                    <label for="radio2-top-3" class="manual-btn-top-3"></label>
+                                    <label for="radio3-top-3" class="manual-btn-top-3"></label>
+                                </div>
+                            </div>
+                            <script>
+                                let counter3=1;
+                                setInterval(function(){
+                                    document.getElementById('radio'+counter3+'-top-3').checked=true;
+                                    counter3++;
+                                    if (counter3>3){
+                                        counter3=1;
+                                    }
+                                },3000);
+                            </script>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
         </section>
     </div>

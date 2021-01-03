@@ -27,8 +27,7 @@
 }
 
 .wrap-stars{
-    position: flex;
-    flex-flow: row wrap;
+    position: absolute;
     margin-top: 125px;
     margin-left: 20px;
 }

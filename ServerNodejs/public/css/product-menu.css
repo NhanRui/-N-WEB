@@ -19,7 +19,7 @@
     position: absolute;
     background: white;
     bottom: 0;
-    padding: 7px 6px 6px 6px;
+    padding: 4.5px 7.5px 4.5px 7.5px;
     border-radius: 5px;
     margin-bottom: 30px;
     margin-left: 30px;
@@ -35,16 +35,18 @@
 .container-content-mnproduct{
     width: 220px;
     margin-left: 10px;
+    position: relative;
 }
 
 .wrap-stars-menu{
-    margin-top: 10px;
+    position: relative;
+    margin-top: -10px;
 }
 
 .price-menu{
     display: flex;
     justify-content: flex-start;
-    margin-top: 10px;
+    margin-top: 2px;
 }
 
 .tittle-menu-product{
@@ -81,4 +83,8 @@
 
 .favourite_course_menu:hover{
     color: black;
+}
+
+.container-content-mnproduct:hover a{
+    text-decoration: none;
 }

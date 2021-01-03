@@ -33,28 +33,35 @@
 }
 
 .deal-img{
+    height: 30px;
     width: 45px;
+    padding-left: 5px;
+    padding-top: 4px;
     color: white;
-    padding: 5px;
     font-size: 13px;
     font-weight: bold;
     background: rgb(241, 47, 47);
     border-radius: 5px;
-    position: relative;
+    position: absolute;
     margin-left: 8px;
     margin-top: 8px;
 }
 
 .card-title{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 15px;
     color: rgb(70, 69, 69);
     margin-left: 5px;
-    margin-top: 10px;
+    margin-top: 160px;
+    font-weight: bold;
+    position: absolute;
 }
 
 .card-text-author{
     display: flex;
     flex-wrap: nowrap;
+    position: absolute;
+    margin-top: 170px;
 }
 
 .author-img{
@@ -75,7 +82,10 @@
 .price{
     display: flex;
     justify-content: flex-end;
-    margin-top: 10px;
+    position:absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 8px;
 }
 
 .real-price{
@@ -182,4 +192,8 @@ p.number-students{
 #faActive{
     background-color: rgba(216, 1, 1, 0.986);
     color: white;
+}
+
+.card-text-author:hover{
+    text-decoration: none;
 }

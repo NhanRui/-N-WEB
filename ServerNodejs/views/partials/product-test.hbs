@@ -1,0 +1,29 @@
+                        <div class="top-object">
+                            <h3 class="top-num">1</h3>
+                            <a href="#"><img src="images/top_kinh_doanh.jpg" class="top-object-image"></a>
+                            <form action="/cart/add" method="POST" class="favourite_course_container_top">
+                                <input type="hidden" value="CDCD01" name="id">
+                                <button type="submit">
+                                    <i class="fa_ca far fa-heart" id="{{#if isHaving}}faActive{{/if}}"></i>
+                                </button>
+                            </form>
+                            <div class="top-content">
+                                <a href="#" class="card-title-in-top">Tiến sĩ Lê Hoàng Phúc tiết lộ bí quyết giao tiếp để thành công</a>
+                                <div class="CDCD01">
+                                    <div class="wrap-stars-in-top">
+                                        <div class="stars-outer">
+                                            <div class="stars-inner"></div>
+                                        </div>
+                                        <span class="number-rating"><b>4.7</b> (999)</span><!--Về sau thay đổi star và number people-->
+                                    </div>
+                                </div>
+                                <script>
+                                    var ob_rating="CDCD01";
+                                    document.addEventListener('DOMContentLoaded',getRatings(4.7,ob_rating))
+                                </script>
+                                <div class="price-in-top">
+                                    <div class="real-price">100,000 đ</div>
+                                    <div class="reduce-price">100,000 đ</div>
+                                </div>
+                            </div>
+                        </div>

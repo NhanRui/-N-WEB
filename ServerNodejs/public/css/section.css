@@ -86,7 +86,7 @@
 {
     position: relative;
     left:12px;
-    top:27px;
+    top:20px;
     font-weight: bold;
     font-size: 17px;
 }
@@ -96,7 +96,7 @@
     width: 100%;
     height: 32px;
     position: relative;
-    top:30px;
+    font-size: 14px;
 }
 .main-category-level
 {
@@ -108,7 +108,7 @@
 .item-level1
 {
     color: rgb(124, 121, 121);
-    padding-top: 7px;
+    padding-top: 5px;
     padding-bottom: 7px;
     padding-left: 40px;
     position: absolute;
@@ -298,6 +298,13 @@
 .container-product-home{
     display: flex;
     flex-direction: row;
+    margin-left: 120px;
+    margin-right: 100px;
+}
+
+.container-product-home-special{
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     margin-left: 120px;
@@ -344,7 +351,7 @@
     flex-direction: column
 }
 .product-menu-col{
-    margin-top: 45px;
+    margin-top: 15px;
 }
 
 .deal-slide-container{
@@ -355,4 +362,237 @@
 
 .submenu-wrap{
     display: none;
+}
+
+.slideshow-top10{
+    margin-left: 20px;
+    margin-top: 50px;
+    position: relative;
+}
+
+.container-top-10-slide{
+    width: 359px;
+    height: 540px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px #d1d1d1;
+    position: relative;
+}
+
+.title-slide-show-top10{
+    margin-top: 25px;
+    margin-left: 20px;
+    position: absolute;
+}
+
+.container-slide-object{
+    width: 350px;
+    height: 500px;
+    margin-left: 5px;
+}
+
+.top-object{
+    display: flex;
+    flex-direction: row;
+    height: 105px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.top-object:hover .favourite_course_container_top button i{
+    display: block;
+}
+
+.top-object:hover{
+    background-color: rgb(224, 232, 233);
+}
+
+.top-object-image{
+    width: 90px;
+    height: 90px;
+    margin-top: 8px;
+    margin-left: 20px;
+}
+
+.card-title-in-top{
+    height: 38px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(70, 69, 69);
+    font-weight: bolder;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 19px;
+    -webkit-line-clamp: 2;
+    height: 38px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.top-num{
+    font-weight: bold;
+    margin-top: 32px;
+    margin-left: 5px;
+    color:rgba(255, 0, 0, 0.76);
+}
+
+.wrap-stars-in-top{
+    margin-left: 10px;
+    margin-top: 9px;
+}
+
+.price-in-top{
+    display: flex;
+    justify-content: start;
+    margin-left: 10px;
+}
+
+.favourite_course_container_top{
+    position: absolute;
+    bottom: 0;
+    margin-left: 50px;
+    margin-bottom: 15px;
+}
+
+.favourite_course_container_top button i{
+    position: absolute;
+    padding: 10px;
+    left: 0;
+    bottom: 0;
+    margin-right: 15px;
+    background: white;
+    z-index: 1;
+    border-radius: 8px;
+    color: rgb(196, 193, 193);
+    display: none;
+}
+
+.favourite_course_container_top button i:hover
+{
+    color: black;
+    cursor: pointer;
+}
+
+.card-title-in-top:hover{
+    text-decoration: none;
+    color: rgb(70, 69, 69);
+}
+
+/*Slider*/
+
+.body-slider-top{
+    margin-top: 50px;
+    padding:0;
+    display: flex;
+    position: absolute;
+}
+
+.slider-top{
+    width: 350px;
+    height: 500px;
+    overflow: hidden;
+}
+
+.slides-top{
+    width: 500%;
+    height: 325px;
+    display: flex;
+}
+
+.slides-top input{
+    display: none;
+}
+
+.slide-top{
+    width: 20%;
+    transition: 1s;
+}
+
+.slide-top .container-slide-object{
+    width: 350px;
+    height: 500px;
+}
+
+.navigation-manual-top{
+    position: absolute;
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    margin-top: 130px;
+}
+
+.manual-btn-top{
+    border: 1px solid red;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.manual-btn-top:not(:last-child){
+    margin-right: 10px;
+}
+
+.manual-btn-top:hover{
+    background: red;
+}
+
+#radio1-top:checked ~ .first-top{
+    margin-left: 0;
+}
+
+#radio2-top:checked ~ .first-top{
+    margin-left: -20%;
+}
+
+#radio3-top:checked ~ .first-top{
+    margin-left: -40%;
+}
+
+.line-in-top{
+    margin-top: 480px;
+    width: 100%;
+    position: absolute;
+}
+
+.navigation-auto-top
+{
+    position: absolute;
+    display: flex;
+    width: 350px;
+    justify-content: center;
+    margin-top: 455px;
+}
+
+.navigation-auto-top div
+{
+    border: 1px solid red;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.navigation-auto-top div:not(:last-child)
+{
+    margin-right: 10px;
+}
+
+#radio1-top:checked ~ .navigation-auto-top .auto-btn1-top{
+    background: red;
+}
+
+#radio2-top:checked ~ .navigation-auto-top .auto-btn2-top{
+    background: red;
+}
+
+#radio3-top:checked ~ .navigation-auto-top .auto-btn3-top{
+    background: red;
+}
+
+.in-row-top{
+    display: flex;
+    flex-direction: row;
+    margin-left: 100px;
+    margin-top: 30px;
 }
