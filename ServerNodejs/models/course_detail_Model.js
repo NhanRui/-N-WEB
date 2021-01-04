@@ -150,8 +150,24 @@ module.exports = {
     let getParentSql = `select category_name from category where category_id = '${cate[0].parent_id}'`;
     const [main, fields1] = await db.load(getNameSql);
     const [parent, fields2] = await db.load(getParentSql);
-    console.log(main[0]);
-    console.log(parent[0]);
     return [main[0].category_name, parent[0].category_name];
+  },
+
+  async course_chapter(courseID) {
+    let sql = `select * from lesson_list join video on lesson_list.list_id = video.list_id where course_id = '${courseID}'`;
+    const [result, fields] = await db.load(sql);
+    return result;
+  },
+
+  async course_comment(courseID) {
+    let sql = `select * from star_rating where course_id = '${courseID}'`;
+    const [result, fields] = await db.load(sql);
+    return result;
+  },
+
+  async course_commentator(id) {
+    let sql = `select name, avatar from user where user_id = '${id}'`;
+    const [result, fields] = await db.load(sql);
+    return result[0];
   }
 };

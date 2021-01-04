@@ -15,7 +15,7 @@
         <p>{{description}}</p>
         <div class="header-bot-stuff">
             <div class="item-quick">
-                <img src="/{{../lecturer.avatar}}" alt="lecture-img">
+                <img src="{{../lecturer.avatar}}" alt="lecture-img">
                 <span class="lec-name">{{../lecturer.name}}</span>
             </div>
             <div class="item-quick">
@@ -76,25 +76,27 @@
             <h3>Giáo trình</h3>
             <div class="quick_lecture">
                 <span class="quick-lecture-item" style="flex: 2;">Thể loại: <b style="color: deepskyblue;">
-                        {{../object.root_dir}}</b></span>
+                        {{../main}}</b></span>
                 <span class="quick-lecture-item"><i class="fa fa-play-circle" aria-hidden="true"></i>Số bài:
-                    <b style="color: deepskyblue;"> {{../object.num_Of_Lectures}}</b></span>
+                    <b style="color: deepskyblue;"> {{../lesson.length}}</b></span>
                 <span class="quick-lecture-item"><i class="fa fa-clock-o" aria-hidden="true"></i>Thời lượng:
                     <b style="color: deepskyblue;"> {{../object.lecture_time}}</b></span>
             </div>
             <div class="lecture_content">
-                {{#each ../object.lecture}}
+                {{#each ../lesson as |ls|}}
                 <div class="lecture-chap">
-                    <button class="chapter">{{chap_name}} <span class="arrow"><i class="fa arrow-1 fa-angle-down"
-                                aria-hidden="true"></i></span></button>
+                    <button class="chapter">Chương {{ls.chapter_number}}: {{ls.chapter_name}}<span class="arrow"><i
+                                class="fa arrow-1 fa-angle-down" aria-hidden="true"></i></span></button>
                     <div class="lessons">
-                        {{#each lessons}}
+                        {{#each ../../videos as |v|}}
+                        {{#when v.chapter_number 'eq' ls.chapter_number}}
                         <div class="lesson">
                             <div class="lesson_name">
-                                <span><i class="fa fa-play-circle-o" aria-hidden="true"></i> {{lesson_name}}</span>
+                                <span><i class="fa fa-play-circle" aria-hidden="true"></i>Bài {{v.video_number}}:
+                                    {{v.video_name}}</span>
                             </div>
-                            <span>{{lesson_time}}</span>
                         </div>
+                        {{/when}}
                         {{/each}}
                     </div>
                 </div>
@@ -106,7 +108,7 @@
             <div class="lecturer_info">
                 <div class="left_l_info">
                     <div class="left_l_info_img"><a href="#">
-                            <img src="/{{../lecturer.avatar}}" alt="lecturer-image"></a>
+                            <img src="{{../lecturer.avatar}}" alt="lecturer-image"></a>
                     </div>
                     <div class="left_l_info_text">
                         <p>Giảng viên</p>
@@ -140,7 +142,7 @@
                 <div class="stars">
                     {{!-- added later --}}
                 </div>
-                <p class="num_of_comments" style="text-align: center;">{{../object.num_of_comments}}</p>
+                <p class="num_of_comments" style="text-align: center;">{{../comments.length}} người đã bình luận</p>
                 {{#each ../object.stars}}
                 <div class="rating_star">
                     <span>{{this.star}} <i class="fa fa-star-o text-warning" aria-hidden="true"></i></span>
@@ -153,19 +155,30 @@
             </div>
             <div class="separate_line"></div>
             <div class="comment_detail">
-                {{#each ../object.comments}}
+                {{#each ../comments}}
                 <div class="detail">
                     <div class="cmt_detail">
                         <div class="user">
                             <div class="user_avatar">
-                                <img src="{{this.user_avatar}}" alt="user-avatar">
+                                <img src="{{user_avatar}}" alt="user-avatar">
                             </div>
-                            <span class="user-name">{{this.comment_name}}</span>
+                            <span class="user-name">{{user_name}}</span>
                         </div>
-                        <p class="content">{{this.comment_content}}</p>
+                        <p class="content">{{comment}}</p>
                     </div>
-                    <div class="comment_time">
-                        <span>{{this.comment_time}}</span>
+                    <div class="comment_time" style="margin-bottom: 40px">
+                        <div class="{{user_id}}">
+                            <div class="">
+                                <div class="stars-outer">
+                                    <div class="stars-inner"></div>
+                                </div>
+                                <span class="number-rating"><b>{{num_star}}</b> ({{number_rating}})</span>
+                            </div>
+                        </div>
+                        <script>
+                            var ob_rating = "{{{user_id}}}";
+                            document.addEventListener('DOMContentLoaded', getRatings({{ num_star }}, ob_rating))
+                        </script>
                     </div>
                 </div>
                 {{/each}}
@@ -174,7 +187,7 @@
     </div>
     <div class="right-container">
         <div class="intro-img" id="intro-img">
-            <img src="/{{intro_image}}" alt="course-intro-image">
+            <img src="{{intro_image}}" alt="course-intro-image">
         </div>
         <div class="under-intro-img">
             <div class="price">
