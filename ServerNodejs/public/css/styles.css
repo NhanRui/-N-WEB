@@ -137,6 +137,11 @@ section{
     position: relative;
 }
 
+.container-box{
+    display: flex;
+    flex-direction: row;
+}
+
 .header__logo
 {
     width: 0%;
@@ -162,11 +167,6 @@ section{
     width: 150px;
 }
 
-.search-btn-pos
-{
-    margin-top: 8.5px;
-    margin-left: 2px;
-}
 .search-btn
 {
     background: rgb(221, 31, 31);
@@ -293,7 +293,7 @@ button.sign-in-bg:hover
     background-color: white;
     border-radius: 3px;
     box-shadow: 0 0 3px #d1d1d1;
-    display: none;
+    margin-top: 5px;
 }
 
 .search_history hr{
@@ -355,13 +355,15 @@ button.sign-in-bg:hover
     margin-left: 85px;
     margin-top: 15px;
 }
-/*.cart_list p{
+
+.cart_list .cart-is-empty{
+    text-align: center;
     margin-top: 15px;
-    margin-left: 15px;
+    margin-left: 50px;
     width: 65%;
     font-size: 16px;
     color: rgb(124, 121, 121)
-}*/
+}
 
 .cart_list::after{
     content: "";
@@ -550,6 +552,10 @@ button.sign-in-bg:hover
     cursor: pointer;
 }
 
+.container-name-user p{
+    margin-bottom: 0px;
+}
+
 .image-auth{
     height: 30px;
     width: 30px;
@@ -602,6 +608,11 @@ button.sign-in-bg:hover
 
 .option-item-auth:hover .option-select-auth{
     color: #d60e0e;
+    text-decoration: none;
+}
+
+.line-user{
+    margin: 0;
 }
 
 .down-icon-auth{
@@ -610,7 +621,8 @@ button.sign-in-bg:hover
 }
 
 .option-select-auth{
-    color: rgb(126, 122, 122);
+    color: rgb(94, 91, 91);
+    font-size: 13px;
 }
 
 .container-name-user:hover{

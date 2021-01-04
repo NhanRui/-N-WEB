@@ -7,7 +7,7 @@
                 </label>
                 {{#each this.menuList}}
                 <li class="category-menu-item" id="{{category_id}}">
-                    <a class="main-category-level" href="#">
+                    <a class="main-category-level" href="/search/{{category_id}}">
                         <span class="item-level1" id="{{category_id}}_name">{{category_name}}</span>
                     </a>
                 </li>
@@ -25,66 +25,6 @@
                 <li class="category-menu-item" id="category-3">
                     <a class="main-category-level" href="#">
                         <span class="item-level1" id="IT">Công nghệ thông tin</span>
-                    </a>
-                </li>
-                <li class="category-menu-item">
-                    <a class="main-category-level" href="#">
-                        <span class="item-level1">Thể thao - sức khỏe</span>
-                    </a>
-                </li>
-                <li class="category-menu-item">
-                    <a class="main-category-level" href="#">
-                        <span class="item-level1">Phát triển cá nhân</span>
-                    </a>
-                </li>
-                <li class="category-menu-item">
-                    <a class="main-category-level" href="#">
-                        <span class="item-level1">Thiết kế</span>
-                    </a>
-                </li>
-                <li class="category-menu-item">
-                    <a class="main-category-level" href="#">
-                        <span class="item-level1">Kinh doanh - khởi nghiệp</span>
-                    </a>
-                </li>
-                <li class="category-menu-item">
-                    <a class="main-category-level" href="#">
-                        <span class="item-level1">Tin học văn phòng</span>
-                    </a>
-                </li>
-                <li class="category-menu-item">
-                    <a class="main-category-level" href="#">
-                        <span class="item-level1">Marketing</span>
-                    </a>
-                </li>
-                <li class="category-menu-item">
-                    <a class="main-category-level" href="#">
-                        <span class="item-level1">Multimedia</span>
-                    </a>
-                </li>
-                <li class="category-menu-item">
-                    <a class="main-category-level" href="#">
-                        <span class="item-level1">Kiến thức chuyên ngành</span>
-                    </a>
-                </li>
-                <li class="category-menu-item">
-                    <a class="main-category-level" href="#">
-                        <span class="item-level1">Nghệ thuật - đời sống</span>
-                    </a>
-                </li>
-                <li class="category-menu-item">
-                    <a class="main-category-level" href="#">
-                        <span class="item-level1">Hôn nhân - gia đình</span>
-                    </a>
-                </li>
-                <li class="category-menu-item">
-                    <a class="main-category-level" href="#">
-                        <span class="item-level1">Nuôi dạy con</span>
-                    </a>
-                </li>
-                <li class="category-menu-item">
-                    <a class="main-category-level" href="#">
-                        <span class="item-level1">Phong thủy/Nhân tướng học</span>
                     </a>
                 </li>-->
             </ul>
@@ -124,67 +64,7 @@
             </script>
         {{/each}}
         <!--Music-->
-        <div class="submenu-wrap" id="music-menu">
-            <div class="submenu-container-1">
-                <ul>
-                    <label class="category-label-item">
-                    <p class="category-label">Âm nhạc</p>
-                    </label>
-                    <li class="category-menu-item" id="mini-menu-music">
-                        <a class="main-category-level" href="#">
-                            <span class="item-level1">Luyện thanh</span>
-                        </a>
-                    </li>
-                    <li class="category-menu-item" id="mini-menu-music">
-                        <a class="main-category-level" href="#">
-                            <span class="item-level1">Nhạc cụ</span>
-                        </a>
-                    </li>
-                    <li class="category-menu-item" id="mini-menu-music">
-                        <a class="main-category-level" href="#">
-                            <span class="item-level1">Sản xuất và sáng tác</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="childmenu-container-1">
-                <label class="category-label-item">
-                    <p class="category-label">Âm nhạc - Featured Course</p>
-                </label>
-                <div class="product-menu-col">
-                    {{>product_menu_music}}
-                </div>
-            </div>
-        </div>
         <!--IT-->
-        <div class="submenu-wrap" id="IT-menu">
-            <div class="submenu-container-1">
-                <ul>
-                    <label class="category-label-item">
-                    <p class="category-label">Công nghệ thông tin</p>
-                    </label>
-                    <li class="category-menu-item" id="mini-menu-IT">
-                        <a class="main-category-level" href="#">
-                            <span class="item-level1">Lập trình Web</span>
-                        </a>
-                    </li>
-                    <li class="category-menu-item" id="mini-menu-IT">
-                        <a class="main-category-level" href="#">
-                            <span class="item-level1">Lập trình thiết bị di động</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="childmenu-container-1">
-                <label class="category-label-item">
-                    <p class="category-label">Công nghệ thông tin - Featured Course</p>
-                </label>
-                <div class="product-menu-col">
-                    {{>product_menu_IT}}
-                </div>
-            </div>
-        </div>
-
     </div>
     <div class="deal-slide-container">
         <div class="background-image">
