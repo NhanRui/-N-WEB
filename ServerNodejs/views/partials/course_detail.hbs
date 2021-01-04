@@ -167,7 +167,7 @@
                         <p class="content">{{comment}}</p>
                     </div>
                     <div class="comment_time" style="margin-bottom: 40px">
-                        <div class="{{user_id}}">
+                        <div class="cm_{{user_id}}">
                             <div class="">
                                 <div class="stars-outer">
                                     <div class="stars-inner"></div>
@@ -176,7 +176,7 @@
                             </div>
                         </div>
                         <script>
-                            var ob_rating = "{{{user_id}}}";
+                            var ob_rating = "cm_{{{user_id}}}";
                             document.addEventListener('DOMContentLoaded', getRatings({{ num_star }}, ob_rating))
                         </script>
                     </div>
