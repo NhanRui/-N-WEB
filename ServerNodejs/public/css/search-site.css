@@ -179,3 +179,8 @@ section{
     position: absolute;
     margin-top: 1000px;
 }
+
+#active_most{
+    color: rgba(216, 1, 1, 0.986);
+    font-weight: 600;
+}

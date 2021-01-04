@@ -106,19 +106,19 @@
                 </span>
                 <span class="blur-style diff-char"> | </span>
                 <a href="/search/{{Id}}/most-study">
-                    <span class="style-submenu menu1 blur-style">Học nhiều nhất</span>
+                    <span class="style-submenu menu1 blur-style" {{#if active_m_st}}id="active_most"{{/if}}>Học nhiều nhất</span>
                 </a>
                 <a href="/search/{{Id}}/most-overall">
-                    <span class="style-submenu menu2 blur-style">Đánh giá cao nhất</span>
+                    <span class="style-submenu menu2 blur-style"{{#if active_m_ov}}id="active_most"{{/if}}>Đánh giá cao nhất</span>
                 </a>
                 <a href="/search/{{Id}}/newest">
                     <span class="style-submenu menu3 blur-style">Mới nhất</span>
                 </a>
                 <a href="/search/{{Id}}/price-ascend">
-                    <span class="style-submenu menu4 blur-style">Giá thấp đến cao</span>
+                    <span class="style-submenu menu4 blur-style"{{#if active_m_ap}}id="active_most"{{/if}}>Giá thấp đến cao</span>
                 </a>
                 <a href="/search/{{Id}}/price-descend">
-                    <span class="style-submenu menu5 blur-style">Giá cao đến thấp</span>
+                    <span class="style-submenu menu5 blur-style"{{#if active_m_dp}}id="active_most"{{/if}}>Giá cao đến thấp</span>
                 </a>
             </div>
             {{/with}}
