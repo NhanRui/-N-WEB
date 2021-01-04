@@ -7,15 +7,21 @@ function checkName(){
         return false;
     }
     for(var i=0; i<ho.value.length;i++){
-        if(!isNaN(ho.value.charAt(i))){
-            alert("Tên không thể có số");
+        if(!isNaN(ho.value.charAt(i))||ho.value.charAt(i)){
+            if(ho.value.charAt(i)===' '){
+                continue;
+            }
+            alert("Tên không thể có số ---> vị trí "+i+1);
             ho.focus();
             return false;
         }
     }
     for(var i=0; i<ten.value.length;i++){
         if(!isNaN(ten.value.charAt(i))){
-            alert("Tên không thể có số");
+            if(ho.value.charAt(i)===' '){
+                continue;
+            }
+            alert("Tên không thể có số ---> vị trí "+i+1);
             ten.focus();
             return false;
         }

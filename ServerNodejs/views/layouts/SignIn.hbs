@@ -71,14 +71,18 @@
             border-radius: 20px;
             font-stretch:semi-condensed;
         }
+        #forgot-password{
+            position: relative;
+            top:8px;
+            left:40px;
+        }
     </style>
+    <!--
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0&appId=860030564755543&autoLogAppEvents=1" nonce="702t9mJI"></script>
+    -->
 </head>
 <body>
-    <!-- phần này liên quan fb
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xf
-        bml=1&version=v8.0" nonce="rKqWtgGD"></script>
-    -->
 <form method="POST">
     <table style="width:90%;margin-left:50px;" cellspacing="5px">
         <colgroup>
@@ -102,12 +106,8 @@
         </tr>
         <tr>
             <td>
-                <!--
-                <div class="fb-login-button" data-size="large" data-button-type="continue_with" 
-                data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div>
-                
-                <button>Faccebook</button>
-                <button>Gmail</button>
+                <div class="fb-login-button" data-width="300" data-size="large" data-button-type="login_with" data-layout="rounded" 
+                    data-auto-logout-link="false" data-use-continue-as="true" scope="public_profile,email" onlogin="checkLoginState();"></div>
             </td>
         </tr>
         -->
@@ -137,12 +137,43 @@
                 <td><input id="submit" class="but" type="submit" name="send" value="Đăng nhập"></td>
                 <td>
                     <!-- phan nay lien ket voi co so du lieu, chua thuc hien duoc-->
-                    <p><a href="#">Quên mật khẩu?</a></p>
+                    <p><a href="#" id="forgot-password">Quên mật khẩu?</a></p>
                 </td>
             </tr>
     </table>
     </div>
+    <input type="hidden" name="id" id="id">
 </form>
 <script src="javascript/SignIn.js"></script>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '860030564755543',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+      
+    FB.AppEvents.logPageView();   
+    checkLoginState();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<script>
+    function checkLoginState() {
+        FB.getLoginStatus(respond => {
+            if (response.status === 'connected') {
+                console.log(response.authResponse.accessToken);
+            }
+        });
+    }
+</script>
 </body>
 </html>
