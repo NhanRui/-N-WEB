@@ -42,7 +42,7 @@
                         <div class="lesson">
                             <i class="fa fa-play-circle" aria-hidden="true"></i>
                             <div class="lesson_name">
-                                <span>Bài {{video_number}}: {{video_name}}</span>
+                                <span>Bài {{stt}}: {{video_name}}</span>
                             </div>
                         </div>
                     </a>
@@ -121,7 +121,9 @@
                 {{#with this.nextVideo}}
                 <a href="/watch-video/{{course_id}}/{{chapter_number}}/{{video_number}}"><i class="fas fa-step-forward" id="next_video"></i></a>
                 {{/with}}
-                <p class="title-video"> Bài 1: Syntax trong Nodejs</p>
+                {{#with currentVideo}}
+                <p class="title-video"> Bài {{stt}}: {{video_name}}</p>
+                {{/with}}
             </div>
             <div class="menu_info">
                 <span class="teacher_info" id="t_choice">Giảng viên</span>

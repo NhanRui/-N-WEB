@@ -10,9 +10,11 @@ router.get('/:id/:chapter/:video', async function (req, res) {
   list_infor=await vd_info.getInfor(course_id);
   list_chapter=await vd_info.getChapter(course_id);
   list_video=await vd_info.getListVideo(course_id);
+  vd_info.setSTTVideo(list_video);
   url=await vd_info.get_url(course_id,chapter,video);
   prevVideo=vd_info.getPreviousVideo(chapter,video,list_video);
   nextVideo=vd_info.getNextVideo(chapter,video,list_video);
+  curVideo=vd_info.getCurrentVideo(chapter,video,list_video);
   allChapter=[];
   for (const i of list_chapter)
   {
@@ -42,6 +44,7 @@ router.get('/:id/:chapter/:video', async function (req, res) {
       link: url,
       prevVideo: prevVideo,
       nextVideo: nextVideo,
+      currentVideo: curVideo,
       layout: "video_site.hbs"
   });
 })

@@ -15,7 +15,7 @@ module.exports={
         return rows;
     },
     async getListVideo(id){
-        const sql=`SELECT v.*,l.chapter_number,l.course_id
+        const sql=`SELECT v.*,l.chapter_number,l.course_id, 0 as stt
         FROM video v join lesson_list l on v.list_id=l.list_id 
         WHERE l.course_id='${id}'`;
         const [rows, fields] = await db.load(sql);
@@ -60,6 +60,24 @@ module.exports={
             return list[index];
         }
         index++
+        return list[index];
+    },
+    setSTTVideo(list){
+        for (i=0;i<list.length;i++)
+        {
+            list[i].stt=i+1;
+        }
+    },
+    getCurrentVideo(chapter,video,list){
+        let index=0;
+        for (const i of list)
+        {
+            if (i.chapter_number===+chapter && i.video_number===+video)
+            {
+                break;
+            }
+            index++;
+        }
         return list[index];
     },
 }
