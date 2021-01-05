@@ -8,6 +8,17 @@
     <link rel="stylesheet" href="css/mycourses.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -15,20 +26,18 @@
         <div class="left-container">
             <div class="quick-user-info">
                 <div class="logo">
-                    <img src="./images/logo1.png" alt="logo">
+                    <a href="/"><img src="./images/logo1.png" alt="logo"></a>
                 </div>
                 <div class="avatar">
-                    <img src="https://lh3.googleusercontent.com/a-/AOh14Ggz6K4_V1Ln_2VB_a8O7GpJqPvWfvAXUSuqLu8zWg=s96-c" alt="avatar">
+                    <img src="{{authUser.avatar}}" alt="avatar">
                 </div>
-                <span class="quick-name">Duy Nguyễn</span>
+                <span class="quick-name">{{authUser.name}}</span>
                 <span class="quick-role">Học viên</span>
                 <button class="activate-btn" type="submit"><i class="fa fa-lock" aria-hidden="true"></i>Kích hoạt khóa học</button>
             </div>
             <div class="categories">
                 <div class="category"><a class="choosen" href="#"><i class="fa fa-play-circle" aria-hidden="true"></i>Khóa học của tôi</a></div>
-                <div class="category"><a href="#"><i class="fa fa-play-circle" aria-hidden="true"></i>Bài thi</a></div>
-                <div class="category"><a href="#"><i class="fa fa-trophy" aria-hidden="true"></i>Chứng chỉ</a></div>
-                <div class="category"><a href="#"><i class="fa fa-user-circle" aria-hidden="true"></i>Thông tin cá nhân</a></div>
+                <div class="category"><a href="/account/profile"><i class="fa fa-user-circle" aria-hidden="true"></i>Thông tin cá nhân</a></div>
                 <div class="category"><a href="#"><i class="fa fa-question-circle" aria-hidden="true"></i>Hỗ trợ</a></div>
             </div>
         </div>
@@ -49,4 +58,5 @@
         {{> footer-index}}
     </footer>
 </body>
+<script src="/public/javascript/my_course.js"></script>
 </html>

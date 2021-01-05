@@ -1,3 +1,5 @@
+const db = require("../utils/db");
+
 const listCourses = [
   {
     courseImage: "images/ad1.jpg",
@@ -37,7 +39,34 @@ const listCourses = [
 ];
 
 module.exports = {
-  all() {
-    return listCourses;
+  async allCourse(user_id) {
+    const sql = `select course_id from bill where user_id = '${user_id}'`;
+    const [result, fields] = await db.load(sql);
+    if (result === null)
+      return null;
+    return result;
   },
+
+  async courseByID(courseID) {
+    const sql = `select * from course where course_id = '${courseID}'`;
+    const [result, fields] = await db.load(sql);
+    return result[0];
+  },
+
+  async lecturerByID(userID) {
+    const sql = `select name from user where user_id = '${userID}'`;
+    const [result, fields] = await db.load(sql);
+    return result[0];
+  },
+
+  async addComment(entity) {
+    const sql = `select * from star_rating where user_id = '${entity.user_id}' and course_id = '${entity.course_id}'`;
+    const [rows, fields] = await db.load(sql);
+    if (rows.length === 0)
+      await db.add(entity, 'star_rating');
+    else {
+      const sql1 = `update star_rating set user_id='${entity.user_id}', course_id='${entity.course_id}', num_star='${entity.num_star}', comment='${entity.comment}' where user_id='${entity.user_id}' and course_id='${entity.course_id}'`;
+      const [rows, fields] = await db.load(sql1);
+    }
+  }
 };
