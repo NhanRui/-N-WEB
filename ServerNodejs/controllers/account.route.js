@@ -171,8 +171,8 @@ router.get('/is-available-usname', async function (req, res) {
 
   router.get('/profile', function(req, res, next){
     const user = req.session.authUser;
-    const firstName = user.name.split(' ')[1];
-    const lastName = user.name.split(' ')[0];
+    const firstName = user.name.substr(user.name.indexOf(' ')+1);
+    const lastName = user.name.substr(0, user.name.indexOf(' '));
     res.render('layouts/AccountInformation',{
       layout:false,
       user,
@@ -202,8 +202,8 @@ router.get('/is-available-usname', async function (req, res) {
   router.post('/password-change', async function (req, res) {
     const user = req.session.authUser;
     console.log(user)
-    const firstName = user.name.split(' ')[1];
-    const lastName = user.name.split(' ')[0];
+    const firstName = user.name.substr(user.name.indexOf(' ')+1);
+    const lastName = user.name.substr(0, user.name.indexOf(' '));
     const ret = bcrypt.compareSync(req.body.old_ps, user.password);
     if (ret === false) {
       return res.render('layouts/AccountInformation', {
