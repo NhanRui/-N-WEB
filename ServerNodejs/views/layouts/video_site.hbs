@@ -1,174 +1,240 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Học Online tại EduOYK - Nền tảng học tập trực tuyến hàng đầu Đông Nam Á với hơn 3000+ Khoá Học và 3 triệu học viên. Đồng hành cùng EduOYK là đội ngũ giảng viên, chuyên gia hàng đầu trong nhiều lĩnh vực">
-    <link rel="icon" type="image/png" href="images/icon.png" sizes="32x32"/>
+    <meta name="description"
+        content="Học Online tại EduOYK - Nền tảng học tập trực tuyến hàng đầu Đông Nam Á với hơn 3000+ Khoá Học và 3 triệu học viên. Đồng hành cùng EduOYK là đội ngũ giảng viên, chuyên gia hàng đầu trong nhiều lĩnh vực">
+    <link rel="icon" type="image/png" href="images/icon.png" sizes="32x32" />
     <title>Học Online với 3000+ Khoá Học từ những Chuyên Gia hàng đầu | EduOYK</title>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel="stylesheet" href="css/see_video.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
+
 <body>
     <p>Khóa học</p>
 
-
-    <div class="container-video">
-        <div class="container-title-video">
-            <img src="./images/logo1.png" alt="" class="setting-img">
-            <p class="tittle-of-video">Lập trình PHP từ cơ bản đến nâng cao trong 6 tuần - Thực hành tự tạo website tin tức</p>
-        </div>
-        <iframe src="https://www.youtube.com/embed/QH2-TGUlwu4?autoplay=1" width="1020" height="575" frameborder="0" allowfullscreen></iframe>
-        <div class="container-video-tittle">
-            <a href="#"><i class="fas fa-step-backward" id="previous_video"></i></a>
-            <a href="#"><i class="fas fa-step-forward" id="next_video"></i></a>
-            <p class="title-video"> Bài 1: Syntax trong Nodejs</p>
-        </div>
-        <div class="menu_info">
-            <span class="teacher_info" id="t_choice">Giảng viên</span>
-            <span class="course_info" id="c_choice">Thông tin chung</span>
-            <span class="rating" id="r_choice">Đánh giá</span>
-            <span class="comment">Thảo luận</span>
-        </div>
-        <div class="tab_teacher">
-            <div class="info_teacher">
-                <div class="info_teacher_left">
-                    <img src="/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg">
-                </div>
-                <div class="info_teacher_right">
-                    <p class="name_teacher">Lê Hoàng Phúc</p>
-                </div>
+    <div class="large_container">
+        <button type="button" class="appear_button" style="display: none;"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+        <div class="slide_bar">
+            <div class="slide_head">
+                <span style="font-size: 20px; font-weight:500;">Giáo trình</span>
+                <button type="button" class="slide_button"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
             </div>
-            <div class="history_teacher">
-                <p>- - 4 năm kinh nghiệm làm việc với PHP+ Mysql.</p>
-                <p>- - Triển khai nhiều hệ thống lớn sử dụng các framework như Yii, Zend,Ci. Sử dụng nhiều công nghệ caching như redis, memcache. </p>
-                <p>- - Kinh nghiệm làm việc với các search engine: solr, elastics </p>
-                <p>- - Kinh ngiệm làm việc với NoSQL: mongoDB, Cassandra </p>
-                <p>- - 1 năm kinh nghiệm với big data và python. Hệ thống tính toán phân tán: apache spark, hadoop </p>
-                <p>- - Hiện đang là senior software engineer tại công ty Orenj Technology</p>
-            </div>
-        </div>
-        <div class="tab_info_course">
-            <div class="audience">
-                <p class="txt_title">Phù hợp với</p>
-                <!--add db-->
-                <p>Những người có niềm đam mê với lập trình, mong muốn tạo được 1 website thực tế của riêng mình</p>
-                <p>Những người mong muốn trở thành lập trình viên chuyên nghiệp và có mức thu nhập cao.</p>
-            </div>
-            <div class="description">
-                <p class="txt_title">Mô tả tổng quát</p>
-                <!--add db-->
-                <div class="description"><p><span style="'times new roman';: 16px; white-space: pre-wrap;">Bạn có biết hơn 80% website hiện nay đều được viết bằng ngôn ngữ PHP </span></p>
-                <p><span style="'times new roman';: 16px; white-space: pre-wrap;">Bạn cũng muốn tự mình làm nên 1 website hoàn chỉnh, tương tác cao với người dùng, vậy chắc chắn bạn cần thành thạo PHP rồi. Với nền tảng HTML, CSS đã có, tôi tin rằng bạn sẽ dễ dàng làm chủ ngôn ngữ lập trình tuyệt vời này. Tôi sẽ giúp các bạn tất cả những gì cần biết về PHP để tạo nên một website hoàn chỉnh. </span></p>
-                <p><span style="'times new roman';: 16px; white-space: pre-wrap;">Khóa học dạy bạn từ điều cơ bản nhất, đến cách kết hợp PHP với các ngôn ngữ lâp trình quan trọng khác như HTML, MySQL, Javascript để tạo được website tin tức hoạt động mượt mà. Tôi tiến hành code trực tiếp trên phiên bản PHP mới nhất, mọi hướng dẫn đều được chia nhỏ thành từng bước rõ ràng, bạn sẽ dễ dàng theo dõi và biết debug lỗi ngay khi gặp phải.</span></p>
-                <p><span style="'times new roman';: 16px; white-space: pre-wrap;">Bên cạnh đó, lập trình hướng đối tượng là điều tôi đặc biệt mong muốn các bạn có được, bằng lối tư duy logic và những kinh nghiệm có được với 8 năm trong nghề lập trình, tôi tự tin đồng hành cùng bạn trong 6 tuần học tập</span></p></div>
-            </div>
-            <div class="requirement">
-                <p class="txt_title">Lợi ích khóa học</p>
-                <!--add db-->
-                <p>Có kiến thức cơ bản về máy tính</p>
-                <p>Nên sử dụng tai nghe trong quá trình học</p>
-            </div>
-        </div>
-        <div class="tab_rating_course">
-            <div class="rating-container">
-                <p class="tittle-rating">Đánh giá của bạn</p>
-
-                <div class="container_star">
-                    <div class="star-widget">
-                        <div class="post">
-                            <div class="text">Cảm ơn đã đánh giá khóa học của tôi!</div>
-                            <div class="edit">EDIT</div>
-                        </div>
-                        <input type="radio" name="rate" id="rate-5" value="5">
-                        <label for="rate-5" class="fas fa-star"></label>
-                        <input type="radio" name="rate" id="rate-4" value="4">
-                        <label for="rate-4" class="fas fa-star"></label>
-                        <input type="radio" name="rate" id="rate-3" value="3">
-                        <label for="rate-3" class="fas fa-star"></label>
-                        <input type="radio" name="rate" id="rate-2" value="2">
-                        <label for="rate-2" class="fas fa-star"></label>
-                        <input type="radio" name="rate" id="rate-1" value="1">
-                        <label for="rate-1" class="fas fa-star"></label>
-                        <form action="#">
-                            <header></header>
-                            <input type="text" name="star_value" id="num-star">
-                            <div class="textarea">
-                                <textarea placeholder="Nhập ý kiến của bạn" cols="30" name="cmReview"></textarea>
-                            </div>
-                            <div class="btn">
-                                <button type="submit">Đánh giá</button>
-                            </div>
-                        </form>
+            <div class="auto_play">
+                <span>Tự động chuyển bài</span>
+                <div class="auto_play_line">
+                    <div class="auto_play_round">
                     </div>
                 </div>
-                <script>
-                    $(document).ready(function(){
-                        $('.star-widget input').on('change',function(){
-                            var setvalue=$("[type='radio']:checked").val();
-                            $('#num-star').val($("[type='radio']:checked").val());
-                        });
-                    });
-                    /*const setStar=document.querySelector(".num_star")
-                    const btn=document.querySelector("button");
-                    const post=document.querySelector(".post");
-                    const widget=document.querySelector(".star-widget");
-                    const editBtn=document.querySelector(".edit");
-                    btn.onclick=()=>{
-                        let selected=document.querySelector('input[type="radio"]:checked');
-                        console.log(selected.value);
-                        setStar.innerHTML=selected.value;
-                        widget.style.display="none";
-                        post.style.display="block";
-                        editBtn.onclick()=>{
-                            widget.style.display="block";
-                            post.style.display="none";
-                            return false;
-                        }
-                        return false;
-                    }*/
-                </script>
+            </div>
+            <div class="lesson_content">
+                <div class="chapter">
+                    <div class="chap_name">
+                        <span style="color: red">Chương 1</span>
+                        <p>Tổng quan PHP</p>
+                    </div>
+                    <div class="lessons">
+                        <div class="lesson">
+                            <i class="fa fa-play-circle" aria-hidden="true"></i>
+                            <div class="lesson_name">
+                                <span>Bài 1: Giới thiệu về PHP</span>
+                            </div>
+                        </div>
+                        <div class="lesson">
+                            <i class="fa fa-play-circle" aria-hidden="true"></i>
+                            <div class="lesson_name">
+                                <span>Bài 2: Cài đặt PHP trên Windows</span>
+                            </div>
+                        </div>
+                        <div class="lesson">
+                            <i class="fa fa-play-circle" aria-hidden="true"></i>
+                            <div class="lesson_name">
+                                <span>Bài 3: Syntax trong PHP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <script>
-            const teacher_info=document.getElementById("t_choice");
-            const course_info=document.getElementById("c_choice");
-            const rating_info=document.getElementById("r_choice");
-            const tab_teacher=document.getElementsByClassName("tab_teacher")[0];
-            const tab_infor_course=document.getElementsByClassName("tab_info_course")[0];
-            const tab_rating=document.getElementsByClassName("tab_rating_course")[0];
-            tab_teacher.style.display="block";
-            tab_infor_course.style.display="none";
-            tab_rating.style.display="none";
-            teacher_info.style.borderBottom="4px solid red";
-            teacher_info.addEventListener("click", function(event){
-                teacher_info.style.borderBottom="4px solid red";
-                course_info.style.borderBottom="none";
-                rating_info.style.borderBottom="none";
-                tab_teacher.style.display="block";
-                tab_infor_course.style.display="none";
-                tab_rating.style.display="none";
-            });
-            course_info.addEventListener("click", function(event){
-                teacher_info.style.borderBottom="none";
-                course_info.style.borderBottom="4px solid red";
-                rating_info.style.borderBottom="none";
-                tab_teacher.style.display="none";
-                tab_infor_course.style.display="block";
-                tab_rating.style.display="none";
-            });
-            rating_info.addEventListener("click", function(event){
-                teacher_info.style.borderBottom="none";
-                course_info.style.borderBottom="none";
-                rating_info.style.borderBottom="4px solid red";
-                tab_teacher.style.display="none";
-                tab_infor_course.style.display="none";
-                tab_rating.style.display="block";
-            });
-        </script>
+
+        <div class="container-video">
+            <div class="container-title-video">
+                <img src="./images/logo1.png" alt="" class="setting-img">
+                <p class="tittle-of-video">Lập trình PHP từ cơ bản đến nâng cao trong 6 tuần - Thực hành tự tạo website
+                    tin tức</p>
+            </div>
+            <iframe src="https://www.youtube.com/embed/QH2-TGUlwu4?autoplay=1" width="1020" height="575" frameborder="0"
+                allowfullscreen></iframe>
+            <div class="container-video-tittle">
+                <a href="#"><i class="fas fa-step-backward" id="previous_video"></i></a>
+                <a href="#"><i class="fas fa-step-forward" id="next_video"></i></a>
+                <p class="title-video"> Bài 1: Syntax trong Nodejs</p>
+            </div>
+            <div class="menu_info">
+                <span class="teacher_info" id="t_choice">Giảng viên</span>
+                <span class="course_info" id="c_choice">Thông tin chung</span>
+                <span class="rating" id="r_choice">Đánh giá</span>
+                <span class="comment">Thảo luận</span>
+            </div>
+            <div class="tab_teacher">
+                <div class="info_teacher">
+                    <div class="info_teacher_left">
+                        <img src="/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg">
+                    </div>
+                    <div class="info_teacher_right">
+                        <p class="name_teacher">Lê Hoàng Phúc</p>
+                    </div>
+                </div>
+                <div class="history_teacher">
+                    <p>- - 4 năm kinh nghiệm làm việc với PHP+ Mysql.</p>
+                    <p>- - Triển khai nhiều hệ thống lớn sử dụng các framework như Yii, Zend,Ci. Sử dụng nhiều công nghệ
+                        caching như redis, memcache. </p>
+                    <p>- - Kinh nghiệm làm việc với các search engine: solr, elastics </p>
+                    <p>- - Kinh ngiệm làm việc với NoSQL: mongoDB, Cassandra </p>
+                    <p>- - 1 năm kinh nghiệm với big data và python. Hệ thống tính toán phân tán: apache spark, hadoop
+                    </p>
+                    <p>- - Hiện đang là senior software engineer tại công ty Orenj Technology</p>
+                </div>
+            </div>
+            <div class="tab_info_course">
+                <div class="audience">
+                    <p class="txt_title">Phù hợp với</p>
+                    <!--add db-->
+                    <p>Những người có niềm đam mê với lập trình, mong muốn tạo được 1 website thực tế của riêng mình</p>
+                    <p>Những người mong muốn trở thành lập trình viên chuyên nghiệp và có mức thu nhập cao.</p>
+                </div>
+                <div class="description">
+                    <p class="txt_title">Mô tả tổng quát</p>
+                    <!--add db-->
+                    <div class="description">
+                        <p><span style="'times new roman';: 16px; white-space: pre-wrap;">Bạn có biết hơn 80% website
+                                hiện nay đều được viết bằng ngôn ngữ PHP </span></p>
+                        <p><span style="'times new roman';: 16px; white-space: pre-wrap;">Bạn cũng muốn tự mình làm nên
+                                1 website hoàn chỉnh, tương tác cao với người dùng, vậy chắc chắn bạn cần thành thạo
+                                PHP rồi. Với nền tảng HTML, CSS đã có, tôi tin rằng bạn sẽ dễ dàng làm chủ ngôn ngữ
+                                lập trình tuyệt vời này. Tôi sẽ giúp các bạn tất cả những gì cần biết về PHP để
+                                tạo nên một website hoàn chỉnh. </span></p>
+                        <p><span style="'times new roman';: 16px; white-space: pre-wrap;">Khóa học dạy bạn từ điều cơ
+                                bản nhất, đến cách kết hợp PHP với các ngôn ngữ lâp trình quan trọng khác như HTML,
+                                MySQL, Javascript để tạo được website tin tức hoạt động mượt mà. Tôi tiến hành code
+                                trực tiếp trên phiên bản PHP mới nhất, mọi hướng dẫn đều được chia nhỏ thành từng
+                                bước rõ ràng, bạn sẽ dễ dàng theo dõi và biết debug lỗi ngay khi gặp phải.</span></p>
+                        <p><span style="'times new roman';: 16px; white-space: pre-wrap;">Bên cạnh đó, lập trình hướng
+                                đối tượng là điều tôi đặc biệt mong muốn các bạn có được, bằng lối tư duy logic và
+                                những kinh nghiệm có được với 8 năm trong nghề lập trình, tôi tự tin đồng hành cùng
+                                bạn trong 6 tuần học tập</span></p>
+                    </div>
+                </div>
+                <div class="requirement">
+                    <p class="txt_title">Lợi ích khóa học</p>
+                    <!--add db-->
+                    <p>Có kiến thức cơ bản về máy tính</p>
+                    <p>Nên sử dụng tai nghe trong quá trình học</p>
+                </div>
+            </div>
+            <div class="tab_rating_course">
+                <div class="rating-container">
+                    <p class="tittle-rating">Đánh giá của bạn</p>
+
+                    <div class="container_star">
+                        <div class="star-widget">
+                            <div class="post">
+                                <div class="text">Cảm ơn đã đánh giá khóa học của tôi!</div>
+                                <div class="edit">EDIT</div>
+                            </div>
+                            <input type="radio" name="rate" id="rate-5" value="5">
+                            <label for="rate-5" class="fas fa-star"></label>
+                            <input type="radio" name="rate" id="rate-4" value="4">
+                            <label for="rate-4" class="fas fa-star"></label>
+                            <input type="radio" name="rate" id="rate-3" value="3">
+                            <label for="rate-3" class="fas fa-star"></label>
+                            <input type="radio" name="rate" id="rate-2" value="2">
+                            <label for="rate-2" class="fas fa-star"></label>
+                            <input type="radio" name="rate" id="rate-1" value="1">
+                            <label for="rate-1" class="fas fa-star"></label>
+                            <form action="#">
+                                <header></header>
+                                <input type="text" name="star_value" id="num-star">
+                                <div class="textarea">
+                                    <textarea placeholder="Nhập ý kiến của bạn" cols="30" name="cmReview"></textarea>
+                                </div>
+                                <div class="btn">
+                                    <button type="submit">Đánh giá</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            $('.star-widget input').on('change', function () {
+                                var setvalue = $("[type='radio']:checked").val();
+                                $('#num-star').val($("[type='radio']:checked").val());
+                            });
+                        });
+                    /*const setStar=document.querySelector(".num_star")
+                                const btn=document.querySelector("button");
+                                const post=document.querySelector(".post");
+                                const widget=document.querySelector(".star-widget");
+                                const editBtn=document.querySelector(".edit");
+                                btn.onclick=()=>{
+                                    let selected=document.querySelector('input[type="radio"]:checked');
+                                    console.log(selected.value);
+                                    setStar.innerHTML=selected.value;
+                                    widget.style.display="none";
+                                    post.style.display="block";
+                                    editBtn.onclick()=>{
+                                        widget.style.display="block";
+                                        post.style.display="none";
+                                        return false;
+                                    }
+                                    return false;
+                                }*/
+                    </script>
+                </div>
+            </div>
+            <script>
+                const teacher_info = document.getElementById("t_choice");
+                const course_info = document.getElementById("c_choice");
+                const rating_info = document.getElementById("r_choice");
+                const tab_teacher = document.getElementsByClassName("tab_teacher")[0];
+                const tab_infor_course = document.getElementsByClassName("tab_info_course")[0];
+                const tab_rating = document.getElementsByClassName("tab_rating_course")[0];
+                tab_teacher.style.display = "block";
+                tab_infor_course.style.display = "none";
+                tab_rating.style.display = "none";
+                teacher_info.style.borderBottom = "4px solid red";
+                teacher_info.addEventListener("click", function (event) {
+                    teacher_info.style.borderBottom = "4px solid red";
+                    course_info.style.borderBottom = "none";
+                    rating_info.style.borderBottom = "none";
+                    tab_teacher.style.display = "block";
+                    tab_infor_course.style.display = "none";
+                    tab_rating.style.display = "none";
+                });
+                course_info.addEventListener("click", function (event) {
+                    teacher_info.style.borderBottom = "none";
+                    course_info.style.borderBottom = "4px solid red";
+                    rating_info.style.borderBottom = "none";
+                    tab_teacher.style.display = "none";
+                    tab_infor_course.style.display = "block";
+                    tab_rating.style.display = "none";
+                });
+                rating_info.addEventListener("click", function (event) {
+                    teacher_info.style.borderBottom = "none";
+                    course_info.style.borderBottom = "none";
+                    rating_info.style.borderBottom = "4px solid red";
+                    tab_teacher.style.display = "none";
+                    tab_infor_course.style.display = "none";
+                    tab_rating.style.display = "block";
+                });
+            </script>
+        </div>
     </div>
 </body>
+<script src="/public/javascript/videos.js"></script>
+
 </html>
