@@ -1,4 +1,4 @@
-const { get5starCourse, getUp4starCourse } = require('../utils/db');
+const { get5starCourse, getUp4starCourse, getCateBySearch, get5starCourseSearch } = require('../utils/db');
 const db = require('../utils/db');
 
 const list = [
@@ -607,20 +607,40 @@ const list = [
         const [rows, fields] = await db.countByCat(id);
         return rows[0].total;
       },
+      async countBySearch(textSearch){
+        const [rows, fields] = await db.countBySearch(textSearch);
+        return rows[0].total;
+      },
       async countByCat_5star(id){
         const [rows, fields] = await db.countByCat_5star(id);
+        return rows[0].total;
+      },
+      async countByCat_5starSearch(textSearch){
+        const [rows, fields] = await db.countByCat_5starSearch(textSearch);
         return rows[0].total;
       },
       async countByCat_Up4star(id){
         const [rows, fields] = await db.countByCat_Up4star(id);
         return rows[0].total;
       },
+      async countByCat_Up4starSearch(textSearch){
+        const [rows, fields] = await db.countByCat_Up4starSearch(textSearch);
+        return rows[0].total;
+      },
       async countByCat_Up3star(id){
         const [rows, fields] = await db.countByCat_Up3star(id);
         return rows[0].total;
       },
+      async countByCat_Up3starSearch(textSearch){
+        const [rows, fields] = await db.countByCat_Up3starSearch(textSearch);
+        return rows[0].total;
+      },
       async countByCat_Down3star(id){
         const [rows, fields] = await db.countByCat_Down3star(id);
+        return rows[0].total;
+      },
+      async countByCat_Down3starSearch(id){
+        const [rows, fields] = await db.countByCat_Down3starSearch(id);
         return rows[0].total;
       },
       async getCateList(id){
@@ -631,22 +651,43 @@ const list = [
         const [rows, fields] = await db.getCateListByPage(id,offset);
         return rows;
       },
+      async getCateBySearch(textSearch,offset){
+        const [rows, fields] = await db.getCateBySearch(textSearch,offset);
+        return rows;
+      },
       async get5starCourse(id,offset){
         const [rows, fields] = await db.get5starCourse(id,offset);
+        return rows;
+      },
+      async get5starCourseSearch(textSearch,offset){
+        const [rows, fields] = await db.get5starCourseSearch(textSearch,offset);
         return rows;
       },
       async getUp4starCourse(id,offset){
         const [rows, fields] = await db.getUp4starCourse(id,offset);
         return rows;
       },
+      async getUp4starCourseSearch(textSearch,offset){
+        const [rows, fields] = await db.getUp4starCourseSearch(textSearch,offset);
+        return rows;
+      },
       async getUp3starCourse(id,offset){
         const [rows, fields] = await db.getUp3starCourse(id,offset);
+        return rows;
+      },
+      async getUp3starCourseSearch(textSearch,offset){
+        const [rows, fields] = await db.getUp3starCourseSearch(textSearch,offset);
         return rows;
       },
       async getDown3starCourse(id,offset){
         const [rows, fields] = await db.getDown3starCourse(id,offset);
         return rows;
       },
+      async getDown3starCourseSearch(textSearch,offset){
+        const [rows, fields] = await db.getDown3starCourseSearch(textSearch,offset);
+        return rows;
+      },
+
       async mostStudyByCatID(id, offset){
         const [rows, fields] = await db.mostStudyByCatID(id, offset);
         return rows;
@@ -663,6 +704,12 @@ const list = [
         const [rows, fields] = await db.descPriceByCatId(id, offset);
         return rows;
       },
+
+      async mostMenuChooseSearch(textSearch,offset,order,mode){
+        const [rows, fields] = await db.mostMenuChooseSearch(textSearch,offset,order,mode)
+        return rows;
+      },
+      
       all_top8(){
           return list_top8;
       },
