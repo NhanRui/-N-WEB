@@ -2,15 +2,32 @@ const express = require("express");
 const coursesModel = require("../models/coursesModel");
 const router = express.Router();
 
-router.get("/", function (req, res) {
-  console.log(req.session.auth);
-  console.log(req.session.authUser)
-  const list = coursesModel.all();
+router.get("/", async function (req, res) {
+  const list = await coursesModel.allCourse(req.session.authUser.user_id);
+  const courses = [];
+  for (const object of list) {
+    let course = await coursesModel.courseByID(object.course_id);
+    let lecturer = await coursesModel.lecturerByID(course.lecturer_id);
+    course['lecturer_name'] = lecturer.name;
+    courses.push(course);
+  }
   res.render("partials/courses", {
-    allCourses: list,
-    empty: list.length === 0,
+    allCourses: courses,
+    empty: courses.length === 0,
     layout: "MyCourses.hbs",
   });
 });
+
+router.post('/rating', async (req, res) => {
+  let comment = {
+    user_id : req.session.authUser.user_id,
+    course_id : req.body.courseID,
+    num_star : req.body.rate,
+    comment : req.body.review
+  };
+  await coursesModel.addComment(comment);
+  console.log(req.body)
+  res.redirect('/MyCourse');
+})
 
 module.exports = router;

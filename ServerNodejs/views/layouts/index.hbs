@@ -35,7 +35,7 @@
                 <li><a href="#" class="active">Kiểm tra đơn hàng</a></li>
                 <li><a href="faq" class="active">Chăm sóc khách hàng</a></li>
                 <li><a href="BecomeInstructor" class="active">Trở thành giảng viên</a></li>
-                <li><a href="#" class="active">Khóa học của tôi</a></li>
+                <li><a href="MyCourse" class="active">Khóa học của tôi</a></li>
             </ul>
         </nav>
         <div class="search-box">
@@ -159,7 +159,7 @@
             {{#if auth}}
             <div class="container-authen">
                 <div class="container-name-user">
-                    <p><img src="images/BecomeInstructor/ltn.jpg" alt="" class="image-auth"></p>
+                    <p><img src="{{authUser.avatar}}" alt="" class="image-auth"></p>
                     <p class="name-user-auth">{{authUser.name}}</p>
                     <p class="down-icon-auth"><i class="fas fa-sort-down"></i></p>
                 </div>
