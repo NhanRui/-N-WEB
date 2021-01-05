@@ -5,17 +5,16 @@
     <meta charset="UTF-8">
     <meta name="description"
         content="Học Online tại EduOYK - Nền tảng học tập trực tuyến hàng đầu Đông Nam Á với hơn 3000+ Khoá Học và 3 triệu học viên. Đồng hành cùng EduOYK là đội ngũ giảng viên, chuyên gia hàng đầu trong nhiều lĩnh vực">
-    <link rel="icon" type="image/png" href="images/icon.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/images/icon.png" sizes="32x32" />
     <title>Học Online với 3000+ Khoá Học từ những Chuyên Gia hàng đầu | EduOYK</title>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <link rel="stylesheet" href="css/see_video.css">
+    <link rel="stylesheet" href="/css/see_video.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 
 <body>
-    <p>Khóa học</p>
 
     <div class="large_container">
         <button type="button" class="appear_button" style="display: none;"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
@@ -31,44 +30,47 @@
                     </div>
                 </div>
             </div>
+            {{#each this.allChapter}}
             <div class="lesson_content">
                 <div class="chapter">
                     <div class="chap_name">
-                        <span style="color: red">Chương 1</span>
-                        <p>Tổng quan PHP</p>
+                        <span style="color: red">Chương {{chapter_number}}</span>
+                        <p>{{chapter_name}}</p>
                     </div>
-                    <div class="lessons">
+                    {{#each this.list_video}}
+                    <a href="/watch-video/{{course_id}}/{{chapter_number}}/{{video_number}}" class="lessons">
                         <div class="lesson">
                             <i class="fa fa-play-circle" aria-hidden="true"></i>
                             <div class="lesson_name">
-                                <span>Bài 1: Giới thiệu về PHP</span>
+                                <span>Bài {{video_number}}: {{video_name}}</span>
                             </div>
                         </div>
-                        <div class="lesson">
-                            <i class="fa fa-play-circle" aria-hidden="true"></i>
-                            <div class="lesson_name">
-                                <span>Bài 2: Cài đặt PHP trên Windows</span>
-                            </div>
-                        </div>
-                        <div class="lesson">
-                            <i class="fa fa-play-circle" aria-hidden="true"></i>
-                            <div class="lesson_name">
-                                <span>Bài 3: Syntax trong PHP</span>
-                            </div>
-                        </div>
-                    </div>
+                    </a>
+                    {{/each}}
                 </div>
             </div>
+            {{/each}}
         </div>
 
         <div class="container-video">
             <div class="container-title-video">
-                <img src="./images/logo1.png" alt="" class="setting-img">
-                <p class="tittle-of-video">Lập trình PHP từ cơ bản đến nâng cao trong 6 tuần - Thực hành tự tạo website
-                    tin tức</p>
+                <img src="/images/logo1.png" alt="" class="setting-img">
+                {{#each this.list_infor}}
+                <p class="tittle-of-video">{{course_name}}</p>
+                {{/each}}
             </div>
             <div id="player"></div>
+            
             <script>
+            function youtube_parser(url){
+            var regExp = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/;
+            var match = url.match(regExp);
+            return (match&&match[1].length==11)? match[1] : false;
+            }
+            {{#with this.link}}
+            console.log("{{{url}}}");
+            var url=youtube_parser("{{{url}}}");
+            {{/with}}
             // 2. This code loads the IFrame Player API code asynchronously.
             var tag = document.createElement('script');
 
@@ -83,7 +85,7 @@
                 player = new YT.Player('player', {
                 height: '575',
                 width: '1020',
-                videoId: 'QH2-TGUlwu4',
+                videoId: url,
                 events: {
                     'onReady': onPlayerReady,
                     'onStateChange': onPlayerStateChange
@@ -93,7 +95,7 @@
             // 4. The API will call this function when the video player is ready.
             function onPlayerReady(event) {
                 var temp=player.getDuration();
-                console.log(temp);
+                console.log(typeof temp);
                 event.target.playVideo();
             }
             // 5. The API calls this function when the player's state changes.
@@ -102,81 +104,65 @@
             function onPlayerStateChange(event) {
                 if (event.data == YT.PlayerState.ENDED) {
                     console.log("Het video roi");
-                    setTimeout(stopVideo, 1000);
+                    {{#with this.nextVideo}}
+                    window.location.href = "http://localhost:3000/watch-video/{{{course_id}}}/{{{chapter_number}}}/{{{video_number}}}"
+                    {{/with}}
                 }
             }
             function stopVideo() {
                 player.stopVideo();
             }
             </script>
-
+            
             <div class="container-video-tittle">
-                <a href="#"><i class="fas fa-step-backward" id="previous_video"></i></a>
-                <a href="#"><i class="fas fa-step-forward" id="next_video"></i></a>
+                {{#with this.prevVideo}}
+                <a href="/watch-video/{{course_id}}/{{chapter_number}}/{{video_number}}"><i class="fas fa-step-backward" id="previous_video"></i></a>
+                {{/with}}
+                {{#with this.nextVideo}}
+                <a href="/watch-video/{{course_id}}/{{chapter_number}}/{{video_number}}"><i class="fas fa-step-forward" id="next_video"></i></a>
+                {{/with}}
                 <p class="title-video"> Bài 1: Syntax trong Nodejs</p>
             </div>
             <div class="menu_info">
                 <span class="teacher_info" id="t_choice">Giảng viên</span>
                 <span class="course_info" id="c_choice">Thông tin chung</span>
                 <span class="rating" id="r_choice">Đánh giá</span>
-                <span class="comment">Thảo luận</span>
+                <!--<span class="comment">Thảo luận</span>-->
             </div>
+            {{#each this.list_infor}}
             <div class="tab_teacher">
                 <div class="info_teacher">
                     <div class="info_teacher_left">
                         <img src="/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg">
                     </div>
                     <div class="info_teacher_right">
-                        <p class="name_teacher">Lê Hoàng Phúc</p>
+                        <p class="name_teacher">{{name}}</p>
                     </div>
                 </div>
                 <div class="history_teacher">
-                    <p>- - 4 năm kinh nghiệm làm việc với PHP+ Mysql.</p>
-                    <p>- - Triển khai nhiều hệ thống lớn sử dụng các framework như Yii, Zend,Ci. Sử dụng nhiều công nghệ
-                        caching như redis, memcache. </p>
-                    <p>- - Kinh nghiệm làm việc với các search engine: solr, elastics </p>
-                    <p>- - Kinh ngiệm làm việc với NoSQL: mongoDB, Cassandra </p>
-                    <p>- - 1 năm kinh nghiệm với big data và python. Hệ thống tính toán phân tán: apache spark, hadoop
-                    </p>
-                    <p>- - Hiện đang là senior software engineer tại công ty Orenj Technology</p>
+                    {{lecturer_des}}
                 </div>
             </div>
             <div class="tab_info_course">
                 <div class="audience">
                     <p class="txt_title">Phù hợp với</p>
                     <!--add db-->
-                    <p>Những người có niềm đam mê với lập trình, mong muốn tạo được 1 website thực tế của riêng mình</p>
-                    <p>Những người mong muốn trở thành lập trình viên chuyên nghiệp và có mức thu nhập cao.</p>
+                    {{course_suitability}}
                 </div>
                 <div class="description">
                     <p class="txt_title">Mô tả tổng quát</p>
                     <!--add db-->
                     <div class="description">
-                        <p><span style="'times new roman';: 16px; white-space: pre-wrap;">Bạn có biết hơn 80% website
-                                hiện nay đều được viết bằng ngôn ngữ PHP </span></p>
-                        <p><span style="'times new roman';: 16px; white-space: pre-wrap;">Bạn cũng muốn tự mình làm nên
-                                1 website hoàn chỉnh, tương tác cao với người dùng, vậy chắc chắn bạn cần thành thạo
-                                PHP rồi. Với nền tảng HTML, CSS đã có, tôi tin rằng bạn sẽ dễ dàng làm chủ ngôn ngữ
-                                lập trình tuyệt vời này. Tôi sẽ giúp các bạn tất cả những gì cần biết về PHP để
-                                tạo nên một website hoàn chỉnh. </span></p>
-                        <p><span style="'times new roman';: 16px; white-space: pre-wrap;">Khóa học dạy bạn từ điều cơ
-                                bản nhất, đến cách kết hợp PHP với các ngôn ngữ lâp trình quan trọng khác như HTML,
-                                MySQL, Javascript để tạo được website tin tức hoạt động mượt mà. Tôi tiến hành code
-                                trực tiếp trên phiên bản PHP mới nhất, mọi hướng dẫn đều được chia nhỏ thành từng
-                                bước rõ ràng, bạn sẽ dễ dàng theo dõi và biết debug lỗi ngay khi gặp phải.</span></p>
-                        <p><span style="'times new roman';: 16px; white-space: pre-wrap;">Bên cạnh đó, lập trình hướng
-                                đối tượng là điều tôi đặc biệt mong muốn các bạn có được, bằng lối tư duy logic và
-                                những kinh nghiệm có được với 8 năm trong nghề lập trình, tôi tự tin đồng hành cùng
-                                bạn trong 6 tuần học tập</span></p>
+                        {{course_intro_description}}
                     </div>
                 </div>
                 <div class="requirement">
                     <p class="txt_title">Lợi ích khóa học</p>
                     <!--add db-->
-                    <p>Có kiến thức cơ bản về máy tính</p>
-                    <p>Nên sử dụng tai nghe trong quá trình học</p>
+                    {{course_benefit_description}}
                 </div>
             </div>
+            {{/each}}
             <div class="tab_rating_course">
                 <div class="rating-container">
                     <p class="tittle-rating">Đánh giá của bạn</p>

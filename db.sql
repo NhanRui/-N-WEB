@@ -11,7 +11,7 @@
  Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 04/01/2021 09:25:05
+ Date: 05/01/2021 22:07:20
 */
 
 SET NAMES utf8mb4;
@@ -40,6 +40,7 @@ INSERT INTO `bill` VALUES ('1', 'C01', 'GN02', '2020-12-23', 'Hoàn thành');
 INSERT INTO `bill` VALUES ('1', 'C02', 'GD02', '2020-12-23', 'Hoàn thành');
 INSERT INTO `bill` VALUES ('Uswyrp2a4kitph7ft', 'C01', 'GN01', '2020-12-23', 'Hoàn thành');
 INSERT INTO `bill` VALUES ('Uswyrp2a4kitph7ft', 'C02', 'GD01', '2020-12-23', 'Hoàn thành');
+INSERT INTO `bill` VALUES ('Uswyrp45kkj5e5nrw', 'C11', NULL, '2021-01-05', 'Hoàn thành');
 
 -- ----------------------------
 -- Table structure for cart
@@ -113,6 +114,7 @@ CREATE TABLE `course`  (
   PRIMARY KEY (`course_id`) USING BTREE,
   INDEX `FK_course_lecturer_idx`(`lecturer_id`) USING BTREE,
   INDEX `FK_course_category_idx`(`categoty_id`) USING BTREE,
+  FULLTEXT INDEX `course_name`(`course_name`),
   CONSTRAINT `FK_course_category` FOREIGN KEY (`categoty_id`) REFERENCES `category` (`category_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FK_course_lecturer` FOREIGN KEY (`lecturer_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
@@ -123,7 +125,7 @@ CREATE TABLE `course`  (
 INSERT INTO `course` VALUES ('C01', 'Bí quyết giao tiếp để thành công', 'Tiến sĩ Lê Thẩm Dương tiết lộ bí quyết giao tiếp để thành công', 'images/productTesting.png', 699000, 50, NULL, NULL, NULL, NULL, 'U8d0rgoojskj03tm75', '1', 'Chưa hoàn thành', '2020-12-29', 0);
 INSERT INTO `course` VALUES ('C02', 'Học troll game', 'Tiến sĩ Lê Hoàng Phúc tiết lộ bí quyết giao tiếp để thành công', 'images/product_ID2.jpg', 123123, 50, NULL, NULL, NULL, NULL, 'U8d0rgoojskj03tm75', '2', 'Chưa hoàn thành', '2020-12-29', 0);
 INSERT INTO `course` VALUES ('C03', 'Thành thạo ngôn ngữ lập trình C++', 'Thành thạo ngôn ngữ lập trình C++', 'images/product_ID1.jpg', 699000, 74, NULL, NULL, NULL, NULL, 'U8d0rgoojskj03tm75', '3', 'Chưa hoàn thành', '2020-12-29', 0);
-INSERT INTO `course` VALUES ('C04', 'VBA - Giải pháp tối ưu công việc trên Excel', 'VBA - Giải pháp tối ưu công việc trên Excel', 'images/product_ID3.jpg', 599000, 70, NULL, NULL, NULL, NULL, 'U8d0rgoojskj03tm75', '4', 'Chưa hoàn thành', '2020-12-29', 0);
+INSERT INTO `course` VALUES ('C04', 'VBA - Giải pháp tối ưu công việc trên Excel', 'VBA - Giải pháp tối ưu công việc trên Excel', 'images/product_ID3.jpg', 599000, 70, NULL, NULL, NULL, NULL, 'U8d0rgoojskj03tm75', '5', 'Chưa hoàn thành', '2020-12-29', 0);
 INSERT INTO `course` VALUES ('C07', 'Học Photoshop trọn bộ trong 7 ngày', 'Học Photoshop trọn bộ trong 7 ngày', 'images/product_ID7.png', 799000, 78, NULL, NULL, NULL, NULL, 'Uswyrp45kkj5e5nrw', '2', 'Chưa hoàn thành', '2021-01-03', 0);
 INSERT INTO `course` VALUES ('C08', 'Nền tảng tiếng Anh cho người mới bắt đầu', 'Nền tảng tiếng Anh cho người mới bắt đầu', 'images/product_ID8.png', 749000, 76, NULL, NULL, NULL, NULL, 'Uswyrp45kkj5e5nrw', '6', 'Chưa hoàn thành', '2021-01-03', 0);
 INSERT INTO `course` VALUES ('C09', 'Học thiết kế đồ họa trọn bộ 30 ngày', 'Học thiết kế đồ họa trọn bộ 30 ngày', 'images/product_ID9.jpg', 699000, 74, NULL, NULL, NULL, NULL, 'Uswyrp45kkj5e5nrw', '2', 'Chưa hoàn thành', '2021-01-03', 0);
@@ -174,6 +176,8 @@ CREATE TABLE `lesson_list`  (
 -- ----------------------------
 -- Records of lesson_list
 -- ----------------------------
+INSERT INTO `lesson_list` VALUES ('L4fh2214zwkjjvlvvh', 1, 'Bán hàng 1', 'C11');
+INSERT INTO `lesson_list` VALUES ('L4fh2214zwkjjvlvxd', 2, 'Bán hàng 2', 'C11');
 INSERT INTO `lesson_list` VALUES ('Lswyrp538kjfxfrlu', 1, 'Thẻ HTML', 'Cswyrp498kjdsuj8s');
 INSERT INTO `lesson_list` VALUES ('Lswyrp538kjfxfrv4', 2, 'Thẻ HTML', 'Cswyrp498kjdsuj8s');
 
@@ -187,11 +191,6 @@ CREATE TABLE `sessions`  (
   `data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL,
   PRIMARY KEY (`session_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of sessions
--- ----------------------------
-INSERT INTO `sessions` VALUES ('N0OUZ8efwuNawlX9H4JTarHz79BmqXc7', 1609691706, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"authUser\":{\"user_id\":\"Uswyrp45kkj5e5nrw\",\"name\":\"Lưu Thiện Nhân\",\"gender\":\"Khác\",\"dob\":\"2020-11-30T17:00:00.000Z\",\"phone_number\":\"0703002347\",\"email\":\"nguoiamphu\",\"password\":\"$2a$10$UtYSET9vR1AAWNbHyEsuMeS5ljiVslyl/iGzXWkin4hpXPhFmiK7W\",\"password_lvl2\":null,\"avatar\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"description\":\"ádqwqd\\r\\nqưd\\r\\nqư\\r\\ndqw\\r\\nd\\r\\nqưdfqwfqfqfw\",\"role\":1,\"address\":\"123 Nguyễn Văn Cừ Q.5\"},\"ll\":[{\"list_id\":\"Lswyrp538kjfxfrlu\",\"chapter_number\":1,\"chapter_name\":\"Thẻ HTML\",\"course_id\":\"Cswyrp498kjdsuj8s\",\"videos\":[{\"video_id\":\"Vswyrp538kjfxfrsm\",\"video_name\":\"Giới thiệu\",\"video_duration\":null,\"url\":\"https://www.youtube.com/watch?v=bUEykHfMMnc\",\"list_id\":\"Lswyrp538kjfxfrlu\",\"video_number\":1}]},{\"list_id\":\"Lswyrp538kjfxfrv4\",\"chapter_number\":2,\"chapter_name\":\"Thẻ HTML\",\"course_id\":\"Cswyrp498kjdsuj8s\",\"videos\":[{\"video_id\":\"Vswyrp538kjfxfrxv\",\"video_name\":\"Tag HTML nâng cao\",\"video_duration\":null,\"url\":\"https://www.youtube.com/watch?v=ZIgDYEZl1VE\",\"list_id\":\"Lswyrp538kjfxfrv4\",\"video_number\":1},{\"video_id\":\"Vswyrp538kjfxfs0n\",\"video_name\":\"Tag HTML nâng quá dữ\",\"video_duration\":null,\"url\":\"https://www.youtube.com/watch?v=P0JJR5vYGOU\",\"list_id\":\"Lswyrp538kjfxfrv4\",\"video_number\":2}]}]}');
 
 -- ----------------------------
 -- Table structure for shopping_cart
@@ -231,6 +230,7 @@ INSERT INTO `star_rating` VALUES ('1', 'C02', 4, 'ok');
 INSERT INTO `star_rating` VALUES ('Uswyrp2a4kitph7ft', 'C01', 5, 'Good');
 INSERT INTO `star_rating` VALUES ('Uswyrp2a4kitph7ft', 'C02', 5, 'good');
 INSERT INTO `star_rating` VALUES ('Uswyrp2a4kitph7ft', 'C12', 5, 'good');
+INSERT INTO `star_rating` VALUES ('Uswyrp45kkj5e5nrw', 'C11', 4, 'ok');
 
 -- ----------------------------
 -- Table structure for user
@@ -249,15 +249,16 @@ CREATE TABLE `user`  (
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
   `role` int(0) NULL DEFAULT NULL,
   `address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`user_id`) USING BTREE
+  PRIMARY KEY (`user_id`) USING BTREE,
+  FULLTEXT INDEX `name`(`name`)
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'Luu a', NULL, NULL, NULL, 'phuc@gmail.com', '123123', NULL, 'images/BecomeInstructor/ltn.jpg', NULL, 0, NULL);
-INSERT INTO `user` VALUES ('U8d0rgoojskj03tm75', 'Lê Hoàng Phúc', NULL, NULL, NULL, 'phucyugi@gmail.com', '$2a$10$eaeN/x0vA8RF.0egO0mX5OUu1FmCEue6vCRCfGE2YkYbdTM/1xkee', NULL, 'images/BecomeInstructor/ltn.jpg', NULL, 1, NULL);
-INSERT INTO `user` VALUES ('Uswyrp2a4kitph7ft', 'Luu Thien Nhan', NULL, NULL, NULL, 'nhanluu838@gmail.com', '$2a$10$kYroKyRFPmJn1zYPkWsl2OVFhzlap4ZpnQOlN.IxABE/RNYO5Qwj6', NULL, 'images/BecomeInstructor/ltn.jpg', NULL, 0, NULL);
+INSERT INTO `user` VALUES ('1', 'Luu a', NULL, NULL, NULL, 'phuc@gmail.com', '123123', NULL, '/images/BecomeInstructor/ltn.jpg', NULL, 0, NULL);
+INSERT INTO `user` VALUES ('U8d0rgoojskj03tm75', 'Lê Hoàng Phúc', 'Nữ', '2021-01-12', '123123', 'phucyugi@gmail.com', '$2a$10$eaeN/x0vA8RF.0egO0mX5OUu1FmCEue6vCRCfGE2YkYbdTM/1xkee', NULL, '/images/BecomeInstructor/ltn.jpg', NULL, 1, NULL);
+INSERT INTO `user` VALUES ('Uswyrp2a4kitph7ft', 'Luu Thien Nhan', NULL, NULL, NULL, 'nhanluu838@gmail.com', '$2a$10$kYroKyRFPmJn1zYPkWsl2OVFhzlap4ZpnQOlN.IxABE/RNYO5Qwj6', NULL, '/images/BecomeInstructor/ltn.jpg', NULL, 0, NULL);
 INSERT INTO `user` VALUES ('Uswyrp45kkj5e5nrw', 'Lưu Thiện Nhân', 'Khác', '2020-12-01', '0703002347', 'nguoiamphu', '$2a$10$UtYSET9vR1AAWNbHyEsuMeS5ljiVslyl/iGzXWkin4hpXPhFmiK7W', NULL, '/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg', 'ádqwqd\r\nqưd\r\nqư\r\ndqw\r\nd\r\nqưdfqwfqfqfw', 1, '123 Nguyễn Văn Cừ Q.5');
 
 -- ----------------------------
@@ -279,6 +280,11 @@ CREATE TABLE `video`  (
 -- ----------------------------
 -- Records of video
 -- ----------------------------
+INSERT INTO `video` VALUES ('V4fh2214zwkjjvlvwd', 'Bigcityboi', NULL, 'https://www.youtube.com/watch?v=jgZkrA8E5do', 'L4fh2214zwkjjvlvvh', 1);
+INSERT INTO `video` VALUES ('V4fh2214zwkjjvlvws', 'Ok', NULL, 'https://www.youtube.com/watch?v=SNES5Y-tYxM', 'L4fh2214zwkjjvlvvh', 2);
+INSERT INTO `video` VALUES ('V4fh2214zwkjjvlvwz', 'SOFAR', NULL, 'https://www.youtube.com/watch?v=_MM1MQgFjRM', 'L4fh2214zwkjjvlvvh', 3);
+INSERT INTO `video` VALUES ('V4fh2214zwkjjvlvxi', 'TÌNH NHÂN ƠI ! Superbrothers x Orange x Binz | OFFICIAL MV', NULL, 'https://www.youtube.com/watch?v=vYE2WyHypF0', 'L4fh2214zwkjjvlvxd', 1);
+INSERT INTO `video` VALUES ('V4fh2214zwkjjvlvxp', 'ORANGE - \"nữ hoàng hát live\" có thể cân mọi thể loại nhạc khiến người nghe nổi da gà?', NULL, 'https://www.youtube.com/watch?v=WQJOBRjsvgs', 'L4fh2214zwkjjvlvxd', 2);
 INSERT INTO `video` VALUES ('Vswyrp538kjfxfrsm', 'Giới thiệu', NULL, 'https://www.youtube.com/watch?v=bUEykHfMMnc', 'Lswyrp538kjfxfrlu', 1);
 INSERT INTO `video` VALUES ('Vswyrp538kjfxfrxv', 'Tag HTML nâng cao', NULL, 'https://www.youtube.com/watch?v=ZIgDYEZl1VE', 'Lswyrp538kjfxfrv4', 1);
 INSERT INTO `video` VALUES ('Vswyrp538kjfxfs0n', 'Tag HTML nâng quá dữ', NULL, 'https://www.youtube.com/watch?v=P0JJR5vYGOU', 'Lswyrp538kjfxfrv4', 2);
