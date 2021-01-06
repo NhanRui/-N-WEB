@@ -22,7 +22,7 @@
         <div class="slide_bar">
             <div class="slide_head">
                 <span style="font-size: 20px; font-weight:500;">Giáo trình</span>
-                <button type="button" class="slide_button"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+                <button type="button" class="slide_button" onclick="myFunction()"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
             </div>
             <div class="auto_play">
                 <span>Tự động chuyển bài</span>
@@ -63,13 +63,64 @@
             <div class="js-player" id="player" data-plyr-provider="youtube" {{#with this.link}} data-plyr-embed-id="{{{url}}}"{{/with}}></div>
             <script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
             <script>
-                document.addEventListener('DOMContentLoaded', () => { 
+                document.addEventListener('DOMContentLoaded', () => {
+                    var mode='true';
+                    var allcookies = document.cookie;
+                    var cookiearray = allcookies.split(';');
+                    for (i=0;i<cookiearray.length;i++)
+                    {
+                        if (cookiearray[i].split('=')[0].trim()==='mode')
+                        {
+                            mode=cookiearray[i].split('=')[1];
+                            break;
+                        }
+                    }
+                    console.log(allcookies);
+                    if (mode==='false'){
+                        const toggle_btn=document.getElementsByClassName("auto_play_round")[0];
+                        const toggle_bg=document.getElementsByClassName("auto_play_line")[0];
+                        toggle_bg.style.backgroundColor="#ccc";
+                        toggle_btn.style.left="0";
+                    }
+                    else{
+                        const toggle_btn=document.getElementsByClassName("auto_play_round")[0];
+                        const toggle_bg=document.getElementsByClassName("auto_play_line")[0];
+                        toggle_bg.style.backgroundColor="#5c9cfe";
+                        toggle_btn.style.left="";
+                    }
+                    console.log(allcookies);
+                    document.getElementsByClassName('auto_play_line')[0]
+                    .addEventListener('click', function (event) {
+                        var allcookies = document.cookie;
+                        cookiearray = allcookies.split(';');
+                        mode=cookiearray[0].split('=')[1];
+                        for (i=0;i<cookiearray.length;i++)
+                        {
+                            if (cookiearray[i].split('=')[0].trim()==='mode')
+                            {
+                                mode=cookiearray[i].split('=')[1];
+                                break;
+                            }
+                        }
+                        console.log(mode);
+                        if (mode==='false'){
+                            document.cookie = "mode=true; path=/;";
+                            mode='true';
+                        }
+                        else{
+                            document.cookie = "mode=false; path=/;";
+                            mode='false';
+                        }
+                        console.log(document.cookie);
+                        console.log(mode);
+                    });
                     const player = new Plyr('#player', {autoplay: true,}); 
                       player.on('ended', event => {
-                          console.log("het video");
+                          if (mode==='true'){
                             {{#with this.nextVideo}}
                             window.location.href = "http://localhost:3000/watch-video/{{{course_id}}}/{{{chapter_number}}}/{{{video_number}}}"
                             {{/with}}
+                          }
                           });
                 });
             </script>

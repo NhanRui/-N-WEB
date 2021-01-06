@@ -68,5 +68,5 @@ module.exports = {
       const sql1 = `update star_rating set user_id='${entity.user_id}', course_id='${entity.course_id}', num_star='${entity.num_star}', comment='${entity.comment}' where user_id='${entity.user_id}' and course_id='${entity.course_id}'`;
       const [rows, fields] = await db.load(sql1);
     }
-  }
+  },
 };
