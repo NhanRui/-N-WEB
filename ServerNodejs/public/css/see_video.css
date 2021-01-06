@@ -1,10 +1,10 @@
 
 body{
     height: auto;
-    padding-bottom: 100px;
 }
 
 .large_container {
+    margin-left: 20px;
     display: flex;
     justify-content: flex-start;
 }
@@ -85,6 +85,18 @@ body{
     font-weight: 400;
 }
 
+.lesson_name{
+    color: #464d5d;
+}
+
+.lesson i{
+    color: #464d5d;
+}
+
+.lessons:hover{
+    text-decoration: none;
+}
+
 .lesson:hover{
     background-color: #ccc;
     cursor: pointer;
@@ -97,6 +109,7 @@ body{
 .container-video{
     width: 1020px;
     margin: auto;
+    margin-left: 50px;
 }
 
 .container-video-tittle{
@@ -267,7 +280,7 @@ hr{
     width: 352px;
     height: 80px;
     border-radius: 6px;
-    background-color: #ededed;
+    background-color: #fc0707;
     padding: 8px 16px;
     font-family: Open Sans, sans-serif;
     font-size: 14px;
@@ -496,3 +509,8 @@ form .btn button:hover{
     flex-direction: row;
 }
 /*./images/logo1.png*/
+.wrapper-video{
+    width: 950px;
+    height: 550px;
+    margin-right: 100px;
+}

@@ -60,7 +60,9 @@
                 <p class="tittle-of-video">{{course_name}}</p>
                 {{/each}}
             </div>
-            <div class="js-player" id="player" data-plyr-provider="youtube" {{#with this.link}} data-plyr-embed-id="{{{url}}}"{{/with}}></div>
+            <div class="wrapper-video">
+                <div id="player" data-plyr-provider="youtube" {{#with this.link}} data-plyr-embed-id="{{{url}}}"{{/with}}></div>
+            </div>
             <script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
             <script>
                 document.addEventListener('DOMContentLoaded', () => {
