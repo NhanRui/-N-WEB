@@ -251,18 +251,21 @@ router.get('/:courseid',async function(req,res){
   req.session.ll = lesson_list;
   //console.log(req.session.ll);
   var course = await lecturerModel.getCourse(id);
+  var length = 0;
   
   if(lesson_list !== null){
     for(var i=0;i<lesson_list.length;i++){
       var videolist = await lecturerModel.getVideoList(lesson_list[i].list_id);
       lesson_list[i]["videos"]=videolist;
     }
+    length = lesson_list.length;
   }
   
   res.render('vwLecturer/upload_course',{
     layout: 'lecturer',
     course: course[0],
-    lessons : lesson_list
+    lessons : lesson_list,
+    count_lession: length
   })
 })
 

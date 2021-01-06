@@ -32,5 +32,9 @@ module.exports = {
             return res.redirect('/account/login');
         }
         next();
+    },
+
+    authCanWatch(req,res,next){
+        if(req.se)
     }
 }

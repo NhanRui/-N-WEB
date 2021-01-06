@@ -10,7 +10,7 @@
         <h3 class="title-curriculum">Nội dung khóa học: {{course.course_name}}</h3>
     </div>
     <div>
-        <div class="section" data-count-chapter="0">
+        <div class="section" data-count-chapter="{{count_lession}}">
             {{#if lessons}}
                 {{#each lessons}}
                     <div class="chapter">
@@ -197,6 +197,21 @@
                 $(this).removeClass('norotate');
             }
             $(this).parent('div').parent('div').next().toggle();
+        });
+        $('body').on('click','#close',function(e){
+            e.preventDefault();
+            var x = $('.section');
+            var count = +x.attr('data-count-chapter');
+            count--;
+            x.attr('data-count-chapter',count.toString());
+            var index= +($(this).parent('div').parent('div').find('.chapter-index').text());
+            for(var i=index+1; i<count+2;i++){
+                var idx = +x.children('.chapter:nth-of-type('+i+')').find('.chapter-index').text();
+                idx--;
+                x.children('.chapter:nth-of-type('+i+')').find('.chapter-index').text(idx.toString());
+            }
+            x.parent('div').parent('div').children('#count-video').val(count.toString());
+            $(this).parent('div').parent('div').parent('div').parent('div').remove();
         })
     })
 </script>
