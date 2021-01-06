@@ -242,6 +242,8 @@
                                 <div class="text">Cảm ơn đã đánh giá khóa học của tôi!</div>
                                 <div class="edit">EDIT</div>
                             </div>
+                            <form action="/watch-video{{link_access}}/rating-by-video" method="post">
+                            <input type="text" name="num_star" id="num_star" style="display: none;">
                             <input type="radio" name="rate" id="rate-5" value="5">
                             <label for="rate-5" class="fas fa-star"></label>
                             <input type="radio" name="rate" id="rate-4" value="4">
@@ -252,7 +254,7 @@
                             <label for="rate-2" class="fas fa-star"></label>
                             <input type="radio" name="rate" id="rate-1" value="1">
                             <label for="rate-1" class="fas fa-star"></label>
-                            <form action="#">
+                            <div class="fucking_star" action="#">
                                 <header></header>
                                 <input type="text" name="star_value" id="num-star">
                                 <div class="textarea">
@@ -261,6 +263,7 @@
                                 <div class="btn">
                                     <button type="submit">Đánh giá</button>
                                 </div>
+                            </div>
                             </form>
                         </div>
                     </div>

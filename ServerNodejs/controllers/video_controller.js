@@ -1,5 +1,6 @@
 const express = require('express');
 const vd_info=require('../models/video_site.mode');
+const coursesModel = require('../models/coursesModel');
 
 const router = express.Router();
 
@@ -7,6 +8,7 @@ router.get('/:id/:chapter/:video', async function (req, res) {
   const course_id=req.params.id;
   const chapter=req.params.chapter;
   const video=req.params.video;
+  const link_access = `/${course_id}/${chapter}/${video}`;
   list_infor=await vd_info.getInfor(course_id);
   list_chapter=await vd_info.getChapter(course_id);
   list_video=await vd_info.getListVideo(course_id);
@@ -46,9 +48,26 @@ router.get('/:id/:chapter/:video', async function (req, res) {
       prevVideo: prevVideo,
       nextVideo: nextVideo,
       currentVideo: curVideo,
-      layout: "video_site.hbs"
+      layout: "video_site.hbs",
+      link_access
   });
 })
 
+router.post('/:id/:chapter/:video/rating-by-video', async (req, res) => {
+  const course_id=req.params.id;
+  const chapter=req.params.chapter;
+  const video=req.params.video;
+  let comment = {
+    user_id : req.session.authUser.user_id,
+    course_id : req.params.id,
+    num_star : req.body.rate,
+    comment : req.body.cmReview
+  };
+  await coursesModel.addComment(comment);
+  console.log(req.body)
+  const link_access = `/${course_id}/${chapter}/${video}`;
+  res.redirect(`/watch-video${link_access}`);
+})
 
-module.exports = router;  
+
+module.exports = router;

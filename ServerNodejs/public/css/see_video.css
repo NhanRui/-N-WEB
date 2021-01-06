@@ -376,35 +376,35 @@ input#rate-5:checked ~ label{
     text-shadow: 0 0 20px #dadd20;
 }
 
-#rate-1:checked ~ form header:before{
+#rate-1:checked ~ .fucking_star header:before{
     content: "Chúng tôi rất tiếc khi biết điều này...";
 }
-#rate-1:checked ~ form input:before{
+#rate-1:checked ~ .fucking_star input:before{
     content: "1";
 }
 
-#rate-2:checked ~ form header:before{
+#rate-2:checked ~ .fucking_star header:before{
     content: "Chúng tôi rất tiếc khi biết điều này...";
 }
-#rate-3:checked ~ form header:before{
+#rate-3:checked ~ .fucking_star header:before{
     content: "Chúng tôi đã hiểu. Chúng tôi sẽ cố gắng cải thiện.";
 }
-#rate-4:checked ~ form header:before{
+#rate-4:checked ~ .fucking_star header:before{
     content: "Tuyệt vời. Chúng tôi rất vui vì bạn thích khóa học này!";
 }
-#rate-5:checked ~ form header:before{
+#rate-5:checked ~ .fucking_star header:before{
     content: "Tuyệt vời. Chúng tôi rất vui vì bạn thích khóa học này!";
 }
 
-.container_star form{
+.container_star .fucking_star{
     display: none;
 }
 
-input:checked ~ form{
+input:checked ~ .fucking_star{
     display: block;
 }
 
-form header{
+.fucking_star header{
     width: 100%;
     font-size: 15px;
     color: #232731;
@@ -414,13 +414,13 @@ form header{
     transition: all 0.2s ease;
 }
 
-form .textarea{
+.fucking_star .textarea{
     height: 100px;
     width: 100%;
     overflow: hidden;
 }
 
-form .textarea textarea{
+.fucking_star .textarea textarea{
     border: none;
     margin: auto;
     width: 352px;
@@ -439,11 +439,11 @@ form .textarea textarea{
     resize: none;
 }
 
-form .btn{
+.fucking_star .btn{
     width: 100%;
 }
 
-form .btn button{
+.fucking_star .btn button{
     width: 170px;
     height: 46px;
     background: #df322f;
@@ -456,7 +456,7 @@ form .btn button{
     border-radius: 5px;
 }
 
-form .btn button:hover{
+.fucking_star .btn button:hover{
     background: #740a0a;
 }
 
