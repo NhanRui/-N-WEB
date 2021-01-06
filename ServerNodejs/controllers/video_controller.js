@@ -12,6 +12,7 @@ router.get('/:id/:chapter/:video', async function (req, res) {
   list_video=await vd_info.getListVideo(course_id);
   vd_info.setSTTVideo(list_video);
   url=await vd_info.get_url(course_id,chapter,video);
+  url.url=vd_info.getVideoId(url.url);
   prevVideo=vd_info.getPreviousVideo(chapter,video,list_video);
   nextVideo=vd_info.getNextVideo(chapter,video,list_video);
   curVideo=vd_info.getCurrentVideo(chapter,video,list_video);
