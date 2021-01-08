@@ -34,7 +34,7 @@ module.exports = {
         next();
     },
 
-    authCanWatch(req,res,next){
-        if(req.se)
-    }
+    // authCanWatch(req,res,next){
+    //     if(req.se)
+    // }
 }

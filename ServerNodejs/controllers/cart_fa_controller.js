@@ -3,7 +3,9 @@ const cartModel=require('../models/cart.model');
 const router = express.Router();
 
 router.get('/',function(req,res){
-    res.render('layouts/index');
+    res.render('../views/layouts/user_Cart.hbs', {
+        layout: false
+    })
 })
 
 router.post('/add', async function(req, res){
