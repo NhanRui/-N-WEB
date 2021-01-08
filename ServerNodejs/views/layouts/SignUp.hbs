@@ -188,16 +188,15 @@
     }
 
     function validateEmail() {
-        var email = $('#tk').val;
-        const re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-        if (re.test(email)===true){
-            alert('true');
-            return true;
-        }else{
-            alert('Invalid email account');
-            $('#tk').focus();
-            return false;
-        }
+        var tk = document.getElementById('tk');
+        var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  if (tk.value.match(validRegex)) {
+    return true;
+  } else {
+    alert("Invalid email address!");
+    tk.focus();
+    return false;
+  }
     }
 
     $(document).ready(function(){

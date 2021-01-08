@@ -1,4 +1,5 @@
 const express = require('express');
+const db = require('../utils/db');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 router.use(express.static('public'));
@@ -153,6 +154,13 @@ router.get('/is-available-usname', async function (req, res) {
 
     req.session.auth = true;
     req.session.authUser = user;
+    var sql = `select course_id from bill where user_id = '${user.user_id}'`;
+    const [rows, fields] = await db.load(sql);
+    if(rows.length === 0){
+      req.session.courses = null;
+    }
+    else req.session.courses = rows;
+    console.log(req.session.courses);
   
     const url = req.session.retUrl || '/';
     res.redirect(url);

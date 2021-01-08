@@ -1,10 +1,11 @@
 const express = require('express');
 const vd_info=require('../models/video_site.mode');
 const coursesModel = require('../models/coursesModel');
+const { authCanWatch } = require('../middleware/auth.mdw');
 
 const router = express.Router();
 
-router.get('/:id/:chapter/:video', async function (req, res) {
+router.get('/:id/:chapter/:video', authCanWatch, async function (req, res) {
   const course_id=req.params.id;
   const chapter=req.params.chapter;
   const video=req.params.video;
