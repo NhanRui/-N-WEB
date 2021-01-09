@@ -135,6 +135,7 @@ app.get('/AccountInformation', function (req, res) {
 // });
 
 app.use('/lecturer',auth.authLecturer, require('./controllers/lecturer_controller'));
+app.use('/admin',auth.authAdmin, require('./controllers/admin_controller'));
 app.use('/MyCourse', require('./controllers/courses_controller'));
 
 const PORT = 3000;

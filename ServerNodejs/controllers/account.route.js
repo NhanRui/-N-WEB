@@ -33,7 +33,21 @@ router.get('/sendtoken',function(req,res){
     secret: req.session.tempsecret,
     encoding: 'base32',
     step: 20
+  });
+  let mailOptions = {
+    from: 'tt5335084@gmail.com',
+    to: req.body.email,
+    subject: 'Verify code', 
+    html: `<span>Your verification code is </span><h1>${req.session.token}</h1><br><p>This verification code will expires after 10mins.`
+  };
+  transporter.sendMail(mailOptions, function(error, info){
+    if(error){
+      console.log(error);
+    }else{
+      console.log('Email sent: '+ info.response);
+    }
   })
+  req.session.authUser.password_lvl2 = req.session.token;
   console.log(req.session.token);
   res.json(true);
 })
@@ -95,7 +109,7 @@ router.post('/verification',async function(req,res){
       encoding: 'base32',
       token: req.body.verification,
       step:20,
-      window: 2
+      window: 5
     });
     if(tokenValidates){
       await userModel.add(req.session.authUser);
