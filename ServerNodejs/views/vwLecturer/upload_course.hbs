@@ -50,7 +50,8 @@
                                             <div class="chapter-text">
                                                 Video URL: 
                                             </div>
-                                            <input class="video-name customize" name="link[]" maxlength="100" value="{{this.url}}" placeholder="https://www.youtube.com/watch?v=B3-IZ20X3AY" name="video[]" value="">
+                                            <input class="video-name customize" id="link" name="link[]" maxlength="100" value="{{this.url}}" placeholder="https://www.youtube.com/watch?v=B3-IZ20X3AY" value="">
+                                            <input type="hidden" class="video-duration" value="{{this.video_duration}}" name="duration[]">
                                         </div>
                                     </div>
                                 {{/each}}
@@ -107,7 +108,8 @@
                         <div class="chapter-text">
                             Video URL: 
                         </div>
-                        <input class="video-name customize" name="link[]" maxlength="100" placeholder="https://www.youtube.com/watch?v=B3-IZ20X3AY" name="video[]" value="">
+                        <input class="video-name customize" id="link" name="link[]" maxlength="100" placeholder="https://www.youtube.com/watch?v=B3-IZ20X3AY" value="">
+                        <input type="hidden" class="video-duration" value="" name="duration[]">
                     </div>
                 </div>`);
     });   
@@ -146,7 +148,58 @@
     });
 </script>
 <script>
+    function getYoutubeIdByUrl( url ){
+          var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+          var match = url.match(regExp);
+          if(match&&match[7].length==11){ 
+            return match[7];
+          }
+          return false;
+        }
+        function convert_time(duration) {
+            var a = duration.match(/\d+/g);
+            if (duration.indexOf('M') >= 0 && duration.indexOf('H') == -1 && duration.indexOf('S') == -1) {
+                a = [0, a[0], 0];
+            }
+            if (duration.indexOf('H') >= 0 && duration.indexOf('M') == -1) {
+                a = [a[0], 0, a[1]];
+            }
+            if (duration.indexOf('H') >= 0 && duration.indexOf('M') == -1 && duration.indexOf('S') == -1) {
+                a = [a[0], 0, 0];
+            }
+            duration = 0;
+            if (a.length == 3) {
+                duration = duration + parseInt(a[0]) * 3600;
+                duration = duration + parseInt(a[1]) * 60;
+                duration = duration + parseInt(a[2]);
+            }
+            if (a.length == 2) {
+                duration = duration + parseInt(a[0]) * 60;
+                duration = duration + parseInt(a[1]);
+            }
+            if (a.length == 1) {
+                duration = duration + parseInt(a[0]);
+            }
+            return duration;
+        }
+        
     $(document).ready(function(){
+        //Phan nay la de dan duration cho tung video youtube
+        $('body').on('change','#link',function(e){
+            e.preventDefault();
+            var x = $(this);
+            var yt_video_id = getYoutubeIdByUrl( x.val() );
+            
+            if( yt_video_id ){
+                $.getJSON({
+                    url: 'https://www.googleapis.com/youtube/v3/videos?part=contentDetails&key=AIzaSyBTZE_MFmDAk0LkP8jxZSTGq5U__c4qnEM&id='+yt_video_id,
+                    success: function(data){
+                        var yt_duration = convert_time(data.items[0]['contentDetails'].duration);
+                        x.next().val(yt_duration.toString());
+                    },
+                });
+            }
+        });
         $('body').on('click','.main-video',function(e){
             e.preventDefault();
             if($(this).parent('div').css('height')==='40px'){

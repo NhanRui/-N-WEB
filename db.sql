@@ -42,7 +42,7 @@ CREATE TABLE `bill` (
 
 LOCK TABLES `bill` WRITE;
 /*!40000 ALTER TABLE `bill` DISABLE KEYS */;
-INSERT INTO `bill` VALUES ('1','C01',NULL,NULL),('1','C02',NULL,NULL),('Uswyrp2a4kitph7ft','C01',NULL,NULL),('Uswyrp2a4kitph7ft','C02',NULL,NULL),('Uswyrp45kkj5e5nrw','C11',NULL,NULL);
+INSERT INTO `bill` VALUES ('1','C01','abc',1000),('1','C02','abc',1500),('Uswyrp2a4kitph7ft','C01',NULL,NULL),('Uswyrp2a4kitph7ft','C02',NULL,NULL),('Uswyrp45kkj5e5nrw','C11',NULL,NULL),('Uswyrp45kkj5e5nrw','Cswyrp498kjdsuj8s',NULL,NULL);
 /*!40000 ALTER TABLE `bill` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -213,6 +213,7 @@ CREATE TABLE `final_bill` (
 
 LOCK TABLES `final_bill` WRITE;
 /*!40000 ALTER TABLE `final_bill` DISABLE KEYS */;
+INSERT INTO `final_bill` VALUES ('abc','done','2020-01-01',2500);
 /*!40000 ALTER TABLE `final_bill` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -240,7 +241,7 @@ CREATE TABLE `lesson_list` (
 
 LOCK TABLES `lesson_list` WRITE;
 /*!40000 ALTER TABLE `lesson_list` DISABLE KEYS */;
-INSERT INTO `lesson_list` VALUES ('L4fh2214zwkjjvlvvh',1,'Bán hàng 1','C11'),('L4fh2214zwkjjvlvxd',2,'Bán hàng 2','C11'),('Lswyrp538kjfxfrlu',1,'Thẻ HTML','Cswyrp498kjdsuj8s'),('Lswyrp538kjfxfrv4',2,'Thẻ HTML','Cswyrp498kjdsuj8s');
+INSERT INTO `lesson_list` VALUES ('L4fh2214zwkjjvlvvh',1,'Bán hàng 1','C11'),('L4fh2214zwkjjvlvxd',2,'Bán hàng 2','C11'),('Lswyrp538kjfxfrlu',1,'Thẻ HTML','Cswyrp498kjdsuj8s'),('Lswyrp538kjfxfrv4',2,'Thẻ HTML','Cswyrp498kjdsuj8s'),('Lswyrp5ookjpqinfe',1,'Giới thiệu','Cswyrp61kkj9sbfva');
 /*!40000 ALTER TABLE `lesson_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -265,6 +266,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
+INSERT INTO `sessions` VALUES ('X1P0wL-0uja51iW0uDskydOKy2jeqSTU',1610202630,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"cart\":[],\"authUser\":{\"user_id\":\"Uswyrp45kkj5e5nrw\",\"name\":\"Lưu Thiện Nhân\",\"gender\":\"Khác\",\"dob\":\"2020-11-30T17:00:00.000Z\",\"phone_number\":\"0703002347\",\"email\":\"nguoiamphu\",\"password\":\"$2a$10$UtYSET9vR1AAWNbHyEsuMeS5ljiVslyl/iGzXWkin4hpXPhFmiK7W\",\"password_lvl2\":null,\"avatar\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"description\":\"ádqwqd\\r\\nqưd\\r\\nqư\\r\\ndqw\\r\\nd\\r\\nqưdfqwfqfqfw\",\"role\":1,\"address\":\"123 Nguyễn Văn Cừ Q.5\"},\"courses\":[{\"course_id\":\"C11\"},{\"course_id\":\"Cswyrp498kjdsuj8s\"}]}');
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -370,7 +372,7 @@ DROP TABLE IF EXISTS `video`;
 CREATE TABLE `video` (
   `video_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `video_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `video_duration` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `video_duration` int DEFAULT NULL,
   `url` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `list_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `video_number` int DEFAULT NULL,
@@ -386,7 +388,7 @@ CREATE TABLE `video` (
 
 LOCK TABLES `video` WRITE;
 /*!40000 ALTER TABLE `video` DISABLE KEYS */;
-INSERT INTO `video` VALUES ('V4fh2214zwkjjvlvwd','Bigcityboi',NULL,'https://www.youtube.com/watch?v=jgZkrA8E5do','L4fh2214zwkjjvlvvh',1),('V4fh2214zwkjjvlvws','Ok',NULL,'https://www.youtube.com/watch?v=SNES5Y-tYxM','L4fh2214zwkjjvlvvh',2),('V4fh2214zwkjjvlvwz','SOFAR',NULL,'https://www.youtube.com/watch?v=_MM1MQgFjRM','L4fh2214zwkjjvlvvh',3),('V4fh2214zwkjjvlvxi','TÌNH NHÂN ƠI ! Superbrothers x Orange x Binz | OFFICIAL MV',NULL,'https://www.youtube.com/watch?v=vYE2WyHypF0','L4fh2214zwkjjvlvxd',1),('V4fh2214zwkjjvlvxp','ORANGE - \"nữ hoàng hát live\" có thể cân mọi thể loại nhạc khiến người nghe nổi da gà?',NULL,'https://www.youtube.com/watch?v=WQJOBRjsvgs','L4fh2214zwkjjvlvxd',2),('Vswyrp538kjfxfrsm','Giới thiệu',NULL,'https://www.youtube.com/watch?v=bUEykHfMMnc','Lswyrp538kjfxfrlu',1),('Vswyrp538kjfxfrxv','Tag HTML nâng cao',NULL,'https://www.youtube.com/watch?v=ZIgDYEZl1VE','Lswyrp538kjfxfrv4',1),('Vswyrp538kjfxfs0n','Tag HTML nâng quá dữ',NULL,'https://www.youtube.com/watch?v=P0JJR5vYGOU','Lswyrp538kjfxfrv4',2);
+INSERT INTO `video` VALUES ('V4fh2214zwkjjvlvwd','Bigcityboi',NULL,'https://www.youtube.com/watch?v=jgZkrA8E5do','L4fh2214zwkjjvlvvh',1),('V4fh2214zwkjjvlvws','Ok',NULL,'https://www.youtube.com/watch?v=SNES5Y-tYxM','L4fh2214zwkjjvlvvh',2),('V4fh2214zwkjjvlvwz','SOFAR',NULL,'https://www.youtube.com/watch?v=_MM1MQgFjRM','L4fh2214zwkjjvlvvh',3),('V4fh2214zwkjjvlvxi','TÌNH NHÂN ƠI ! Superbrothers x Orange x Binz | OFFICIAL MV',NULL,'https://www.youtube.com/watch?v=vYE2WyHypF0','L4fh2214zwkjjvlvxd',1),('V4fh2214zwkjjvlvxp','ORANGE - \"nữ hoàng hát live\" có thể cân mọi thể loại nhạc khiến người nghe nổi da gà?',NULL,'https://www.youtube.com/watch?v=WQJOBRjsvgs','L4fh2214zwkjjvlvxd',2),('Vswyrp538kjfxfrsm','Giới thiệu',NULL,'https://www.youtube.com/watch?v=bUEykHfMMnc','Lswyrp538kjfxfrlu',1),('Vswyrp538kjfxfrxv','Tag HTML nâng cao',NULL,'https://www.youtube.com/watch?v=ZIgDYEZl1VE','Lswyrp538kjfxfrv4',1),('Vswyrp538kjfxfs0n','Tag HTML nâng quá dữ',NULL,'https://www.youtube.com/watch?v=P0JJR5vYGOU','Lswyrp538kjfxfrv4',2),('Vswyrp5ookjpqinj3','Giới thiệu MVC',954,'https://www.youtube.com/watch?v=bUEykHfMMnc','Lswyrp5ookjpqinfe',1),('Vswyrp5ookjpqinm3','Vẽ mô hình',0,'','Lswyrp5ookjpqinfe',2);
 /*!40000 ALTER TABLE `video` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -399,4 +401,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-06 20:15:40
+-- Dump completed on 2021-01-09 20:21:24

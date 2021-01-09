@@ -271,7 +271,7 @@ router.get('/:courseid',async function(req,res){
 
 router.post('/:courseid',async function(req,res){
 
-    console.log(req.session.ll);
+  //console.log(req.session.ll);
  // console.log(req.body.chapter);  console.log(req.body.count);  console.log(req.body.video);  console.log(req.body.link);
   const id = req.params.courseid;
   if(req.session.ll!==null){
@@ -299,7 +299,7 @@ router.post('/:courseid',async function(req,res){
         const video = {
           video_id: uniqid('V'),
           video_name: req.body.video[(flag+j)],
-          video_duration: req.body.duration || null,
+          video_duration: +req.body.duration[(flag+j)] || 0,
           url: req.body.link[(flag+j)],
           list_id: lid,
           video_number: j+1
