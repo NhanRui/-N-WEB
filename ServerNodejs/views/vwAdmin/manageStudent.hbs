@@ -1,0 +1,142 @@
+<h2>Học viên</h2>
+<hr>
+    <div class="row" style="display:block;">
+        <div class="card-header d-flex justify-content-between">
+          <h4 class="text-success">Hoạt động</h4>
+        </div>
+        <div class="card-body">
+            {{#if list_empty}}
+            <h5 class="card-title">Không có dữ liệu!</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            {{else}}
+            <table class="table table-hover" style="outline:1px solid grey;">
+            <thead>
+                <tr>
+                <th scope="col">Mã học viên</th>
+                <th scope="col">Tên</th>
+                <th scope="col">Email</th>
+                <th scope="col">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody id="active-body">
+                {{#each this.list}}
+                <tr>
+                <th scope="row">{{user_id}}</th>
+                <td>{{name}}</td>
+                <td>{{email}}</td>
+                <td class="text-right">
+                    <a name="" id="lock" class="btn btn-sm btn-warning" title="Tạm khóa tài khoản"
+                    data-id="{{user_id}}" role="button">Khóa
+                    <i class="fab fa-accessible-icon"></i>
+                    </a>
+                    <a name="" id="" class="btn btn-sm btn-danger text-light" title="Xóa vĩnh viễn tài khoản"
+                    data-id="{{user_id}}" role="button">Xóa
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </td>
+                </tr>
+                {{/each}}
+            </tbody>
+            </table>
+            {{/if}}
+        </div>
+    </div>
+    <div class="row" style="display:block;">
+        <div class="card-header d-flex justify-content-between">
+          <h4 class="text-danger">Khóa</h4>
+        </div>
+        <div class="card-body" id="lock-section" data-count="{{lock_length}}">
+            {{#if lock_empty}}
+            <h5 class="card-title">Không có dữ liệu!</h5>
+            <p class="card-text">Không có tài khoản nào hiện đang bị khóa.</p>
+            {{else}}
+            <table class="table table-hover" style="outline:1px solid grey;">
+            <thead>
+                <tr>
+                <th scope="col">Mã học viên</th>
+                <th scope="col">Tên</th>
+                <th scope="col">Email</th>
+                <th scope="col">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody id="lock-body">
+                {{#each this.lock}}
+                <tr>
+                <th scope="row">{{user_id}}</th>
+                <td>{{name}}</td>
+                <td>{{email}}</td>
+                <td class="text-right">
+                    <a name="" id="" class="btn btn-sm btn-success" title="Mở khóa tài khoản"
+                    data-id="{{user_id}}" role="button">Mở
+                    <i class="fas fa-user-check"></i>
+                    </a>
+                </td>
+                </tr>
+                {{/each}}
+            </tbody>
+            </table>
+            {{/if}}
+        </div>
+    </div>
+<hr>
+<footer class="text-center">
+ <div class="mb-2">
+   <small>
+     © 2021 made with <i class="fa fa-heart" style="color:red"></i> by - <a target="_blank" rel="noopener noreferrer" href="#">
+       EduOYK Team
+     </a>
+   </small>
+ </div>
+ <div>
+   <a href="https://github.com/TrashCodeEveryDay" target="_blank">
+     <img alt="GitHub followers" src="https://img.shields.io/github/followers/azouaoui-med?label=github&style=social" />
+   </a>
+   <a href="#" target="_blank">
+     <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/azouaoui_med?label=twitter&style=social" />
+   </a>
+ </div>
+</footer>
+<script>
+    $(document).ready(function(){
+        $('body').on('click','#lock',function(e){
+            var id = $(this).attr('data-id');
+            $(this).parent('td').parent('tr').remove();
+            var count = +$('#lock-section').attr('data-count');
+            if(count === 0){
+                count++;
+                $('#lock-section').empty();
+                $('#lock-section').attr('data-count',count.toString());
+                $('#lock-section').append(`<table class="table table-hover" style="outline:1px solid grey;">
+                    <thead>
+                        <tr>
+                        <th scope="col">Mã học viên</th>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lock-body">
+                    </tbody>
+                    </table>`);
+            }
+            $.getJSON({
+                url: `/admin/student/lock/${id}`,
+                success: function(data){
+                    $('#lock-body').append(`<tr>
+                        <th scope="row">${data.user_id}</th>
+                        <td>${data.name}</td>
+                        <td>${data.email}</td>
+                        <td class="text-right">
+                            <a name="" id="" class="btn btn-sm btn-success" title="Mở khóa tài khoản"
+                            data-id="${data.user_id}" role="button">Mở
+                            <i class="fas fa-user-check"></i>
+                            </a>
+                        </td>
+                        </tr>`);
+                }
+            })
+        })
+
+        //Mở 
+    })
+</script>

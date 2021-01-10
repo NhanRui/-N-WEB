@@ -10,6 +10,14 @@ module.exports ={
         return rows[0];
     },
 
+    async singleById(id){
+        const sql = `select * from user where user_id= '${id}'`;
+        const [rows, fields] = await db.load(sql);
+        if(rows.length === 0)
+            return null;
+        return rows[0];
+    },
+
     async add(user){
         const [result, fields] = await db.add(user,'user');
         return result;
@@ -32,5 +40,21 @@ module.exports ={
         const sql = `update user set password = '${newPassword}' where user_id = '${userID}'`;
         const [rows, fields] = await db.load(sql);
         return true;
+    },
+
+    async brief(){
+        const sql = `select user_id,name,email from user where role = 0`;
+        const [rows, fields] = await db.load(sql);
+        if(rows.length === 0)
+            return null;
+        return rows;
+    },
+
+    async lock(){
+        const sql = `select user_id,name,email from user where role = 3`;
+        const [rows, fields] = await db.load(sql);
+        if(rows.length === 0)
+            return null;
+        return rows;
     }
 }

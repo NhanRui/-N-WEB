@@ -266,7 +266,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('X1P0wL-0uja51iW0uDskydOKy2jeqSTU',1610202630,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"cart\":[],\"authUser\":{\"user_id\":\"Uswyrp45kkj5e5nrw\",\"name\":\"Lưu Thiện Nhân\",\"gender\":\"Khác\",\"dob\":\"2020-11-30T17:00:00.000Z\",\"phone_number\":\"0703002347\",\"email\":\"nguoiamphu\",\"password\":\"$2a$10$UtYSET9vR1AAWNbHyEsuMeS5ljiVslyl/iGzXWkin4hpXPhFmiK7W\",\"password_lvl2\":null,\"avatar\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"description\":\"ádqwqd\\r\\nqưd\\r\\nqư\\r\\ndqw\\r\\nd\\r\\nqưdfqwfqfqfw\",\"role\":1,\"address\":\"123 Nguyễn Văn Cừ Q.5\"},\"courses\":[{\"course_id\":\"C11\"},{\"course_id\":\"Cswyrp498kjdsuj8s\"}]}');
+INSERT INTO `sessions` VALUES ('HgS9lIeahne4I9DspARGb0QYUEYoyKx_',1610341679,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"cart\":[],\"authUser\":{\"user_id\":\"Uswyrp7zckjpte2an\",\"name\":\"Admin  \",\"gender\":null,\"dob\":null,\"phone_number\":null,\"email\":\"nminh7953@gmail.com\",\"password\":\"$2a$10$JhGA3raewzYjROEl518UAuqXXPfAOAOMW/KJgM99cMfxUj2UQCDYC\",\"password_lvl2\":\"814951\",\"avatar\":null,\"description\":null,\"role\":2,\"address\":null},\"courses\":null}'),('rhTniEZYZUQvl_-HsYiyx7IBLfuzzEGU',1610334562,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":false,\"cart\":[],\"retUrl\":\"/admin/\"}');
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -284,6 +284,7 @@ CREATE TABLE `shopping_cart` (
   PRIMARY KEY (`cart_id`) USING BTREE,
   KEY `FK_cart_user_idx` (`user_id`) USING BTREE,
   KEY `FK_cart_deal_idx` (`code_id`) USING BTREE,
+  CONSTRAINT `FK_shoppingcar_cart` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`cart_id`),
   CONSTRAINT `FK_shoppingcart_deal` FOREIGN KEY (`code_id`) REFERENCES `deal` (`code_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FK_shoppingcart_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
@@ -358,7 +359,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('1','Luu a',NULL,NULL,NULL,'phuc@gmail.com','123123',NULL,'/images/BecomeInstructor/ltn.jpg',NULL,0,NULL),('U8d0rgoojskj03tm75','Lê Hoàng Phúc','Nữ','2021-01-12','123123','phucyugi@gmail.com','$2a$10$eaeN/x0vA8RF.0egO0mX5OUu1FmCEue6vCRCfGE2YkYbdTM/1xkee',NULL,'/images/BecomeInstructor/ltn.jpg',NULL,1,NULL),('Uswyrp2a4kitph7ft','Luu Thien Nhan',NULL,NULL,NULL,'nhanluu838@gmail.com','$2a$10$kYroKyRFPmJn1zYPkWsl2OVFhzlap4ZpnQOlN.IxABE/RNYO5Qwj6',NULL,'/images/BecomeInstructor/ltn.jpg',NULL,0,NULL),('Uswyrp45kkj5e5nrw','Lưu Thiện Nhân','Khác','2020-12-01','0703002347','nguoiamphu','$2a$10$UtYSET9vR1AAWNbHyEsuMeS5ljiVslyl/iGzXWkin4hpXPhFmiK7W',NULL,'/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg','ádqwqd\r\nqưd\r\nqư\r\ndqw\r\nd\r\nqưdfqwfqfqfw',1,'123 Nguyễn Văn Cừ Q.5');
+INSERT INTO `user` VALUES ('1','Luu a',NULL,NULL,NULL,'phuc@gmail.com','123123',NULL,'/images/BecomeInstructor/ltn.jpg',NULL,3,NULL),('U8d0rgoojskj03tm75','Lê Hoàng Phúc','Nữ','2021-01-12','123123','phucyugi@gmail.com','$2a$10$eaeN/x0vA8RF.0egO0mX5OUu1FmCEue6vCRCfGE2YkYbdTM/1xkee',NULL,'/images/BecomeInstructor/ltn.jpg',NULL,1,NULL),('Uswyrp2a4kitph7ft','Luu Thien Nhan',NULL,NULL,NULL,'nhanluu838@gmail.com','$2a$10$kYroKyRFPmJn1zYPkWsl2OVFhzlap4ZpnQOlN.IxABE/RNYO5Qwj6',NULL,'/images/BecomeInstructor/ltn.jpg',NULL,0,NULL),('Uswyrp45kkj5e5nrw','Lưu Thiện Nhân','Khác','2020-12-01','0703002347','nguoiamphu','$2a$10$UtYSET9vR1AAWNbHyEsuMeS5ljiVslyl/iGzXWkin4hpXPhFmiK7W',NULL,'/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg','ádqwqd\r\nqưd\r\nqư\r\ndqw\r\nd\r\nqưdfqwfqfqfw',1,'123 Nguyễn Văn Cừ Q.5'),('Uswyrp7zckjpte2an','Admin  ',NULL,NULL,NULL,'nminh7953@gmail.com','$2a$10$JhGA3raewzYjROEl518UAuqXXPfAOAOMW/KJgM99cMfxUj2UQCDYC','814951',NULL,NULL,2,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -401,4 +402,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-09 20:21:24
+-- Dump completed on 2021-01-10 12:11:06
