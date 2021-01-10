@@ -28,7 +28,7 @@ app.use(session({
   secret: 'SECRET_KEY',
   resave: false,
   saveUnitialized: true,
-  //store: sessionStore,
+  store: sessionStore,
   cookie: {
     //secure: true
   }
