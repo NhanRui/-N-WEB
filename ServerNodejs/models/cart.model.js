@@ -51,5 +51,12 @@ module.exports={
         }
         cart = cart.slice(0, index).concat(cart.slice(index + 1, cart.length))
         return rows;
-    }
+    },
+    async getBuyCartById(id){
+        const sql=`SELECT c.course_id,c.course_name,c.intro_image, ROUND(c.price-c.price*c.deal_value/100,0) as reduce_price
+        FROM favourite f join course c on f.course_id=c.course_id
+        WHERE f.user_id='${id}'`
+        const [rows, fields] = await db.load(sql);
+        return rows;
+    },
 }

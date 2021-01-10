@@ -203,6 +203,18 @@ router.get('/is-available-usname', async function (req, res) {
     });
   })
 
+  router.get('/wishlist', function(req, res, next){
+    const user = req.session.authUser;
+    const firstName = user.name.substr(user.name.indexOf(' ')+1);
+    const lastName = user.name.substr(0, user.name.indexOf(' '));
+    res.render('layouts/AccountFaCart',{
+      layout:false,
+      user,
+      firstName,
+      lastName
+    });
+  })
+
   router.post('/profile', async (req, res) => {
     console.log(req.body)
     const date = moment(req.body.dob).format("YYYY-MM-DD");
