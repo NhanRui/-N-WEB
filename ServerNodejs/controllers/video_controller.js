@@ -6,7 +6,6 @@ const { authCanWatch } = require('../middleware/auth.mdw');
 const router = express.Router();
 
 router.get('/:id/:chapter/:video', async function (req, res) {
-
   var found = false;
   console.log(req.session.courses);
   console.log(req.params.id);

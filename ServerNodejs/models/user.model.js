@@ -56,5 +56,21 @@ module.exports ={
         if(rows.length === 0)
             return null;
         return rows;
+    },
+
+    async briefLect(){
+        const sql = `select user_id,name,email from user where role = 1`;
+        const [rows, fields] = await db.load(sql);
+        if(rows.length === 0)
+            return null;
+        return rows;
+    },
+
+    async lockLect(){
+        const sql = `select user_id,name,email from user where role = 4`;
+        const [rows, fields] = await db.load(sql);
+        if(rows.length === 0)
+            return null;
+        return rows;
     }
 }
