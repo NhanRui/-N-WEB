@@ -39,10 +39,15 @@
     .card p{
         margin-left: 10px;
         margin-bottom:15px;
+        font-weight: bolder;
+    }
+
+    .card span{
+        font-weight: normal;
     }
 </style>
 
-<h2>Học viên</h2>
+<h2>Giảng viên</h2>
 <hr>
     <div class="row" style="display:block;">
         <div class="card-header d-flex justify-content-between">
@@ -51,12 +56,12 @@
         <div class="card-body" id="list-section" data-count="{{list_length}}">
             {{#if list_empty}}
             <h5 class="card-title">Không có dữ liệu!</h5>
-            <p class="card-text">Không có tài khoản học viên nào được hoạt động</p>
+            <p class="card-text">Không có tài khoản giảng viên nào được hoạt động</p>
             {{else}} 
             <table class="table table-hover" style="outline:1px solid grey;">
             <thead>
                 <tr>
-                <th scope="col">Mã học viên</th>
+                <th scope="col">Mã giảng viên</th>
                 <th scope="col">Tên</th>
                 <th scope="col">Email</th>
                 <th scope="col">&nbsp;</th>
@@ -92,12 +97,12 @@
         <div class="card-body" id="lock-section" data-count="{{lock_length}}">
             {{#if lock_empty}}
             <h5 class="card-title">Không có dữ liệu!</h5>
-            <p class="card-text">Không có tài khoản nào hiện đang bị khóa.</p>
+            <p class="card-text">Không có tài khoản giảng viên nào hiện đang bị khóa.</p>
             {{else}}
             <table class="table table-hover" style="outline:1px solid grey;">
             <thead>
                 <tr>
-                <th scope="col">Mã học viên</th>
+                <th scope="col">Mã giảng viên</th>
                 <th scope="col">Tên</th>
                 <th scope="col">Email</th>
                 <th scope="col">&nbsp;</th>
@@ -147,11 +152,11 @@
 
 <div class="card">
   <img id="i" src="/w3images/team2.jpg" alt="AVT" style="width:100%;max-height:46vh;">
-  <h4 id="n">Name</h4>
-  <p id="g">Gender</p>
-  <p id="d">DOB</p>
-  <p id="p">Phone</p>
-  <p id="a">Address</p>
+  <h4><span id="n">Name</span></h4>
+  <p>Gender: <span id="g"></span></p>
+  <p>Date of Birth: <span id="d"></span></p>
+  <p>Phone: <span id="p"></span></p>
+  <p>Address: <span id="a"></span></p>
   <p class="title">CEO & Founder, Example</p>
   <div style="margin: 24px 0; text-align: center;">
     <a href="#"><i class="fa fa-dribbble"></i></a> 
@@ -173,7 +178,7 @@
             if(count1 === 0){
                 $('#list-section').empty();
                 $('#list-section').append(`<h5 class="card-title">Không có dữ liệu!</h5>
-                <p class="card-text">Không có tài khoản học viên nào được hoạt động</p>`);
+                <p class="card-text">Không có tài khoản giảng viên nào được hoạt động</p>`);
             }
 
             var count = +$('#lock-section').attr('data-count');
@@ -182,7 +187,7 @@
                 $('#lock-section').append(`<table class="table table-hover" style="outline:1px solid grey;">
                     <thead>
                         <tr>
-                        <th scope="col">Mã học viên</th>
+                        <th scope="col">Mã giảng viên</th>
                         <th scope="col">Tên</th>
                         <th scope="col">Email</th>
                         <th scope="col">&nbsp;</th>
@@ -195,7 +200,7 @@
             count++;
             $('#lock-section').attr('data-count',count.toString());
             $.getJSON({
-                url: `/admin/student/lock/${id}`,
+                url: `/admin/lecturer/lock/${id}`,
                 success: function(data){
                     $('#lock-body').append(`<tr>
                         <th scope="row">${data.user_id}</th>
@@ -227,7 +232,7 @@
             if(count1 === 0){
                 $('#lock-section').empty();
                 $('#lock-section').append(`<h5 class="card-title">Không có dữ liệu!</h5>
-            <p class="card-text">Không có tài khoản nào hiện đang bị khóa.</p>`);
+            <p class="card-text">Không có tài khoản giảng viên nào hiện đang bị khóa.</p>`);
             }
 
             var count = +$('#list-section').attr('data-count');
@@ -236,7 +241,7 @@
                 $('#list-section').append(`<table class="table table-hover" style="outline:1px solid grey;">
                     <thead>
                         <tr>
-                        <th scope="col">Mã học viên</th>
+                        <th scope="col">Mã giảng viên</th>
                         <th scope="col">Tên</th>
                         <th scope="col">Email</th>
                         <th scope="col">&nbsp;</th>
@@ -249,7 +254,7 @@
             count++;
             $('#list-section').attr('data-count',count.toString());
             $.getJSON({
-                url: `/admin/student/open/${id}`,
+                url: `/admin/lecturer/open/${id}`,
                 success: function(data){
                     $('#active-body').append(`<tr>
                         <th scope="row">${data.user_id}</th>
@@ -281,11 +286,11 @@
             if(count1 === 0){
                 x.empty();
                 x.append(`<h5 class="card-title">Không có dữ liệu!</h5>
-            <p class="card-text">Không có tài khoản học viên nào được hoạt động</p>`);
+            <p class="card-text">Không có tài khoản giảng viên nào được hoạt động</p>`);
             }
 
             $.getJSON({
-                url: `/admin/student/delete/${id}`,
+                url: `/admin/lecturer/delete/${id}`,
                 success: function(data){
                     //do nothing
                 }
@@ -302,11 +307,11 @@
             if(count1 === 0){
                 x.empty();
                 x.append(`<h5 class="card-title">Không có dữ liệu!</h5>
-            <p class="card-text">Không có tài khoản nào hiện đang bị khóa.</p>`);
+            <p class="card-text">Không có tài khoản giảng viên nào hiện đang bị khóa.</p>`);
             }
 
             $.getJSON({
-                url: `/admin/student/delete/${id}`,
+                url: `/admin/lecturer/delete/${id}`,
                 success: function(data){
                     //do nothing
                 }
@@ -315,7 +320,7 @@
         $('body').on('mouseover','tbody tr th',function(e){
             var id = $(this).html();
             $.getJSON({
-                url: `/admin/student/${id}`,
+                url: `/admin/lecturer/${id}`,
                 success: function(data){
                     $('#i').attr('src',data.avatar);
                     $('#n').html(data.name);
