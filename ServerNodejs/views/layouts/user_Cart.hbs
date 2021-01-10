@@ -34,28 +34,31 @@
     <div class="page_wrapper">
         <div class="left_container">
             <!--? Popular Course Start -->
-            <div class="intro">Giỏ hàng (1 khóa học)</div>
+            <div class="intro">Giỏ hàng ({{shopCartSummary}} khóa học)</div>
+            {{#each this.shoppingCart}}
             <div class="popular-course section-padding30" style="padding-top: 0;">
                 <div class="container">
                     <div class="row">
                         <div class="course_container">
                             <div class="course_img">
-                                <img src="/images/ad1.jpg" alt="course-image">
+                                <img src="{{intro_image}}" alt="course-image">
                             </div>
                             <div class="author">
-                                <p><strong>Nền tảng Tiếng Anh cho người mới</strong></p>
-                                <p style="font-size: 14px;">Hanah Phạm</p>
+                                <p><strong>{{course_name}}</strong></p>
+                                <p style="font-size: 14px;color:#9b9b9b;">{{author_name}}</p>
                             </div>
                             <div class="price">
-                                <p>229.000 ₫</p>
+                                <p>{{format_number price}}</p>
+                                <div class="reduce_price">{{format_number reduce_price}}</div>
                             </div>
                             <div class="buttons_group">
                                 <div class="form_btn">
-                                    <form action="" method="POST">
+                                    <form action="/cart/del" method="POST">
                                         <button type="submit" class="genric-btn danger circle"
                                             data-animation="fadeInLeft" data-delay=".8s" tabindex="0"
                                             style="animation-delay: 0.8s; height: 25px; display: flex; justify-content: center; align-items: center; padding: 0 0 !important">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
+                                            <input type="hidden" value="{{course_id}}" name="id">
                                         </button>
                                     </form>
                                 </div>
@@ -64,6 +67,7 @@
                     </div>
                 </div>
             </div>
+            {{/each}}
         </div>
         <div class="right_container">
             <div class="bill_title">
@@ -71,11 +75,11 @@
             </div>
             <div class="temp">
                 <span style="color: gray;">Tạm tính</span>
-                <span>123456 ₫</span>
+                <span>{{format_number shopcartTotal}}</span>
             </div>
             <div class="total">
                 <span style="font-weight: 500;">Tổng tiền</span>
-                <span style="font-weight: 500; color: red; font-size: 20px">{{totalPrice}} ₫</span>
+                <span style="font-weight: 500; color: red; font-size: 20px">{{format_number shopcartTotal}}</span>
             </div>
             <div class="sale_off">
                 <p style="width: 100%; text-align: right; font-size: 13px; font-weight: 300">Chọn mã giảm giá</p>

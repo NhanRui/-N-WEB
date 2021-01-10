@@ -5,7 +5,24 @@ const { authCanWatch } = require('../middleware/auth.mdw');
 
 const router = express.Router();
 
-router.get('/:id/:chapter/:video', authCanWatch, async function (req, res) {
+router.get('/:id/:chapter/:video', async function (req, res) {
+
+  var found = false;
+  console.log(req.session.courses);
+  console.log(req.params.id);
+  if(req.session.courses !== null){
+      for(var i=0;i<req.session.courses.length;i++){
+          if(req.session.courses[i].course_id === req.params.id)   found=true;
+      }
+  }
+  if(found===false){
+      res.render('vwError/cannot_access',{
+          layout: false,
+          error: 'Bạn chưa mua khóa học này mà, sao mà xem được',
+          retURL: req.headers.retUrl
+      });
+      return;
+  }
   const course_id=req.params.id;
   const chapter=req.params.chapter;
   const video=req.params.video;

@@ -56,10 +56,10 @@
                             </div>
                         </div>
                         <div class="options">
-                            <div class="user-info-tab">
+                            <a href="/account/profile" class="favor-list-tab">
                                 <span>Thông tin tài khoản</span>
-                            </div>
-                            <div class="favor-list-tab">
+                            </a>
+                            <div class="user-info-tab">
                                 <span>Danh sách yêu thích</span>
                             </div>
                         </div>
@@ -70,7 +70,11 @@
                         <span>Danh sách yêu thích</span>
                     </div>
                     <div class="user-fa-fieldset">
-                        {{>product_in_account}}
+                        <div class="row">
+                            {{#each ../fa_list}}
+                                {{>product_in_account}}
+                            {{/each}}
+                        </div>
                     </div>
                 </div>
             </div>

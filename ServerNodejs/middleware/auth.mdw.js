@@ -38,9 +38,11 @@ module.exports = {
 
     authCanWatch(req,res,next){   //dảnh riêng cho trang xem video khóa học
         var found = false;
+        console.log(req.session.courses);
+        console.log(req.params.id);
         if(req.session.courses !== null){
             for(var i=0;i<req.session.courses.length;i++){
-                if(req.session.courses[i].course_id === req.params.course_id)   found=true;
+                if(req.session.courses[i].course_id === req.params.id)   found=true;
             }
         }
         if(found===false){

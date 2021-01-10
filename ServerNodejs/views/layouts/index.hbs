@@ -78,15 +78,16 @@
             <div class="cart-btn-pos">
                 <div class="cart-btn-focus" id="cart-btn-click">
                     {{#if auth}}
-                        <div class="amount-cart">{{cartSummary}}</div>
+                        {{#if shopCartSummary}}
+                            <div class="amount-cart">{{shopCartSummary}}</div>
+                        {{/if}}
                     {{/if}}
                     <i class="cart-btn fas fa-shopping-cart" id="cart-item"></i>
                     <div class="cart_list" id="cart_list_focus">
-                        <i class="list_ca fas fa-shopping-cart"></i>
-                        <p class="cart-is-empty">Bạn chưa có khóa học nào trong giỏ hàng</p>
-                        <!--<p class="check-num-card">Giỏ hàng - 0 khóa</p>
+                        {{#if shopCartSummary}}
+                        <p class="check-num-card">Giỏ hàng - {{shopCartSummary}} khóa</p>
                         <div class="scroll-container-item">
-                            {{#each this.items}}
+                            {{#each this.shopping_list}}
                             <a href="/course-detail/{{course_id}}">
                                 <div class="shop-cart-course">
                                     <img class="card-img-shop" src={{intro_image}} alt="">
@@ -101,12 +102,16 @@
                         <div class="footer-total-bill">
                             <div class="total-in-cart">
                                 <p class="total-price-item-text">Tổng: </p>
-                                <p class="total-price-item">1,000,000 đ</p>
+                                <p class="total-price-item">{{format_number shopcartTotal}}</p>
                             </div>
-                            <a href="#" class="btn-view-cart">
+                            <a href="/cart" class="btn-view-cart">
                                 Xem giỏ hàng
                             </a>
-                        </div>-->
+                        </div>
+                        {{else}}
+                            <i class="list_ca fas fa-shopping-cart"></i>
+                            <p class="cart-is-empty">Bạn chưa có khóa học nào trong giỏ hàng</p>
+                        {{/if}}
                     </div>
                     <div></div>
                 </div>
@@ -129,7 +134,7 @@
                                         <img class="card-img-shop" src={{intro_image}} alt="">
                                         <div class="container-cart-item">
                                             <p class="title-in-card">{{course_name}}</p>
-                                            <p class="price-in-cart">{{format_number reduce_price}}</p>
+                                            <p class="author-in-cart">{{author_name}}</p>
                                         </div>
                                     </div>
                                 </a>
@@ -137,12 +142,8 @@
                             </div>
                             {{#if auth}}
                             <div class="footer-total-bill">
-                                <div class="total-in-cart">
-                                    <p class="total-price-item-text">Tổng: </p>
-                                    <p class="total-price-item">{{format_number cartTotal}}</p>
-                                </div>
-                                <a href="#" class="btn-view-cart">
-                                    Xem giỏ hàng
+                                <a href="/account/wishlist" class="fa_tranfer">
+                                    Xem danh sách
                                 </a>
                             </div>
                             {{/if}}  
@@ -168,7 +169,7 @@
                         <a href="/account/profile" class="option-select-auth">Thông tin tài khoản</a>
                     </div>
                     <div class="option-item-auth">
-                        <a href="#" class="option-select-auth">Danh sách yêu thích</a>
+                        <a href="/account/wishlist" class="option-select-auth">Danh sách yêu thích</a>
                     </div>
                     <hr class="line-user">
                     <div class="option-item-auth">

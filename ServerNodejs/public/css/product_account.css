@@ -55,6 +55,16 @@
     margin-top: 160px;
     font-weight: bold;
     position: absolute;
+
+    height: 38px;
+    color: rgb(70, 69, 69);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 19px;
+    -webkit-line-clamp: 2;
+    height: 38px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }
 
 .card-text-author{
@@ -77,6 +87,16 @@
     margin-top: 25px;
     font-size: 13px;
     color: rgb(182, 172, 172);
+
+    height: 38px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 19px;
+    -webkit-line-clamp: 1;
+    height: 19px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }
 
 .price{
@@ -135,7 +155,8 @@ p.number-students{
       height: 100%;
 }
 
-.card-product:hover .favourite_course_container a i{
+.card-product:hover .favourite_course_container button i{
+    cursor: pointer;
     display: block;
 }
 
@@ -143,7 +164,7 @@ p.number-students{
     height: 100%;
 }
 
-.card-product-topbs:hover .favourite_course_container a i{
+.card-product-topbs:hover .favourite_course_container button i{
   display: block;
 }
 
@@ -155,11 +176,10 @@ p.number-students{
     z-index: 1;
 }
 
-.favourite_course_container a i{
+.favourite_course_container button .fa_ca{
     position: absolute;
     padding: 10px;
     right: 0;
-    margin-top: 10px;
     margin-right: 10px;
     background: white;
     z-index: 1;
@@ -168,7 +188,23 @@ p.number-students{
     display: none;
 }
 
-.favourite_course_container:hover .fa_ca{
+.favourite_course_container button .sp_ca{
+    position: absolute;
+    padding: 10px;
+    right: 0;
+    margin-right: 50px;
+    background: white;
+    z-index: 1;
+    border-radius: 8px;
+    color: rgb(196, 193, 193);
+    display: none;
+}
+
+.favourite_course_container .fa_ca:hover{
+    color: black;
+}
+
+.favourite_course_container .sp_ca:hover{
     color: black;
 }
 
@@ -191,4 +227,14 @@ p.number-students{
 
 .noHover{
     pointer-events: none;
+}
+
+#faActive{
+    background-color: rgba(216, 1, 1, 0.986);
+    color: white;
+}
+
+.favourite_course_container{
+    width: 100%;
+    position: absolute;
 }

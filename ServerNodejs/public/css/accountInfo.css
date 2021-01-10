@@ -275,11 +275,13 @@
             font-weight: 400;
             padding: 13px 0 13px 20px;
             width: 100%;
+            color: black;
         }
 
         .favor-list-tab:hover {
             background-color: beige;
             cursor: pointer;
+            color: black;
         }
 
 .column#col-2 {

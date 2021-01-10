@@ -203,15 +203,31 @@ router.get('/is-available-usname', async function (req, res) {
     });
   })
 
-  router.get('/wishlist', function(req, res, next){
+  router.get('/wishlist', async function(req, res){
     const user = req.session.authUser;
     const firstName = user.name.substr(user.name.indexOf(' ')+1);
     const lastName = user.name.substr(0, user.name.indexOf(' '));
+    const fa_list=req.session.cart;
+    const cart_list=req.session.shopCart;
+    //console.log(fa_list[0].course_id);
+    for (i=0;i<cart_list.length;i++)
+    {
+      for (j=0;j<fa_list.length;j++)
+      {
+        if (cart_list[i].course_id===fa_list[j].course_id)
+        {
+          fa_list[j].isHaving=1;
+          break;
+        }
+      }
+    }
+    console.log(fa_list);
     res.render('layouts/AccountFaCart',{
-      layout:false,
       user,
       firstName,
-      lastName
+      lastName,
+      fa_list: fa_list,
+      layout:false,
     });
   })
 

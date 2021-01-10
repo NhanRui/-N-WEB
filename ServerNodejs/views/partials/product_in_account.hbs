@@ -1,35 +1,57 @@
 
-<div class="row">
+
     <div class="col-sm-3">
         <div class="card-product">
-                <div class="favourite_course_container">
+                <form action="/cart/add" method="POST" class="favourite_course_container">
+                    <input type="hidden" value="{{course_id}}" name="id">
+                    <button type="submit">
+                        <i class="fa_ca far fa-heart" id="faActive"></i>
+                    </button>
+                </form>
+                {{#if isHaving}}
+                <a href="/cart/" class="favourite_course_container">
+                    <input type="hidden" value="{{course_id}}" name="id">
+                    <button type="submit">
+                        <i class="sp_ca fas fa-shopping-cart" id="faActive"></i>
+                    </button>
+                </a>
+                {{else}}
+                <form action="/cart/addCart" method="POST" class="favourite_course_container">
+                    <input type="hidden" value="{{course_id}}" name="id">
+                    <button type="submit">
+                        <i class="sp_ca fas fa-shopping-cart" id=""></i>
+                    </button>
+                </form>
+                {{/if}}
+                <!--<div class="favourite_course_container">
                     <a href="#"><i class="fa_ca far fa-heart" id=""></i></a>
-                </div>
-                <a href="/course-detail/">
+                    <a href="#"><i class="sp_ca fas fa-shopping-cart" id="faActive"></i></a>
+                </div>-->
+                <a href="/course-detail/{{course_id}}">
                 <div class="container_slide_up">
                     <div class="item__overlay">
-                        <p class="number-students">Học viên: 2000</p>
+                        <p class="number-students">Học viên: {{number_student}}</p>
                     </div>
                 </div>
                 </a>
-                <a href="/course-detail/">
+                <a href="/course-detail/{{course_id}}">
                 <div class="img-with-deal">
-                    <img class="card-img" src="images/BecomeInstructor/ltn.jpg" alt="">
+                    <img class="card-img" src={{intro_image}} alt="">
                     <div class="deal-img">
-                        <p>-100%</p>
+                        <p>-{{deal_value}}%</p>
                     </div>
                 </div>
                 </a>
-                <a href="/course-detail/">
-                <div class="">
+                <a href="/course-detail/{{course_id}}">
+                <div class="{{course_id}}">
                     <div class="wrap-stars">
                         <div class="stars-outer">
                             <div class="stars-inner"></div>
                         </div>
-                        <span class="number-rating"><b>4.3</b> (43)</span><!--Về sau thay đổi star và number people-->
+                        <span class="number-rating"><b>{{overall_star}}</b> ({{number_rating}})</span><!--Về sau thay đổi star và number people-->
                     </div>
                 </div>
-                <h4 class="card-title">Nghệ thuật bán hàng đỉnh cao</h4>
+                <h4 class="card-title">{{course_name}}</h4>
                 </a>
                 <script>
                     var ob_rating="{{{course_id}}}";
@@ -37,8 +59,8 @@
                 </script><!--về sau tham số là tên product-->
                 <div class="card-body">
                     <a href="/course-detail/{{course_id}}" class="card-text-author">
-                        <img class="author-img" src="/images/BecomeInstructor/ltn.jpg" alt="">
-                        <p class="author-name">Lê Thẩm Dương</p>
+                        <img class="author-img" src="{{author_image}}" alt="">
+                        <p class="author-name">{{author_name}}</p>
                     </a>
                     <a href="/course-detail/{{course_id}}">
                     <div class="price">
@@ -49,200 +71,3 @@
                 </div>
         </div> 
     </div>
-        <div class="col-sm-3">
-        <div class="card-product">
-                <div class="favourite_course_container">
-                    <a href="#"><i class="fa_ca far fa-heart" id=""></i></a>
-                </div>
-                <a href="/course-detail/">
-                <div class="container_slide_up">
-                    <div class="item__overlay">
-                        <p class="number-students">Học viên: 2000</p>
-                    </div>
-                </div>
-                </a>
-                <a href="/course-detail/">
-                <div class="img-with-deal">
-                    <img class="card-img" src="images/BecomeInstructor/ltn.jpg" alt="">
-                    <div class="deal-img">
-                        <p>-100%</p>
-                    </div>
-                </div>
-                </a>
-                <a href="/course-detail/">
-                <div class="">
-                    <div class="wrap-stars">
-                        <div class="stars-outer">
-                            <div class="stars-inner"></div>
-                        </div>
-                        <span class="number-rating"><b>4.3</b> (43)</span><!--Về sau thay đổi star và number people-->
-                    </div>
-                </div>
-                <h4 class="card-title">Nghệ thuật bán hàng đỉnh cao</h4>
-                </a>
-                <script>
-                    var ob_rating="{{{course_id}}}";
-                    document.addEventListener('DOMContentLoaded',getRatings({{overall_star}},ob_rating))
-                </script><!--về sau tham số là tên product-->
-                <div class="card-body">
-                    <a href="/course-detail/{{course_id}}" class="card-text-author">
-                        <img class="author-img" src="/images/BecomeInstructor/ltn.jpg" alt="">
-                        <p class="author-name">Lê Thẩm Dương</p>
-                    </a>
-                    <a href="/course-detail/{{course_id}}">
-                    <div class="price">
-                        <div class="real-price">{{format_number price}}</div>
-                        <div class="reduce-price">{{format_number reduce_price}}</div>
-                    </div>
-                    </a>
-                </div>
-        </div> 
-    </div>
-        <div class="col-sm-3">
-        <div class="card-product">
-                <div class="favourite_course_container">
-                    <a href="#"><i class="fa_ca far fa-heart" id=""></i></a>
-                </div>
-                <a href="/course-detail/">
-                <div class="container_slide_up">
-                    <div class="item__overlay">
-                        <p class="number-students">Học viên: 2000</p>
-                    </div>
-                </div>
-                </a>
-                <a href="/course-detail/">
-                <div class="img-with-deal">
-                    <img class="card-img" src="images/BecomeInstructor/ltn.jpg" alt="">
-                    <div class="deal-img">
-                        <p>-100%</p>
-                    </div>
-                </div>
-                </a>
-                <a href="/course-detail/">
-                <div class="">
-                    <div class="wrap-stars">
-                        <div class="stars-outer">
-                            <div class="stars-inner"></div>
-                        </div>
-                        <span class="number-rating"><b>4.3</b> (43)</span><!--Về sau thay đổi star và number people-->
-                    </div>
-                </div>
-                <h4 class="card-title">Nghệ thuật bán hàng đỉnh cao</h4>
-                </a>
-                <script>
-                    var ob_rating="{{{course_id}}}";
-                    document.addEventListener('DOMContentLoaded',getRatings({{overall_star}},ob_rating))
-                </script><!--về sau tham số là tên product-->
-                <div class="card-body">
-                    <a href="/course-detail/{{course_id}}" class="card-text-author">
-                        <img class="author-img" src="/images/BecomeInstructor/ltn.jpg" alt="">
-                        <p class="author-name">Lê Thẩm Dương</p>
-                    </a>
-                    <a href="/course-detail/{{course_id}}">
-                    <div class="price">
-                        <div class="real-price">{{format_number price}}</div>
-                        <div class="reduce-price">{{format_number reduce_price}}</div>
-                    </div>
-                    </a>
-                </div>
-        </div> 
-    </div>
-    <div class="col-sm-3">
-        <div class="card-product">
-                <div class="favourite_course_container">
-                    <a href="#"><i class="fa_ca far fa-heart" id=""></i></a>
-                </div>
-                <a href="/course-detail/">
-                <div class="container_slide_up">
-                    <div class="item__overlay">
-                        <p class="number-students">Học viên: 2000</p>
-                    </div>
-                </div>
-                </a>
-                <a href="/course-detail/">
-                <div class="img-with-deal">
-                    <img class="card-img" src="images/BecomeInstructor/ltn.jpg" alt="">
-                    <div class="deal-img">
-                        <p>-100%</p>
-                    </div>
-                </div>
-                </a>
-                <a href="/course-detail/">
-                <div class="">
-                    <div class="wrap-stars">
-                        <div class="stars-outer">
-                            <div class="stars-inner"></div>
-                        </div>
-                        <span class="number-rating"><b>4.3</b> (43)</span><!--Về sau thay đổi star và number people-->
-                    </div>
-                </div>
-                <h4 class="card-title">Nghệ thuật bán hàng đỉnh cao</h4>
-                </a>
-                <script>
-                    var ob_rating="{{{course_id}}}";
-                    document.addEventListener('DOMContentLoaded',getRatings({{overall_star}},ob_rating))
-                </script><!--về sau tham số là tên product-->
-                <div class="card-body">
-                    <a href="/course-detail/{{course_id}}" class="card-text-author">
-                        <img class="author-img" src="/images/BecomeInstructor/ltn.jpg" alt="">
-                        <p class="author-name">Lê Thẩm Dương</p>
-                    </a>
-                    <a href="/course-detail/{{course_id}}">
-                    <div class="price">
-                        <div class="real-price">{{format_number price}}</div>
-                        <div class="reduce-price">{{format_number reduce_price}}</div>
-                    </div>
-                    </a>
-                </div>
-        </div> 
-    </div>
-    <div class="col-sm-3">
-        <div class="card-product">
-                <div class="favourite_course_container">
-                    <a href="#"><i class="fa_ca far fa-heart" id=""></i></a>
-                </div>
-                <a href="/course-detail/">
-                <div class="container_slide_up">
-                    <div class="item__overlay">
-                        <p class="number-students">Học viên: 2000</p>
-                    </div>
-                </div>
-                </a>
-                <a href="/course-detail/">
-                <div class="img-with-deal">
-                    <img class="card-img" src="images/BecomeInstructor/ltn.jpg" alt="">
-                    <div class="deal-img">
-                        <p>-100%</p>
-                    </div>
-                </div>
-                </a>
-                <a href="/course-detail/">
-                <div class="">
-                    <div class="wrap-stars">
-                        <div class="stars-outer">
-                            <div class="stars-inner"></div>
-                        </div>
-                        <span class="number-rating"><b>4.3</b> (43)</span><!--Về sau thay đổi star và number people-->
-                    </div>
-                </div>
-                <h4 class="card-title">Nghệ thuật bán hàng đỉnh cao</h4>
-                </a>
-                <script>
-                    var ob_rating="{{{course_id}}}";
-                    document.addEventListener('DOMContentLoaded',getRatings({{overall_star}},ob_rating))
-                </script><!--về sau tham số là tên product-->
-                <div class="card-body">
-                    <a href="/course-detail/{{course_id}}" class="card-text-author">
-                        <img class="author-img" src="/images/BecomeInstructor/ltn.jpg" alt="">
-                        <p class="author-name">Lê Thẩm Dương</p>
-                    </a>
-                    <a href="/course-detail/{{course_id}}">
-                    <div class="price">
-                        <div class="real-price">{{format_number price}}</div>
-                        <div class="reduce-price">{{format_number reduce_price}}</div>
-                    </div>
-                    </a>
-                </div>
-        </div> 
-    </div>
-</div>

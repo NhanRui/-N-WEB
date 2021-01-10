@@ -9,6 +9,7 @@ router.get('/', async function (req, res) {
     const submenuList=await menuCategory.getCateSubMenu();
     let numberOfitems=0;
     const items=req.session.cart;
+    const shopping_list=req.session.shopCart;
     //console.log(submenuList);
     const allListMenu=[];
     for (const i of menuList)
@@ -84,6 +85,7 @@ router.get('/', async function (req, res) {
       product_menu_IT: list_IT_menu,
       empty_menu_IT: list_IT_menu.length===0,
       items,
+      shopping_list,
       numberOfitems: numberOfitems!==0,
       top10_view_1: top10_view_1,
       empty_view_1: top10_view_1.length!==0,
