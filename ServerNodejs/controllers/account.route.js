@@ -8,6 +8,8 @@ const userModel = require('../models/user.model');
 const auth = require('../middleware/auth.mdw');
 const moment = require('moment');
 const speakeasy = require('speakeasy');
+const menuCategory=require('../models/category-menu.model');
+const categoryModel = require('../models/product_modle');
 
 const nodemailer = require('nodemailer');
 let transporter = nodemailer.createTransport({
@@ -191,11 +193,45 @@ router.get('/is-available-usname', async function (req, res) {
     res.redirect(url);
   })
 
-  router.get('/profile', function(req, res, next){
+  router.get('/profile',auth.auth, async function(req, res, next){
+    const shopping_list=req.session.shopCart;
+    const menuList=await menuCategory.getCateMenu();
+    const submenuList=await menuCategory.getCateSubMenu();
+    const allListMenu=[];
+    const items=req.session.cart;
+    for (const i of menuList)
+    {
+      const menu_list=await categoryModel.allById(i.category_id);
+      categoryModel.checkIsHaving(items,menu_list);
+      const item={
+        menu: i.category_id,
+        name: i.category_name,
+        submenu: [],
+        top4_course_menu: menu_list
+      };
+      allListMenu.push(item);
+    }
+  
+    for (const j of submenuList)
+    {
+      for (i=0;i<allListMenu.length;i++)
+      {
+        if (allListMenu[i].menu===j.parent_id)
+        {
+          allListMenu[i].submenu.push(j);
+        }
+      }
+    }
+
     const user = req.session.authUser;
     const firstName = user.name.substr(user.name.indexOf(' ')+1);
     const lastName = user.name.substr(0, user.name.indexOf(' '));
     res.render('layouts/AccountInformation',{
+      shopping_list,
+      items,
+      menuList: menuList,
+      empty_menu: menuList.length!==0,
+      allListMenu: allListMenu,
       layout:false,
       user,
       firstName,
@@ -203,7 +239,36 @@ router.get('/is-available-usname', async function (req, res) {
     });
   })
 
-  router.get('/wishlist', async function(req, res){
+  router.get('/wishlist',auth.auth, async function(req, res){
+    const shopping_list=req.session.shopCart;
+    const menuList=await menuCategory.getCateMenu();
+    const submenuList=await menuCategory.getCateSubMenu();
+    const allListMenu=[];
+    const items=req.session.cart;
+    for (const i of menuList)
+    {
+      const menu_list=await categoryModel.allById(i.category_id);
+      categoryModel.checkIsHaving(items,menu_list);
+      const item={
+        menu: i.category_id,
+        name: i.category_name,
+        submenu: [],
+        top4_course_menu: menu_list
+      };
+      allListMenu.push(item);
+    }
+  
+    for (const j of submenuList)
+    {
+      for (i=0;i<allListMenu.length;i++)
+      {
+        if (allListMenu[i].menu===j.parent_id)
+        {
+          allListMenu[i].submenu.push(j);
+        }
+      }
+    }
+
     const user = req.session.authUser;
     const firstName = user.name.substr(user.name.indexOf(' ')+1);
     const lastName = user.name.substr(0, user.name.indexOf(' '));
@@ -221,8 +286,12 @@ router.get('/is-available-usname', async function (req, res) {
         }
       }
     }
-    console.log(fa_list);
     res.render('layouts/AccountFaCart',{
+      shopping_list,
+      items,
+      menuList: menuList,
+      empty_menu: menuList.length!==0,
+      allListMenu: allListMenu,
       user,
       firstName,
       lastName,

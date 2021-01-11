@@ -7,8 +7,8 @@ const router = express.Router();
 
 router.get('/:id/:chapter/:video', async function (req, res) {
   var found = false;
-  console.log(req.session.courses);
-  console.log(req.params.id);
+  //console.log(req.session.courses);
+  //console.log(req.params.id);
   if(req.session.courses !== null){
       for(var i=0;i<req.session.courses.length;i++){
           if(req.session.courses[i].course_id === req.params.id)   found=true;

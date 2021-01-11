@@ -1,6 +1,9 @@
 const express = require("express");
 const course_detail_Model = require("../models/course_detail_Model");
 const courses_detail_Model = require("../models/course_detail_Model");
+const categoryModel = require('../models/product_modle');
+const menuCategory=require('../models/category-menu.model');
+
 const router = express.Router();
 
 router.get("/le-tham-duong", (req, res) => {
@@ -12,6 +15,35 @@ router.get("/le-tham-duong", (req, res) => {
 });
 
 router.get("/course-detail/:id", async function (req, res) {
+  const shopping_list=req.session.shopCart;
+  const menuList=await menuCategory.getCateMenu();
+  const submenuList=await menuCategory.getCateSubMenu();
+  const allListMenu=[];
+  const items=req.session.cart;
+  for (const i of menuList)
+  {
+    const menu_list=await categoryModel.allById(i.category_id);
+    categoryModel.checkIsHaving(items,menu_list);
+    const item={
+      menu: i.category_id,
+      name: i.category_name,
+      submenu: [],
+      top4_course_menu: menu_list
+    };
+    allListMenu.push(item);
+  }
+
+  for (const j of submenuList)
+  {
+    for (i=0;i<allListMenu.length;i++)
+    {
+      if (allListMenu[i].menu===j.parent_id)
+      {
+        allListMenu[i].submenu.push(j);
+      }
+    }
+  }
+
   let id = req.params.id;
   const returnObject = courses_detail_Model.all();
 
@@ -51,7 +83,12 @@ router.get("/course-detail/:id", async function (req, res) {
     parent,
     videos,
     lesson,
-    comments
+    comments,
+    shopping_list,
+    items,
+    menuList: menuList,
+    empty_menu: menuList.length!==0,
+    allListMenu: allListMenu,
   })
 })
 

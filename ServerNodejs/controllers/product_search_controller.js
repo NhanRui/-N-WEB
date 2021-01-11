@@ -1,9 +1,39 @@
 const express = require('express');
 const categoryModel = require('../models/product_modle');
 const router = express.Router();
-const {paginate}=require('../config/default.json')
+const {paginate}=require('../config/default.json');
+const menuCategory=require('../models/category-menu.model');
 
 router.get('/keyword/:txt',async function (req, res){
+  const shopping_list=req.session.shopCart;
+  const menuList=await menuCategory.getCateMenu();
+  const submenuList=await menuCategory.getCateSubMenu();
+  const allListMenu=[];
+  const items=req.session.cart;
+  for (const i of menuList)
+  {
+    const menu_list=await categoryModel.allById(i.category_id);
+    categoryModel.checkIsHaving(items,menu_list);
+    const item={
+      menu: i.category_id,
+      name: i.category_name,
+      submenu: [],
+      top4_course_menu: menu_list
+    };
+    allListMenu.push(item);
+  }
+
+  for (const j of submenuList)
+  {
+    for (i=0;i<allListMenu.length;i++)
+    {
+      if (allListMenu[i].menu===j.parent_id)
+      {
+        allListMenu[i].submenu.push(j);
+      }
+    }
+  }
+
   const txtSearch=req.params.txt
   //chưa xong
   const page=req.query.page || 1;
@@ -42,6 +72,11 @@ router.get('/keyword/:txt',async function (req, res){
     nextPage,
     checkNextPage: nextPage<=nPages,
     checkPreviousPage: previousPage>0,
+    shopping_list,
+    items,
+    menuList: menuList,
+    empty_menu: menuList.length!==0,
+    allListMenu: allListMenu,
     layout: "search-item.hbs",
   });
 })
@@ -55,6 +90,35 @@ router.post('/',async function (req, res,next){
 
 
 router.get('/:id', async function (req, res) {
+  const shopping_list=req.session.shopCart;
+  const menuList=await menuCategory.getCateMenu();
+  const submenuList=await menuCategory.getCateSubMenu();
+  const allListMenu=[];
+  const items=req.session.cart;
+  for (const i of menuList)
+  {
+    const menu_list=await categoryModel.allById(i.category_id);
+    categoryModel.checkIsHaving(items,menu_list);
+    const item={
+      menu: i.category_id,
+      name: i.category_name,
+      submenu: [],
+      top4_course_menu: menu_list
+    };
+    allListMenu.push(item);
+  }
+
+  for (const j of submenuList)
+  {
+    for (i=0;i<allListMenu.length;i++)
+    {
+      if (allListMenu[i].menu===j.parent_id)
+      {
+        allListMenu[i].submenu.push(j);
+      }
+    }
+  }
+
   const catId=req.params.id;
   const page=req.query.page || 1;
   const previousPage=+page-1;
@@ -90,6 +154,11 @@ router.get('/:id', async function (req, res) {
     page_numbers,
     previousPage,
     nextPage,
+    shopping_list,
+    items,
+    menuList: menuList,
+    empty_menu: menuList.length!==0,
+    allListMenu: allListMenu,
     checkNextPage: nextPage<=nPages,
     checkPreviousPage: previousPage>0,
     layout: "search-item.hbs",
@@ -97,6 +166,35 @@ router.get('/:id', async function (req, res) {
 })
 
 router.get('/:id/rating-5', async function (req, res) {
+  const shopping_list=req.session.shopCart;
+  const menuList=await menuCategory.getCateMenu();
+  const submenuList=await menuCategory.getCateSubMenu();
+  const allListMenu=[];
+  const items=req.session.cart;
+  for (const i of menuList)
+  {
+    const menu_list=await categoryModel.allById(i.category_id);
+    categoryModel.checkIsHaving(items,menu_list);
+    const item={
+      menu: i.category_id,
+      name: i.category_name,
+      submenu: [],
+      top4_course_menu: menu_list
+    };
+    allListMenu.push(item);
+  }
+
+  for (const j of submenuList)
+  {
+    for (i=0;i<allListMenu.length;i++)
+    {
+      if (allListMenu[i].menu===j.parent_id)
+      {
+        allListMenu[i].submenu.push(j);
+      }
+    }
+  }
+
   const catId=req.params.id;
 
   const page=req.query.page || 1;
@@ -135,6 +233,11 @@ router.get('/:id/rating-5', async function (req, res) {
     page_numbers,
     previousPage,
     nextPage,
+    shopping_list,
+    items,
+    menuList: menuList,
+    empty_menu: menuList.length!==0,
+    allListMenu: allListMenu,
     checkNextPage: nextPage<=nPages,
     checkPreviousPage: previousPage>0,
     layout: "search-item.hbs",
@@ -142,6 +245,35 @@ router.get('/:id/rating-5', async function (req, res) {
 })
 
 router.get('/keyword/:id/rating-5', async function (req, res) {
+  const shopping_list=req.session.shopCart;
+  const menuList=await menuCategory.getCateMenu();
+  const submenuList=await menuCategory.getCateSubMenu();
+  const allListMenu=[];
+  const items=req.session.cart;
+  for (const i of menuList)
+  {
+    const menu_list=await categoryModel.allById(i.category_id);
+    categoryModel.checkIsHaving(items,menu_list);
+    const item={
+      menu: i.category_id,
+      name: i.category_name,
+      submenu: [],
+      top4_course_menu: menu_list
+    };
+    allListMenu.push(item);
+  }
+
+  for (const j of submenuList)
+  {
+    for (i=0;i<allListMenu.length;i++)
+    {
+      if (allListMenu[i].menu===j.parent_id)
+      {
+        allListMenu[i].submenu.push(j);
+      }
+    }
+  }
+
   const catId=req.params.id;
 
   const page=req.query.page || 1;
@@ -180,6 +312,11 @@ router.get('/keyword/:id/rating-5', async function (req, res) {
     page_numbers,
     previousPage,
     nextPage,
+    shopping_list,
+    items,
+    menuList: menuList,
+    empty_menu: menuList.length!==0,
+    allListMenu: allListMenu,
     checkNextPage: nextPage<=nPages,
     checkPreviousPage: previousPage>0,
     layout: "search-item.hbs",
@@ -187,6 +324,35 @@ router.get('/keyword/:id/rating-5', async function (req, res) {
 })
 
 router.get('/:id/rating-up-4', async function (req, res) {
+  const shopping_list=req.session.shopCart;
+  const menuList=await menuCategory.getCateMenu();
+  const submenuList=await menuCategory.getCateSubMenu();
+  const allListMenu=[];
+  const items=req.session.cart;
+  for (const i of menuList)
+  {
+    const menu_list=await categoryModel.allById(i.category_id);
+    categoryModel.checkIsHaving(items,menu_list);
+    const item={
+      menu: i.category_id,
+      name: i.category_name,
+      submenu: [],
+      top4_course_menu: menu_list
+    };
+    allListMenu.push(item);
+  }
+
+  for (const j of submenuList)
+  {
+    for (i=0;i<allListMenu.length;i++)
+    {
+      if (allListMenu[i].menu===j.parent_id)
+      {
+        allListMenu[i].submenu.push(j);
+      }
+    }
+  }
+
   const catId=req.params.id;
 
   const page=req.query.page || 1;
@@ -225,6 +391,11 @@ router.get('/:id/rating-up-4', async function (req, res) {
     page_numbers,
     previousPage,
     nextPage,
+    shopping_list,
+    items,
+    menuList: menuList,
+    empty_menu: menuList.length!==0,
+    allListMenu: allListMenu,
     checkNextPage: nextPage<=nPages,
     checkPreviousPage: previousPage>0,
     layout: "search-item.hbs",
@@ -232,6 +403,35 @@ router.get('/:id/rating-up-4', async function (req, res) {
 })
 
 router.get('/keyword/:id/rating-up-4', async function (req, res) {
+  const shopping_list=req.session.shopCart;
+  const menuList=await menuCategory.getCateMenu();
+  const submenuList=await menuCategory.getCateSubMenu();
+  const allListMenu=[];
+  const items=req.session.cart;
+  for (const i of menuList)
+  {
+    const menu_list=await categoryModel.allById(i.category_id);
+    categoryModel.checkIsHaving(items,menu_list);
+    const item={
+      menu: i.category_id,
+      name: i.category_name,
+      submenu: [],
+      top4_course_menu: menu_list
+    };
+    allListMenu.push(item);
+  }
+
+  for (const j of submenuList)
+  {
+    for (i=0;i<allListMenu.length;i++)
+    {
+      if (allListMenu[i].menu===j.parent_id)
+      {
+        allListMenu[i].submenu.push(j);
+      }
+    }
+  }
+
   const catId=req.params.id;
 
   const page=req.query.page || 1;
@@ -270,6 +470,11 @@ router.get('/keyword/:id/rating-up-4', async function (req, res) {
     page_numbers,
     previousPage,
     nextPage,
+    shopping_list,
+    items,
+    menuList: menuList,
+    empty_menu: menuList.length!==0,
+    allListMenu: allListMenu,
     checkNextPage: nextPage<=nPages,
     checkPreviousPage: previousPage>0,
     layout: "search-item.hbs",
@@ -277,6 +482,35 @@ router.get('/keyword/:id/rating-up-4', async function (req, res) {
 })
 
 router.get('/:id/rating-up-3', async function (req, res) {
+  const shopping_list=req.session.shopCart;
+  const menuList=await menuCategory.getCateMenu();
+  const submenuList=await menuCategory.getCateSubMenu();
+  const allListMenu=[];
+  const items=req.session.cart;
+  for (const i of menuList)
+  {
+    const menu_list=await categoryModel.allById(i.category_id);
+    categoryModel.checkIsHaving(items,menu_list);
+    const item={
+      menu: i.category_id,
+      name: i.category_name,
+      submenu: [],
+      top4_course_menu: menu_list
+    };
+    allListMenu.push(item);
+  }
+
+  for (const j of submenuList)
+  {
+    for (i=0;i<allListMenu.length;i++)
+    {
+      if (allListMenu[i].menu===j.parent_id)
+      {
+        allListMenu[i].submenu.push(j);
+      }
+    }
+  }
+
   const catId=req.params.id;
 
   const page=req.query.page || 1;
@@ -315,6 +549,11 @@ router.get('/:id/rating-up-3', async function (req, res) {
     page_numbers,
     previousPage,
     nextPage,
+    shopping_list,
+    items,
+    menuList: menuList,
+    empty_menu: menuList.length!==0,
+    allListMenu: allListMenu,
     checkNextPage: nextPage<=nPages,
     checkPreviousPage: previousPage>0,
     layout: "search-item.hbs",
@@ -322,6 +561,35 @@ router.get('/:id/rating-up-3', async function (req, res) {
 })
 
 router.get('/keyword/:id/rating-up-3', async function (req, res) {
+  const shopping_list=req.session.shopCart;
+  const menuList=await menuCategory.getCateMenu();
+  const submenuList=await menuCategory.getCateSubMenu();
+  const allListMenu=[];
+  const items=req.session.cart;
+  for (const i of menuList)
+  {
+    const menu_list=await categoryModel.allById(i.category_id);
+    categoryModel.checkIsHaving(items,menu_list);
+    const item={
+      menu: i.category_id,
+      name: i.category_name,
+      submenu: [],
+      top4_course_menu: menu_list
+    };
+    allListMenu.push(item);
+  }
+
+  for (const j of submenuList)
+  {
+    for (i=0;i<allListMenu.length;i++)
+    {
+      if (allListMenu[i].menu===j.parent_id)
+      {
+        allListMenu[i].submenu.push(j);
+      }
+    }
+  }
+
   const catId=req.params.id;
 
   const page=req.query.page || 1;
@@ -360,6 +628,11 @@ router.get('/keyword/:id/rating-up-3', async function (req, res) {
     page_numbers,
     previousPage,
     nextPage,
+    shopping_list,
+    items,
+    menuList: menuList,
+    empty_menu: menuList.length!==0,
+    allListMenu: allListMenu,
     checkNextPage: nextPage<=nPages,
     checkPreviousPage: previousPage>0,
     layout: "search-item.hbs",
@@ -367,6 +640,35 @@ router.get('/keyword/:id/rating-up-3', async function (req, res) {
 })
 
 router.get('/:id/rating-down-3', async function (req, res) {
+  const shopping_list=req.session.shopCart;
+  const menuList=await menuCategory.getCateMenu();
+  const submenuList=await menuCategory.getCateSubMenu();
+  const allListMenu=[];
+  const items=req.session.cart;
+  for (const i of menuList)
+  {
+    const menu_list=await categoryModel.allById(i.category_id);
+    categoryModel.checkIsHaving(items,menu_list);
+    const item={
+      menu: i.category_id,
+      name: i.category_name,
+      submenu: [],
+      top4_course_menu: menu_list
+    };
+    allListMenu.push(item);
+  }
+
+  for (const j of submenuList)
+  {
+    for (i=0;i<allListMenu.length;i++)
+    {
+      if (allListMenu[i].menu===j.parent_id)
+      {
+        allListMenu[i].submenu.push(j);
+      }
+    }
+  }
+
   const catId=req.params.id;
 
   const page=req.query.page || 1;
@@ -405,6 +707,11 @@ router.get('/:id/rating-down-3', async function (req, res) {
     page_numbers,
     previousPage,
     nextPage,
+    shopping_list,
+    items,
+    menuList: menuList,
+    empty_menu: menuList.length!==0,
+    allListMenu: allListMenu,
     checkNextPage: nextPage<=nPages,
     checkPreviousPage: previousPage>0,
     layout: "search-item.hbs",
@@ -412,6 +719,35 @@ router.get('/:id/rating-down-3', async function (req, res) {
 })
 
 router.get('/keyword/:id/rating-down-3', async function (req, res) {
+  const shopping_list=req.session.shopCart;
+  const menuList=await menuCategory.getCateMenu();
+  const submenuList=await menuCategory.getCateSubMenu();
+  const allListMenu=[];
+  const items=req.session.cart;
+  for (const i of menuList)
+  {
+    const menu_list=await categoryModel.allById(i.category_id);
+    categoryModel.checkIsHaving(items,menu_list);
+    const item={
+      menu: i.category_id,
+      name: i.category_name,
+      submenu: [],
+      top4_course_menu: menu_list
+    };
+    allListMenu.push(item);
+  }
+
+  for (const j of submenuList)
+  {
+    for (i=0;i<allListMenu.length;i++)
+    {
+      if (allListMenu[i].menu===j.parent_id)
+      {
+        allListMenu[i].submenu.push(j);
+      }
+    }
+  }
+
   const catId=req.params.id;
 
   const page=req.query.page || 1;
@@ -450,6 +786,11 @@ router.get('/keyword/:id/rating-down-3', async function (req, res) {
     page_numbers,
     previousPage,
     nextPage,
+    shopping_list,
+    items,
+    menuList: menuList,
+    empty_menu: menuList.length!==0,
+    allListMenu: allListMenu,
     checkNextPage: nextPage<=nPages,
     checkPreviousPage: previousPage>0,
     layout: "search-item.hbs",
@@ -457,6 +798,35 @@ router.get('/keyword/:id/rating-down-3', async function (req, res) {
 })
 
 router.get('/:id/most-study', async function (req, res) {
+  const shopping_list=req.session.shopCart;
+  const menuList=await menuCategory.getCateMenu();
+  const submenuList=await menuCategory.getCateSubMenu();
+  const allListMenu=[];
+  const items=req.session.cart;
+  for (const i of menuList)
+  {
+    const menu_list=await categoryModel.allById(i.category_id);
+    categoryModel.checkIsHaving(items,menu_list);
+    const item={
+      menu: i.category_id,
+      name: i.category_name,
+      submenu: [],
+      top4_course_menu: menu_list
+    };
+    allListMenu.push(item);
+  }
+
+  for (const j of submenuList)
+  {
+    for (i=0;i<allListMenu.length;i++)
+    {
+      if (allListMenu[i].menu===j.parent_id)
+      {
+        allListMenu[i].submenu.push(j);
+      }
+    }
+  }
+
   const catId=req.params.id;
   const page=req.query.page || 1;
   const previousPage=+page-1;
@@ -494,6 +864,11 @@ router.get('/:id/most-study', async function (req, res) {
     page_numbers,
     previousPage,
     nextPage,
+    shopping_list,
+    items,
+    menuList: menuList,
+    empty_menu: menuList.length!==0,
+    allListMenu: allListMenu,
     checkNextPage: nextPage<=nPages,
     checkPreviousPage: previousPage>0,
     layout: "search-item.hbs",
@@ -501,6 +876,35 @@ router.get('/:id/most-study', async function (req, res) {
 })
 
 router.get('/keyword/:id/most-study', async function (req, res) {
+  const shopping_list=req.session.shopCart;
+  const menuList=await menuCategory.getCateMenu();
+  const submenuList=await menuCategory.getCateSubMenu();
+  const allListMenu=[];
+  const items=req.session.cart;
+  for (const i of menuList)
+  {
+    const menu_list=await categoryModel.allById(i.category_id);
+    categoryModel.checkIsHaving(items,menu_list);
+    const item={
+      menu: i.category_id,
+      name: i.category_name,
+      submenu: [],
+      top4_course_menu: menu_list
+    };
+    allListMenu.push(item);
+  }
+
+  for (const j of submenuList)
+  {
+    for (i=0;i<allListMenu.length;i++)
+    {
+      if (allListMenu[i].menu===j.parent_id)
+      {
+        allListMenu[i].submenu.push(j);
+      }
+    }
+  }
+
   const catId=req.params.id;
   const page=req.query.page || 1;
   const previousPage=+page-1;
@@ -538,6 +942,11 @@ router.get('/keyword/:id/most-study', async function (req, res) {
     page_numbers,
     previousPage,
     nextPage,
+    shopping_list,
+    items,
+    menuList: menuList,
+    empty_menu: menuList.length!==0,
+    allListMenu: allListMenu,
     checkNextPage: nextPage<=nPages,
     checkPreviousPage: previousPage>0,
     layout: "search-item.hbs",
@@ -545,6 +954,36 @@ router.get('/keyword/:id/most-study', async function (req, res) {
 })
 
 router.get('/:id/most-overall', async function (req, res) {
+  const shopping_list=req.session.shopCart;
+  const menuList=await menuCategory.getCateMenu();
+  const submenuList=await menuCategory.getCateSubMenu();
+  const allListMenu=[];
+  const items=req.session.cart;
+  for (const i of menuList)
+  {
+    const menu_list=await categoryModel.allById(i.category_id);
+    categoryModel.checkIsHaving(items,menu_list);
+    const item={
+      menu: i.category_id,
+      name: i.category_name,
+      submenu: [],
+      top4_course_menu: menu_list
+    };
+    allListMenu.push(item);
+  }
+
+  for (const j of submenuList)
+  {
+    for (i=0;i<allListMenu.length;i++)
+    {
+      if (allListMenu[i].menu===j.parent_id)
+      {
+        allListMenu[i].submenu.push(j);
+      }
+    }
+  }
+
+
   const catId=req.params.id;
   const page=req.query.page || 1;
   const previousPage=+page-1;
@@ -582,6 +1021,11 @@ router.get('/:id/most-overall', async function (req, res) {
     page_numbers,
     previousPage,
     nextPage,
+    shopping_list,
+    items,
+    menuList: menuList,
+    empty_menu: menuList.length!==0,
+    allListMenu: allListMenu,
     checkNextPage: nextPage<=nPages,
     checkPreviousPage: previousPage>0,
     layout: "search-item.hbs",
@@ -589,6 +1033,35 @@ router.get('/:id/most-overall', async function (req, res) {
 })
 
 router.get('/keyword/:id/most-overall', async function (req, res) {
+  const shopping_list=req.session.shopCart;
+  const menuList=await menuCategory.getCateMenu();
+  const submenuList=await menuCategory.getCateSubMenu();
+  const allListMenu=[];
+  const items=req.session.cart;
+  for (const i of menuList)
+  {
+    const menu_list=await categoryModel.allById(i.category_id);
+    categoryModel.checkIsHaving(items,menu_list);
+    const item={
+      menu: i.category_id,
+      name: i.category_name,
+      submenu: [],
+      top4_course_menu: menu_list
+    };
+    allListMenu.push(item);
+  }
+
+  for (const j of submenuList)
+  {
+    for (i=0;i<allListMenu.length;i++)
+    {
+      if (allListMenu[i].menu===j.parent_id)
+      {
+        allListMenu[i].submenu.push(j);
+      }
+    }
+  }
+
   const catId=req.params.id;
   const page=req.query.page || 1;
   const previousPage=+page-1;
@@ -626,6 +1099,11 @@ router.get('/keyword/:id/most-overall', async function (req, res) {
     page_numbers,
     previousPage,
     nextPage,
+    shopping_list,
+    items,
+    menuList: menuList,
+    empty_menu: menuList.length!==0,
+    allListMenu: allListMenu,
     checkNextPage: nextPage<=nPages,
     checkPreviousPage: previousPage>0,
     layout: "search-item.hbs",
@@ -633,6 +1111,35 @@ router.get('/keyword/:id/most-overall', async function (req, res) {
 })
 
 router.get('/:id/price-ascend', async function (req, res) {
+  const shopping_list=req.session.shopCart;
+  const menuList=await menuCategory.getCateMenu();
+  const submenuList=await menuCategory.getCateSubMenu();
+  const allListMenu=[];
+  const items=req.session.cart;
+  for (const i of menuList)
+  {
+    const menu_list=await categoryModel.allById(i.category_id);
+    categoryModel.checkIsHaving(items,menu_list);
+    const item={
+      menu: i.category_id,
+      name: i.category_name,
+      submenu: [],
+      top4_course_menu: menu_list
+    };
+    allListMenu.push(item);
+  }
+
+  for (const j of submenuList)
+  {
+    for (i=0;i<allListMenu.length;i++)
+    {
+      if (allListMenu[i].menu===j.parent_id)
+      {
+        allListMenu[i].submenu.push(j);
+      }
+    }
+  }
+
   const catId=req.params.id;
   const page=req.query.page || 1;
   const previousPage=+page-1;
@@ -670,6 +1177,11 @@ router.get('/:id/price-ascend', async function (req, res) {
     page_numbers,
     previousPage,
     nextPage,
+    shopping_list,
+    items,
+    menuList: menuList,
+    empty_menu: menuList.length!==0,
+    allListMenu: allListMenu,
     checkNextPage: nextPage<=nPages,
     checkPreviousPage: previousPage>0,
     layout: "search-item.hbs",
@@ -677,6 +1189,35 @@ router.get('/:id/price-ascend', async function (req, res) {
 })
 
 router.get('/keyword/:id/price-ascend', async function (req, res) {
+  const shopping_list=req.session.shopCart;
+  const menuList=await menuCategory.getCateMenu();
+  const submenuList=await menuCategory.getCateSubMenu();
+  const allListMenu=[];
+  const items=req.session.cart;
+  for (const i of menuList)
+  {
+    const menu_list=await categoryModel.allById(i.category_id);
+    categoryModel.checkIsHaving(items,menu_list);
+    const item={
+      menu: i.category_id,
+      name: i.category_name,
+      submenu: [],
+      top4_course_menu: menu_list
+    };
+    allListMenu.push(item);
+  }
+
+  for (const j of submenuList)
+  {
+    for (i=0;i<allListMenu.length;i++)
+    {
+      if (allListMenu[i].menu===j.parent_id)
+      {
+        allListMenu[i].submenu.push(j);
+      }
+    }
+  }
+
   const catId=req.params.id;
   const page=req.query.page || 1;
   const previousPage=+page-1;
@@ -714,6 +1255,11 @@ router.get('/keyword/:id/price-ascend', async function (req, res) {
     page_numbers,
     previousPage,
     nextPage,
+    shopping_list,
+    items,
+    menuList: menuList,
+    empty_menu: menuList.length!==0,
+    allListMenu: allListMenu,
     checkNextPage: nextPage<=nPages,
     checkPreviousPage: previousPage>0,
     layout: "search-item.hbs",
@@ -721,6 +1267,35 @@ router.get('/keyword/:id/price-ascend', async function (req, res) {
 })
 
 router.get('/:id/price-descend', async function (req, res) {
+  const shopping_list=req.session.shopCart;
+  const menuList=await menuCategory.getCateMenu();
+  const submenuList=await menuCategory.getCateSubMenu();
+  const allListMenu=[];
+  const items=req.session.cart;
+  for (const i of menuList)
+  {
+    const menu_list=await categoryModel.allById(i.category_id);
+    categoryModel.checkIsHaving(items,menu_list);
+    const item={
+      menu: i.category_id,
+      name: i.category_name,
+      submenu: [],
+      top4_course_menu: menu_list
+    };
+    allListMenu.push(item);
+  }
+
+  for (const j of submenuList)
+  {
+    for (i=0;i<allListMenu.length;i++)
+    {
+      if (allListMenu[i].menu===j.parent_id)
+      {
+        allListMenu[i].submenu.push(j);
+      }
+    }
+  }
+
   const catId=req.params.id;
   const page=req.query.page || 1;
   const previousPage=+page-1;
@@ -758,6 +1333,11 @@ router.get('/:id/price-descend', async function (req, res) {
     page_numbers,
     previousPage,
     nextPage,
+    shopping_list,
+    items,
+    menuList: menuList,
+    empty_menu: menuList.length!==0,
+    allListMenu: allListMenu,
     checkNextPage: nextPage<=nPages,
     checkPreviousPage: previousPage>0,
     layout: "search-item.hbs",
@@ -765,6 +1345,35 @@ router.get('/:id/price-descend', async function (req, res) {
 })
 
 router.get('/keyword/:id/price-descend', async function (req, res) {
+  const shopping_list=req.session.shopCart;
+  const menuList=await menuCategory.getCateMenu();
+  const submenuList=await menuCategory.getCateSubMenu();
+  const allListMenu=[];
+  const items=req.session.cart;
+  for (const i of menuList)
+  {
+    const menu_list=await categoryModel.allById(i.category_id);
+    categoryModel.checkIsHaving(items,menu_list);
+    const item={
+      menu: i.category_id,
+      name: i.category_name,
+      submenu: [],
+      top4_course_menu: menu_list
+    };
+    allListMenu.push(item);
+  }
+
+  for (const j of submenuList)
+  {
+    for (i=0;i<allListMenu.length;i++)
+    {
+      if (allListMenu[i].menu===j.parent_id)
+      {
+        allListMenu[i].submenu.push(j);
+      }
+    }
+  }
+
   const catId=req.params.id;
   const page=req.query.page || 1;
   const previousPage=+page-1;
@@ -802,6 +1411,11 @@ router.get('/keyword/:id/price-descend', async function (req, res) {
     page_numbers,
     previousPage,
     nextPage,
+    shopping_list,
+    items,
+    menuList: menuList,
+    empty_menu: menuList.length!==0,
+    allListMenu: allListMenu,
     checkNextPage: nextPage<=nPages,
     checkPreviousPage: previousPage>0,
     layout: "search-item.hbs",

@@ -114,3 +114,9 @@
     cursor: pointer;
     display: block;
 }
+
+#faActive{
+    background-color: rgba(216, 1, 1, 0.986);
+    color: white;
+}
+

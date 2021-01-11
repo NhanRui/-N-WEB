@@ -1,11 +1,46 @@
 const express = require('express');
 const cartModel=require('../models/cart.model');
 const router = express.Router();
+const menuCategory=require('../models/category-menu.model');
+const categoryModel = require('../models/product_modle');
 
-router.get('/',function(req,res){
+router.get('/',async function(req,res){
+    const shopping_list=req.session.shopCart;
+    const menuList=await menuCategory.getCateMenu();
+    const submenuList=await menuCategory.getCateSubMenu();
+    const allListMenu=[];
+    const items=req.session.cart;
+    for (const i of menuList)
+    {
+      const menu_list=await categoryModel.allById(i.category_id);
+      categoryModel.checkIsHaving(items,menu_list);
+      const item={
+        menu: i.category_id,
+        name: i.category_name,
+        submenu: [],
+        top4_course_menu: menu_list
+      };
+      allListMenu.push(item);
+    }
+  
+    for (const j of submenuList)
+    {
+      for (i=0;i<allListMenu.length;i++)
+      {
+        if (allListMenu[i].menu===j.parent_id)
+        {
+          allListMenu[i].submenu.push(j);
+        }
+      }
+    }
+
     const shoppingCart=req.session.shopCart;
-    console.log(shoppingCart);
     res.render('../views/layouts/user_Cart.hbs', {
+        shopping_list,
+        items,
+        menuList: menuList,
+        empty_menu: menuList.length!==0,
+        allListMenu: allListMenu,
         shoppingCart,
         layout: false
     })

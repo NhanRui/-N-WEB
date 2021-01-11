@@ -2,14 +2,8 @@
 const english_menu=document.getElementById("english-menu");
 const ngoai_ngu_text=document.getElementById("ngoai-ngu");*/
 
-
-function read(){
-  console.log("read");
-};
-
 function hover_menu(cat_name, cat_name_menu, cat_name_text)
 {
-  console.log("name");
   const name=document.getElementById(cat_name);
   const name_menu=document.getElementById(cat_name_menu);
   const name_text=document.getElementById(cat_name_text);
