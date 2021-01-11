@@ -89,6 +89,17 @@ router.post('/addCart', async function(req, res){
     res.redirect(req.headers.referer)
 })
 
+router.post('/BuyAll', async function(req, res){
+    //shopCart=await cartModel.getBuyCartById(req.session.authUser.user_id);
+    if (req.session.shopCart.length===0)
+    {
+        res.redirect(req.headers.referer);
+    }
+    const id=await cartModel.addBillTotal(req.session.shopCart);
+    await cartModel.addBill(req.session.shopCart,id,req.session.authUser.user_id);
+    res.redirect(req.headers.referer);
+})
+
 router.post('/del', async function(req, res){
     //console.log(req.session.authUser.user_id);
     await cartModel.removeByIDCart(req.session.shopCart,req.body.id,req.session.authUser.user_id);

@@ -9,7 +9,7 @@
 section{
     background: whitesmoke;
     background-size: cover;
-    height: calc(250vh);
+    height: calc(200vh);
 }
 
 .selection-search-container{
@@ -19,7 +19,7 @@ section{
 
 .choice-container{
     width: 255px;
-    height: 720px;
+    height: auto;
     background: white;
     margin-top: 322px;
     margin-left: 120px;
@@ -177,7 +177,7 @@ section{
 
 .container-pagination{
     position: absolute;
-    margin-top: 1000px;
+    margin-top: 700px;
 }
 
 #active_most{

@@ -37,10 +37,13 @@ router.get('/', async function (req, res) {
         //console.log(allListMenu[i].top4_course_menu);
       }
     }
+
+    
     var rank_view_1=0;
     var rank_view_2=4;
     var rank_view_3=8;
     const list = await categoryModel.all();
+    console.log(list);
     const top10_view_1=await categoryModel.top10_view_1();
     const top10_view_2=await categoryModel.top10_view_2();
     const top10_view_3=await categoryModel.top10_view_3();
