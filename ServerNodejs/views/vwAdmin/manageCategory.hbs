@@ -121,15 +121,32 @@
 
 <script>
     $(document).ready(function(){
+        $('body').on('click','#delete',function(e){
+            var count = $(this).attr('data-count');
+            var id = $(this).attr('data-id');
+            if(+count >0 ){
+                alert('Bạn không thể xóa một danh mục hiện đang được sử dụng');
+                return;
+            } 
+            
+            $.getJSON({
+                url: `/admin/category/delete/${id}`,
+                success: function(data){
+                    // do nothing
+                }
+            })
+            $(this).parent('td').parent('tr').remove();
+        })
+        
         $('body').on('click','#add',function(e){
             $('.card').css('display','block');
             var id = $(this).attr('data-id');
             $('#p').html(id);
             $('#parent_id').val(id);
         })
+        
         $('form').on('submit',function(e){
             $('.card').css('display','none');
-            location.reload(true);
         })
     })
 </script>

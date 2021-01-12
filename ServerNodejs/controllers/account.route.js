@@ -156,7 +156,21 @@ router.get('/is-available-usname', async function (req, res) {
     if (user === null) {
       return res.render('layouts/SignIn', {
         layout: false,
-        err_message: 'Invalid username.'
+        err_message: 'Tài khoản không hợp lệ !!!'
+      });
+    }
+    if(user.role === 3 || user.role === 4){
+      return res.render('layouts/SignIn', {
+        layout: false,
+        err_message: 'Tài khoản này đang bị quản trị viên khóa !!!'
+      });
+    }
+    if(user.role === 5){
+      const condition = {user_id: user.user_id};
+      await db.del(condition,'user');
+      return res.render('layouts/SignIn', {
+        layout: false,
+        err_message: 'Tài khoản này đã bị xóa !!!'
       });
     }
   

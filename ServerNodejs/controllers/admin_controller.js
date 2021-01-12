@@ -3,6 +3,7 @@ const router = express.Router();
 const lecturerModel = require('../models/lecturer_model');
 const userModel = require('../models/user.model');
 const moment = require('moment');
+const db = require('../utils/db');
 const uniqid = require('uniqid');
 router.use(express.static('public'));
 router.use(express.static('upload'));
@@ -125,8 +126,14 @@ router.post('/category/add',async function(req,res){
     category_name : req.body.name,
     parent_id : req.body.parent_id
   }
-  console.log(cat);
   await userModel.addCat(cat);
+  res.redirect('/admin/category');
+})
+
+router.get('/category/delete/:id', async function(req,res){
+  const condition = {category_id: req.params.id};
+  const user = await db.del(condition, 'category');
+  res.json(true);
 })
 
 module.exports = router;
