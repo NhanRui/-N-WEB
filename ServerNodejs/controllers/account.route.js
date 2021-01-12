@@ -199,10 +199,19 @@ router.get('/is-available-usname', async function (req, res) {
     const submenuList=await menuCategory.getCateSubMenu();
     const allListMenu=[];
     const items=req.session.cart;
+    const listHot=await categoryModel.all();
+    const listNew=await categoryModel.getNewList();
     for (const i of menuList)
     {
       const menu_list=await categoryModel.allById(i.category_id);
       categoryModel.checkIsHaving(items,menu_list);
+      if (req.session.authUser!=null)
+      {
+        const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+        await categoryModel.checkBill(menu_list,listBuy);
+      }
+      await categoryModel.checkHot(menu_list,listHot);
+      await categoryModel.checkNew(menu_list,listNew);
       const item={
         menu: i.category_id,
         name: i.category_name,
