@@ -57,13 +57,30 @@ router.get("/course-detail/:id", async function (req, res) {
   const chapters = await course_detail_Model.course_chapter(id);
   const chapter_name = [];
   const videos = [];
+  let videos_duration = 0;
   for (const property of chapters) {
     chapter_name.push({chapter_name : property.chapter_name, chapter_number : property.chapter_number});
     videos.push({video_name : property.video_name, url : property.url, video_number : property.video_number, chapter_number : property.chapter_number});
+    videos_duration += property.video_duration;
   }
   let lesson = chapter_name.filter(function({chapter_number}) {
     return !this.has(chapter_number) && this.add(chapter_number);
   }, new Set)
+
+  let num_of_students = await course_detail_Model.getAllStudents(id);
+  let num_of_courses = await course_detail_Model.getAllCourse(id);  
+  let all5Stars = await course_detail_Model.getAll5Stars(id);
+  let all4Stars = await course_detail_Model.getAll4Stars(id);
+  let all3Stars = await course_detail_Model.getAll3Stars(id);
+  let all2Stars = await course_detail_Model.getAll2Stars(id);
+  let all1Stars = await course_detail_Model.getAll1Stars(id);
+  let stars = [];
+  let allStars = all5Stars + all4Stars + all3Stars + all2Stars + all1Stars;
+  if (allStars === 0)
+    stars.push({'i' : 5, 'stars' : 0, 'percent' : 0}, {'i' : 4, 'stars' : 0, 'percent' : 0}, {'i' : 3, 'stars' : 0, 'percent' : 0}, {'i' : 2, 'stars' : 0, 'percent' : 0}, {'i' : 1, 'stars' : 0, 'percent' : 0});
+  else
+    stars.push({'i' : 5, 'stars' : all5Stars, 'percent' : all5Stars*100/allStars}, {'i' : 4, 'stars' : all4Stars, 'percent' : all4Stars*100/allStars}, {'i' : 3, 'stars' : all3Stars, 'percent' : all3Stars*100/allStars}, {'i' : 2, 'stars' : all2Stars, 'percent' : all2Stars*100/allStars}, {'i' : 1, 'stars' : all1Stars*100, 'percent' : all1Stars/allStars});
+  let overallStar = (all5Stars*5 + all4Stars*4 + all3Stars*3 + all2Stars*2 + all1Stars*1)/allStars;
 
   const comments = await course_detail_Model.course_comment(id);
   for (const property of comments) {
@@ -71,7 +88,6 @@ router.get("/course-detail/:id", async function (req, res) {
     property['user_name'] = user.name;
     property['user_avatar'] = user.avatar;
   }
-  console.log(comments)
 
   res.render('partials/course_detail', {
     layout: 'CourseDetail.hbs',
@@ -79,6 +95,11 @@ router.get("/course-detail/:id", async function (req, res) {
     course_detail: course_detail[0],
     new_price,
     lecturer : lecturer[0],
+    num_of_students,
+    num_of_courses,
+    videos_duration,
+    stars,
+    overallStar,
     main,
     parent,
     videos,
