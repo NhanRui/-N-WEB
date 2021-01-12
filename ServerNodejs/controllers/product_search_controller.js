@@ -10,10 +10,19 @@ router.get('/keyword/:txt',async function (req, res){
   const submenuList=await menuCategory.getCateSubMenu();
   const allListMenu=[];
   const items=req.session.cart;
+  const listHot=await categoryModel.all();
+  const listNew=await categoryModel.getNewList();
   for (const i of menuList)
   {
     const menu_list=await categoryModel.allById(i.category_id);
     categoryModel.checkIsHaving(items,menu_list);
+    if (req.session.authUser!=null)
+    {
+      const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+      await categoryModel.checkBill(menu_list,listBuy);
+    }
+    await categoryModel.checkHot(menu_list,listHot);
+    await categoryModel.checkNew(menu_list,listNew);
     const item={
       menu: i.category_id,
       name: i.category_name,
@@ -65,9 +74,9 @@ router.get('/keyword/:txt',async function (req, res){
     await categoryModel.checkBill(list,listBuy);
     await categoryModel.checkisHaving(req.session.cart,list);
   }
-  const listHot=await categoryModel.all();
+  //const listHot=await categoryModel.all();
   await categoryModel.checkHot(list,listHot);
-  const listNew=await categoryModel.getNewList();
+  //const listNew=await categoryModel.getNewList();
   await categoryModel.checkNew(list,listNew);
   res.render('search_site', {
     product_popular: list,
@@ -104,10 +113,19 @@ router.get('/:id', async function (req, res) {
   const submenuList=await menuCategory.getCateSubMenu();
   const allListMenu=[];
   const items=req.session.cart;
+  const listHot=await categoryModel.all();
+  const listNew=await categoryModel.getNewList();
   for (const i of menuList)
   {
     const menu_list=await categoryModel.allById(i.category_id);
     categoryModel.checkIsHaving(items,menu_list);
+    if (req.session.authUser!=null)
+    {
+      const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+      await categoryModel.checkBill(menu_list,listBuy);
+    }
+    await categoryModel.checkHot(menu_list,listHot);
+    await categoryModel.checkNew(menu_list,listNew);
     const item={
       menu: i.category_id,
       name: i.category_name,
@@ -158,9 +176,9 @@ router.get('/:id', async function (req, res) {
     await categoryModel.checkBill(list,listBuy);
     await categoryModel.checkisHaving(req.session.cart,list);
   }
-  const listHot=await categoryModel.all();
+  //const listHot=await categoryModel.all();
   await categoryModel.checkHot(list,listHot);
-  const listNew=await categoryModel.getNewList();
+  //const listNew=await categoryModel.getNewList();
   await categoryModel.checkNew(list,listNew);
   res.render('search_site', {
     product_popular: list,
@@ -189,10 +207,19 @@ router.get('/sub/:id', async function (req, res) {
   const submenuList=await menuCategory.getCateSubMenu();
   const allListMenu=[];
   const items=req.session.cart;
+  const listHot=await categoryModel.all();
+  const listNew=await categoryModel.getNewList();
   for (const i of menuList)
   {
     const menu_list=await categoryModel.allById(i.category_id);
     categoryModel.checkIsHaving(items,menu_list);
+    if (req.session.authUser!=null)
+    {
+      const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+      await categoryModel.checkBill(menu_list,listBuy);
+    }
+    await categoryModel.checkHot(menu_list,listHot);
+    await categoryModel.checkNew(menu_list,listNew);
     const item={
       menu: i.category_id,
       name: i.category_name,
@@ -243,9 +270,9 @@ router.get('/sub/:id', async function (req, res) {
     await categoryModel.checkBill(list,listBuy);
     await categoryModel.checkisHaving(req.session.cart,list);
   }
-  const listHot=await categoryModel.all();
+  //const listHot=await categoryModel.all();
   await categoryModel.checkHot(list,listHot);
-  const listNew=await categoryModel.getNewList();
+  //const listNew=await categoryModel.getNewList();
   await categoryModel.checkNew(list,listNew);
   res.render('search_site', {
     product_popular: list,
@@ -317,10 +344,19 @@ router.get('/:id/:condition', async function (req, res) {
   const submenuList=await menuCategory.getCateSubMenu();
   const allListMenu=[];
   const items=req.session.cart;
+  const listHot=await categoryModel.all();
+  const listNew=await categoryModel.getNewList();
   for (const i of menuList)
   {
     const menu_list=await categoryModel.allById(i.category_id);
     categoryModel.checkIsHaving(items,menu_list);
+    if (req.session.authUser!=null)
+    {
+      const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+      await categoryModel.checkBill(menu_list,listBuy);
+    }
+    await categoryModel.checkHot(menu_list,listHot);
+    await categoryModel.checkNew(menu_list,listNew);
     const item={
       menu: i.category_id,
       name: i.category_name,
@@ -373,9 +409,9 @@ router.get('/:id/:condition', async function (req, res) {
     await categoryModel.checkBill(list,listBuy);
     await categoryModel.checkisHaving(req.session.cart,list);
   }
-  const listHot=await categoryModel.all();
+  //const listHot=await categoryModel.all();
   await categoryModel.checkHot(list,listHot);
-  const listNew=await categoryModel.getNewList();
+  //const listNew=await categoryModel.getNewList();
   await categoryModel.checkNew(list,listNew);
   res.render('search_site', {
     product_popular: list,
@@ -451,10 +487,19 @@ router.get('/sub/:id/:condition', async function (req, res) {
   const submenuList=await menuCategory.getCateSubMenu();
   const allListMenu=[];
   const items=req.session.cart;
+  const listHot=await categoryModel.all();
+  const listNew=await categoryModel.getNewList();
   for (const i of menuList)
   {
     const menu_list=await categoryModel.allById(i.category_id);
     categoryModel.checkIsHaving(items,menu_list);
+    if (req.session.authUser!=null)
+    {
+      const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+      await categoryModel.checkBill(menu_list,listBuy);
+    }
+    await categoryModel.checkHot(menu_list,listHot);
+    await categoryModel.checkNew(menu_list,listNew);
     const item={
       menu: i.category_id,
       name: i.category_name,
@@ -507,9 +552,9 @@ router.get('/sub/:id/:condition', async function (req, res) {
     await categoryModel.checkBill(list,listBuy);
     await categoryModel.checkisHaving(req.session.cart,list);
   }
-  const listHot=await categoryModel.all();
+  //const listHot=await categoryModel.all();
   await categoryModel.checkHot(list,listHot);
-  const listNew=await categoryModel.getNewList();
+  //const listNew=await categoryModel.getNewList();
   await categoryModel.checkNew(list,listNew);
   res.render('search_site', {
     product_popular: list,
@@ -585,10 +630,19 @@ router.get('/keyword/:id/:condition', async function (req, res) {
   const submenuList=await menuCategory.getCateSubMenu();
   const allListMenu=[];
   const items=req.session.cart;
+  const listHot=await categoryModel.all();
+  const listNew=await categoryModel.getNewList();
   for (const i of menuList)
   {
     const menu_list=await categoryModel.allById(i.category_id);
     categoryModel.checkIsHaving(items,menu_list);
+    if (req.session.authUser!=null)
+    {
+      const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+      await categoryModel.checkBill(menu_list,listBuy);
+    }
+    await categoryModel.checkHot(menu_list,listHot);
+    await categoryModel.checkNew(menu_list,listNew);
     const item={
       menu: i.category_id,
       name: i.category_name,
@@ -641,9 +695,9 @@ router.get('/keyword/:id/:condition', async function (req, res) {
     await categoryModel.checkBill(list,listBuy);
     await categoryModel.checkisHaving(req.session.cart,list);
   }
-  const listHot=await categoryModel.all();
+  //const listHot=await categoryModel.all();
   await categoryModel.checkHot(list,listHot);
-  const listNew=await categoryModel.getNewList();
+  //const listNew=await categoryModel.getNewList();
   await categoryModel.checkNew(list,listNew);
   res.render('search_site', {
     product_popular: list,
@@ -741,10 +795,19 @@ router.get('/:id/mode/:condition', async function (req, res) {
   const submenuList=await menuCategory.getCateSubMenu();
   const allListMenu=[];
   const items=req.session.cart;
+  const listHot=await categoryModel.all();
+  const listNew=await categoryModel.getNewList();
   for (const i of menuList)
   {
     const menu_list=await categoryModel.allById(i.category_id);
     categoryModel.checkIsHaving(items,menu_list);
+    if (req.session.authUser!=null)
+    {
+      const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+      await categoryModel.checkBill(menu_list,listBuy);
+    }
+    await categoryModel.checkHot(menu_list,listHot);
+    await categoryModel.checkNew(menu_list,listNew);
     const item={
       menu: i.category_id,
       name: i.category_name,
@@ -796,9 +859,9 @@ router.get('/:id/mode/:condition', async function (req, res) {
     await categoryModel.checkBill(list,listBuy);
     await categoryModel.checkisHaving(req.session.cart,list);
   }
-  const listHot=await categoryModel.all();
+  //const listHot=await categoryModel.all();
   await categoryModel.checkHot(list,listHot);
-  const listNew=await categoryModel.getNewList();
+  //const listNew=await categoryModel.getNewList();
   await categoryModel.checkNew(list,listNew);
   res.render('search_site', {
     product_popular: list,
@@ -897,10 +960,19 @@ router.get('/sub/:id/mode/:condition', async function (req, res) {
   const submenuList=await menuCategory.getCateSubMenu();
   const allListMenu=[];
   const items=req.session.cart;
+  const listHot=await categoryModel.all();
+  const listNew=await categoryModel.getNewList();
   for (const i of menuList)
   {
     const menu_list=await categoryModel.allById(i.category_id);
     categoryModel.checkIsHaving(items,menu_list);
+    if (req.session.authUser!=null)
+    {
+      const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+      await categoryModel.checkBill(menu_list,listBuy);
+    }
+    await categoryModel.checkHot(menu_list,listHot);
+    await categoryModel.checkNew(menu_list,listNew);
     const item={
       menu: i.category_id,
       name: i.category_name,
@@ -952,9 +1024,9 @@ router.get('/sub/:id/mode/:condition', async function (req, res) {
     await categoryModel.checkBill(list,listBuy);
     await categoryModel.checkisHaving(req.session.cart,list);
   }
-  const listHot=await categoryModel.all();
+  //const listHot=await categoryModel.all();
   await categoryModel.checkHot(list,listHot);
-  const listNew=await categoryModel.getNewList();
+  //const listNew=await categoryModel.getNewList();
   await categoryModel.checkNew(list,listNew);
   res.render('search_site', {
     product_popular: list,
@@ -1053,10 +1125,19 @@ router.get('/keyword/:id/mode/:condition', async function (req, res) {
   const submenuList=await menuCategory.getCateSubMenu();
   const allListMenu=[];
   const items=req.session.cart;
+  const listHot=await categoryModel.all();
+  const listNew=await categoryModel.getNewList();
   for (const i of menuList)
   {
     const menu_list=await categoryModel.allById(i.category_id);
     categoryModel.checkIsHaving(items,menu_list);
+    if (req.session.authUser!=null)
+    {
+      const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+      await categoryModel.checkBill(menu_list,listBuy);
+    }
+    await categoryModel.checkHot(menu_list,listHot);
+    await categoryModel.checkNew(menu_list,listNew);
     const item={
       menu: i.category_id,
       name: i.category_name,
@@ -1108,9 +1189,9 @@ router.get('/keyword/:id/mode/:condition', async function (req, res) {
     await categoryModel.checkBill(list,listBuy);
     await categoryModel.checkisHaving(req.session.cart,list);
   }
-  const listHot=await categoryModel.all();
+  //const listHot=await categoryModel.all();
   await categoryModel.checkHot(list,listHot);
-  const listNew=await categoryModel.getNewList();
+  //const listNew=await categoryModel.getNewList();
   await categoryModel.checkNew(list,listNew);
   res.render('search_site', {
     product_popular: list,

@@ -507,6 +507,15 @@ a {
   font-weight: 600;
 }
 
-p {
+/*p {
   margin-bottom: 0 !important;
+}*/
+
+ul{
+  padding-left: 0px;
+}
+
+.category-label-item
+{
+  margin-top: -10px;
 }
