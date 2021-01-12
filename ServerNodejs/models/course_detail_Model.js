@@ -169,5 +169,47 @@ module.exports = {
     let sql = `select name, avatar from user where user_id = '${id}'`;
     const [result, fields] = await db.load(sql);
     return result[0];
-  }
+  },
+
+  async getAllStudents(courseID) {
+    let sql = `select count(*) as c from bill where course_id='${courseID}'`;
+    const [result, fields] = await db.load(sql);
+    return result[0].c;
+  },
+
+  async getAllCourse(lecturerID) {
+    let sql = `select count(*) as c from course where lecturer_id='${lecturerID}'`;
+    const [result, fields] = await db.load(sql);
+    return result[0].c;
+  },
+
+  async getAll5Stars(courseID) {
+    let sql = `select count(*) as c from star_rating where num_star=5 and course_id='${courseID}'`;
+    const [result, fields] = await db.load(sql);
+    return result[0].c;
+  },
+
+  async getAll4Stars(courseID) {
+    let sql = `select count(*) as c from star_rating where num_star=4 and course_id='${courseID}'`;
+    const [result, fields] = await db.load(sql);
+    return result[0].c;
+  },
+
+  async getAll3Stars(courseID) {
+    let sql = `select count(*) as c from star_rating where num_star=3 and course_id='${courseID}'`;
+    const [result, fields] = await db.load(sql);
+    return result[0].c;
+  },
+
+  async getAll2Stars(courseID) {
+    let sql = `select count(*) as c from star_rating where num_star=2 and course_id='${courseID}'`;
+    const [result, fields] = await db.load(sql);
+    return result[0].c;
+  },
+
+  async getAll1Stars(courseID) {
+    let sql = `select count(*) as c from star_rating where num_star=1 and course_id='${courseID}'`;
+    const [result, fields] = await db.load(sql);
+    return result[0].c;
+  },
 };

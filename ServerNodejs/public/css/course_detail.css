@@ -164,6 +164,7 @@ a {
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
+    position: relative !important;
 }
 
 .old-price {
