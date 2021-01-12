@@ -1,4 +1,4 @@
-const { get5starCourse, getUp4starCourse, getCateBySearch, get5starCourseSearch, countByCatCondition, mostByCatIDCondition, getStarCourseSearchCondition, countByCatSearchCondition } = require('../utils/db');
+const { get5starCourse, getUp4starCourse, getCateBySearch, get5starCourseSearch, countByCatCondition, mostByCatIDCondition, getStarCourseSearchCondition, countByCatSearchCondition, mostByCatIDConditionSub, getStarCourseConditionSub, countByCatConditionSub } = require('../utils/db');
 const db = require('../utils/db');
 
 const list = [
@@ -662,12 +662,20 @@ const list = [
         const [rows, fields] = await db.countByCat(id);
         return rows[0].total;
       },
+      async countByCatSub(id){
+        const [rows, fields] = await db.countByCatSub(id);
+        return rows[0].total;
+      },
       async countBySearch(textSearch){
         const [rows, fields] = await db.countBySearch(textSearch);
         return rows[0].total;
       },
       async countByCatCondition(id,condition){
         const [rows, fields] = await db.countByCatCondition(id,condition);
+        return rows[0].total;
+      },
+      async countByCatConditionSub(id,condition){
+        const [rows, fields] = await db.countByCatConditionSub(id,condition);
         return rows[0].total;
       },
       async countByCatSearchCondition(textSearch,condition){
@@ -682,6 +690,10 @@ const list = [
         const [rows, fields] = await db.getCateListByPage(id,offset);
         return rows;
       },
+      async getCateListBySub(id,offset){
+        const [rows, fields] = await db.getCateListBySub(id,offset);
+        return rows;
+      },
       async getCateBySearch(textSearch,offset){
         const [rows, fields] = await db.getCateBySearch(textSearch,offset);
         return rows;
@@ -691,8 +703,16 @@ const list = [
         const [rows, fields] = await db.mostByCatIDCondition(id, offset,condition,mode);
         return rows;
       },
+      async mostByCatIDConditionSub(id, offset,condition,mode){
+        const [rows, fields] = await db.mostByCatIDConditionSub(id, offset,condition,mode);
+        return rows;
+      },
       async getStarCourseCondition(id,offset,condition){
         const [rows, fields] = await db.getStarCourseCondition(id,offset,condition);
+        return rows;
+      },
+      async getStarCourseConditionSub(id,offset,condition){
+        const [rows, fields] = await db.getStarCourseConditionSub(id,offset,condition);
         return rows;
       },
       async getStarCourseSearchCondition(textSearch,offset,condition){
