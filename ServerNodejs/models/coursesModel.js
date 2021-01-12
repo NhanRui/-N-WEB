@@ -53,6 +53,12 @@ module.exports = {
     return result[0];
   },
 
+  async courseBillByID(userID) {
+    const sql = `SELECT course_id FROM bill WHERE user_id= '${userID}'`;
+    const [result, fields] = await db.load(sql);
+    return result;
+  },
+
   async lecturerByID(userID) {
     const sql = `select name from user where user_id = '${userID}'`;
     const [result, fields] = await db.load(sql);
@@ -69,4 +75,21 @@ module.exports = {
       const [rows, fields] = await db.load(sql1);
     }
   },
+
+  async getCompleteVideos(courseID) {
+    let sql = `select count(*) as c from complete_video
+    join video on complete_video.video_id = video.video_id
+    join lesson_list on video.list_id = lesson_list.list_id
+    where lesson_list.course_id = '${courseID}'`;
+    const [result, fields] = await db.load(sql);
+    return result[0].c;
+  },
+
+  async getAllVideosByCourseID(courseID) {
+    let sql = `select count(*) as c from video
+    join lesson_list on video.list_id = lesson_list.list_id
+    where lesson_list.course_id = '${courseID}'`;
+    const [result, fields] = await db.load(sql);
+    return result[0].c;
+  }
 };

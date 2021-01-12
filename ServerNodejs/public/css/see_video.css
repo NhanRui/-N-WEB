@@ -79,18 +79,28 @@ body{
 
 .lesson {
     display: flex;
-    align-items: center;
     padding: 10px;
+    height: auto;
     font-size: 14px;
     font-weight: 400;
 }
 
 .lesson_name{
     color: #464d5d;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bolder;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 15px;
+    -webkit-line-clamp: 2;
+    height: 30px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }
 
 .lesson i{
     color: #464d5d;
+    font-size: 18px;
 }
 
 .lessons:hover{
@@ -513,4 +523,8 @@ input:checked ~ .fucking_star{
     width: 950px;
     height: 550px;
     margin-right: 100px;
+}
+
+#check-complete{
+    color: green;
 }

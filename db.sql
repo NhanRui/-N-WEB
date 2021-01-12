@@ -11,7 +11,7 @@
  Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 11/01/2021 22:19:27
+ Date: 12/01/2021 15:06:33
 */
 
 SET NAMES utf8mb4;
@@ -37,6 +37,7 @@ CREATE TABLE `bill`  (
 -- ----------------------------
 -- Records of bill
 -- ----------------------------
+INSERT INTO `bill` VALUES ('U8d0rgoojskj03tm75', 'C11', 'B8d0rgo1gqokjthis4i', 299500);
 INSERT INTO `bill` VALUES ('Uswyrp45kkj5e5nrw', 'C01', 'B8d0rgoaq8kjsfxo9y', 349500);
 INSERT INTO `bill` VALUES ('Uswyrp45kkj5e5nrw', 'C04', 'B8d0rgoaq8kjsfxo9y', 179700);
 INSERT INTO `bill` VALUES ('Uswyrp45kkj5e5nrw', 'C07', 'B8d0rgoaq8kjsfxo9y', 175780);
@@ -79,6 +80,25 @@ INSERT INTO `category` VALUES ('8', 'Âm nhạc', NULL);
 INSERT INTO `category` VALUES ('9', 'Thể thao - sức khỏe', NULL);
 
 -- ----------------------------
+-- Table structure for complete_video
+-- ----------------------------
+DROP TABLE IF EXISTS `complete_video`;
+CREATE TABLE `complete_video`  (
+  `user_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `video_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`user_id`, `video_id`) USING BTREE,
+  INDEX `FK_cp_video`(`video_id`) USING BTREE,
+  CONSTRAINT `FK_cp_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `FK_cp_video` FOREIGN KEY (`video_id`) REFERENCES `video` (`video_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of complete_video
+-- ----------------------------
+INSERT INTO `complete_video` VALUES ('U8d0rgoojskj03tm75', 'V4fh2214zwkjjvlvxi');
+INSERT INTO `complete_video` VALUES ('U8d0rgoojskj03tm75', 'V4fh2214zwkjjvlvxp');
+
+-- ----------------------------
 -- Table structure for course
 -- ----------------------------
 DROP TABLE IF EXISTS `course`;
@@ -97,7 +117,7 @@ CREATE TABLE `course`  (
   `categoty_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `status` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'Chưa hoàn thành',
   `create_date` date NULL DEFAULT NULL,
-  `num_view` int(0) NULL DEFAULT NULL,
+  `num_view` int(0) NULL DEFAULT 0,
   PRIMARY KEY (`course_id`) USING BTREE,
   INDEX `FK_course_lecturer_idx`(`lecturer_id`) USING BTREE,
   INDEX `FK_course_category_idx`(`categoty_id`) USING BTREE,
@@ -119,6 +139,7 @@ INSERT INTO `course` VALUES ('C09', 'Học thiết kế đồ họa trọn bộ 
 INSERT INTO `course` VALUES ('C10', '85 chuyên đề Excel cơ bản đến nâng cao', '85 chuyên đề Excel cơ bản đến nâng cao', '/images/product_ID10.png', 599000, 70, NULL, NULL, NULL, NULL, 'Uswyrp45kkj5e5nrw', '5', 'Chưa hoàn thành', '2021-01-03', 0);
 INSERT INTO `course` VALUES ('C11', 'Nghệ thuật bán hàng đỉnh cao', 'Nghệ thuật bán hàng đỉnh cao', '/images/product_ID12.jpg', 599000, 50, NULL, NULL, NULL, NULL, 'U8d0rgoojskj03tm75', '1', 'Chưa hoàn thành', '2021-01-03', 1);
 INSERT INTO `course` VALUES ('C12', 'Học guitar đệm hát cấp tốc trong 30 ngày', 'Học guitar đệm hát cấp tốc trong 30 ngày', '/images/product_ID5.png', 599000, 50, NULL, NULL, NULL, NULL, 'Uswyrp45kkj5e5nrw', '1', 'Chưa hoàn thành', '2021-01-03', 1);
+INSERT INTO `course` VALUES ('C8d0rgo31kokjsspun2', 'Lập trình Python', 'Cơ bản về lập trình ngôn ngữ python', '/upload/course/C8d0rgo31kokjsspun2.jpg', 699000, 0, '<p><strong>dsfdsfsdf<em>dsfdsfdsfdsfdsf</em></strong><em>dsfdsfdsf</em></p>\r\n', NULL, 'ádsad', 'ádasdasdsa', 'Uswyrp45kkj5e5nrw', '2', 'Chưa hoàn thành', '2021-01-11', 0);
 INSERT INTO `course` VALUES ('Cswyrp498kjdsuj8s', 'Nhập môn lập trình Web', 'Web', '/upload/course/Cswyrp498kjdsuj8s.jpg', 699000, 100, '<p>Bạn l&agrave; người mới v&agrave; mu&ocirc;́n bước đ&acirc;̀u t&igrave;m hi&ecirc;̉u v&ecirc;̀ l&acirc;̣p tr&igrave;nh web?</p>\r\n\r\n<p>Bạn mu&ocirc;́n tự x&acirc;y dựng trang web cho sản ph&acirc;̉m của m&igrave;nh?</p>\r\n\r\n<p>Bạn mu&ocirc;́n t&igrave;m t&ograve;i học hỏi những đi&ecirc;̀u mới, chuy&ecirc;n m&ocirc;n mới?</p>\r\n\r\n<p>Bạn c&oacute; niềm đam m&ecirc; với bộ m&ocirc;n lập tr&igrave;nh web nhưng đang băn khoăn kh&ocirc;ng biết n&ecirc;n chọn kh&oacute;a học n&agrave;o?</p>\r\n\r\n<p>Đừng lo lắng! H&atilde;y đến với kh&oacute;a học &quot;Nhập m&ocirc;n l&acirc;p tr&igrave;nh web&quot; của ch&uacute;ng t&ocirc;i để học tất cả những điều căn bản nhất về lập tr&igrave;nh web.</p>\r\n\r\n<p>Kh&oacute;a học &quot;Nh&acirc;̣p m&ocirc;n l&acirc;̣p tr&igrave;nh Web&quot; sẽ cho bạn c&aacute;i nh&igrave;n t&ocirc;̉ng quan nh&acirc;́t v&ecirc;̀ l&acirc;̣p tr&igrave;nh web. Những y&ecirc;́u t&ocirc;́ gi&uacute;p bạn đưa ra quy&ecirc;́t định c&oacute; n&ecirc;n học l&acirc;̣p tr&igrave;nh web hay kh&ocirc;ng.</p>\r\n\r\n<p>Đồng thời kh&oacute;a học cũng giới thiệu c&aacute;ch thức sử dụng c&aacute;c c&ocirc;ng cụ đơn giản v&agrave; dễ d&ugrave;ng nhất để x&acirc;y dựng một trang web của ri&ecirc;ng bạn.</p>\r\n', NULL, 'Biết được lý do tại sao bạn nên học lập trình web mà không phải một môn lập trình nào khác.\r\nHiểu được lập trình web là gì và những kiến thức cơ bản nhất về lập trình web.', 'Những người mong muốn học lập trình web.\r\nHọc sinh, sinh viên khoa CNTT.\r\nHọc sinh, sinh viên có ngành khác mong muốn học hỏi cái mới.', 'Uswyrp45kkj5e5nrw', '1', 'Chưa hoàn thành', '2021-01-01', 1);
 INSERT INTO `course` VALUES ('Cswyrp61kkj9sbfva', 'Lập trình backend cho website bằng PHP/Mysql theo mô hình MVC', 'Backend PHP MySQL', '/upload/course/Cswyrp61kkj9sbfva.jpg', 699000, 100, '<p>Điểm kh&aacute;c biệt của kh&oacute;a học n&agrave;y so với c&aacute;c kh&oacute;a học online kh&aacute;c c&ugrave;ng chủ đề lập tr&igrave;nh PHP l&agrave; g&igrave; vậy ?<br />\r\nKh&aacute;c người tr&igrave;nh b&agrave;y bạn ạ. M&igrave;nh nghĩ cũng ảnh hưởng một phần đ&oacute;, mỗi người một c&aacute;ch tr&igrave;nh b&agrave;y v&agrave; tiếp cận kh&aacute;c nhau, sẽ hợp với từng người kh&aacute;c nhau, hi vọng bạn v&agrave; m&igrave;nh &quot;&quot;tương th&iacute;ch&quot;&quot;. Hơn nữa m&igrave;nh tự tin ở phần l&agrave; rất chi tiết, m&igrave;nh nghĩ l&agrave; kh&ocirc;ng ai n&oacute;i chi tiết như thế bạn ạ, để đảm bảo l&agrave; bạn hiểu tận ng&oacute;c ng&aacute;ch v&agrave; bản chất của vấn đề. Einestern đ&atilde; n&oacute;i l&agrave; nếu bạn kh&ocirc;ng thể giải th&iacute;ch cho một đứa trẻ hiểu th&igrave; bạn cũng chẳng hiểu r&otilde; vấn đề. Bạn thử học nh&eacute;. &quot;</p>\r\n', NULL, 'Tự lập trình phần mềm phù hợp với nhu cầu và công việc cá nhân\r\nKiến thức ở khóa này là nền tảng cho khóa nâng cao sau này và các khóa về fullstact angular sẽ xuất bản tới', 'Sinh viên học về công nghệ thông tin\r\nNhững bạn chưa biết rõ bản chất của lập trình MVC\r\nNhững bạn muốn học về lập trình web\r\nNhững bạn muốn tự lập trình backend cho website của mình', 'Uswyrp45kkj5e5nrw', '2', 'Chưa hoàn thành', '2020-12-31', 1);
 
@@ -149,6 +170,8 @@ CREATE TABLE `favourite`  (
 -- ----------------------------
 -- Records of favourite
 -- ----------------------------
+INSERT INTO `favourite` VALUES ('Uswyrp45kkj5e5nrw', 'C08');
+INSERT INTO `favourite` VALUES ('Uswyrp45kkj5e5nrw', 'C09');
 INSERT INTO `favourite` VALUES ('Uswyrp45kkj5e5nrw', 'C10');
 INSERT INTO `favourite` VALUES ('Uswyrp45kkj5e5nrw', 'C12');
 
@@ -167,6 +190,7 @@ CREATE TABLE `final_bill`  (
 -- ----------------------------
 -- Records of final_bill
 -- ----------------------------
+INSERT INTO `final_bill` VALUES ('B8d0rgo1gqokjthis4i', 'Hoàn Thành', '2021-01-12', 299500);
 INSERT INTO `final_bill` VALUES ('B8d0rgoaq8kjsfxo9y', 'Hoàn Thành', '2021-01-11', 704980);
 
 -- ----------------------------
@@ -188,6 +212,8 @@ CREATE TABLE `lesson_list`  (
 -- ----------------------------
 INSERT INTO `lesson_list` VALUES ('L4fh2214zwkjjvlvvh', 1, 'Bán hàng 1', 'C11');
 INSERT INTO `lesson_list` VALUES ('L4fh2214zwkjjvlvxd', 2, 'Bán hàng 2', 'C11');
+INSERT INTO `lesson_list` VALUES ('L8d0rgo1gqokjtk10gd', 1, 'Lập trình python cơ bản', 'C8d0rgo31kokjsspun2');
+INSERT INTO `lesson_list` VALUES ('L8d0rgo1gqokjtk10gq', 2, 'Bán hàng 1', 'C8d0rgo31kokjsspun2');
 INSERT INTO `lesson_list` VALUES ('Lswyrp538kjfxfrlu', 1, 'Thẻ HTML', 'Cswyrp498kjdsuj8s');
 INSERT INTO `lesson_list` VALUES ('Lswyrp538kjfxfrv4', 2, 'Thẻ HTML', 'Cswyrp498kjdsuj8s');
 INSERT INTO `lesson_list` VALUES ('Lswyrp5ookjpqinfe', 1, 'Giới thiệu', 'Cswyrp61kkj9sbfva');
@@ -206,8 +232,7 @@ CREATE TABLE `sessions`  (
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
-INSERT INTO `sessions` VALUES ('-ipzBjiP5kbHfMikn-bcs-yhU7peC-aa', 1610436253, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"cart\":[{\"author_name\":\"Lưu Thiện Nhân\",\"author_image\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"course_id\":\"C10\",\"deal_value\":70,\"intro_image\":\"/images/product_ID10.png\",\"number_student\":0,\"number_rating\":0,\"course_name\":\"85 chuyên đề Excel cơ bản đến nâng cao\",\"price\":599000,\"reduce_price\":179700,\"overall_star\":null,\"categoty_id\":\"5\",\"isHaving\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\"},{\"author_name\":\"Lưu Thiện Nhân\",\"author_image\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"course_id\":\"C12\",\"deal_value\":50,\"intro_image\":\"/images/product_ID5.png\",\"number_student\":0,\"number_rating\":1,\"course_name\":\"Học guitar đệm hát cấp tốc trong 30 ngày\",\"price\":599000,\"reduce_price\":299500,\"overall_star\":\"5.0\",\"categoty_id\":\"1\",\"isHaving\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\"}],\"shopCart\":[{\"author_name\":\"Lê Hoàng Phúc\",\"author_image\":\"/images/BecomeInstructor/ltn.jpg\",\"course_id\":\"C01\",\"deal_value\":50,\"intro_image\":\"/images/productTesting.png\",\"number_student\":2,\"number_rating\":2,\"course_name\":\"Bí quyết giao tiếp để thành công\",\"price\":699000,\"reduce_price\":349500,\"overall_star\":\"4.5\",\"categoty_id\":\"1\",\"isHaving\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\"},{\"author_name\":\"Lê Hoàng Phúc\",\"author_image\":\"/images/BecomeInstructor/ltn.jpg\",\"course_id\":\"C04\",\"deal_value\":70,\"intro_image\":\"/images/product_ID3.jpg\",\"number_student\":0,\"number_rating\":0,\"course_name\":\"VBA - Giải pháp tối ưu công việc trên Excel\",\"price\":599000,\"reduce_price\":179700,\"overall_star\":null,\"categoty_id\":\"5\",\"isHaving\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\"},{\"author_name\":\"Lưu Thiện Nhân\",\"author_image\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"course_id\":\"C07\",\"deal_value\":78,\"intro_image\":\"/images/product_ID7.png\",\"number_student\":0,\"number_rating\":0,\"course_name\":\"Học Photoshop trọn bộ trong 7 ngày\",\"price\":799000,\"reduce_price\":175780,\"overall_star\":null,\"categoty_id\":\"2\",\"isHaving\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\"},{\"author_name\":\"Lưu Thiện Nhân\",\"author_image\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"course_id\":\"Cswyrp498kjdsuj8s\",\"deal_value\":100,\"intro_image\":\"/upload/course/Cswyrp498kjdsuj8s.jpg\",\"number_student\":1,\"number_rating\":0,\"course_name\":\"Nhập môn lập trình Web\",\"price\":699000,\"reduce_price\":0,\"overall_star\":null,\"categoty_id\":\"1\",\"isHaving\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\"}],\"authUser\":{\"user_id\":\"Uswyrp45kkj5e5nrw\",\"name\":\"Lưu Thiện Nhân\",\"gender\":\"Khác\",\"dob\":\"2020-11-30T17:00:00.000Z\",\"phone_number\":\"0703002347\",\"email\":\"nguoiamphu\",\"password\":\"$2a$10$UtYSET9vR1AAWNbHyEsuMeS5ljiVslyl/iGzXWkin4hpXPhFmiK7W\",\"password_lvl2\":null,\"avatar\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"description\":\"ádqwqd\\r\\nqưd\\r\\nqư\\r\\ndqw\\r\\nd\\r\\nqưdfqwfqfqfw\",\"role\":1,\"address\":\"123 Nguyễn Văn Cừ Q.5\"},\"courses\":[{\"course_id\":\"C11\"},{\"course_id\":\"Cswyrp498kjdsuj8s\"}],\"retUrl\":null}');
-INSERT INTO `sessions` VALUES ('MNiGC9KCNYh-470PRU-F1NfjkqriPbrr', 1610464588, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"cart\":[{\"author_name\":\"Lưu Thiện Nhân\",\"author_image\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"course_id\":\"C10\",\"deal_value\":70,\"intro_image\":\"/images/product_ID10.png\",\"number_student\":0,\"number_rating\":0,\"course_name\":\"85 chuyên đề Excel cơ bản đến nâng cao\",\"price\":599000,\"reduce_price\":179700,\"overall_star\":null,\"categoty_id\":\"5\",\"isHaving\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\"},{\"author_name\":\"Lưu Thiện Nhân\",\"author_image\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"course_id\":\"C12\",\"deal_value\":50,\"intro_image\":\"/images/product_ID5.png\",\"number_student\":0,\"number_rating\":1,\"course_name\":\"Học guitar đệm hát cấp tốc trong 30 ngày\",\"price\":599000,\"reduce_price\":299500,\"overall_star\":\"5.0\",\"categoty_id\":\"1\",\"isHaving\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\"}],\"shopCart\":[],\"authUser\":{\"user_id\":\"Uswyrp45kkj5e5nrw\",\"name\":\"Lưu Thiện Nhân\",\"gender\":\"Khác\",\"dob\":\"2020-11-30T17:00:00.000Z\",\"phone_number\":\"0703002347\",\"email\":\"nguoiamphu\",\"password\":\"$2a$10$UtYSET9vR1AAWNbHyEsuMeS5ljiVslyl/iGzXWkin4hpXPhFmiK7W\",\"password_lvl2\":null,\"avatar\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"description\":\"ádqwqd\\r\\nqưd\\r\\nqư\\r\\ndqw\\r\\nd\\r\\nqưdfqwfqfqfw\",\"role\":1,\"address\":\"123 Nguyễn Văn Cừ Q.5\"},\"courses\":[{\"course_id\":\"C01\"},{\"course_id\":\"C04\"},{\"course_id\":\"C07\"},{\"course_id\":\"Cswyrp498kjdsuj8s\"}],\"retUrl\":null}');
+INSERT INTO `sessions` VALUES ('MNiGC9KCNYh-470PRU-F1NfjkqriPbrr', 1610525106, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"cart\":[{\"author_name\":\"Lưu Thiện Nhân\",\"author_image\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"course_id\":\"C08\",\"deal_value\":76,\"intro_image\":\"/images/product_ID8.png\",\"number_student\":0,\"number_rating\":0,\"course_name\":\"Nền tảng tiếng Anh cho người mới bắt đầu\",\"price\":749000,\"reduce_price\":179760,\"overall_star\":null,\"categoty_id\":\"6\",\"isHaving\":0,\"IsBuy\":0,\"IsNew\":0,\"IsHot\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\",\"category_name\":\"Digital Marketing\"},{\"author_name\":\"Lưu Thiện Nhân\",\"author_image\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"course_id\":\"C09\",\"deal_value\":74,\"intro_image\":\"/images/product_ID9.jpg\",\"number_student\":0,\"number_rating\":0,\"course_name\":\"Học thiết kế đồ họa trọn bộ 30 ngày\",\"price\":699000,\"reduce_price\":181740,\"overall_star\":null,\"categoty_id\":\"2\",\"isHaving\":0,\"IsBuy\":0,\"IsNew\":0,\"IsHot\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\",\"category_name\":\"Lập trình thiết bị di động\"},{\"author_name\":\"Lưu Thiện Nhân\",\"author_image\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"course_id\":\"C10\",\"deal_value\":70,\"intro_image\":\"/images/product_ID10.png\",\"number_student\":0,\"number_rating\":0,\"course_name\":\"85 chuyên đề Excel cơ bản đến nâng cao\",\"price\":599000,\"reduce_price\":179700,\"overall_star\":null,\"categoty_id\":\"5\",\"isHaving\":0,\"IsBuy\":0,\"IsNew\":0,\"IsHot\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\",\"category_name\":\"Marketing căn bản\"},{\"author_name\":\"Lưu Thiện Nhân\",\"author_image\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"course_id\":\"C12\",\"deal_value\":50,\"intro_image\":\"/images/product_ID5.png\",\"number_student\":0,\"number_rating\":1,\"course_name\":\"Học guitar đệm hát cấp tốc trong 30 ngày\",\"price\":599000,\"reduce_price\":299500,\"overall_star\":\"5.0\",\"categoty_id\":\"1\",\"isHaving\":0,\"IsBuy\":0,\"IsNew\":0,\"IsHot\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\",\"category_name\":\"Lập trình web\"}],\"shopCart\":[{\"author_name\":\"Lưu Thiện Nhân\",\"author_image\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"course_id\":\"C10\",\"deal_value\":70,\"intro_image\":\"/images/product_ID10.png\",\"number_student\":0,\"number_rating\":0,\"course_name\":\"85 chuyên đề Excel cơ bản đến nâng cao\",\"price\":599000,\"reduce_price\":179700,\"overall_star\":null,\"categoty_id\":\"5\",\"isHaving\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\"}],\"authUser\":{\"user_id\":\"Uswyrp45kkj5e5nrw\",\"name\":\"Lưu Thiện Nhân\",\"gender\":\"Khác\",\"dob\":\"2020-11-30T17:00:00.000Z\",\"phone_number\":\"0703002347\",\"email\":\"nguoiamphu\",\"password\":\"$2a$10$UtYSET9vR1AAWNbHyEsuMeS5ljiVslyl/iGzXWkin4hpXPhFmiK7W\",\"password_lvl2\":null,\"avatar\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"description\":\"ádqwqd\\r\\nqưd\\r\\nqư\\r\\ndqw\\r\\nd\\r\\nqưdfqwfqfqfw\",\"role\":1,\"address\":\"123 Nguyễn Văn Cừ Q.5\"},\"courses\":[{\"course_id\":\"C01\"},{\"course_id\":\"C04\"},{\"course_id\":\"C07\"},{\"course_id\":\"Cswyrp498kjdsuj8s\"}],\"retUrl\":null,\"cid\":\"C8d0rgo31kokjsspun2\",\"ll\":[{\"list_id\":\"L8d0rgo1gqokjtk10gd\",\"chapter_number\":1,\"chapter_name\":\"Lập trình python cơ bản\",\"course_id\":\"C8d0rgo31kokjsspun2\",\"videos\":[{\"video_id\":\"V8d0rgo1gqokjtk10gg\",\"video_name\":\"Syntax\",\"video_duration\":0,\"url\":\"https://www.youtube.com/watch?v=kIvHQcdbT8o\",\"list_id\":\"L8d0rgo1gqokjtk10gd\",\"video_number\":1},{\"video_id\":\"V8d0rgo1gqokjtk10gm\",\"video_name\":\"test 2\",\"video_duration\":1960,\"url\":\"https://www.youtube.com/watch?v=HQ5DRb6xSlI\",\"list_id\":\"L8d0rgo1gqokjtk10gd\",\"video_number\":2}]},{\"list_id\":\"L8d0rgo1gqokjtk10gq\",\"chapter_number\":2,\"chapter_name\":\"Bán hàng 1\",\"course_id\":\"C8d0rgo31kokjsspun2\",\"videos\":[{\"video_id\":\"V8d0rgo1gqokjtk10gv\",\"video_name\":\"Ok\",\"video_duration\":0,\"url\":\"https://www.youtube.com/watch?v=HQ5DRb6xSlI\",\"list_id\":\"L8d0rgo1gqokjtk10gq\",\"video_number\":1},{\"video_id\":\"V8d0rgo1gqokjtk10gz\",\"video_name\":\"fantasy\",\"video_duration\":0,\"url\":\"https://www.youtube.com/watch?v=fzBQvKHsfXU\",\"list_id\":\"L8d0rgo1gqokjtk10gq\",\"video_number\":2},{\"video_id\":\"V8d0rgo1gqokjtk10h4\",\"video_name\":\"fantasy123\",\"video_duration\":0,\"url\":\"https://www.youtube.com/watch?v=HQ5DRb6xSlI\",\"list_id\":\"L8d0rgo1gqokjtk10gq\",\"video_number\":3}]}]}');
 
 -- ----------------------------
 -- Table structure for shopping_cart
@@ -221,6 +246,11 @@ CREATE TABLE `shopping_cart`  (
   CONSTRAINT `sc_co` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `sc_us` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of shopping_cart
+-- ----------------------------
+INSERT INTO `shopping_cart` VALUES ('Uswyrp45kkj5e5nrw', 'C10');
 
 -- ----------------------------
 -- Table structure for star_rating
@@ -302,6 +332,11 @@ INSERT INTO `video` VALUES ('V4fh2214zwkjjvlvws', 'Ok', NULL, 'https://www.youtu
 INSERT INTO `video` VALUES ('V4fh2214zwkjjvlvwz', 'SOFAR', NULL, 'https://www.youtube.com/watch?v=_MM1MQgFjRM', 'L4fh2214zwkjjvlvvh', 3);
 INSERT INTO `video` VALUES ('V4fh2214zwkjjvlvxi', 'TÌNH NHÂN ƠI ! Superbrothers x Orange x Binz | OFFICIAL MV', NULL, 'https://www.youtube.com/watch?v=vYE2WyHypF0', 'L4fh2214zwkjjvlvxd', 1);
 INSERT INTO `video` VALUES ('V4fh2214zwkjjvlvxp', 'ORANGE - \"nữ hoàng hát live\" có thể cân mọi thể loại nhạc khiến người nghe nổi da gà?', NULL, 'https://www.youtube.com/watch?v=WQJOBRjsvgs', 'L4fh2214zwkjjvlvxd', 2);
+INSERT INTO `video` VALUES ('V8d0rgo1gqokjtk10gg', 'Syntax', 0, 'https://www.youtube.com/watch?v=kIvHQcdbT8o', 'L8d0rgo1gqokjtk10gd', 1);
+INSERT INTO `video` VALUES ('V8d0rgo1gqokjtk10gm', 'test 2', 1960, 'https://www.youtube.com/watch?v=HQ5DRb6xSlI', 'L8d0rgo1gqokjtk10gd', 2);
+INSERT INTO `video` VALUES ('V8d0rgo1gqokjtk10gv', 'Ok', 0, 'https://www.youtube.com/watch?v=HQ5DRb6xSlI', 'L8d0rgo1gqokjtk10gq', 1);
+INSERT INTO `video` VALUES ('V8d0rgo1gqokjtk10gz', 'fantasy', 0, 'https://www.youtube.com/watch?v=fzBQvKHsfXU', 'L8d0rgo1gqokjtk10gq', 2);
+INSERT INTO `video` VALUES ('V8d0rgo1gqokjtk10h4', 'fantasy123', 0, 'https://www.youtube.com/watch?v=HQ5DRb6xSlI', 'L8d0rgo1gqokjtk10gq', 3);
 INSERT INTO `video` VALUES ('Vswyrp538kjfxfrsm', 'Giới thiệu', NULL, 'https://www.youtube.com/watch?v=bUEykHfMMnc', 'Lswyrp538kjfxfrlu', 1);
 INSERT INTO `video` VALUES ('Vswyrp538kjfxfrxv', 'Tag HTML nâng cao', NULL, 'https://www.youtube.com/watch?v=ZIgDYEZl1VE', 'Lswyrp538kjfxfrv4', 1);
 INSERT INTO `video` VALUES ('Vswyrp538kjfxfs0n', 'Tag HTML nâng quá dữ', NULL, 'https://www.youtube.com/watch?v=P0JJR5vYGOU', 'Lswyrp538kjfxfrv4', 2);

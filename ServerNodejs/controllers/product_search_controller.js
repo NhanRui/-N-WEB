@@ -60,8 +60,15 @@ router.get('/keyword/:txt',async function (req, res){
 
   const offset=(page-1)*paginate.limit;
   const list = await categoryModel.getCateBySearch(txtSearch,offset);
-  const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
-  await categoryModel.checkBill(list,listBuy);
+  if (req.session.authUser!=null){
+    const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+    await categoryModel.checkBill(list,listBuy);
+    await categoryModel.checkisHaving(req.session.cart,list);
+  }
+  const listHot=await categoryModel.all();
+  await categoryModel.checkHot(list,listHot);
+  const listNew=await categoryModel.getNewList();
+  await categoryModel.checkNew(list,listNew);
   res.render('search_site', {
     product_popular: list,
     empty: list.length === 0,
@@ -146,21 +153,106 @@ router.get('/:id', async function (req, res) {
 
   const offset=(page-1)*paginate.limit;
   const list = await categoryModel.getCateListByPage(catId,offset);
-  const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
-  await categoryModel.checkBill(list,listBuy);
+  if (req.session.authUser!=null){
+    const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+    await categoryModel.checkBill(list,listBuy);
+    await categoryModel.checkisHaving(req.session.cart,list);
+  }
   const listHot=await categoryModel.all();
   await categoryModel.checkHot(list,listHot);
   const listNew=await categoryModel.getNewList();
   await categoryModel.checkNew(list,listNew);
-  console.log(req.session.cart);
-  await categoryModel.checkisHaving(req.session.cart,list);
-  console.log(list);
   res.render('search_site', {
     product_popular: list,
     empty: list.length === 0,
     cateId: {
       Id:catId,
       categoryById: true
+    },
+    page_numbers,
+    previousPage,
+    nextPage,
+    shopping_list,
+    items,
+    menuList: menuList,
+    empty_menu: menuList.length!==0,
+    allListMenu: allListMenu,
+    checkNextPage: nextPage<=nPages,
+    checkPreviousPage: previousPage>0,
+    layout: "search-item.hbs",
+  });
+})
+
+router.get('/sub/:id', async function (req, res) {
+  const shopping_list=req.session.shopCart;
+  const menuList=await menuCategory.getCateMenu();
+  const submenuList=await menuCategory.getCateSubMenu();
+  const allListMenu=[];
+  const items=req.session.cart;
+  for (const i of menuList)
+  {
+    const menu_list=await categoryModel.allById(i.category_id);
+    categoryModel.checkIsHaving(items,menu_list);
+    const item={
+      menu: i.category_id,
+      name: i.category_name,
+      submenu: [],
+      top4_course_menu: menu_list
+    };
+    allListMenu.push(item);
+  }
+
+  for (const j of submenuList)
+  {
+    for (i=0;i<allListMenu.length;i++)
+    {
+      if (allListMenu[i].menu===j.parent_id)
+      {
+        allListMenu[i].submenu.push(j);
+      }
+    }
+  }
+
+  const catId=req.params.id;
+  const page=req.query.page || 1;
+  const previousPage=+page-1;
+  const nextPage=+page+1;
+  if (page<1){
+    page=1;
+  }
+  const total=await categoryModel.countByCatSub(catId);
+  let nPages=Math.floor(total/paginate.limit);
+  if (total %paginate.limit>0)
+  {
+    nPages++;
+  }
+  const page_numbers=[];
+
+  for (i=1;i<=nPages;i++)
+  {
+    page_numbers.push({
+      value: i,
+      isCurrentPage: i=== +page,
+    });
+  }
+
+  const offset=(page-1)*paginate.limit;
+  const list = await categoryModel.getCateListBySub(catId,offset);
+  if (req.session.authUser!=null){
+    const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+    await categoryModel.checkBill(list,listBuy);
+    await categoryModel.checkisHaving(req.session.cart,list);
+  }
+  const listHot=await categoryModel.all();
+  await categoryModel.checkHot(list,listHot);
+  const listNew=await categoryModel.getNewList();
+  await categoryModel.checkNew(list,listNew);
+  res.render('search_site', {
+    product_popular: list,
+    empty: list.length === 0,
+    cateId: {
+      Id:catId,
+      categoryByIdSub: true
     },
     page_numbers,
     previousPage,
@@ -276,8 +368,15 @@ router.get('/:id/:condition', async function (req, res) {
   const offset=(page-1)*paginate.limit;
   
   const list = await categoryModel.getStarCourseCondition(catId,offset,cd);
-  const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
-  await categoryModel.checkBill(list,listBuy);
+  if (req.session.authUser!=null){
+    const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+    await categoryModel.checkBill(list,listBuy);
+    await categoryModel.checkisHaving(req.session.cart,list);
+  }
+  const listHot=await categoryModel.all();
+  await categoryModel.checkHot(list,listHot);
+  const listNew=await categoryModel.getNewList();
+  await categoryModel.checkNew(list,listNew);
   res.render('search_site', {
     product_popular: list,
     empty: list.length === 0,
@@ -403,8 +502,15 @@ router.get('/keyword/:id/:condition', async function (req, res) {
   const offset=(page-1)*paginate.limit;
   
   const list = await categoryModel.getStarCourseSearchCondition(catId,offset,cd);
-  const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
-  await categoryModel.checkBill(list,listBuy);
+  if (req.session.authUser!=null){
+    const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+    await categoryModel.checkBill(list,listBuy);
+    await categoryModel.checkisHaving(req.session.cart,list);
+  }
+  const listHot=await categoryModel.all();
+  await categoryModel.checkHot(list,listHot);
+  const listNew=await categoryModel.getNewList();
+  await categoryModel.checkNew(list,listNew);
   res.render('search_site', {
     product_popular: list,
     empty: list.length === 0,
@@ -551,8 +657,15 @@ router.get('/:id/mode/:condition', async function (req, res) {
   const offset=(page-1)*paginate.limit;
 
   const list = await categoryModel.mostByCatIDCondition(catId, offset,cd,mode);
-  const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
-  await categoryModel.checkBill(list,listBuy);
+  if (req.session.authUser!=null){
+    const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+    await categoryModel.checkBill(list,listBuy);
+    await categoryModel.checkisHaving(req.session.cart,list);
+  }
+  const listHot=await categoryModel.all();
+  await categoryModel.checkHot(list,listHot);
+  const listNew=await categoryModel.getNewList();
+  await categoryModel.checkNew(list,listNew);
   res.render('search_site', {
     product_popular: list,
     empty: list.length === 0,
@@ -700,8 +813,15 @@ router.get('/keyword/:id/mode/:condition', async function (req, res) {
   const offset=(page-1)*paginate.limit;
 
   const list = await categoryModel.mostMenuChooseSearch(catId, offset,cd,mode);
-  const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
-  await categoryModel.checkBill(list,listBuy);
+  if (req.session.authUser!=null){
+    const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+    await categoryModel.checkBill(list,listBuy);
+    await categoryModel.checkisHaving(req.session.cart,list);
+  }
+  const listHot=await categoryModel.all();
+  await categoryModel.checkHot(list,listHot);
+  const listNew=await categoryModel.getNewList();
+  await categoryModel.checkNew(list,listNew);
   res.render('search_site', {
     product_popular: list,
     empty: list.length === 0,

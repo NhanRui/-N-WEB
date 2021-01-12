@@ -30,6 +30,28 @@
                                 </a>
                             </li>
                         {{else}}
+                            {{#if categoryByIdSub}}
+                            <li class="item {{#if active_5}}activate_choice noHover{{/if}}">
+                                <a href="/search/sub/{{Id}}/rating-5">
+                                    <label class="text_star {{#if active_5}}active_text{{/if}}"> <span class="rating-choice"><i class="fas fa-star"></i></span> 5.0 </label>
+                                </a>
+                            </li>
+                            <li class="item {{#if active_up_4}}activate_choice noHover{{/if}}">
+                                <a href="/search/sub/{{Id}}/rating-up-4">
+                                    <label class="text_star {{#if active_up_4}}active_text{{/if}}"> <span class="rating-choice"><i class="fas fa-star"></i></span> 4.0 trở lên </label>
+                                </a>
+                            </li>
+                            <li class="item {{#if active_up_3}}activate_choice noHover{{/if}}" >
+                                <a href="/search/sub/{{Id}}/rating-up-3">
+                                    <label class="text_star {{#if active_up_3}}active_text{{/if}}"> <span class="rating-choice"><i class="fas fa-star"></i></span> 3.0 trở lên </label>
+                                </a>
+                            </li>
+                            <li class="item {{#if active_down_3}}activate_choice noHover{{/if}}">
+                                <a href="/search/sub/{{Id}}/rating-down-3">
+                                    <label class="text_star {{#if active_down_3}}active_text{{/if}}"> <span class="rating-choice"><i class="fas fa-star"></i></span> Dưới 3.0 </label>
+                                </a>
+                            </li>
+                            {{else}}
                             <li class="item {{#if active_5}}activate_choice noHover{{/if}}">
                                 <a href="/search/keyword/{{Id}}/rating-5">
                                     <label class="text_star {{#if active_5}}active_text{{/if}}"> <span class="rating-choice"><i class="fas fa-star"></i></span> 5.0 </label>
@@ -50,6 +72,7 @@
                                     <label class="text_star {{#if active_down_3}}active_text{{/if}}"> <span class="rating-choice"><i class="fas fa-star"></i></span> Dưới 3.0 </label>
                                 </a>
                             </li>
+                            {{/if}}
                         {{/if}}
                         {{/with}}
                     </ul>
