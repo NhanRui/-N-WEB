@@ -11,7 +11,7 @@ body{
 
 .slide_bar {
     width: 300px;
-    background-color: #d9d9d9;
+    background-color: #f0f1f4;
     border-radius: 5px;
 }
 
@@ -41,7 +41,11 @@ body{
 .auto_play {
     display: flex;
     align-items: center;
-    padding-left: 20px;
+    padding-left: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f9fafc;
+    border-top: 1px solid #f9fafc;
 }
 
 .auto_play_line {
@@ -79,6 +83,7 @@ body{
 
 .lesson {
     display: flex;
+    flex-direction: column;
     padding: 10px;
     height: auto;
     font-size: 14px;
@@ -86,16 +91,17 @@ body{
 }
 
 .lesson_name{
+    margin-left: 10px;
     color: #464d5d;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bolder;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow: hidden;
+    font-size: 15px;
     text-overflow: ellipsis;
-    line-height: 15px;
+    line-height: 19px;
     -webkit-line-clamp: 2;
-    height: 30px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
+    font-weight: 500;
 }
 
 .lesson i{
@@ -527,4 +533,19 @@ input:checked ~ .fucking_star{
 
 #check-complete{
     color: green;
+}
+
+.yt_duration{
+    margin-left: 40px;
+    color: #464d5d;
+}
+
+.container-icon-tittle{
+    display: flex;
+    flex-direction: row;
+}
+
+.container-icon-tittle i{
+    margin-left: 10px;
+    margin-top: 1px;
 }

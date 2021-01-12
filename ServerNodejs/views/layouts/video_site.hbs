@@ -41,14 +41,17 @@
                     {{#each this.list_video}}
                     <a href="/watch-video/{{course_id}}/{{chapter_number}}/{{video_number}}" class="lessons">
                         <div class="lesson">
-                            {{#if IsCp}}
-                            <i class="far fa-check-circle" aria-hidden="true" id="check-complete"></i>
-                            {{else}}
-                            <i class="fa fa-play-circle" aria-hidden="true"></i>
-                            {{/if}}
-                            <div class="lesson_name">
-                                <span>Bài {{stt}}: {{video_name}}</span>
+                            <div class="container-icon-tittle">
+                                {{#if IsCp}}
+                                <i class="far fa-check-circle" aria-hidden="true" id="check-complete"></i>
+                                {{else}}
+                                <i class="fa fa-play-circle" aria-hidden="true"></i>
+                                {{/if}}
+                                <div class="lesson_name">
+                                    <span>Bài {{stt}}: {{video_name}}</span>
+                                </div>
                             </div>
+                            <div class="yt_duration">10:00</div>
                         </div>
                     </a>
                     {{/each}}

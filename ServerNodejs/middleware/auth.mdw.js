@@ -9,12 +9,12 @@ module.exports = {
             req.session.retUrl = req.originalUrl;
             return res.redirect('/account/login');
         }
-        else{
+        /*else{
             if (req.session.authUser.role===1)
             {
                 return res.redirect('/lecturer');
             }
-        }
+        }*/
         next();
     },
 
