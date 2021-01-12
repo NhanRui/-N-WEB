@@ -275,7 +275,6 @@ router.post('/:courseid',async function(req,res){
  // console.log(req.body.chapter);  console.log(req.body.count);  console.log(req.body.video);  console.log(req.body.link);
   const id = req.params.courseid;
   if(req.session.ll!==null){
-    console.log('dang xoa');
     for(var i=0;i<req.session.ll.length;i++){
       var ll = await lecturerModel.delVideoList(req.session.ll[i].list_id);
     }
@@ -295,6 +294,7 @@ router.post('/:courseid',async function(req,res){
       }
       newses.push(lesson);
       await lecturerModel.addLessonList(lesson);
+      console.log(req.body.duration);
       for(var j=0;j<+req.body.count[i];j++){
         const video = {
           video_id: uniqid('V'),
@@ -309,6 +309,12 @@ router.post('/:courseid',async function(req,res){
       flag+=(+req.body.count[i]);
     }
   }
+  const patch={
+    course_id: id,
+    status: req.body.complete || 'Chưa hoàn thành'
+  };
+  console.log(patch);
+  await lecturerModel.patchStatus(patch);
   req.session.ll = newses;
   res.redirect(`/lecturer/${id}`);
 })
