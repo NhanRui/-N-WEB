@@ -41,7 +41,11 @@
                     {{#each this.list_video}}
                     <a href="/watch-video/{{course_id}}/{{chapter_number}}/{{video_number}}" class="lessons">
                         <div class="lesson">
+                            {{#if IsCp}}
+                            <i class="far fa-check-circle" aria-hidden="true"></i>
+                            {{else}}
                             <i class="fa fa-play-circle" aria-hidden="true"></i>
+                            {{/if}}
                             <div class="lesson_name">
                                 <span>Bài {{stt}}: {{video_name}}</span>
                             </div>
@@ -64,6 +68,15 @@
                 <div id="player" data-plyr-provider="youtube" {{#with this.link}} data-plyr-embed-id="{{{url}}}"{{/with}}></div>
             </div>
             <script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
+
+            <form action="/watch-video/save" method="POST" id="saveProcess">
+                {{#with currentVideo}}
+                <input type="hidden" name="idVideo" value="{{video_id}}">
+                {{/with}}
+                {{#with nextVideo}}
+                <input type="hidden" name="link" value="/watch-video/{{course_id}}/{{chapter_number}}/{{video_number}}">
+                {{/with}}
+            </form>
             <script>
                 document.addEventListener('DOMContentLoaded', () => {
                     var mode='true';
@@ -77,7 +90,7 @@
                             break;
                         }
                     }
-                    console.log(allcookies);
+                    //console.log(allcookies);
                     if (mode==='false'){
                         const toggle_btn=document.getElementsByClassName("auto_play_round")[0];
                         const toggle_bg=document.getElementsByClassName("auto_play_line")[0];
@@ -90,7 +103,7 @@
                         toggle_bg.style.backgroundColor="#5c9cfe";
                         toggle_btn.style.left="";
                     }
-                    console.log(allcookies);
+                    //console.log(allcookies);
                     document.getElementsByClassName('auto_play_line')[0]
                     .addEventListener('click', function (event) {
                         var allcookies = document.cookie;
@@ -119,9 +132,7 @@
                     const player = new Plyr('#player', {autoplay: true,}); 
                       player.on('ended', event => {
                           if (mode==='true'){
-                            {{#with this.nextVideo}}
-                            window.location.href = "http://localhost:3000/watch-video/{{{course_id}}}/{{{chapter_number}}}/{{{video_number}}}"
-                            {{/with}}
+                            document.getElementById("saveProcess").submit();
                           }
                           });
                 });

@@ -37,6 +37,7 @@ router.get('/:id/:chapter/:video', async function (req, res) {
   nextVideo=vd_info.getNextVideo(chapter,video,list_video);
   curVideo=vd_info.getCurrentVideo(chapter,video,list_video);
   allChapter=[];
+  //console.log(curVideo);
   for (const i of list_chapter)
   {
     const item={
@@ -48,13 +49,15 @@ router.get('/:id/:chapter/:video', async function (req, res) {
     }
     allChapter.push(item);
   }
-
+  const list_complete=await vd_info.getCompleteList(req.session.authUser.user_id);
   for (const i of list_video)
   {
     for (j=0;j<allChapter.length;j++)
     {
       if (allChapter[j].list_id === i.list_id)
       {
+        vd_info.checkCompleteList(i,list_complete);
+        console.log(i);
         allChapter[j].list_video.push(i)
       }
     }
@@ -82,9 +85,19 @@ router.post('/:id/:chapter/:video/rating-by-video', async (req, res) => {
     comment : req.body.cmReview
   };
   await coursesModel.addComment(comment);
-  console.log(req.body)
+  //console.log(req.body)
   const link_access = `/${course_id}/${chapter}/${video}`;
   res.redirect(`/watch-video${link_access}`);
+})
+
+router.post('/save', async (req, res) => {
+  list_complete=await vd_info.getCompleteList(req.session.authUser.user_id);
+  let check=vd_info.checkComplete(req.body.idVideo,list_complete);
+  if (check===false)
+  {
+    await vd_info.add_complete(req.session.authUser.user_id,req.body.idVideo);
+  }
+  res.redirect(req.body.link);
 })
 
 
