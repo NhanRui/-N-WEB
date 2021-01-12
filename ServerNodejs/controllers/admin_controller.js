@@ -3,6 +3,7 @@ const router = express.Router();
 const lecturerModel = require('../models/lecturer_model');
 const userModel = require('../models/user.model');
 const moment = require('moment');
+const uniqid = require('uniqid');
 router.use(express.static('public'));
 router.use(express.static('upload'));
 
@@ -106,6 +107,26 @@ router.get('/lecturer/:id', async function(req,res){
   const user = await userModel.singleById(req.params.id);
   if(user.dob !== null) user.dob = moment(user.dob).format("DD/MM/YYYY");
   res.json(user);
+})
+
+router.get('/category',async function(req,res){
+  const cat = await userModel.cat();
+  res.render('vwAdmin/manageCategory',{
+    layout: './../vwAdmin/adminLayout',
+    cat: cat,
+    cat_empty: cat.length === 0
+  })
+})
+
+router.post('/category/add',async function(req,res){
+  const id= uniqid('CAT');
+  const cat = {
+    category_id : id,
+    category_name : req.body.name,
+    parent_id : req.body.parent_id
+  }
+  console.log(cat);
+  await userModel.addCat(cat);
 })
 
 module.exports = router;

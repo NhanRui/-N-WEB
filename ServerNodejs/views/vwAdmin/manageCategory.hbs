@@ -1,0 +1,135 @@
+<style>
+    thead{
+        background-color: wheat;
+    }
+    tbody tr:nth-child(odd){
+        background-color:beige;
+    }
+    tbody tr:nth-child(even){
+        background-color:azure;
+    }
+    .card {
+        display: none;
+        position: fixed;
+        top:15px;
+        right:15px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        margin: auto;
+        font-family: arial;
+        transition: 1s;
+    }
+
+    .card .title {
+        color: grey;
+        margin-top: 5px;
+        font-size: 18px;
+    }
+
+    .card h4{
+        text-align: center;
+    }
+
+    .card a {
+        text-decoration: none;
+        font-size: 22px;
+        color: black;
+    }
+
+    .card p{
+        margin-left: 10px;
+        margin-bottom:15px;
+        font-weight: bolder;
+    }
+
+    .card span{
+        font-weight: normal;
+    }
+</style>
+
+<h2>Danh mục</h2>
+<hr>
+    <div class="row" style="display:block;">
+        <div class="card-header d-flex justify-content-between">
+          <h4 class="text-success">Hoạt động</h4>
+        </div>
+        <div class="card-body" id="list-section" data-count="{{list_length}}">
+            {{#if cat_empty}}
+            <h5 class="card-title">Không có dữ liệu!</h5>
+            <p class="card-text">Không có danh mục nào đang hoạt động</p>
+            {{else}} 
+            <table class="table table-hover" style="outline:1px solid grey;">
+            <thead>
+                <tr>
+                <th scope="col">Mã danh mục</th>
+                <th scope="col">Tên</th>
+                <th scope="col">Danh mục cha</th>
+                <th scope="col">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody id="active-body">
+                {{#each this.cat}}
+                <tr>
+                <th scope="row">{{category_id}}</th>
+                <td>{{category_name}}</td>
+                <td>{{parent_id}}</td>
+                <td class="text-right">
+                    <a name="" id="add" class="btn btn-sm btn-warning" title="Thêm danh mục con"
+                    data-id="{{category_id}}" data-count="{{count}}" role="button">Thêm
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    </a>
+                    <a name="" id="delete" class="btn btn-sm btn-danger text-light" title="Xóa vĩnh viễn tài khoản"
+                    data-id="{{category_id}}" data-count="{{count}}" role="button">Xóa
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </td>
+                </tr>
+                {{/each}}
+            </tbody>
+            </table>
+            {{/if}}
+        </div>
+    </div>
+<hr>
+<footer class="text-center">
+ <div class="mb-2">
+   <small>
+     © 2021 made with <i class="fa fa-heart" style="color:red"></i> by - <a target="_blank" rel="noopener noreferrer" href="#">
+       EduOYK Team
+     </a>
+   </small>
+ </div>
+ <div>
+   <a href="https://github.com/TrashCodeEveryDay" target="_blank">
+     <img alt="GitHub followers" src="https://img.shields.io/github/followers/azouaoui-med?label=github&style=social" />
+   </a>
+   <a href="#" target="_blank">
+     <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/azouaoui_med?label=twitter&style=social" />
+   </a>
+ </div>
+</footer>
+
+<div class="card">
+<form method="POST" action="/admin/category/add">
+  <h4><span>Category</span></h4>
+  <p>Name: <input type="text" name="name" id="name"></p>
+  <p class="title">Parent category: <span id="p"></span></p>
+  <input type="hidden" name="parent_id" value="" id="parent_id">
+  <button type="submit" class="btn btn-primary" onclick="javascript: $('form').submit();">Submit</button>
+</form>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('body').on('click','#add',function(e){
+            $('.card').css('display','block');
+            var id = $(this).attr('data-id');
+            $('#p').html(id);
+            $('#parent_id').val(id);
+        })
+        $('form').on('submit',function(e){
+            $('.card').css('display','none');
+            location.reload(true);
+        })
+    })
+</script>

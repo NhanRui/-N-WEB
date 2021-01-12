@@ -8,6 +8,12 @@
     <form method="POST">
     <div class="top_margin">
         <h3 class="title-curriculum">Nội dung khóa học: {{course.course_name}}</h3>
+        <!-- Rounded switch -->
+        <label class="switch">
+            <input type="checkbox" name="complete" value="Hoàn thành" id="check">
+            <span class="slider round"></span>
+        </label>
+        <span>{{course.status}}</span>
     </div>
     <div>
         <div class="section" data-count-chapter="{{count_lession}}">
@@ -196,6 +202,7 @@
                     success: function(data){
                         var yt_duration = convert_time(data.items[0]['contentDetails'].duration);
                         x.next().val(yt_duration.toString());
+                        alert(x.next().val());
                     },
                 });
             }
@@ -265,6 +272,17 @@
             }
             x.parent('div').parent('div').children('#count-video').val(count.toString());
             $(this).parent('div').parent('div').parent('div').parent('div').remove();
+        })
+        if($('.switch').parent('label').next().html()==='Chưa hoàn thành'){
+            //do nothing
+        }else{
+            $('#check').attr('checked','true');
+        }
+        $('body').on('change','#check',function(e){
+            if($(this).parent('label').next().html()==='Chưa hoàn thành'){
+                $(this).parent('label').next().html('Hoàn thành');
+            }
+            else $(this).parent('label').next().html('Chưa hoàn thành');
         })
     })
 </script>
