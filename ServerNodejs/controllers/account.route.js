@@ -273,6 +273,11 @@ router.get('/is-available-usname', async function (req, res) {
     const firstName = user.name.substr(user.name.indexOf(' ')+1);
     const lastName = user.name.substr(0, user.name.indexOf(' '));
     const fa_list=req.session.cart;
+    const listHot=await categoryModel.all();
+    const listNew=await categoryModel.getNewList();
+    await categoryModel.checkHot(fa_list,listHot);
+    await categoryModel.checkNew(fa_list,listNew);
+
     const cart_list=req.session.shopCart;
     //console.log(fa_list[0].course_id);
     for (i=0;i<cart_list.length;i++)

@@ -7,11 +7,12 @@ const router = express.Router();
 
 router.get('/:id/:chapter/:video', async function (req, res) {
   var found = false;
-  //console.log(req.session.courses);
+  const list_bill_video=await coursesModel.courseBillByID(req.session.authUser.user_id);
+  //console.log(list_bill_video);
   //console.log(req.params.id);
-  if(req.session.courses !== null){
-      for(var i=0;i<req.session.courses.length;i++){
-          if(req.session.courses[i].course_id === req.params.id)   found=true;
+  if(list_bill_video !== null){
+      for(var i=0;i<list_bill_video.length;i++){
+          if(list_bill_video[i].course_id === req.params.id)   found=true;
       }
   }
   if(found===false){

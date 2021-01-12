@@ -23,6 +23,11 @@
                     </button>
                 </form>
                 {{/if}}
+                {{#if IsHot}}
+                <div class="hot-course-in-account">
+                    <p><i class="fas fa-fire"> HOT</i></p>
+                </div>
+                {{/if}}
                 <!--<div class="favourite_course_container">
                     <a href="#"><i class="fa_ca far fa-heart" id=""></i></a>
                     <a href="#"><i class="sp_ca fas fa-shopping-cart" id="faActive"></i></a>
@@ -31,6 +36,11 @@
                 <div class="container_slide_up">
                     <div class="item__overlay">
                         <p class="number-students">Học viên: {{number_student}}</p>
+                    </div>
+                </div>
+                <div class="container_slide_up_2">
+                    <div class="item__overlay_2">
+                        <p class="number-students">{{category_name}}</p>
                     </div>
                 </div>
                 </a>
@@ -50,6 +60,11 @@
                         </div>
                         <span class="number-rating"><b>{{overall_star}}</b> ({{number_rating}})</span><!--Về sau thay đổi star và number people-->
                     </div>
+                    {{#if IsNew}}
+                    <div class="container-for-new">
+                        <p>NEW</p>
+                    </div>
+                    {{/if}}
                 </div>
                 <h4 class="card-title">{{course_name}}</h4>
                 </a>

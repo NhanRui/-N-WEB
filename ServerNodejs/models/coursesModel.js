@@ -53,6 +53,12 @@ module.exports = {
     return result[0];
   },
 
+  async courseBillByID(userID) {
+    const sql = `SELECT course_id FROM bill WHERE user_id= '${userID}'`;
+    const [result, fields] = await db.load(sql);
+    return result;
+  },
+
   async lecturerByID(userID) {
     const sql = `select name from user where user_id = '${userID}'`;
     const [result, fields] = await db.load(sql);

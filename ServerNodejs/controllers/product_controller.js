@@ -12,10 +12,19 @@ router.get('/', async function (req, res) {
     const shopping_list=req.session.shopCart;
     //console.log(submenuList);
     const allListMenu=[];
+    const listHot=await categoryModel.all();
+    const listNew=await categoryModel.getNewList();
     for (const i of menuList)
     {
       const menu_list=await categoryModel.allById(i.category_id);
       numberOfitems+=categoryModel.checkIsHaving(items,menu_list);
+      if (req.session.authUser!=null)
+      {
+        const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+        await categoryModel.checkBill(menu_list,listBuy);
+      }
+      await categoryModel.checkHot(menu_list,listHot);
+      await categoryModel.checkNew(menu_list,listNew);
       const item={
         menu: i.category_id,
         name: i.category_name,
@@ -74,9 +83,9 @@ router.get('/', async function (req, res) {
       await categoryModel.checkBill(list,listBuy);
       await categoryModel.checkisHaving(req.session.cart,list);
     }
-    const listHot=await categoryModel.all();
+    //const listHot=await categoryModel.all();
     await categoryModel.checkHot(list,listHot);
-    const listNew=await categoryModel.getNewList();
+    //const listNew=await categoryModel.getNewList();
     await categoryModel.checkNew(list,listNew);
 
     const list_top8=await categoryModel.all_top8_selling();
@@ -86,11 +95,66 @@ router.get('/', async function (req, res) {
       await categoryModel.checkBill(list_top8,listBuy);
       await categoryModel.checkisHaving(req.session.cart,list_top8);
     }
-    //const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
-    //const listHot=await categoryModel.all();
     await categoryModel.checkHot(list_top8,listHot);
-    //const listNew=await categoryModel.getNewList();
     await categoryModel.checkNew(list_top8,listNew);
+
+    //Cho top view
+    if (req.session.authUser!=null)
+    {
+      const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+      await categoryModel.checkBill(top10_view_1,listBuy);
+      await categoryModel.checkisHaving(req.session.cart,top10_view_1);
+    }
+    await categoryModel.checkHot(top10_view_1,listHot);
+    await categoryModel.checkNew(top10_view_1,listNew);
+
+    if (req.session.authUser!=null)
+    {
+      const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+      await categoryModel.checkBill(top10_view_2,listBuy);
+      await categoryModel.checkisHaving(req.session.cart,top10_view_2);
+    }
+    await categoryModel.checkHot(top10_view_2,listHot);
+    await categoryModel.checkNew(top10_view_2,listNew);
+
+    if (req.session.authUser!=null)
+    {
+      const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+      await categoryModel.checkBill(top10_view_3,listBuy);
+      await categoryModel.checkisHaving(req.session.cart,top10_view_3);
+    }
+    await categoryModel.checkHot(top10_view_3,listHot);
+    await categoryModel.checkNew(top10_view_3,listNew);
+    //cho top view
+
+    //cho top new
+    if (req.session.authUser!=null)
+    {
+      const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+      await categoryModel.checkBill(top10_new_1,listBuy);
+      await categoryModel.checkisHaving(req.session.cart,top10_new_1);
+    }
+    await categoryModel.checkHot(top10_new_1,listHot);
+    await categoryModel.checkNew(top10_new_1,listNew);
+
+    if (req.session.authUser!=null)
+    {
+      const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+      await categoryModel.checkBill(top10_new_2,listBuy);
+      await categoryModel.checkisHaving(req.session.cart,top10_new_2);
+    }
+    await categoryModel.checkHot(top10_new_2,listHot);
+    await categoryModel.checkNew(top10_new_2,listNew);
+
+    if (req.session.authUser!=null)
+    {
+      const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+      await categoryModel.checkBill(top10_new_3,listBuy);
+      await categoryModel.checkisHaving(req.session.cart,top10_new_3);
+    }
+    await categoryModel.checkHot(top10_new_3,listHot);
+    await categoryModel.checkNew(top10_new_3,listNew);
+    //cho top new
 
     const list_top8bs=await categoryModel.allByIdLM(3,8);
     if (req.session.authUser!=null)

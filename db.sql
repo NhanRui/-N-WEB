@@ -11,7 +11,7 @@
  Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 12/01/2021 00:17:48
+ Date: 12/01/2021 11:55:59
 */
 
 SET NAMES utf8mb4;
@@ -37,6 +37,7 @@ CREATE TABLE `bill`  (
 -- ----------------------------
 -- Records of bill
 -- ----------------------------
+INSERT INTO `bill` VALUES ('U8d0rgoojskj03tm75', 'C11', 'B8d0rgo1gqokjthis4i', 299500);
 INSERT INTO `bill` VALUES ('Uswyrp45kkj5e5nrw', 'C01', 'B8d0rgoaq8kjsfxo9y', 349500);
 INSERT INTO `bill` VALUES ('Uswyrp45kkj5e5nrw', 'C04', 'B8d0rgoaq8kjsfxo9y', 179700);
 INSERT INTO `bill` VALUES ('Uswyrp45kkj5e5nrw', 'C07', 'B8d0rgoaq8kjsfxo9y', 175780);
@@ -153,6 +154,7 @@ CREATE TABLE `favourite`  (
 INSERT INTO `favourite` VALUES ('Uswyrp45kkj5e5nrw', 'C08');
 INSERT INTO `favourite` VALUES ('Uswyrp45kkj5e5nrw', 'C09');
 INSERT INTO `favourite` VALUES ('Uswyrp45kkj5e5nrw', 'C10');
+INSERT INTO `favourite` VALUES ('Uswyrp45kkj5e5nrw', 'C12');
 
 -- ----------------------------
 -- Table structure for final_bill
@@ -169,6 +171,7 @@ CREATE TABLE `final_bill`  (
 -- ----------------------------
 -- Records of final_bill
 -- ----------------------------
+INSERT INTO `final_bill` VALUES ('B8d0rgo1gqokjthis4i', 'Hoàn Thành', '2021-01-12', 299500);
 INSERT INTO `final_bill` VALUES ('B8d0rgoaq8kjsfxo9y', 'Hoàn Thành', '2021-01-11', 704980);
 
 -- ----------------------------
@@ -211,7 +214,7 @@ CREATE TABLE `sessions`  (
 -- Records of sessions
 -- ----------------------------
 INSERT INTO `sessions` VALUES ('-ipzBjiP5kbHfMikn-bcs-yhU7peC-aa', 1610436253, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"cart\":[{\"author_name\":\"Lưu Thiện Nhân\",\"author_image\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"course_id\":\"C10\",\"deal_value\":70,\"intro_image\":\"/images/product_ID10.png\",\"number_student\":0,\"number_rating\":0,\"course_name\":\"85 chuyên đề Excel cơ bản đến nâng cao\",\"price\":599000,\"reduce_price\":179700,\"overall_star\":null,\"categoty_id\":\"5\",\"isHaving\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\"},{\"author_name\":\"Lưu Thiện Nhân\",\"author_image\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"course_id\":\"C12\",\"deal_value\":50,\"intro_image\":\"/images/product_ID5.png\",\"number_student\":0,\"number_rating\":1,\"course_name\":\"Học guitar đệm hát cấp tốc trong 30 ngày\",\"price\":599000,\"reduce_price\":299500,\"overall_star\":\"5.0\",\"categoty_id\":\"1\",\"isHaving\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\"}],\"shopCart\":[{\"author_name\":\"Lê Hoàng Phúc\",\"author_image\":\"/images/BecomeInstructor/ltn.jpg\",\"course_id\":\"C01\",\"deal_value\":50,\"intro_image\":\"/images/productTesting.png\",\"number_student\":2,\"number_rating\":2,\"course_name\":\"Bí quyết giao tiếp để thành công\",\"price\":699000,\"reduce_price\":349500,\"overall_star\":\"4.5\",\"categoty_id\":\"1\",\"isHaving\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\"},{\"author_name\":\"Lê Hoàng Phúc\",\"author_image\":\"/images/BecomeInstructor/ltn.jpg\",\"course_id\":\"C04\",\"deal_value\":70,\"intro_image\":\"/images/product_ID3.jpg\",\"number_student\":0,\"number_rating\":0,\"course_name\":\"VBA - Giải pháp tối ưu công việc trên Excel\",\"price\":599000,\"reduce_price\":179700,\"overall_star\":null,\"categoty_id\":\"5\",\"isHaving\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\"},{\"author_name\":\"Lưu Thiện Nhân\",\"author_image\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"course_id\":\"C07\",\"deal_value\":78,\"intro_image\":\"/images/product_ID7.png\",\"number_student\":0,\"number_rating\":0,\"course_name\":\"Học Photoshop trọn bộ trong 7 ngày\",\"price\":799000,\"reduce_price\":175780,\"overall_star\":null,\"categoty_id\":\"2\",\"isHaving\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\"},{\"author_name\":\"Lưu Thiện Nhân\",\"author_image\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"course_id\":\"Cswyrp498kjdsuj8s\",\"deal_value\":100,\"intro_image\":\"/upload/course/Cswyrp498kjdsuj8s.jpg\",\"number_student\":1,\"number_rating\":0,\"course_name\":\"Nhập môn lập trình Web\",\"price\":699000,\"reduce_price\":0,\"overall_star\":null,\"categoty_id\":\"1\",\"isHaving\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\"}],\"authUser\":{\"user_id\":\"Uswyrp45kkj5e5nrw\",\"name\":\"Lưu Thiện Nhân\",\"gender\":\"Khác\",\"dob\":\"2020-11-30T17:00:00.000Z\",\"phone_number\":\"0703002347\",\"email\":\"nguoiamphu\",\"password\":\"$2a$10$UtYSET9vR1AAWNbHyEsuMeS5ljiVslyl/iGzXWkin4hpXPhFmiK7W\",\"password_lvl2\":null,\"avatar\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"description\":\"ádqwqd\\r\\nqưd\\r\\nqư\\r\\ndqw\\r\\nd\\r\\nqưdfqwfqfqfw\",\"role\":1,\"address\":\"123 Nguyễn Văn Cừ Q.5\"},\"courses\":[{\"course_id\":\"C11\"},{\"course_id\":\"Cswyrp498kjdsuj8s\"}],\"retUrl\":null}');
-INSERT INTO `sessions` VALUES ('MNiGC9KCNYh-470PRU-F1NfjkqriPbrr', 1610471147, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"cart\":[{\"author_name\":\"Lưu Thiện Nhân\",\"author_image\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"course_id\":\"C08\",\"deal_value\":76,\"intro_image\":\"/images/product_ID8.png\",\"number_student\":0,\"number_rating\":0,\"course_name\":\"Nền tảng tiếng Anh cho người mới bắt đầu\",\"price\":749000,\"reduce_price\":179760,\"overall_star\":null,\"categoty_id\":\"6\",\"isHaving\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\"},{\"author_name\":\"Lưu Thiện Nhân\",\"author_image\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"course_id\":\"C09\",\"deal_value\":74,\"intro_image\":\"/images/product_ID9.jpg\",\"number_student\":0,\"number_rating\":0,\"course_name\":\"Học thiết kế đồ họa trọn bộ 30 ngày\",\"price\":699000,\"reduce_price\":181740,\"overall_star\":null,\"categoty_id\":\"2\",\"isHaving\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\"},{\"author_name\":\"Lưu Thiện Nhân\",\"author_image\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"course_id\":\"C10\",\"deal_value\":70,\"intro_image\":\"/images/product_ID10.png\",\"number_student\":0,\"number_rating\":0,\"course_name\":\"85 chuyên đề Excel cơ bản đến nâng cao\",\"price\":599000,\"reduce_price\":179700,\"overall_star\":null,\"categoty_id\":\"5\",\"isHaving\":0,\"user_id\":\"Uswyrp45kkj5e5nrw\"}],\"shopCart\":[],\"authUser\":{\"user_id\":\"Uswyrp45kkj5e5nrw\",\"name\":\"Lưu Thiện Nhân\",\"gender\":\"Khác\",\"dob\":\"2020-11-30T17:00:00.000Z\",\"phone_number\":\"0703002347\",\"email\":\"nguoiamphu\",\"password\":\"$2a$10$UtYSET9vR1AAWNbHyEsuMeS5ljiVslyl/iGzXWkin4hpXPhFmiK7W\",\"password_lvl2\":null,\"avatar\":\"/upload/user_avatar/Uswyrp45kkj5e5nrw.jpg\",\"description\":\"ádqwqd\\r\\nqưd\\r\\nqư\\r\\ndqw\\r\\nd\\r\\nqưdfqwfqfqfw\",\"role\":1,\"address\":\"123 Nguyễn Văn Cừ Q.5\"},\"courses\":[{\"course_id\":\"C01\"},{\"course_id\":\"C04\"},{\"course_id\":\"C07\"},{\"course_id\":\"Cswyrp498kjdsuj8s\"}],\"retUrl\":\"/cart/add\",\"cid\":\"C8d0rgo31kokjsspun2\",\"ll\":[{\"list_id\":\"L8d0rgo31kokjsszpkp\",\"chapter_number\":1,\"chapter_name\":\"Lập trình python cơ bản\",\"course_id\":\"C8d0rgo31kokjsspun2\",\"videos\":[{\"video_id\":\"V8d0rgo31kokjsszpkt\",\"video_name\":\"Syntax\",\"video_duration\":0,\"url\":\"https://www.youtube.com/watch?v=kIvHQcdbT8o\",\"list_id\":\"L8d0rgo31kokjsszpkp\",\"video_number\":1},{\"video_id\":\"V8d0rgo31kokjsszpky\",\"video_name\":\"test 2\",\"video_duration\":1960,\"url\":\"https://www.youtube.com/watch?v=HQ5DRb6xSlI\",\"list_id\":\"L8d0rgo31kokjsszpkp\",\"video_number\":2}]},{\"list_id\":\"L8d0rgo31kokjsszpl1\",\"chapter_number\":2,\"chapter_name\":\"Bán hàng 1\",\"course_id\":\"C8d0rgo31kokjsspun2\",\"videos\":[{\"video_id\":\"V8d0rgo31kokjsszpl4\",\"video_name\":\"Ok\",\"video_duration\":0,\"url\":\"https://www.youtube.com/watch?v=HQ5DRb6xSlI\",\"list_id\":\"L8d0rgo31kokjsszpl1\",\"video_number\":1}]}]}');
+INSERT INTO `sessions` VALUES ('MNiGC9KCNYh-470PRU-F1NfjkqriPbrr', 1610511558, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"cart\":[],\"shopCart\":[],\"authUser\":{\"user_id\":\"U8d0rgoojskj03tm75\",\"name\":\"Lê Hoàng Phúc\",\"gender\":\"Nữ\",\"dob\":\"2021-01-11T17:00:00.000Z\",\"phone_number\":\"123123\",\"email\":\"phucyugi@gmail.com\",\"password\":\"$2a$10$eaeN/x0vA8RF.0egO0mX5OUu1FmCEue6vCRCfGE2YkYbdTM/1xkee\",\"password_lvl2\":null,\"avatar\":\"/images/BecomeInstructor/ltn.jpg\",\"description\":null,\"role\":1,\"address\":null},\"courses\":null,\"retUrl\":null,\"cid\":\"C8d0rgo31kokjsspun2\",\"ll\":[{\"list_id\":\"L8d0rgo31kokjsszpkp\",\"chapter_number\":1,\"chapter_name\":\"Lập trình python cơ bản\",\"course_id\":\"C8d0rgo31kokjsspun2\",\"videos\":[{\"video_id\":\"V8d0rgo31kokjsszpkt\",\"video_name\":\"Syntax\",\"video_duration\":0,\"url\":\"https://www.youtube.com/watch?v=kIvHQcdbT8o\",\"list_id\":\"L8d0rgo31kokjsszpkp\",\"video_number\":1},{\"video_id\":\"V8d0rgo31kokjsszpky\",\"video_name\":\"test 2\",\"video_duration\":1960,\"url\":\"https://www.youtube.com/watch?v=HQ5DRb6xSlI\",\"list_id\":\"L8d0rgo31kokjsszpkp\",\"video_number\":2}]},{\"list_id\":\"L8d0rgo31kokjsszpl1\",\"chapter_number\":2,\"chapter_name\":\"Bán hàng 1\",\"course_id\":\"C8d0rgo31kokjsspun2\",\"videos\":[{\"video_id\":\"V8d0rgo31kokjsszpl4\",\"video_name\":\"Ok\",\"video_duration\":0,\"url\":\"https://www.youtube.com/watch?v=HQ5DRb6xSlI\",\"list_id\":\"L8d0rgo31kokjsszpl1\",\"video_number\":1}]}]}');
 
 -- ----------------------------
 -- Table structure for shopping_cart
@@ -225,6 +228,11 @@ CREATE TABLE `shopping_cart`  (
   CONSTRAINT `sc_co` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `sc_us` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of shopping_cart
+-- ----------------------------
+INSERT INTO `shopping_cart` VALUES ('Uswyrp45kkj5e5nrw', 'C10');
 
 -- ----------------------------
 -- Table structure for star_rating
