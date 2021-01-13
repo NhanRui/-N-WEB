@@ -119,6 +119,8 @@ router.get("/course-detail/:id", async function (req, res) {
     property['user_avatar'] = user.avatar;
   }
 
+  /*list_top5=await categoryModel.Top5ById(2);*/
+  //console.log(list_top5);
   res.render('partials/course_detail', {
     layout: 'CourseDetail.hbs',
     object: returnObject,

@@ -245,11 +245,41 @@
     </div>
 </div>
 {{/with}}
+<div class="top-5-title">
+    Top 5 khóa học cùng lĩnh vực
+</div>
 <div class="container-top-5">
-    {{>product_top_5}}
-    {{>product_top_5}}
-    {{>product_top_5}}
-    {{>product_top_5}}
+    <div class="slider-top5">
+        <div class="slides-top5">
+            <input type="radio" name="radio-btn-top5" id="radio1">
+            <input type="radio" name="radio-btn-top5" id="radio2">
+            <input type="radio" name="radio-btn-top5" id="radio3">
+
+            <div class="slide-top-5 first">
+                {{>product_top_5}}
+            </div>
+            <div class="slide-top-5">
+                {{>product_top_5}}
+            </div>
+            <div class="slide-top-5">
+                {{>product_top_5}}
+            </div>
+            <div class="slide-top-5">
+                {{>product_top_5}}
+            </div>
+            <div class="slide-top-5">
+                {{>product_top_5}}
+            </div>
+            <div class="navigation-auto-top5">
+                <div class="auto-btn1-top5"></div>
+                <div class="auto-btn2-top5"></div>
+            </div>
+        </div>
+        <div class="navigation-manual-top5">
+            <label for="radio1" class="manual-btn-top5"></label>
+            <label for="radio2" class="manual-btn-top5"></label>
+        </div>
+    </div>
 </div>
 <div class="footer">
     {{>footer-index}}
