@@ -118,7 +118,7 @@ router.post('/addcourse',async function(req,res){
     course_name: req.body.name,
     description: req.body.des,
     intro_image: img,
-    price: 699000,
+    price: +req.body.price || 699000,
     deal_value: 0,
     course_intro_description: req.body.course_description,
     course_intro_video: vid,

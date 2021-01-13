@@ -207,6 +207,15 @@ router.get('/is-available-usname', async function (req, res) {
     res.redirect(url);
   })
 
+  router.get('/logout', async function (req, res) {
+    req.session.auth = false;
+    req.session.authUser = null;
+    req.session.retUrl = null;
+    console.log("Logging out");
+  
+    res.redirect('/');
+  })
+
   router.get('/profile',auth.auth, async function(req, res, next){
     const shopping_list=req.session.shopCart;
     const menuList=await menuCategory.getCateMenu();

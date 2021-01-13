@@ -70,6 +70,31 @@
         </div>
         <div class="course_des">
             <div class="des-txt">
+                <span>Giá niêm yết  </span>
+                <i class="fa fa-question-circle des-icon" aria-hidden="true"></i>
+            </div>
+            <div class="des-detail">
+                <div class="slidecontainer">
+                <input type="range" min="0" max="1000000" value="699000" class="slider" id="myRange">
+                <span>Giá:</span><input id="demo" name="price">
+                </div>
+                <script>
+                    var slider = $('#myRange');
+                    var output = $('#demo');
+                    output.val(slider.val());
+
+                    slider.on('input',function() {
+                        output.val(slider.val());
+                    })
+
+                    output.on('input',function() {
+                        slider.val(output.val());
+                    })
+                </script>
+            </div>
+        </div>
+        <div class="course_des">
+            <div class="des-txt">
                 <span>Lợi ích khóa học  </span>
                 <i class="fa fa-question-circle des-icon" aria-hidden="true"></i>
             </div>
