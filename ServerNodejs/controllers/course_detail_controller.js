@@ -6,14 +6,6 @@ const menuCategory=require('../models/category-menu.model');
 
 const router = express.Router();
 
-router.get("/le-tham-duong", (req, res) => {
-  const returnObject = courses_detail_Model.all();
-  res.render("partials/course_detail", {
-    object: returnObject,
-    layout: 'CourseDetail.hbs',
-  });
-});
-
 router.get("/course-detail/:id", async function (req, res) {
   const shopping_list=req.session.shopCart;
   const menuList=await menuCategory.getCateMenu();
@@ -55,7 +47,6 @@ router.get("/course-detail/:id", async function (req, res) {
 
   let id = req.params.id;
   await course_detail_Model.increaseView(id);
-  const returnObject = courses_detail_Model.all();
 
   const course_detail = await courses_detail_Model.singleFromSql(id);
   categoryModel.checkisHaving(req.session.cart,course_detail);
@@ -111,6 +102,9 @@ router.get("/course-detail/:id", async function (req, res) {
   else
     stars.push({'i' : 5, 'stars' : all5Stars, 'percent' : all5Stars*100/allStars}, {'i' : 4, 'stars' : all4Stars, 'percent' : all4Stars*100/allStars}, {'i' : 3, 'stars' : all3Stars, 'percent' : all3Stars*100/allStars}, {'i' : 2, 'stars' : all2Stars, 'percent' : all2Stars*100/allStars}, {'i' : 1, 'stars' : all1Stars*100, 'percent' : all1Stars/allStars});
   let overallStar = (all5Stars*5 + all4Stars*4 + all3Stars*3 + all2Stars*2 + all1Stars*1)/allStars;
+  if (allStars === 0)
+    overallStar = 0;
+
 
   const comments = await course_detail_Model.course_comment(id);
   for (const property of comments) {
@@ -121,7 +115,6 @@ router.get("/course-detail/:id", async function (req, res) {
 
   res.render('partials/course_detail', {
     layout: 'CourseDetail.hbs',
-    object: returnObject,
     course_detail: course_detail[0],
     new_price,
     lecturer : lecturer[0],
