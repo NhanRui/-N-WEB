@@ -587,3 +587,11 @@ ul{
 #faActiveC{
   color: rgba(216, 1, 1, 0.986);
 }
+
+.container-top-5{
+  height: 500px;
+  width: 818px;
+  background-color: white;
+  margin-left: 70px;
+  border-radius: 10px;
+}

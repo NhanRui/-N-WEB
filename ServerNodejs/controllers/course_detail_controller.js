@@ -88,7 +88,7 @@ router.get("/course-detail/:id", async function (req, res) {
   }
   for (const property of chapters) {
     chapter_name.push({chapter_name : property.chapter_name, chapter_number : property.chapter_number});
-    videos.push({video_name : property.video_name, url : property.url, video_number : property.video_number, chapter_number : property.chapter_number, duration : property.video_duration.toString().toHHMMSS()});
+    videos.push({video_name : property.video_name, url : property.url, video_number : property.video_number, chapter_number : property.chapter_number, duration : (property.video_duration ? property.video_duration.toString().toHHMMSS() : 0)});
     videos_duration += property.video_duration;
   }
   videos_duration = videos_duration.toString().toHHMMSS();

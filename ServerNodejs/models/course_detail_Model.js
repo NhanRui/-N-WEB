@@ -221,7 +221,8 @@ module.exports = {
 
   async increaseView(courseID) {
     let sql = `select num_view from course where course_id='${courseID}'`;
-    const[result, fields] = await db.load(sql);
+    const [result, fields] = await db.load(sql);
+    console.log(+result[0].num_view);
     let views = +result[0].num_view + 1;
     await db.patch({'num_view' : views}, {'course_id' : courseID}, 'course')
   }

@@ -30,12 +30,12 @@
                         <div class="stars-outer">
                             <div class="stars-inner"></div>
                         </div>
+                        <span class="number-rating"><b>{{../overallStar}}</b> ({{../comments.length}})</span>
                     </div>
                 </div>
                 <script>
                     var ob_rating = "{{{../object.product_ID}}}_vd";
-                    document.addEventListener('DOMContentLoaded', getRatings({{ ../object.rating_stars }}, ob_rating))
-                    console.log({{ object.rating_stars }});
+                    document.addEventListener('DOMContentLoaded', getRatings({{../overallStar}}, ob_rating));
                 </script>
                 <!--về sau tham số là tên product-->
 
@@ -245,6 +245,12 @@
     </div>
 </div>
 {{/with}}
+<div class="container-top-5">
+    {{>product_top_5}}
+    {{>product_top_5}}
+    {{>product_top_5}}
+    {{>product_top_5}}
+</div>
 <div class="footer">
     {{>footer-index}}
 </div>
