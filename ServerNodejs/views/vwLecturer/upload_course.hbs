@@ -13,7 +13,7 @@
             <input type="checkbox" name="complete" value="Hoàn thành" id="check">
             <span class="slider round"></span>
         </label>
-        <span>{{course.status}}</span>
+        <span id="sta">{{course.status}}</span>
     </div>
     <div>
         <div class="section" data-count-chapter="{{count_lession}}">
@@ -273,7 +273,7 @@
             x.parent('div').parent('div').children('#count-video').val(count.toString());
             $(this).parent('div').parent('div').parent('div').parent('div').remove();
         })
-        if($('.switch').parent('label').next().html()==='Chưa hoàn thành'){
+        if($('#sta').html()==='Chưa hoàn thành'){
             //do nothing
         }else{
             $('#check').attr('checked','true');

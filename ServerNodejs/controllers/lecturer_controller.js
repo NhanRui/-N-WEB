@@ -309,11 +309,16 @@ router.post('/:courseid',async function(req,res){
       flag+=(+req.body.count[i]);
     }
   }
+  
+  var date = Date.now();
+  var update = moment(date).format("YYYY-MM-DD");
+
   const patch={
     course_id: id,
-    status: req.body.complete || 'Chưa hoàn thành'
+    status: req.body.complete || 'Chưa hoàn thành',
+    update_date: update
   };
-  console.log(patch);
+  //console.log(patch);
   await lecturerModel.patchStatus(patch);
   req.session.ll = newses;
   res.redirect(`/lecturer/${id}`);
