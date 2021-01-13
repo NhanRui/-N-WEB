@@ -4,7 +4,12 @@ const router = express.Router();
 const {paginate}=require('../config/default.json');
 const menuCategory=require('../models/category-menu.model');
 
+router.get('/keyword/',async function (req, res){
+  return res.redirect(req.headers.referer);
+})
+
 router.get('/keyword/:txt',async function (req, res){
+  const txtSearch=req.params.txt;
   const shopping_list=req.session.shopCart;
   const menuList=await menuCategory.getCateMenu();
   const submenuList=await menuCategory.getCateSubMenu();
@@ -43,7 +48,6 @@ router.get('/keyword/:txt',async function (req, res){
     }
   }
 
-  const txtSearch=req.params.txt
   //chưa xong
   const page=req.query.page || 1;
   const previousPage=+page-1;

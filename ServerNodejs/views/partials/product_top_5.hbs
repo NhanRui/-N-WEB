@@ -1,14 +1,15 @@
 
         <div class="card-product">
-                <!--{{#if IsBuy}}-->
-                <!--{{else}}-->
+                <div class="stt-top-5"><i class="fas fa-crown"></i> {{stt}}</div>
+                {{#if IsBuy}}
+                {{else}}
                 <form action="/cart/add" method="POST" class="favourite_course_container">
                     <input type="hidden" value="{{course_id}}" name="id">
                     <button type="submit">
                         <i class="fa_ca far fa-heart" id="{{#if IsHaving}}faActive{{/if}}"></i>
                     </button>
                 </form>
-                <!--{{/if}}-->
+                {{/if}}
                 <a href="/course-detail/{{course_id}}">
                 <div class="container_slide_up">
                     <div class="item__overlay">
@@ -20,13 +21,13 @@
                         <p class="number-students">{{category_name}}</p>
                     </div>
                 </div>
-                <!--{{#if IsHot}}-->
+                {{#if IsHot}}
                 <div class="new_container">
                     <div class="for_new">
                         <p class="new_tittle"><i class="fas fa-fire"> HOT</i></p>
                     </div>
                 </div>
-                <!--{{/if}}-->
+                {{/if}}
                 </a>
                 <a href="/course-detail/{{course_id}}">
                 <div class="img-with-deal">
@@ -44,11 +45,11 @@
                         </div>
                         <span class="number-rating"><b>{{overall_star}}</b> ({{number_rating}})</span><!--Về sau thay đổi star và number people-->
                     </div>
-                    <!--{{#if IsNew}}-->
+                    {{#if IsNew}}
                     <div class="container-for-new">
                         <p>NEW</p>
                     </div>
-                    <!--{{/if}}-->
+                    {{/if}}
                 </div>
                 <h4 class="card-title">{{course_name}}</h4>
                 </a>
@@ -59,12 +60,12 @@
                 <div class="card-body">
                     <a href="/course-detail/{{course_id}}" class="card-text-author">
                         <img class="author-img" src="{{author_image}}" alt="">
-                        <p class="author-name">{{author_name}}sadsa</p>
+                        <p class="author-name">{{author_name}}</p>
                     </a>
                     <a href="/course-detail/{{course_id}}">
                     <div class="price_top5">
-                        <div class="real-price">{{format_number price}}324</div>
-                        <div class="reduce-price">{{format_number reduce_price}}324</div>
+                        <div class="real-price">{{format_number price}}</div>
+                        <div class="reduce-price">{{format_number reduce_price}}</div>
                     </div>
                     </a>
                 </div>

@@ -475,7 +475,7 @@ const list = [
         return numberOfitems;
       },
       async Top5ById(id){
-        const sql = `SELECT *,0 as stt
+        const sql = `SELECT *,0 as stt,0 as first
         FROM (
           SELECT U.name as author_name,U.avatar as author_image,TEMP3.course_id,TEMP3.deal_value,temp3.intro_image, temp3.number_student,temp3.number_rating,temp3.course_name,temp3.price,temp3.reduce_price,temp3.overall_star,temp3.categoty_id, 0 as isHaving,0 as IsBuy,0 as IsNew,0 as IsHot
                 FROM (
@@ -831,6 +831,32 @@ const list = [
         const [rows, fields] = await db.load(sql);
         return rows;
           //return list;countByCat_5star
+      },
+      async getCateId(id_course){
+        const sql = `SELECT categoty_id FROM course WHERE course_id='${id_course}'`;
+        const [rows, fields] = await db.load(sql);
+        return rows[0];
+          //return list;countByCat_5star
+      },
+      setListStt(list)
+      {
+        let count=0;
+        for (const item of list)
+        {
+          count++;
+          item.stt=count;
+        }
+      },
+      setListFirst(list)
+      {
+        for (const item of list)
+        {
+          if (item.stt===1)
+          {
+            item.first=1;
+            break;
+          }
+        }
       },
       all_top8(){
           return list_top8;
