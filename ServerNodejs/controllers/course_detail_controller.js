@@ -69,6 +69,7 @@ router.get("/course-detail/:id", async function (req, res) {
 
   let num_of_students = await course_detail_Model.getAllStudents(id);
   let num_of_courses = await course_detail_Model.getAllCourse(id);  
+  let num_of_lessons = await course_detail_Model.getAllLessons(id);
   let all5Stars = await course_detail_Model.getAll5Stars(id);
   let all4Stars = await course_detail_Model.getAll4Stars(id);
   let all3Stars = await course_detail_Model.getAll3Stars(id);
@@ -97,6 +98,7 @@ router.get("/course-detail/:id", async function (req, res) {
     lecturer : lecturer[0],
     num_of_students,
     num_of_courses,
+    num_of_lessons,
     videos_duration,
     stars,
     overallStar,

@@ -212,4 +212,10 @@ module.exports = {
     const [result, fields] = await db.load(sql);
     return result[0].c;
   },
+
+  async getAllLessons(courseID) {
+    let sql = `select count(*) as c from lesson_list join video on lesson_list.list_id = video.list_id where lesson_list.course_id = '${courseID}'`;
+    const [result, fields] = await db.load(sql);
+    return result[0].c;
+  }
 };
