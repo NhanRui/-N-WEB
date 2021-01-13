@@ -132,7 +132,7 @@ module.exports = {
   },
 
   async singleFromSql(courseID) {
-    let sql = `select * from course where course_id = '${courseID}'`;
+    let sql = `select *,0 as IsHaving,0 as IsBuy,0 IsInCart from course where course_id = '${courseID}'`;
     const [rows, fields] = await db.load(sql);
     return rows;
   },

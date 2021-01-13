@@ -51,7 +51,14 @@
                                     <span>Bài {{stt}}: {{video_name}}</span>
                                 </div>
                             </div>
-                            <div class="yt_duration">10:00</div>
+                            <div class="yt_duration" id="duration_text_{{video_id}}"></div>
+                            <script>
+                                  var div = document.getElementById('duration_text_{{{video_id}}}');
+                                  var minute = Math.floor({{video_duration}}/60);
+                                  var second = {{video_duration}}-minute*60;
+                                  var format_time=minute+":"+second;
+                                  div.innerHTML += format_time;
+                            </script>
                         </div>
                     </a>
                     {{/each}}

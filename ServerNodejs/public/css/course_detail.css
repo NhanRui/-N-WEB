@@ -42,7 +42,7 @@ a {
   border-radius: 10px;
   width: 60vw;
   text-align: left;
-  height: 28vh;
+  height: auto;
   padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
@@ -183,11 +183,22 @@ a {
     height: 25px;
     font-size: 24px !important;
     color: #848282;
-    border-radius: 50%;
 }
 
-.favorite:hover {
+.favorite:hover button i{
     background-color: #eef1f2;
+    border-radius: 50%;
+    color: black;
+}
+
+.favorite button{
+  background: none;
+  outline: none;
+  border: none; padding: 5px;
+}
+
+.favorite button i{
+  padding: 5px;
 }
 
 .payment-buttons {
@@ -518,4 +529,8 @@ ul{
 .category-label-item
 {
   margin-top: -10px;
+}
+
+#faActiveC{
+  color: rgba(216, 1, 1, 0.986);
 }

@@ -103,7 +103,7 @@ app.use('/', require('./controllers/course_detail_controller'));
 app.use('/cart/',auth.auth,require('./controllers/cart_fa_controller'));
 
 app.use('/account',require('./controllers/account.route'));
-app.use('/search',auth.authIndex,require('./controllers/product_search_controller'));
+app.use('/search',/*auth.authIndex,*/require('./controllers/product_search_controller'));
 app.use('/watch-video'/*,auth.auth*/,require('./controllers/video_controller'));
 app.get('/signin', function (req, res) {
   res.render('home', { layout: 'SignIn.hbs' });

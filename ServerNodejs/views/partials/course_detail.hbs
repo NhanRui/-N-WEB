@@ -193,13 +193,35 @@
                 <span class="current-price">{{../new_price}}&nbsp;₫</span>
             </div>
             <div class="favorite">
-                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                {{#if IsBuy}}
+                {{else}}
+                <form action="/cart/add" method="POST">
+                    <input type="hidden" value="{{course_id}}" name="id">
+                    <button type="submit">
+                        <a href="#"><i class="far fa-heart" id="{{#if IsHaving}}faActiveC{{/if}}"></i></a>
+                    </button>
+                </form>
+                {{/if}}
             </div>
         </div>
         <div class="payment-buttons">
-            <button type="submit" class="buy-now-btn">MUA NGAY</button>
-            <button type="submit" class="add-cart-btn">THÊM GIỎ HÀNG</button>
+            {{#if IsBuy}}
+            <a href="/watch-video/{{course_id}}/1/1" class="buy-now-btn">Bắt đầu học tập</a>
+            {{else}}
+            <form action="/cart/addCartNow" method="POST">
+                <input type="hidden" value="{{course_id}}" name="id">
+                <button type="submit" class="buy-now-btn">MUA NGAY</button>
+            </form>
+            <form action="/cart/addCart" method="POST">
+                <input type="hidden" value="{{course_id}}" name="id">
+                {{#if IsInCart}}
+                <button type="submit" class="add-cart-btn">TỚI GIỎ HÀNG</button>
+                {{else}}
+                <button type="submit" class="add-cart-btn">THÊM GIỎ HÀNG</button>
+                {{/if}}
+            </form>
             <button type="submit" class="instruction-btn">TƯ VẤN</button>
+            {{/if}}
         </div>
         <div class="ship-area">
             <p class="ship-item"><i class="fa fa-percent" aria-hidden="true"></i>Giảm 10% khi thanh toán online (tối đa

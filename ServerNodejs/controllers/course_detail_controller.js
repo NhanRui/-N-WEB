@@ -20,10 +20,19 @@ router.get("/course-detail/:id", async function (req, res) {
   const submenuList=await menuCategory.getCateSubMenu();
   const allListMenu=[];
   const items=req.session.cart;
+  const listHot=await categoryModel.all();
+  const listNew=await categoryModel.getNewList();
   for (const i of menuList)
   {
     const menu_list=await categoryModel.allById(i.category_id);
     categoryModel.checkIsHaving(items,menu_list);
+    if (req.session.authUser!=null)
+    {
+      const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+      await categoryModel.checkBill(menu_list,listBuy);
+    }
+    await categoryModel.checkHot(menu_list,listHot);
+    await categoryModel.checkNew(menu_list,listNew);
     const item={
       menu: i.category_id,
       name: i.category_name,
@@ -48,6 +57,11 @@ router.get("/course-detail/:id", async function (req, res) {
   const returnObject = courses_detail_Model.all();
 
   const course_detail = await courses_detail_Model.singleFromSql(id);
+  categoryModel.checkisHaving(req.session.cart,course_detail);
+  const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+  await categoryModel.checkBill(course_detail,listBuy);
+  await categoryModel.checkIsInCart(course_detail,req.session.shopCart);
+  console.log(course_detail);
   const lecturer = await courses_detail_Model.course_lecturer(id);
 
   let new_price = (course_detail[0].price * course_detail[0].deal_value / 100);

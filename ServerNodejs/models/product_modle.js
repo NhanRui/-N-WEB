@@ -737,6 +737,30 @@ const list = [
         }
         return;
       },
+      async checkIsInCart(list,listCart){
+        for (i=0;i<listCart.length;i++)
+        {
+          for (j=0;j<list.length;j++)
+          {
+            if (list[j].course_id===listCart[i].course_id)
+            {
+              list[j].IsInCart=1;
+              break;
+            }
+          }
+        }
+        return;
+      },
+      async checkBillById(id,listBuy){
+        for (i=0;i<listBuy.length;i++)
+        {
+          if (id===listBuy[i].course_id)
+          {
+            return true;
+          }
+        }
+        return false;
+      },
       async checkHot(list,listHot){
         for (i=0;i<listHot.length;i++)
         {
