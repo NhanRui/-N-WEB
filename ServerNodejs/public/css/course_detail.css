@@ -22,7 +22,7 @@ body {
   justify-content: space-around;
   font-size: 14px;
   max-width: 300px;
-  margin-left: 5vh;
+  margin-left: 10vh;
 }
 
 li {
@@ -140,7 +140,7 @@ a {
     width: 25vw;
     position: fixed;
     margin-left: 63%;
-    margin-top: -28vh;
+    margin-top: -21vh;
 }
 
 .intro-img img {
@@ -209,6 +209,10 @@ a {
     margin-bottom: 20px;
 }
 
+.buy_form{
+  width: 100%;
+}
+
 .buy-now-btn {
     width: 100%;
     border: none;
@@ -220,11 +224,40 @@ a {
     margin-bottom: 10px;
 }
 
+.learn-now-btn {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(221, 31, 31);
+  outline: none;
+  height: 48px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.learn-now-a {
+  color: white;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.learn-now-a:hover {
+  color: white;
+}
+
+.cart_form {
+  flex: 1;
+}
+
 .add-cart-btn {
     height: 48px;
     border-radius: 3px;
     border: 1px solid #d0d0d0;
-    flex: 1;
+    width: 98%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -256,6 +289,26 @@ a {
     cursor: pointer;
     text-decoration: none;
     background-color: #fff;
+}
+
+.in_cart {
+  height: 48px;
+  width: 98%;
+  text-transform: uppercase;
+  border-radius: 3px;
+  border: 1px solid red;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -.2px;
+  text-align: center;
+  color: red;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #fff;
 }
 
 .add-cart-btn + .instruction-btn {

@@ -54,14 +54,17 @@ router.get("/course-detail/:id", async function (req, res) {
   }
 
   let id = req.params.id;
+  await course_detail_Model.increaseView(id);
   const returnObject = courses_detail_Model.all();
 
   const course_detail = await courses_detail_Model.singleFromSql(id);
   categoryModel.checkisHaving(req.session.cart,course_detail);
-  const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
-  await categoryModel.checkBill(course_detail,listBuy);
-  await categoryModel.checkIsInCart(course_detail,req.session.shopCart);
-  console.log(course_detail);
+  if (req.session.authUser!=null)
+    {
+    const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+    await categoryModel.checkBill(course_detail,listBuy);
+    await categoryModel.checkIsInCart(course_detail,req.session.shopCart);
+    }
   const lecturer = await courses_detail_Model.course_lecturer(id);
 
   let new_price = (course_detail[0].price * course_detail[0].deal_value / 100);
@@ -72,11 +75,23 @@ router.get("/course-detail/:id", async function (req, res) {
   const chapter_name = [];
   const videos = [];
   let videos_duration = 0;
+  String.prototype.toHHMMSS = function () {
+    var sec_num = parseInt(this, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    return hours+':'+minutes+':'+seconds;
+  }
   for (const property of chapters) {
     chapter_name.push({chapter_name : property.chapter_name, chapter_number : property.chapter_number});
-    videos.push({video_name : property.video_name, url : property.url, video_number : property.video_number, chapter_number : property.chapter_number});
+    videos.push({video_name : property.video_name, url : property.url, video_number : property.video_number, chapter_number : property.chapter_number, duration : property.video_duration.toString().toHHMMSS()});
     videos_duration += property.video_duration;
   }
+  videos_duration = videos_duration.toString().toHHMMSS();
   let lesson = chapter_name.filter(function({chapter_number}) {
     return !this.has(chapter_number) && this.add(chapter_number);
   }, new Set)

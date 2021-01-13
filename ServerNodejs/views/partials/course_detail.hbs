@@ -95,6 +95,9 @@
                                 <span><i class="fa fa-play-circle" aria-hidden="true"></i>Bài {{v.video_number}}:
                                     {{v.video_name}}</span>
                             </div>
+                            <div class="lesson_duration">
+                                <span>{{v.duration}}</span>
+                            </div>
                         </div>
                         {{/when}}
                         {{/each}}
@@ -188,10 +191,16 @@
             <img src="{{intro_image}}" alt="course-intro-image">
         </div>
         <div class="under-intro-img">
+            {{#if IsBuy}}
+            <div class="price">
+                <span>Đã sở hữu</span>
+            </div>
+            {{else}}
             <div class="price">
                 <span class="old-price">{{price}}&nbsp;₫</span>
                 <span class="current-price">{{../new_price}}&nbsp;₫</span>
             </div>
+            {{/if}}
             <div class="favorite">
                 {{#if IsBuy}}
                 {{else}}
@@ -206,16 +215,18 @@
         </div>
         <div class="payment-buttons">
             {{#if IsBuy}}
-            <a href="/watch-video/{{course_id}}/1/1" class="buy-now-btn">Bắt đầu học tập</a>
+            <div class="learn-now-btn">
+            <a class="learn-now-a" href="/watch-video/{{course_id}}/1/1">Bắt đầu học tập</a>
+            </div>
             {{else}}
-            <form action="/cart/addCartNow" method="POST">
+            <form class="buy_form" action="/cart/addCartNow" method="POST">
                 <input type="hidden" value="{{course_id}}" name="id">
                 <button type="submit" class="buy-now-btn">MUA NGAY</button>
             </form>
-            <form action="/cart/addCart" method="POST">
+            <form class="cart_form" action="/cart/addCart" method="POST">
                 <input type="hidden" value="{{course_id}}" name="id">
                 {{#if IsInCart}}
-                <button type="submit" class="add-cart-btn">TỚI GIỎ HÀNG</button>
+                <button class="in_cart" type="submit" class="add-cart-btn">TỚI GIỎ HÀNG</button>
                 {{else}}
                 <button type="submit" class="add-cart-btn">THÊM GIỎ HÀNG</button>
                 {{/if}}

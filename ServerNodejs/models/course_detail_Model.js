@@ -217,5 +217,12 @@ module.exports = {
     let sql = `select count(*) as c from lesson_list join video on lesson_list.list_id = video.list_id where lesson_list.course_id = '${courseID}'`;
     const [result, fields] = await db.load(sql);
     return result[0].c;
+  },
+
+  async increaseView(courseID) {
+    let sql = `select num_view from course where course_id='${courseID}'`;
+    const[result, fields] = await db.load(sql);
+    let views = +result[0].num_view + 1;
+    await db.patch({'num_view' : views}, {'course_id' : courseID}, 'course')
   }
 };
