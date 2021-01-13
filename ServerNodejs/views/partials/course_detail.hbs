@@ -25,7 +25,7 @@
             </div>
             <div class="item-quick">
 
-                <div class="{{../object.product_ID}}">
+                <div class="{{../object.product_ID}}_vd">
                     <div class="wrap-stars-menu">
                         <div class="stars-outer">
                             <div class="stars-inner"></div>
@@ -33,8 +33,8 @@
                     </div>
                 </div>
                 <script>
-                    var ob_rating = "{{{object.product_ID}}}";
-                    document.addEventListener('DOMContentLoaded', getRatings({{ object.rating_stars }}, ob_rating))
+                    var ob_rating = "{{{../object.product_ID}}}_vd";
+                    document.addEventListener('DOMContentLoaded', getRatings({{ ../object.rating_stars }}, ob_rating))
                     console.log({{ object.rating_stars }});
                 </script>
                 <!--về sau tham số là tên product-->
@@ -216,7 +216,7 @@
         <div class="payment-buttons">
             {{#if IsBuy}}
             <div class="learn-now-btn">
-            <a class="learn-now-a" href="/watch-video/{{course_id}}/1/1">Bắt đầu học tập</a>
+            <a class="learn-now-a" href="/watch-video/{{course_id}}/1/1"><i class="fas fa-play-circle"></i> Bắt đầu học tập</a>
             </div>
             {{else}}
             <form class="buy_form" action="/cart/addCartNow" method="POST">
