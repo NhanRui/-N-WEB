@@ -113,8 +113,19 @@ router.get("/course-detail/:id", async function (req, res) {
     property['user_avatar'] = user.avatar;
   }
 
-  /*list_top5=await categoryModel.Top5ById(2);*/
-  //console.log(list_top5);
+  let catId=await categoryModel.getCateId(id);
+  console.log(catId);
+  const list_top5=await categoryModel.Top5ById(catId.categoty_id);
+  categoryModel.setListStt(list_top5);
+  if (req.session.authUser!=null)
+  {
+    const listBuy=await categoryModel.getBuyList(req.session.authUser.user_id);
+    await categoryModel.checkBill(list_top5,listBuy);
+    await categoryModel.checkisHaving(req.session.cart,list_top5);
+  }
+  await categoryModel.checkHot(list_top5,listHot);
+  await categoryModel.checkNew(list_top5,listNew);
+  categoryModel.setListFirst(list_top5);
   res.render('partials/course_detail', {
     layout: 'CourseDetail.hbs',
     course_detail: course_detail[0],
@@ -136,6 +147,7 @@ router.get("/course-detail/:id", async function (req, res) {
     menuList: menuList,
     empty_menu: menuList.length!==0,
     allListMenu: allListMenu,
+    list_top5
   })
 })
 

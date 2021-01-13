@@ -660,3 +660,16 @@ ul{
   margin-left: 70px;
   padding-bottom: 20px;
 }
+
+.stt-top-5{
+  position: absolute;
+  background-color: rgb(241, 241, 74);
+  color: white;
+  padding: 3px 5px 3px 5px;
+  border-radius: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  z-index: 1;
+  font-weight: bold;
+  margin-left: 60px;
+  margin-top: 7px;
+}
