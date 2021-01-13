@@ -136,4 +136,32 @@ router.get('/category/delete/:id', async function(req,res){
   res.json(true);
 })
 
+router.get('/courses',async function(req,res){
+  const sql='select course_id,course_name from course';
+  const [rows,fields] = await db.load(sql);
+  console.log(rows);
+  res.render('vwAdmin/manageCourse',{
+    layout: './../vwAdmin/adminLayout',
+    cou: rows,
+    cou_empty: rows.length === 0,
+  })
+})
+
+router.get('/course/delete/:id', async function(req,res){
+  const condition = {course_id: req.params.id};
+  const [rows,fields] = await db.load(`select list_id from lesson_list where course_id ='${req.params.id}`);
+  for(var i=0;i<rows.length;i++){
+    var temp = {list_id: rows[i].list_id};
+    await db.del(temp, video);
+  }
+  await db.del(condition,'lesson_list');
+  await db.del(condition,'favourite');
+  await db.del(condition,'bill');
+  // khoong bieet nen xoa final bill ko, taij vi no con chua may bill khac nua
+  await db.del(condition,'shopping_cart');
+  await db.del(condition,'star_rating');
+  await db.del(condition, 'course');
+  res.json(true);
+})
+
 module.exports = router;
