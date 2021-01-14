@@ -217,6 +217,14 @@ router.get('/is-available-usname', async function (req, res) {
   })
 
   router.get('/profile',auth.auth, async function(req, res, next){
+    if (req.session.authUser.role===1)
+    {
+        return res.redirect('/lecturer');
+    }
+    if (req.session.authUser.role===2)
+    {
+        return res.redirect('/admin');
+    }
     const shopping_list=req.session.shopCart;
     const menuList=await menuCategory.getCateMenu();
     const submenuList=await menuCategory.getCateSubMenu();
@@ -272,6 +280,14 @@ router.get('/is-available-usname', async function (req, res) {
   })
 
   router.get('/wishlist',auth.auth, async function(req, res){
+    if (req.session.authUser.role===1)
+    {
+        return res.redirect('/lecturer');
+    }
+    if (req.session.authUser.role===2)
+    {
+        return res.redirect('/admin');
+    }
     const shopping_list=req.session.shopCart;
     const menuList=await menuCategory.getCateMenu();
     const submenuList=await menuCategory.getCateSubMenu();
