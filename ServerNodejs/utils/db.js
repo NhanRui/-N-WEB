@@ -35,6 +35,7 @@ module.exports = {
                     (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                     FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                     GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+        WHERE status='Hoàn thành' AND active=0
     ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id
     WHERE U.role=1 AND temp3.categoty_id=${id}`
     return promisePool.query(sql);
@@ -53,6 +54,7 @@ module.exports = {
                             (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                             FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                             GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+                WHERE status='Hoàn thành' AND active=0
             ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) AS temp4 JOIN category ct ON temp4.categoty_id = ct.category_id
     ) as temp5
     WHERE priority>0
@@ -72,6 +74,7 @@ module.exports = {
                         (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                         FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                         GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+            WHERE status='Hoàn thành' AND active=0
         ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) AS temp4 JOIN category ct ON temp4.categoty_id = ct.category_id
         WHERE ct.parent_id=${id}
         LIMIT ${paginate.limit} offset ${offset}`
@@ -90,6 +93,7 @@ module.exports = {
                         (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                         FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                         GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+            WHERE status='Hoàn thành' AND active=0
         ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) AS temp4 JOIN category ct ON temp4.categoty_id = ct.category_id
         WHERE ct.category_id=${id}
         LIMIT ${paginate.limit} offset ${offset}`
@@ -107,6 +111,7 @@ module.exports = {
                         (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                         FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                         GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+            WHERE status='Hoàn thành' AND active=0
         ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) AS temp4 JOIN category ct ON temp4.categoty_id = ct.category_id
         WHERE ct.category_id=${id} AND temp4.overall_star${condition}
         LIMIT ${paginate.limit} offset ${offset}`;
@@ -123,6 +128,7 @@ module.exports = {
                               (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                               FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                               GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+                  WHERE status='Hoàn thành' AND active=0
               ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) AS temp4 JOIN category ct ON temp4.categoty_id = ct.category_id
               WHERE ct.category_id=${id} AND (temp4.overall_star${condition} OR ISNULL(temp4.overall_star))
               LIMIT ${paginate.limit} offset ${offset}`;
@@ -141,6 +147,7 @@ module.exports = {
                         (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                         FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                         GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+            WHERE status='Hoàn thành' AND active=0
         ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) AS temp4 JOIN category ct ON temp4.categoty_id = ct.category_id
         WHERE ct.category_id=${id}
         ORDER BY temp4.${condition} ${mode}
@@ -159,6 +166,7 @@ module.exports = {
                         (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                         FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                         GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+            WHERE status='Hoàn thành' AND active=0
         ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) AS temp4 JOIN category ct ON temp4.categoty_id = ct.category_id
         WHERE ct.category_id=${id} AND temp4.overall_star${condition}`;//(temp4.overall_star${condition} OR ISNULL(temp4.overall_star))
       if (condition==="<3")
@@ -174,6 +182,7 @@ module.exports = {
                         (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                         FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                         GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+            WHERE status='Hoàn thành' AND active=0
         ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) AS temp4 JOIN category ct ON temp4.categoty_id = ct.category_id
         WHERE ct.category_id=${id} AND (temp4.overall_star${condition} OR ISNULL(temp4.overall_star))`;
       }
@@ -191,6 +200,7 @@ module.exports = {
                         (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                         FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                         GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+            WHERE status='Hoàn thành' AND active=0
         ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) AS temp4 JOIN category ct ON temp4.categoty_id = ct.category_id
         WHERE ct.category_id=${id}`
     return promisePool.query(sql);
@@ -209,6 +219,7 @@ module.exports = {
                         (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                         FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                         GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+            WHERE status='Hoàn thành' AND active=0
         ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) AS temp4 JOIN category ct ON temp4.categoty_id = ct.category_id
         WHERE ct.parent_id=${id} AND temp4.overall_star${condition}
         LIMIT ${paginate.limit} offset ${offset}`;
@@ -225,6 +236,7 @@ module.exports = {
                               (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                               FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                               GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+                  WHERE status='Hoàn thành' AND active=0
               ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) AS temp4 JOIN category ct ON temp4.categoty_id = ct.category_id
               WHERE ct.parent_id=${id} AND (temp4.overall_star${condition} OR ISNULL(temp4.overall_star))
               LIMIT ${paginate.limit} offset ${offset}`;
@@ -246,6 +258,7 @@ module.exports = {
                             (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                             FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                             GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+                WHERE status='Hoàn thành' AND active=0
             ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) AS temp4 JOIN category ct ON temp4.categoty_id = ct.category_id
     ) as temp5
     WHERE priority>0 AND overall_star${condition}
@@ -266,6 +279,7 @@ module.exports = {
                             (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                             FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                             GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+                WHERE status='Hoàn thành' AND active=0
             ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) AS temp4 JOIN category ct ON temp4.categoty_id = ct.category_id
     ) as temp5
     WHERE priority>0 AND (overall_star<3 OR ISNULL(overall_star))
@@ -287,6 +301,7 @@ module.exports = {
                         (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                         FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                         GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+            WHERE status='Hoàn thành' AND active=0
         ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) AS temp4 JOIN category ct ON temp4.categoty_id = ct.category_id
         WHERE ct.parent_id=${id}
         ORDER BY temp4.${condition} ${mode}
@@ -308,6 +323,7 @@ module.exports = {
                             (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                             FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                             GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+                WHERE status='Hoàn thành' AND active=0
             ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) AS temp4 JOIN category ct ON temp4.categoty_id = ct.category_id
     ) as temp5
     WHERE priority>0
@@ -327,6 +343,7 @@ module.exports = {
                         (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                         FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                         GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+            WHERE status='Hoàn thành' AND active=0
         ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) AS temp4 JOIN category ct ON temp4.categoty_id = ct.category_id
         WHERE ct.parent_id=${id}`
     return promisePool.query(sql);
@@ -345,6 +362,7 @@ module.exports = {
                             (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                             FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                             GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+                WHERE status='Hoàn thành' AND active=0
             ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) AS temp4 JOIN category ct ON temp4.categoty_id = ct.category_id
     ) as temp5
     WHERE priority>0`
@@ -362,6 +380,7 @@ module.exports = {
                         (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                         FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                         GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+            WHERE status='Hoàn thành' AND active=0
         ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) AS temp4 JOIN category ct ON temp4.categoty_id = ct.category_id
         WHERE ct.parent_id=${id} AND temp4.overall_star${condition}`;//(temp4.overall_star${condition} OR ISNULL(temp4.overall_star))
       if (condition==="<3")
@@ -377,6 +396,7 @@ module.exports = {
                         (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                         FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                         GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+            WHERE status='Hoàn thành' AND active=0
         ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) AS temp4 JOIN category ct ON temp4.categoty_id = ct.category_id
         WHERE ct.parent_id=${id} AND (temp4.overall_star${condition} OR ISNULL(temp4.overall_star))`;
       }
@@ -396,6 +416,7 @@ module.exports = {
                             (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                             FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                             GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+                WHERE status='Hoàn thành' AND active=0
             ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) AS temp4 JOIN category ct ON temp4.categoty_id = ct.category_id
     ) as temp5
     WHERE priority>0 AND overall_star${condition}`;
@@ -414,6 +435,7 @@ module.exports = {
                             (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                             FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                             GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+                WHERE status='Hoàn thành' AND active=0
             ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) AS temp4 JOIN category ct ON temp4.categoty_id = ct.category_id
     ) as temp5
     WHERE priority>0 AND (overall_star<3 OR ISNULL(overall_star))`;

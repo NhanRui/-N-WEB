@@ -43,6 +43,7 @@ module.exports={
                                         (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                                         FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                                         GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+                            WHERE status='Hoàn thành' AND active=0
                         ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) as temp4 join favourite s on temp4.course_id=s.course_id
                                         ) as temp5 join category c on temp5.categoty_id= c.category_id
         WHERE user_id='${id}'`
@@ -66,6 +67,7 @@ module.exports={
                         (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                         FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                         GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+            WHERE status='Hoàn thành' AND active=0
         ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id
         WHERE course_id='${id}'`;
         const [rows, fields] = await db.load(sql);
@@ -112,6 +114,7 @@ module.exports={
                                 (SELECT c.course_id,ROUND(AVG(s.num_star),1) as overall_star,COUNT(s.course_id) as number_rating
                                 FROM star_rating s RIGHT JOIN course c on s.course_id=c.course_id
                                 GROUP BY c.course_id) AS temp2 ON temp1.course_id=temp2.course_id
+                    WHERE status='Hoàn thành' AND active=0
                 ) AS TEMP3 JOIN USER U ON TEMP3.lecturer_id=U.user_id) as temp4 join shopping_cart s on temp4.course_id=s.course_id
                         WHERE s.user_id='${id}'`
         const [rows, fields] = await db.load(sql);
