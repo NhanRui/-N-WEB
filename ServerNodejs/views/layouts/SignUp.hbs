@@ -190,13 +190,13 @@
     function validateEmail() {
         var tk = document.getElementById('tk');
         var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  if (tk.value.match(validRegex)) {
-    return true;
-  } else {
-    alert("Invalid email address!");
-    tk.focus();
-    return false;
-  }
+        if (tk.value.match(validRegex)) {
+            return true;
+        } else {
+            alert("Invalid email address!");
+            tk.focus();
+            return false;
+        }
     }
 
     $(document).ready(function(){
