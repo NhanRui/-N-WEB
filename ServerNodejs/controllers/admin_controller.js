@@ -149,10 +149,15 @@ router.get('/courses',async function(req,res){
 
 router.get('/course/delete/:id', async function(req,res){
   const condition = {course_id: req.params.id};
-  const [rows,fields] = await db.load(`select list_id from lesson_list where course_id ='${req.params.id}`);
+  const [rows,fields] = await db.load(`select list_id from lesson_list where course_id ='${req.params.id}'`);
   for(var i=0;i<rows.length;i++){
     var temp = {list_id: rows[i].list_id};
-    await db.del(temp, video);
+    const[rows1, fields1] = await db.load(`select video_id from video where list_id='${temp.list_id}'`);
+    for(var j=0;j<rows1.length;j++){
+      var temp1={video_id: rows1[j].video_id};
+      await db.del(temp1,'complete_video');
+    }
+    await db.del(temp, 'video');
   }
   await db.del(condition,'lesson_list');
   await db.del(condition,'favourite');
