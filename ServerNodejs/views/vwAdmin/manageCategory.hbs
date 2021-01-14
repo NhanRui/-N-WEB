@@ -8,16 +8,23 @@
     tbody tr:nth-child(even){
         background-color:azure;
     }
+    .blur{
+        opacity:0.3;
+    }
+    .clear{
+        opacity: none;
+    }
     .card {
         display: none;
         position: fixed;
-        top:15px;
-        right:15px;
+        top:40vh;
+        left:90vh;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         max-width: 300px;
         margin: auto;
         font-family: arial;
         transition: 1s;
+        padding: 5px;
     }
 
     .card .title {
@@ -48,16 +55,30 @@
 
     .butn{
         position: relative;
-        bottom:10px;
-        left:100px;
+        bottom:0;
+        left:190px;
+    }
+
+    #on-top{
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background-color: whitesmoke;
+    }
+
+    #back{
+        position: fixed;
+        top: 1;
+        right:3;
     }
 </style>
 
 <h2>Danh mục</h2>
 <hr>
     <div class="row" style="display:block;">
-        <div class="card-header d-flex justify-content-between">
+        <div class="card-header d-flex justify-content-between" id="on-top">
           <h4 class="text-success">Hoạt động</h4>
+          <a name="" id="addCat" class="btn btn-primary" href="#" role="button">Thêm danh mục</a>
         </div>
         <div class="card-body" id="list-section" data-count="{{list_length}}">
             {{#if cat_empty}}
@@ -115,13 +136,23 @@
  </div>
 </footer>
 
-<div class="card">
-<form method="POST" action="/admin/category/add" autocomplete="off">
-  <h4><span>Category</span></h4>
-  <p>Name: <input type="text" name="name" id="name"></p>
+<div class="card" id="card1">
+<form method="POST" action="/admin/category/add" autocomplete="off" id="form1">
+  <h4><span>Sub-Category</span></h4>
+  <p>Name: <input type="text" name="name1" id="name"></p>
   <p class="title">Parent category: <span id="p"></span></p>
   <input type="hidden" name="parent_id" value="" id="parent_id">
-  <button type="submit" class="btn btn-primary butn" onclick="javascript: $('form').submit();">Submit</button>
+  <button class="btn btn-danger butt" id="back">Quay lại</button>
+  <button type="submit" class="btn btn-primary butn" onclick="javascript: $('#form1').submit();">Submit</button>
+</form>
+</div>
+
+<div class="card" id="card2">
+<form method="POST" action="/admin/category/addCat" autocomplete="off" id="form2">
+  <h4><span>Category</span></h4>
+  <p>Name: <input type="text" name="name2" id="name"></p>
+  <button class="btn btn-danger butt" id="back">Quay lại</button>
+  <button type="submit" class="btn btn-primary butn" onclick="javascript: $('#form2').submit();">Submit</button>
 </form>
 </div>
 
@@ -145,13 +176,29 @@
         })
         
         $('body').on('click','#add',function(e){
-            $('.card').css('display','block');
+            //$('body').addClass('blur');
+            //$('.card').css('opacity',1);
+            $('#card1').css('display','block');
             var id = $(this).attr('data-id');
             $('#p').html(id);
             $('#parent_id').val(id);
         })
         
-        $('form').on('submit',function(e){
+        $('#form1').on('submit',function(e){
+            $('#card1').css('display','none');
+        })
+
+        $('#addCat').on('click',function(e){
+            e.preventDefault();
+            $('#card2').css('display','block');
+        })
+
+        $('#form2').on('submit',function(e){
+            $('#card2').css('display','none');
+        })
+
+        $('#back').on('click',function(e){
+            e.preventDefault();
             $('.card').css('display','none');
         })
     })

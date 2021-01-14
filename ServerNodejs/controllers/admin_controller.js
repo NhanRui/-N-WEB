@@ -5,6 +5,7 @@ const userModel = require('../models/user.model');
 const moment = require('moment');
 const db = require('../utils/db');
 const uniqid = require('uniqid');
+const bcrypt = require('bcryptjs');
 router.use(express.static('public'));
 router.use(express.static('upload'));
 
@@ -97,6 +98,25 @@ router.get('/lecturer/open/:id', async function(req,res){
   res.json(user);
 })
 
+router.post('/lecturer/add',async function(req,res){
+  const hash = bcrypt.hashSync(req.body.password, 10);
+    const user = {
+        user_id: uniqid('U'),
+        name: req.body.name,
+        gender: null,
+        dob: null,
+        phone_number: null,
+        email: req.body.email,
+        password: hash,
+        password_lvl2: req.session.token || null,
+        avatar: '/images/male_lecturer.jpg' || null,
+        description: null,
+        role: 1
+    }
+    db.add(user,'user');
+    res.redirect('/admin/lecturer');
+})
+
 router.get('/lecturer/delete/:id', async function(req,res){
   const user = await userModel.singleById(req.params.id);
   user.role = 5;
@@ -123,8 +143,19 @@ router.post('/category/add',async function(req,res){
   const id= uniqid('CAT');
   const cat = {
     category_id : id,
-    category_name : req.body.name,
+    category_name : req.body.name1,
     parent_id : req.body.parent_id
+  }
+  await userModel.addCat(cat);
+  res.redirect('/admin/category');
+})
+
+router.post('/category/addCat',async function(req,res){
+  const id= uniqid('CAT');
+  const cat = {
+    category_id : id,
+    category_name : req.body.name2,
+    parent_id: null
   }
   await userModel.addCat(cat);
   res.redirect('/admin/category');
@@ -137,9 +168,8 @@ router.get('/category/delete/:id', async function(req,res){
 })
 
 router.get('/courses',async function(req,res){
-  const sql='select course_id,course_name from course';
+  const sql='select course_id,course_name from course where active=0';
   const [rows,fields] = await db.load(sql);
-  console.log(rows);
   res.render('vwAdmin/manageCourse',{
     layout: './../vwAdmin/adminLayout',
     cou: rows,
@@ -149,6 +179,8 @@ router.get('/courses',async function(req,res){
 
 router.get('/course/delete/:id', async function(req,res){
   const condition = {course_id: req.params.id};
+  const active = {active: 1};
+  /*
   const [rows,fields] = await db.load(`select list_id from lesson_list where course_id ='${req.params.id}'`);
   for(var i=0;i<rows.length;i++){
     var temp = {list_id: rows[i].list_id};
@@ -166,6 +198,8 @@ router.get('/course/delete/:id', async function(req,res){
   await db.del(condition,'shopping_cart');
   await db.del(condition,'star_rating');
   await db.del(condition, 'course');
+  */
+  await db.patch(active,condition,'course');
   res.json(true);
 })
 
