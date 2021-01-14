@@ -15,8 +15,10 @@ router.get("/", async function (req, res) {
       progress = 0;
     course['lecturer_name'] = lecturer.name;
     course['progress'] = progress;
+    course['IsDone']=(progress===100);
     courses.push(course);
   }
+  console.log(courses);
   res.render("partials/courses", {
     allCourses: courses,
     empty: courses.length === 0,
