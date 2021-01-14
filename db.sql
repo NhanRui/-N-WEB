@@ -11,7 +11,7 @@
  Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 14/01/2021 08:59:59
+ Date: 14/01/2021 14:14:48
 */
 
 SET NAMES utf8mb4;
@@ -37,6 +37,7 @@ CREATE TABLE `bill`  (
 -- ----------------------------
 -- Records of bill
 -- ----------------------------
+INSERT INTO `bill` VALUES ('U4fh2219r8kjqrmfcs', 'C01', 'B8d0rgo2iwokjwbef3s', 349500);
 INSERT INTO `bill` VALUES ('U4fh2219r8kjqrmfcs', 'C8d0rgop0kkjw5kjax', 'B8d0rgop0kkjw5wmkl', 300698);
 
 -- ----------------------------
@@ -96,6 +97,7 @@ CREATE TABLE `complete_video`  (
 INSERT INTO `complete_video` VALUES ('U8d0rgoojskj03tm75', 'V8d0rgo2k3okjut95c9');
 INSERT INTO `complete_video` VALUES ('U8d0rgoojskj03tm75', 'V8d0rgo2k3okjutz1vr');
 INSERT INTO `complete_video` VALUES ('U4fh2219r8kjqrmfcs', 'V8d0rgop0kkjw5rkyg');
+INSERT INTO `complete_video` VALUES ('U4fh2219r8kjqrmfcs', 'V8d0rgop0kkjw6uhqm');
 INSERT INTO `complete_video` VALUES ('Uswyrp45kkj5e5nrw', 'Vswyrp538kjfxfrsm');
 INSERT INTO `complete_video` VALUES ('Uswyrp45kkj5e5nrw', 'Vswyrp538kjfxfrxv');
 
@@ -120,6 +122,7 @@ CREATE TABLE `course`  (
   `create_date` date NULL DEFAULT NULL,
   `num_view` int(0) NULL DEFAULT NULL,
   `update_date` date NULL DEFAULT NULL,
+  `active` int(0) NULL DEFAULT 0,
   PRIMARY KEY (`course_id`) USING BTREE,
   INDEX `FK_course_lecturer_idx`(`lecturer_id`) USING BTREE,
   INDEX `FK_course_category_idx`(`categoty_id`) USING BTREE,
@@ -131,19 +134,19 @@ CREATE TABLE `course`  (
 -- ----------------------------
 -- Records of course
 -- ----------------------------
-INSERT INTO `course` VALUES ('C01', 'Bí quyết giao tiếp để thành công', 'Tiến sĩ Lê Thẩm Dương tiết lộ bí quyết giao tiếp để thành công', '/images/productTesting.png', 699000, 50, NULL, NULL, NULL, NULL, 'U8d0rgoojskj03tm75', '1', 'Hoàn thành', '2020-12-29', 2, '2021-01-14');
-INSERT INTO `course` VALUES ('C02', 'Học troll game', 'Tiến sĩ Lê Hoàng Phúc tiết lộ bí quyết giao tiếp để thành công', '/images/product_ID2.jpg', 123123, 50, NULL, NULL, NULL, NULL, 'U8d0rgoojskj03tm75', '2', 'Hoàn thành', '2020-12-29', 3, '2021-01-14');
-INSERT INTO `course` VALUES ('C03', 'Thành thạo ngôn ngữ lập trình C++', 'Thành thạo ngôn ngữ lập trình C++', '/images/product_ID1.jpg', 699000, 74, NULL, NULL, NULL, NULL, 'U8d0rgoojskj03tm75', '2', 'Hoàn thành', '2020-12-29', 0, '2021-01-14');
-INSERT INTO `course` VALUES ('C04', 'VBA - Giải pháp tối ưu công việc trên Excel', 'VBA - Giải pháp tối ưu công việc trên Excel', '/images/product_ID3.jpg', 599000, 70, NULL, NULL, NULL, NULL, 'U8d0rgoojskj03tm75', '5', 'Hoàn thành', '2020-12-29', 3, '2021-01-14');
-INSERT INTO `course` VALUES ('C07', 'Học Photoshop trọn bộ trong 7 ngày', 'Học Photoshop trọn bộ trong 7 ngày', '/images/product_ID7.png', 799000, 78, NULL, NULL, NULL, NULL, 'Uswyrp45kkj5e5nrw', '2', 'Hoàn thành', '2021-01-03', 0, '2021-01-14');
-INSERT INTO `course` VALUES ('C08', 'Nền tảng tiếng Anh cho người mới bắt đầu', 'Nền tảng tiếng Anh cho người mới bắt đầu', '/images/product_ID8.png', 749000, 76, NULL, NULL, NULL, NULL, 'Uswyrp45kkj5e5nrw', '6', 'Hoàn thành', '2021-01-03', 0, '2021-01-14');
-INSERT INTO `course` VALUES ('C09', 'Học thiết kế đồ họa trọn bộ 30 ngày', 'Học thiết kế đồ họa trọn bộ 30 ngày', '/images/product_ID9.jpg', 699000, 74, NULL, NULL, NULL, NULL, 'Uswyrp45kkj5e5nrw', '2', 'Hoàn thành', '2021-01-03', 0, '2021-01-14');
-INSERT INTO `course` VALUES ('C10', '85 chuyên đề Excel cơ bản đến nâng cao', '85 chuyên đề Excel cơ bản đến nâng cao', '/images/product_ID10.png', 599000, 70, NULL, NULL, NULL, NULL, 'Uswyrp45kkj5e5nrw', '5', 'Hoàn thành', '2021-01-03', 2, '2021-01-14');
-INSERT INTO `course` VALUES ('C11', 'Nghệ thuật bán hàng đỉnh cao', 'Nghệ thuật bán hàng đỉnh cao', '/images/product_ID12.jpg', 599000, 50, NULL, NULL, NULL, NULL, 'U8d0rgoojskj03tm75', '1', 'Hoàn thành', '2021-01-03', 1, '2021-01-14');
-INSERT INTO `course` VALUES ('C12', 'Học guitar đệm hát cấp tốc trong 30 ngày', 'Học guitar đệm hát cấp tốc trong 30 ngày', '/images/product_ID5.png', 599000, 50, NULL, NULL, NULL, NULL, 'Uswyrp45kkj5e5nrw', '1', 'Hoàn thành', '2021-01-03', 1, '2021-01-14');
-INSERT INTO `course` VALUES ('C8d0rgop0kkjw5kjax', 'LẬP TRÌNH IOS SWIFT', 'LẬP TRÌNH IOS SWIFT', '/upload/course/C8d0rgop0kkjw5kjax.jpg', 300698, 0, '<p>- IOS l&agrave; một hệ điều h&agrave;nh cho iPhone v&agrave; được Apple cập nhật li&ecirc;n tục. Kho&aacute; học sẽ cung cấp cho c&aacute;c bạn học vi&ecirc;n những kiến thức được cập nhật mới nhất để lập tr&igrave;nh tr&ecirc;n hệ điều h&agrave;nh iOS.<br />\r\n- Học vi&ecirc;n sẽ được t&igrave;m hiểu Swift - ng&ocirc;n ngữ lập tr&igrave;nh được Apple hỗ trợ ch&iacute;nh thức, song song với việc thực h&agrave;nh những kiến thức, kinh nghiệm l&agrave;m việc thực tế.<br />\r\n- Kho&aacute; học gồm 11 chương:<br />\r\n+ Chương 1 + 2: Giới thiệu tổng quan v&agrave; c&agrave;i đặt m&ocirc;i trường l&agrave;m việc.<br />\r\n+ Chương 3: L&agrave;m quen với ng&ocirc;n ngữ lập tr&igrave;nh Swift.<br />\r\n+ Chương 4 - 14: C&aacute;c ứng dụng cụ thể sẽ dẫn dắt c&aacute;c bạn qua những kiến thức từ căn bản đến phức tạp của iOS.<br />\r\n- Kiến thức trong to&agrave;n bộ kho&aacute; học được truyền tải theo phương ph&aacute;p thực h&agrave;nh l&agrave; ch&iacute;nh. Học vi&ecirc;n c&oacute; thể truy cập đầy đủ c&aacute;c nguồn t&agrave;i nguy&ecirc;n v&agrave; m&atilde; nguồn được đề cập trong c&aacute;c b&agrave;i giảng.</p>\r\n', NULL, 'Sau khoá học, học viên sẽ được trang bị những kiến thức vững chắc để có thể tự mình tạo ra những ứng dụng thực tế và tiếp cận những nguồn tài liệu nâng cao khác sau khoá học.\r\nĐạt được những tiêu chuẩn căn bản nhất của một lập trình viên iOS.\r\nCó đủ khả năng ứng tuyển vào các vị trí lập trình iOS (Fresher/ Junior).', 'Khoá học dành cho:\r\nCác bạn sinh viên muốn trang bị kiến thức về lập trình iOS để tìm kiếm một công việc phù hợp với mức lương cạnh tranh..\r\nCác lập trình viên đã có kiến thức và kinh nghiệm với những nền tảng khác muốn nghiên cứu thêm về iOS.\r\nCác bạn yêu thích và muốn bắt đầu làm quen với việc lập trình trên nền tảng iOS của Apple.', 'Uswyrp45kkj5e5nrw', '2', 'Hoàn thành', '2021-01-14', 1, '2021-01-14');
-INSERT INTO `course` VALUES ('Cswyrp498kjdsuj8s', 'Nhập môn lập trình Web', 'Web', '/upload/course/Cswyrp498kjdsuj8s.jpg', 699000, 100, '<p>Bạn l&agrave; người mới v&agrave; mu&ocirc;́n bước đ&acirc;̀u t&igrave;m hi&ecirc;̉u v&ecirc;̀ l&acirc;̣p tr&igrave;nh web?</p>\r\n\r\n<p>Bạn mu&ocirc;́n tự x&acirc;y dựng trang web cho sản ph&acirc;̉m của m&igrave;nh?</p>\r\n\r\n<p>Bạn mu&ocirc;́n t&igrave;m t&ograve;i học hỏi những đi&ecirc;̀u mới, chuy&ecirc;n m&ocirc;n mới?</p>\r\n\r\n<p>Bạn c&oacute; niềm đam m&ecirc; với bộ m&ocirc;n lập tr&igrave;nh web nhưng đang băn khoăn kh&ocirc;ng biết n&ecirc;n chọn kh&oacute;a học n&agrave;o?</p>\r\n\r\n<p>Đừng lo lắng! H&atilde;y đến với kh&oacute;a học &quot;Nhập m&ocirc;n l&acirc;p tr&igrave;nh web&quot; của ch&uacute;ng t&ocirc;i để học tất cả những điều căn bản nhất về lập tr&igrave;nh web.</p>\r\n\r\n<p>Kh&oacute;a học &quot;Nh&acirc;̣p m&ocirc;n l&acirc;̣p tr&igrave;nh Web&quot; sẽ cho bạn c&aacute;i nh&igrave;n t&ocirc;̉ng quan nh&acirc;́t v&ecirc;̀ l&acirc;̣p tr&igrave;nh web. Những y&ecirc;́u t&ocirc;́ gi&uacute;p bạn đưa ra quy&ecirc;́t định c&oacute; n&ecirc;n học l&acirc;̣p tr&igrave;nh web hay kh&ocirc;ng.</p>\r\n\r\n<p>Đồng thời kh&oacute;a học cũng giới thiệu c&aacute;ch thức sử dụng c&aacute;c c&ocirc;ng cụ đơn giản v&agrave; dễ d&ugrave;ng nhất để x&acirc;y dựng một trang web của ri&ecirc;ng bạn.</p>\r\n', NULL, 'Biết được lý do tại sao bạn nên học lập trình web mà không phải một môn lập trình nào khác.\r\nHiểu được lập trình web là gì và những kiến thức cơ bản nhất về lập trình web.', 'Những người mong muốn học lập trình web.\r\nHọc sinh, sinh viên khoa CNTT.\r\nHọc sinh, sinh viên có ngành khác mong muốn học hỏi cái mới.', 'Uswyrp45kkj5e5nrw', '1', 'Hoàn thành', '2021-01-01', 3, '2021-01-14');
-INSERT INTO `course` VALUES ('Cswyrp61kkj9sbfva', 'Lập trình backend cho website bằng PHP/Mysql theo mô hình MVC', 'Backend PHP MySQL', '/upload/course/Cswyrp61kkj9sbfva.jpg', 699000, 100, '<p>Điểm kh&aacute;c biệt của kh&oacute;a học n&agrave;y so với c&aacute;c kh&oacute;a học online kh&aacute;c c&ugrave;ng chủ đề lập tr&igrave;nh PHP l&agrave; g&igrave; vậy ?<br />\r\nKh&aacute;c người tr&igrave;nh b&agrave;y bạn ạ. M&igrave;nh nghĩ cũng ảnh hưởng một phần đ&oacute;, mỗi người một c&aacute;ch tr&igrave;nh b&agrave;y v&agrave; tiếp cận kh&aacute;c nhau, sẽ hợp với từng người kh&aacute;c nhau, hi vọng bạn v&agrave; m&igrave;nh &quot;&quot;tương th&iacute;ch&quot;&quot;. Hơn nữa m&igrave;nh tự tin ở phần l&agrave; rất chi tiết, m&igrave;nh nghĩ l&agrave; kh&ocirc;ng ai n&oacute;i chi tiết như thế bạn ạ, để đảm bảo l&agrave; bạn hiểu tận ng&oacute;c ng&aacute;ch v&agrave; bản chất của vấn đề. Einestern đ&atilde; n&oacute;i l&agrave; nếu bạn kh&ocirc;ng thể giải th&iacute;ch cho một đứa trẻ hiểu th&igrave; bạn cũng chẳng hiểu r&otilde; vấn đề. Bạn thử học nh&eacute;. &quot;</p>\r\n', NULL, 'Tự lập trình phần mềm phù hợp với nhu cầu và công việc cá nhân\r\nKiến thức ở khóa này là nền tảng cho khóa nâng cao sau này và các khóa về fullstact angular sẽ xuất bản tới', 'Sinh viên học về công nghệ thông tin\r\nNhững bạn chưa biết rõ bản chất của lập trình MVC\r\nNhững bạn muốn học về lập trình web\r\nNhững bạn muốn tự lập trình backend cho website của mình', 'Uswyrp45kkj5e5nrw', '2', 'Hoàn thành', '2020-12-31', 1, '2021-01-14');
+INSERT INTO `course` VALUES ('C01', 'Bí quyết giao tiếp để thành công', 'Tiến sĩ Lê Thẩm Dương tiết lộ bí quyết giao tiếp để thành công', '/images/productTesting.png', 699000, 50, NULL, NULL, NULL, NULL, 'U8d0rgoojskj03tm75', '1', 'Hoàn thành', '2020-12-29', 12, '2021-01-14', 0);
+INSERT INTO `course` VALUES ('C02', 'Học troll game', 'Tiến sĩ Lê Hoàng Phúc tiết lộ bí quyết giao tiếp để thành công', '/images/product_ID2.jpg', 123123, 50, NULL, NULL, NULL, NULL, 'U8d0rgoojskj03tm75', '2', 'Hoàn thành', '2020-12-29', 6, '2021-01-14', 0);
+INSERT INTO `course` VALUES ('C03', 'Thành thạo ngôn ngữ lập trình C++', 'Thành thạo ngôn ngữ lập trình C++', '/images/product_ID1.jpg', 699000, 74, NULL, NULL, NULL, NULL, 'U8d0rgoojskj03tm75', '2', 'Hoàn thành', '2020-12-29', 0, '2021-01-14', 0);
+INSERT INTO `course` VALUES ('C04', 'VBA - Giải pháp tối ưu công việc trên Excel', 'VBA - Giải pháp tối ưu công việc trên Excel', '/images/product_ID3.jpg', 599000, 70, NULL, NULL, NULL, NULL, 'U8d0rgoojskj03tm75', '5', 'Hoàn thành', '2020-12-29', 3, '2021-01-14', 0);
+INSERT INTO `course` VALUES ('C07', 'Học Photoshop trọn bộ trong 7 ngày', 'Học Photoshop trọn bộ trong 7 ngày', '/images/product_ID7.png', 799000, 78, NULL, NULL, NULL, NULL, 'Uswyrp45kkj5e5nrw', '2', 'Hoàn thành', '2021-01-03', 0, '2021-01-14', 0);
+INSERT INTO `course` VALUES ('C08', 'Nền tảng tiếng Anh cho người mới bắt đầu', 'Nền tảng tiếng Anh cho người mới bắt đầu', '/images/product_ID8.png', 749000, 76, NULL, NULL, NULL, NULL, 'Uswyrp45kkj5e5nrw', '6', 'Hoàn thành', '2021-01-03', 0, '2021-01-14', 0);
+INSERT INTO `course` VALUES ('C09', 'Học thiết kế đồ họa trọn bộ 30 ngày', 'Học thiết kế đồ họa trọn bộ 30 ngày', '/images/product_ID9.jpg', 699000, 74, NULL, NULL, NULL, NULL, 'Uswyrp45kkj5e5nrw', '2', 'Hoàn thành', '2021-01-03', 0, '2021-01-14', 0);
+INSERT INTO `course` VALUES ('C10', '85 chuyên đề Excel cơ bản đến nâng cao', '85 chuyên đề Excel cơ bản đến nâng cao', '/images/product_ID10.png', 599000, 70, NULL, NULL, NULL, NULL, 'Uswyrp45kkj5e5nrw', '5', 'Hoàn thành', '2021-01-03', 2, '2021-01-14', 0);
+INSERT INTO `course` VALUES ('C11', 'Nghệ thuật bán hàng đỉnh cao', 'Nghệ thuật bán hàng đỉnh cao', '/images/product_ID12.jpg', 599000, 50, NULL, NULL, NULL, NULL, 'U8d0rgoojskj03tm75', '1', 'Hoàn thành', '2021-01-03', 2, '2021-01-14', 0);
+INSERT INTO `course` VALUES ('C12', 'Học guitar đệm hát cấp tốc trong 30 ngày', 'Học guitar đệm hát cấp tốc trong 30 ngày', '/images/product_ID5.png', 599000, 50, NULL, NULL, NULL, NULL, 'Uswyrp45kkj5e5nrw', '1', 'Hoàn thành', '2021-01-03', 2, '2021-01-14', 0);
+INSERT INTO `course` VALUES ('C8d0rgop0kkjw5kjax', 'LẬP TRÌNH IOS SWIFT', 'LẬP TRÌNH IOS SWIFT', '/upload/course/C8d0rgop0kkjw5kjax.jpg', 300698, 0, '<p>- IOS l&agrave; một hệ điều h&agrave;nh cho iPhone v&agrave; được Apple cập nhật li&ecirc;n tục. Kho&aacute; học sẽ cung cấp cho c&aacute;c bạn học vi&ecirc;n những kiến thức được cập nhật mới nhất để lập tr&igrave;nh tr&ecirc;n hệ điều h&agrave;nh iOS.<br />\r\n- Học vi&ecirc;n sẽ được t&igrave;m hiểu Swift - ng&ocirc;n ngữ lập tr&igrave;nh được Apple hỗ trợ ch&iacute;nh thức, song song với việc thực h&agrave;nh những kiến thức, kinh nghiệm l&agrave;m việc thực tế.<br />\r\n- Kho&aacute; học gồm 11 chương:<br />\r\n+ Chương 1 + 2: Giới thiệu tổng quan v&agrave; c&agrave;i đặt m&ocirc;i trường l&agrave;m việc.<br />\r\n+ Chương 3: L&agrave;m quen với ng&ocirc;n ngữ lập tr&igrave;nh Swift.<br />\r\n+ Chương 4 - 14: C&aacute;c ứng dụng cụ thể sẽ dẫn dắt c&aacute;c bạn qua những kiến thức từ căn bản đến phức tạp của iOS.<br />\r\n- Kiến thức trong to&agrave;n bộ kho&aacute; học được truyền tải theo phương ph&aacute;p thực h&agrave;nh l&agrave; ch&iacute;nh. Học vi&ecirc;n c&oacute; thể truy cập đầy đủ c&aacute;c nguồn t&agrave;i nguy&ecirc;n v&agrave; m&atilde; nguồn được đề cập trong c&aacute;c b&agrave;i giảng.</p>\r\n', NULL, 'Sau khoá học, học viên sẽ được trang bị những kiến thức vững chắc để có thể tự mình tạo ra những ứng dụng thực tế và tiếp cận những nguồn tài liệu nâng cao khác sau khoá học.\r\nĐạt được những tiêu chuẩn căn bản nhất của một lập trình viên iOS.\r\nCó đủ khả năng ứng tuyển vào các vị trí lập trình iOS (Fresher/ Junior).', 'Khoá học dành cho:\r\nCác bạn sinh viên muốn trang bị kiến thức về lập trình iOS để tìm kiếm một công việc phù hợp với mức lương cạnh tranh..\r\nCác lập trình viên đã có kiến thức và kinh nghiệm với những nền tảng khác muốn nghiên cứu thêm về iOS.\r\nCác bạn yêu thích và muốn bắt đầu làm quen với việc lập trình trên nền tảng iOS của Apple.', 'Uswyrp45kkj5e5nrw', '2', 'Hoàn thành', '2021-01-14', 3, '2021-01-14', 0);
+INSERT INTO `course` VALUES ('Cswyrp498kjdsuj8s', 'Nhập môn lập trình Web', 'Web', '/upload/course/Cswyrp498kjdsuj8s.jpg', 699000, 100, '<p>Bạn l&agrave; người mới v&agrave; mu&ocirc;́n bước đ&acirc;̀u t&igrave;m hi&ecirc;̉u v&ecirc;̀ l&acirc;̣p tr&igrave;nh web?</p>\r\n\r\n<p>Bạn mu&ocirc;́n tự x&acirc;y dựng trang web cho sản ph&acirc;̉m của m&igrave;nh?</p>\r\n\r\n<p>Bạn mu&ocirc;́n t&igrave;m t&ograve;i học hỏi những đi&ecirc;̀u mới, chuy&ecirc;n m&ocirc;n mới?</p>\r\n\r\n<p>Bạn c&oacute; niềm đam m&ecirc; với bộ m&ocirc;n lập tr&igrave;nh web nhưng đang băn khoăn kh&ocirc;ng biết n&ecirc;n chọn kh&oacute;a học n&agrave;o?</p>\r\n\r\n<p>Đừng lo lắng! H&atilde;y đến với kh&oacute;a học &quot;Nhập m&ocirc;n l&acirc;p tr&igrave;nh web&quot; của ch&uacute;ng t&ocirc;i để học tất cả những điều căn bản nhất về lập tr&igrave;nh web.</p>\r\n\r\n<p>Kh&oacute;a học &quot;Nh&acirc;̣p m&ocirc;n l&acirc;̣p tr&igrave;nh Web&quot; sẽ cho bạn c&aacute;i nh&igrave;n t&ocirc;̉ng quan nh&acirc;́t v&ecirc;̀ l&acirc;̣p tr&igrave;nh web. Những y&ecirc;́u t&ocirc;́ gi&uacute;p bạn đưa ra quy&ecirc;́t định c&oacute; n&ecirc;n học l&acirc;̣p tr&igrave;nh web hay kh&ocirc;ng.</p>\r\n\r\n<p>Đồng thời kh&oacute;a học cũng giới thiệu c&aacute;ch thức sử dụng c&aacute;c c&ocirc;ng cụ đơn giản v&agrave; dễ d&ugrave;ng nhất để x&acirc;y dựng một trang web của ri&ecirc;ng bạn.</p>\r\n', NULL, 'Biết được lý do tại sao bạn nên học lập trình web mà không phải một môn lập trình nào khác.\r\nHiểu được lập trình web là gì và những kiến thức cơ bản nhất về lập trình web.', 'Những người mong muốn học lập trình web.\r\nHọc sinh, sinh viên khoa CNTT.\r\nHọc sinh, sinh viên có ngành khác mong muốn học hỏi cái mới.', 'Uswyrp45kkj5e5nrw', '1', 'Hoàn thành', '2021-01-01', 4, '2021-01-14', 0);
+INSERT INTO `course` VALUES ('Cswyrp61kkj9sbfva', 'Lập trình backend cho website bằng PHP/Mysql theo mô hình MVC', 'Backend PHP MySQL', '/upload/course/Cswyrp61kkj9sbfva.jpg', 699000, 100, '<p>Điểm kh&aacute;c biệt của kh&oacute;a học n&agrave;y so với c&aacute;c kh&oacute;a học online kh&aacute;c c&ugrave;ng chủ đề lập tr&igrave;nh PHP l&agrave; g&igrave; vậy ?<br />\r\nKh&aacute;c người tr&igrave;nh b&agrave;y bạn ạ. M&igrave;nh nghĩ cũng ảnh hưởng một phần đ&oacute;, mỗi người một c&aacute;ch tr&igrave;nh b&agrave;y v&agrave; tiếp cận kh&aacute;c nhau, sẽ hợp với từng người kh&aacute;c nhau, hi vọng bạn v&agrave; m&igrave;nh &quot;&quot;tương th&iacute;ch&quot;&quot;. Hơn nữa m&igrave;nh tự tin ở phần l&agrave; rất chi tiết, m&igrave;nh nghĩ l&agrave; kh&ocirc;ng ai n&oacute;i chi tiết như thế bạn ạ, để đảm bảo l&agrave; bạn hiểu tận ng&oacute;c ng&aacute;ch v&agrave; bản chất của vấn đề. Einestern đ&atilde; n&oacute;i l&agrave; nếu bạn kh&ocirc;ng thể giải th&iacute;ch cho một đứa trẻ hiểu th&igrave; bạn cũng chẳng hiểu r&otilde; vấn đề. Bạn thử học nh&eacute;. &quot;</p>\r\n', NULL, 'Tự lập trình phần mềm phù hợp với nhu cầu và công việc cá nhân\r\nKiến thức ở khóa này là nền tảng cho khóa nâng cao sau này và các khóa về fullstact angular sẽ xuất bản tới', 'Sinh viên học về công nghệ thông tin\r\nNhững bạn chưa biết rõ bản chất của lập trình MVC\r\nNhững bạn muốn học về lập trình web\r\nNhững bạn muốn tự lập trình backend cho website của mình', 'Uswyrp45kkj5e5nrw', '2', 'Hoàn thành', '2020-12-31', 1, '2021-01-14', 0);
 
 -- ----------------------------
 -- Table structure for deal
@@ -172,7 +175,9 @@ CREATE TABLE `favourite`  (
 -- ----------------------------
 -- Records of favourite
 -- ----------------------------
+INSERT INTO `favourite` VALUES ('U4fh2219r8kjqrmfcs', 'C02');
 INSERT INTO `favourite` VALUES ('Uswyrp45kkj5e5nrw', 'C10');
+INSERT INTO `favourite` VALUES ('U4fh2219r8kjqrmfcs', 'C11');
 INSERT INTO `favourite` VALUES ('Uswyrp45kkj5e5nrw', 'C12');
 
 -- ----------------------------
@@ -190,6 +195,8 @@ CREATE TABLE `final_bill`  (
 -- ----------------------------
 -- Records of final_bill
 -- ----------------------------
+INSERT INTO `final_bill` VALUES ('B8d0rgo2iwokjw9504o', 'Hoàn Thành', '2021-01-14', 699000);
+INSERT INTO `final_bill` VALUES ('B8d0rgo2iwokjwbef3s', 'Hoàn Thành', '2021-01-14', 349500);
 INSERT INTO `final_bill` VALUES ('B8d0rgop0kkjw5wmkl', 'Hoàn Thành', '2021-01-14', 300698);
 
 -- ----------------------------
@@ -263,6 +270,11 @@ CREATE TABLE `shopping_cart`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of shopping_cart
+-- ----------------------------
+INSERT INTO `shopping_cart` VALUES ('U4fh2219r8kjqrmfcs', 'C02');
+
+-- ----------------------------
 -- Table structure for star_rating
 -- ----------------------------
 DROP TABLE IF EXISTS `star_rating`;
@@ -282,6 +294,7 @@ CREATE TABLE `star_rating`  (
 -- ----------------------------
 INSERT INTO `star_rating` VALUES ('1', 'C01', 4, 'ok');
 INSERT INTO `star_rating` VALUES ('1', 'C02', 4, 'ok');
+INSERT INTO `star_rating` VALUES ('U4fh2219r8kjqrmfcs', 'C01', 3, 'good!');
 INSERT INTO `star_rating` VALUES ('Uswyrp2a4kitph7ft', 'C01', 5, 'Good');
 INSERT INTO `star_rating` VALUES ('Uswyrp2a4kitph7ft', 'C02', 5, 'good');
 INSERT INTO `star_rating` VALUES ('Uswyrp2a4kitph7ft', 'C12', 5, 'good');
