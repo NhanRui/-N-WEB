@@ -143,7 +143,7 @@ app.use('/lecturer',auth.authLecturer, require('./controllers/lecturer_controlle
 app.use('/admin',auth.authAdmin, require('./controllers/admin_controller'));
 app.use('/MyCourse',auth.authIndexCart, require('./controllers/courses_controller'));
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
   console.log(`E-Commerce app is listening at http://localhost:${PORT}`)
 })
